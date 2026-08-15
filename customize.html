@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -7,10 +8,11 @@
 
 <meta
     name="viewport"
-    content="width=device-width,initial-scale=1"
+    content="width=device-width,initial-scale=1.0"
 >
 
 <title>NØX — Customize</title>
+
 
 <style>
 
@@ -20,329 +22,446 @@
     padding:0;
 }
 
+
 :root{
+
     --accent:#ffffff;
+
+    --bg:#030303;
+
+    --panel:#090909;
+
+    --border:#202020;
+
 }
 
-html{
-    background:#030303;
-}
 
 body{
-    min-height:100vh;
-    background:#030303;
-    color:white;
-    font-family:Inter,Arial,sans-serif;
-    padding:25px;
-    overflow-x:hidden;
-}
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
+    min-height:100vh;
 
     background:
-        linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
+
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.06),
+            transparent 35%
         ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        );
 
-    background-size:60px 60px;
+        #030303;
 
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
+    color:white;
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    padding:25px;
+
 }
+
 
 .container{
-    position:relative;
-    width:min(1100px,100%);
+
+    width:min(
+        1150px,
+        100%
+    );
+
     margin:auto;
+
 }
 
-.top{
+
+.header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:25px;
+
 }
 
-.back{
-    color:#666;
-    text-decoration:none;
-    font-size:12px;
-    transition:.2s;
-}
-
-.back:hover{
-    color:white;
-}
 
 .title{
+
     font-size:30px;
+
     font-weight:800;
+
     letter-spacing:-1.5px;
+
 }
+
 
 .subtitle{
-    color:#666;
-    font-size:12px;
+
     margin-top:5px;
+
+    color:#666;
+
+    font-size:12px;
+
 }
+
+
+.back{
+
+    color:#666;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+}
+
+
+.back:hover{
+
+    color:white;
+
+}
+
 
 .layout{
+
     display:grid;
-    grid-template-columns:1fr 430px;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        430px;
+
     gap:20px;
+
 }
+
 
 .panel{
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
 
-    border:1px solid #202020;
+    padding:25px;
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius:20px;
-    padding:22px;
-    backdrop-filter:blur(20px);
+
+    background:
+        rgba(255,255,255,.025);
+
+    backdrop-filter:
+        blur(20px);
+
 }
+
 
 .section{
-    margin-bottom:27px;
+
+    margin-bottom:30px;
+
 }
 
-.section:last-child{
-    margin-bottom:0;
-}
 
 .section-title{
+
+    margin-bottom:15px;
+
     color:#777;
+
     font-size:10px;
+
     font-weight:800;
+
     letter-spacing:1.5px;
-    margin-bottom:14px;
+
 }
+
 
 .field{
-    margin-bottom:16px;
+
+    margin-bottom:17px;
+
 }
 
+
 label{
+
     display:block;
-    color:#777;
-    font-size:10px;
-    font-weight:700;
+
     margin-bottom:7px;
+
+    color:#777;
+
+    font-size:10px;
+
+    font-weight:700;
+
 }
+
 
 input,
 textarea,
 select{
+
     width:100%;
-    border:1px solid #252525;
-    outline:none;
+
+    border:
+        1px solid
+        #242424;
+
     border-radius:10px;
-    background:#080808;
+
+    outline:none;
+
+    background:#070707;
+
     color:white;
+
     padding:12px;
+
     font-family:inherit;
-    transition:.2s;
+
 }
+
 
 input{
-    height:45px;
+
+    height:46px;
+
 }
+
 
 textarea{
+
     min-height:90px;
+
     resize:vertical;
+
 }
 
-select{
-    height:45px;
-}
 
 input:focus,
 textarea:focus,
 select:focus{
-    border-color:#555;
+
+    border-color:
+        rgba(255,255,255,.35);
+
 }
 
-input::placeholder,
-textarea::placeholder{
-    color:#444;
-}
 
-.username-status{
+.username-info{
+
     margin-top:7px;
+
     color:#555;
+
     font-size:10px;
+
     line-height:1.5;
+
 }
+
 
 .file{
-    padding:17px;
-    border:1px dashed #292929;
+
+    display:block;
+
+    padding:18px;
+
+    border:
+        1px dashed
+        #292929;
+
     border-radius:12px;
-    text-align:center;
-    cursor:pointer;
+
     color:#777;
+
+    text-align:center;
+
     font-size:11px;
-    transition:.2s;
+
+    cursor:pointer;
+
+    transition:.25s;
+
 }
+
 
 .file:hover{
-    border-color:#555;
+
     color:white;
-    background:#0b0b0b;
+
+    border-color:#555;
+
+    background:#0c0c0c;
+
 }
+
 
 .file input{
+
     display:none;
+
 }
+
 
 .color-row{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
 }
+
 
 .color-row input{
+
     width:55px;
+
+    height:40px;
+
     padding:3px;
+
 }
+
 
 .color-value{
-    color:#666;
+
+    color:#777;
+
     font-size:11px;
+
 }
 
-.toggle{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:13px 0;
-    border-bottom:1px solid #171717;
-}
-
-.toggle:last-child{
-    border-bottom:0;
-}
-
-.toggle span{
-    color:#aaa;
-    font-size:12px;
-}
-
-.toggle input{
-    width:40px;
-    height:20px;
-}
 
 .save{
+
     width:100%;
+
     height:50px;
+
     border:0;
+
     border-radius:11px;
+
     background:white;
+
     color:black;
+
     font-weight:800;
+
     cursor:pointer;
+
     transition:.25s;
+
 }
+
 
 .save:hover{
-    transform:translateY(-2px);
+
+    transform:
+        translateY(-2px);
+
     box-shadow:
         0 15px 40px
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.1);
+
 }
+
 
 .save:disabled{
+
     opacity:.5;
+
     cursor:wait;
+
     transform:none;
+
 }
+
 
 .message{
+
     min-height:18px;
-    text-align:center;
+
     margin-top:13px;
+
+    text-align:center;
+
     font-size:11px;
-    line-height:1.5;
+
 }
+
 
 .success{
+
     color:#aaa;
+
 }
+
 
 .error{
+
     color:#ff6666;
+
 }
 
 
-/* PREVIEW */
+/* =========================
+   PREVIEW
+========================= */
+
 
 .preview{
+
     position:sticky;
+
     top:20px;
-    height:fit-content;
+
     overflow:hidden;
 
-    border:1px solid #222;
+    border:
+        1px solid
+        var(--border);
+
     border-radius:22px;
 
     background:#080808;
 
-    transition:
-        .4s ease;
+    transition:.4s;
 
 }
 
-.preview.glow{
-    box-shadow:
-        0 0 80px
-        color-mix(
-            in srgb,
-            var(--accent) 14%,
-            transparent
-        );
-}
 
-.preview-banner{
+.banner{
 
-    height:165px;
+    height:180px;
+
+    position:relative;
 
     background:
+
         linear-gradient(
             135deg,
             #171717,
             #050505
         );
 
-    background-size:cover;
     background-position:center;
 
-    position:relative;
-
-    overflow:hidden;
+    background-size:cover;
 
 }
 
-.preview-banner::after{
+
+.banner::after{
 
     content:"";
 
@@ -352,21 +471,21 @@ textarea::placeholder{
 
     background:
         linear-gradient(
-            to bottom,
             transparent,
             #080808
         );
 
 }
 
+
 .preview-content{
 
     position:relative;
 
-    margin-top:-55px;
+    margin-top:-60px;
 
     padding:
-        0 25px 28px;
+        0 25px 30px;
 
     text-align:center;
 
@@ -374,10 +493,16 @@ textarea::placeholder{
 
 }
 
+
 .avatar{
 
-    width:100px;
-    height:100px;
+    width:105px;
+
+    height:105px;
+
+    border:
+        4px solid
+        #080808;
 
     border-radius:50%;
 
@@ -385,15 +510,8 @@ textarea::placeholder{
 
     background:#111;
 
-    border:
-        4px solid
-        #080808;
-
-    box-shadow:
-        0 10px 40px
-        rgba(0,0,0,.5);
-
 }
+
 
 .preview-name{
 
@@ -403,24 +521,25 @@ textarea::placeholder{
 
     font-weight:800;
 
-    letter-spacing:-.5px;
-
 }
 
+
 .preview-username{
+
+    margin-top:4px;
 
     color:#666;
 
     font-size:11px;
 
-    margin-top:4px;
-
 }
+
 
 .preview-bio{
 
-    margin:
-        15px auto;
+    max-width:340px;
+
+    margin:15px auto;
 
     color:#aaa;
 
@@ -428,11 +547,8 @@ textarea::placeholder{
 
     line-height:1.5;
 
-    max-width:330px;
-
-    white-space:pre-wrap;
-
 }
+
 
 .preview-link{
 
@@ -440,13 +556,8 @@ textarea::placeholder{
 
     font-size:11px;
 
-    text-decoration:none;
-
 }
 
-.preview-link:hover{
-    text-decoration:underline;
-}
 
 .badges{
 
@@ -456,15 +567,16 @@ textarea::placeholder{
 
     gap:7px;
 
-    margin-top:16px;
+    margin-top:18px;
 
 }
 
+
 .badge{
 
-    width:28px;
+    width:30px;
 
-    height:28px;
+    height:30px;
 
     display:flex;
 
@@ -476,16 +588,56 @@ textarea::placeholder{
         1px solid
         #292929;
 
-    border-radius:8px;
+    border-radius:9px;
 
-    background:#101010;
+    background:#111;
 
-    font-size:12px;
+    transition:.25s;
 
 }
 
 
-/* PARTICLES */
+.badge:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--accent);
+
+}
+
+
+.floating{
+
+    animation:
+        floating
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes floating{
+
+    0%,
+    100%{
+
+        transform:
+            translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-6px);
+
+    }
+
+}
+
 
 .particles{
 
@@ -493,11 +645,12 @@ textarea::placeholder{
 
     inset:0;
 
-    pointer-events:none;
-
     overflow:hidden;
 
+    pointer-events:none;
+
 }
+
 
 .dot{
 
@@ -509,76 +662,66 @@ textarea::placeholder{
 
     border-radius:50%;
 
-    background:var(--accent);
+    background:
+        var(--accent);
 
-    opacity:.5;
+    opacity:.4;
 
     animation:
-        float 6s
+        particle
+        6s
         infinite
         ease-in-out;
 
 }
 
-@keyframes float{
 
-    0%,100%{
+@keyframes particle{
+
+    0%,
+    100%{
+
         transform:
-            translateY(0)
-            scale(1);
-        opacity:.15;
+            translateY(0);
+
+        opacity:.1;
+
     }
 
     50%{
+
         transform:
-            translateY(-35px)
-            scale(1.4);
-        opacity:.7;
+            translateY(-35px);
+
+        opacity:.8;
+
     }
 
 }
 
-
-/* FLOATING */
-
-.preview.floating .preview-content{
-
-    animation:
-        floating 4s
-        infinite
-        ease-in-out;
-
-}
-
-@keyframes floating{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-5px);
-    }
-
-}
-
-
-/* MOBILE */
 
 @media(max-width:850px){
 
     body{
-        padding:16px;
+
+        padding:15px;
+
     }
 
     .layout{
+
         grid-template-columns:1fr;
+
     }
 
     .preview{
+
         position:relative;
+
         top:0;
+
         order:-1;
+
     }
 
 }
@@ -594,7 +737,7 @@ textarea::placeholder{
 <div class="container">
 
 
-<div class="top">
+<header class="header">
 
 <div>
 
@@ -608,27 +751,29 @@ Customize your NØX identity.
 
 </div>
 
+
 <a
-    href="dashboard.html"
     class="back"
+    href="dashboard.html"
 >
 ← BACK
 </a>
 
-</div>
+</header>
 
 
 <div class="layout">
 
 
-<!-- EDITOR -->
+<!-- =========================
+     EDITOR
+========================= -->
 
 <div class="panel">
 
 
-<!-- IDENTITY -->
-
 <div class="section">
+
 
 <div class="section-title">
 IDENTITY
@@ -643,16 +788,15 @@ USERNAME
 
 <input
     id="username"
-    type="text"
     maxlength="20"
     autocomplete="off"
 >
 
 <div
-    id="usernameStatus"
-    class="username-status"
+    id="usernameInfo"
+    class="username-info"
 >
-Loading...
+Cargando...
 </div>
 
 </div>
@@ -666,9 +810,8 @@ DISPLAY NAME
 
 <input
     id="displayName"
-    type="text"
     maxlength="30"
-    placeholder="Your name"
+    placeholder="NØX"
 >
 
 </div>
@@ -683,7 +826,7 @@ BIO
 <textarea
     id="bio"
     maxlength="160"
-    placeholder="Tell people about yourself..."
+    placeholder="This is my NØX profile."
 ></textarea>
 
 </div>
@@ -691,29 +834,28 @@ BIO
 </div>
 
 
-<!-- VISUALS -->
-
 <div class="section">
 
+
 <div class="section-title">
-VISUALS
+MEDIA
 </div>
 
 
 <div class="field">
 
 <label>
-AVATAR
+PROFILE PICTURE
 </label>
 
 <label class="file">
 
-Choose avatar
+📷 SELECT PHOTO
 
 <input
     id="avatarFile"
     type="file"
-    accept="image/jpeg,image/png,image/webp,image/gif"
+    accept="image/*"
 >
 
 </label>
@@ -724,17 +866,17 @@ Choose avatar
 <div class="field">
 
 <label>
-BANNER
+PROFILE BANNER
 </label>
 
 <label class="file">
 
-Choose banner
+🖼️ SELECT BANNER
 
 <input
     id="bannerFile"
     type="file"
-    accept="image/jpeg,image/png,image/webp,image/gif"
+    accept="image/*"
 >
 
 </label>
@@ -745,21 +887,31 @@ Choose banner
 <div class="field">
 
 <label>
-BACKGROUND
+PROFILE BACKGROUND
 </label>
 
 <label class="file">
 
-Choose background
+🌌 SELECT BACKGROUND
 
 <input
     id="backgroundFile"
     type="file"
-    accept="image/jpeg,image/png,image/webp,image/gif"
+    accept="image/*"
 >
 
 </label>
 
+</div>
+
+</div>
+
+
+<div class="section">
+
+
+<div class="section-title">
+STYLE
 </div>
 
 
@@ -781,7 +933,7 @@ ACCENT COLOR
     id="colorValue"
     class="color-value"
 >
-#ffffff
+#FFFFFF
 </span>
 
 </div>
@@ -801,10 +953,6 @@ PROFILE EFFECT
 None
 </option>
 
-<option value="glow">
-Glow
-</option>
-
 <option value="floating">
 Floating
 </option>
@@ -820,64 +968,8 @@ Particles
 </div>
 
 
-<!-- EFFECTS -->
-
 <div class="section">
 
-<div class="section-title">
-EFFECTS
-</div>
-
-
-<div class="toggle">
-
-<span>
-Glow
-</span>
-
-<input
-    id="glow"
-    type="checkbox"
-    checked
->
-
-</div>
-
-
-<div class="toggle">
-
-<span>
-Blur
-</span>
-
-<input
-    id="blur"
-    type="checkbox"
-    checked
->
-
-</div>
-
-
-<div class="toggle">
-
-<span>
-Particles
-</span>
-
-<input
-    id="particles"
-    type="checkbox"
->
-
-</div>
-
-</div>
-
-
-<!-- SOCIAL -->
-
-<div class="section">
 
 <div class="section-title">
 SOCIAL
@@ -902,9 +994,8 @@ WEBSITE
 
 
 <button
-    id="saveButton"
+    id="save"
     class="save"
-    type="button"
 >
 SAVE CHANGES
 </button>
@@ -919,7 +1010,9 @@ SAVE CHANGES
 </div>
 
 
-<!-- PREVIEW -->
+<!-- =========================
+     PREVIEW
+========================= -->
 
 <div
     id="preview"
@@ -928,13 +1021,13 @@ SAVE CHANGES
 
 
 <div
-    id="previewBanner"
-    class="preview-banner"
+    id="banner"
+    class="banner"
 >
 
 
 <div
-    id="particlesContainer"
+    id="particles"
     class="particles"
 ></div>
 
@@ -946,7 +1039,7 @@ SAVE CHANGES
 
 
 <img
-    id="previewAvatar"
+    id="avatar"
     class="avatar"
     alt="Avatar"
 >
@@ -1010,11 +1103,8 @@ This is my NØX profile.
 
 </div>
 
-
 </div>
 
-
-<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1023,139 +1113,21 @@ This is my NØX profile.
 
 <script>
 
-
-let user = null;
+let currentUser = null;
 
 let profile = null;
 
 
-/* ELEMENTS */
-
-const username =
-document.getElementById(
-    "username"
-);
-
-const displayName =
-document.getElementById(
-    "displayName"
-);
-
-const bio =
-document.getElementById(
-    "bio"
-);
-
-const website =
-document.getElementById(
-    "website"
-);
-
-const accentColor =
-document.getElementById(
-    "accentColor"
-);
-
-const colorValue =
-document.getElementById(
-    "colorValue"
-);
-
-const profileEffect =
-document.getElementById(
-    "profileEffect"
-);
-
-const glow =
-document.getElementById(
-    "glow"
-);
-
-const blur =
-document.getElementById(
-    "blur"
-);
-
-const particles =
-document.getElementById(
-    "particles"
-);
-
-const saveButton =
-document.getElementById(
-    "saveButton"
-);
-
-const message =
-document.getElementById(
-    "message"
-);
-
-const preview =
-document.getElementById(
-    "preview"
-);
-
-const previewAvatar =
-document.getElementById(
-    "previewAvatar"
-);
-
-const previewBanner =
-document.getElementById(
-    "previewBanner"
-);
-
-const previewName =
-document.getElementById(
-    "previewName"
-);
-
-const previewUsername =
-document.getElementById(
-    "previewUsername"
-);
-
-const previewBio =
-document.getElementById(
-    "previewBio"
-);
-
-const previewWebsite =
-document.getElementById(
-    "previewWebsite"
-);
-
-const particlesContainer =
-document.getElementById(
-    "particlesContainer"
-);
-
-const usernameStatus =
-document.getElementById(
-    "usernameStatus"
-);
+const $ =
+    id =>
+    document.getElementById(id);
 
 
-/* MESSAGE */
+/* =========================
+   AUTH
+========================= */
 
-function showMessage(
-    text,
-    type=""
-){
-
-    message.textContent =
-        text;
-
-    message.className =
-        "message " + type;
-
-}
-
-
-/* AUTH */
-
-async function start(){
+async function init(){
 
     const {
         data,
@@ -1180,7 +1152,7 @@ async function start(){
     }
 
 
-    user =
+    currentUser =
         data.user;
 
 
@@ -1189,7 +1161,9 @@ async function start(){
 }
 
 
-/* PROFILE */
+/* =========================
+   LOAD PROFILE
+========================= */
 
 async function loadProfile(){
 
@@ -1202,7 +1176,7 @@ async function loadProfile(){
         .select("*")
         .eq(
             "id",
-            user.id
+            currentUser.id
         )
         .single();
 
@@ -1215,95 +1189,84 @@ async function loadProfile(){
         data;
 
 
-    username.value =
+    $("username").value =
         profile.username ||
         "";
 
 
-    displayName.value =
+    $("displayName").value =
         profile.display_name ||
         "";
 
 
-    bio.value =
+    $("bio").value =
         profile.bio ||
         "";
 
 
-    website.value =
+    $("website").value =
         profile.website_url ||
         "";
 
 
-    accentColor.value =
+    $("accentColor").value =
         profile.accent_color ||
         "#ffffff";
 
 
-    profileEffect.value =
+    $("profileEffect").value =
         profile.profile_effect ||
         "none";
 
 
-    glow.checked =
-        profile.glow_enabled ??
-        true;
-
-
-    blur.checked =
-        profile.blur_enabled ??
-        true;
-
-
-    particles.checked =
-        profile.particles_enabled ??
-        false;
-
-
     updatePreview();
 
-    updateUsernameStatus();
+    updateUsernameInfo();
 
 }
 
 
-/* USERNAME STATUS */
+/* =========================
+   USERNAME TIMER
+========================= */
 
-function updateUsernameStatus(){
+function updateUsernameInfo(){
 
-    const original =
+    const oldUsername =
         (
             profile.username ||
             ""
         ).toLowerCase();
 
 
-    const current =
-        username.value
+    const newUsername =
+        $("username")
+            .value
             .trim()
             .toLowerCase();
 
 
-    if(current === original){
+    if(
+        oldUsername ===
+        newUsername
+    ){
 
-        usernameStatus.textContent =
+        $("usernameInfo")
+            .textContent =
             "Username actual.";
-
-        username.style.borderColor =
-            "#252525";
 
         return;
 
     }
 
 
-    if(!profile.username_changed_at){
+    if(
+        !profile.username_changed_at
+    ){
 
-        usernameStatus.textContent =
-            "Puedes cambiarlo ahora. Después tendrás que esperar 7 días.";
-
-        username.style.borderColor =
-            "#555";
+        $("usernameInfo")
+            .textContent =
+            "✓ Puedes cambiarlo ahora. Después tendrás que esperar 7 días.";
 
         return;
 
@@ -1312,27 +1275,28 @@ function updateUsernameStatus(){
 
     const nextChange =
         new Date(
-            new Date(
-                profile.username_changed_at
-            ).getTime()
-            +
-            7 * 24 * 60 * 60 * 1000
-        );
+            profile.username_changed_at
+        ).getTime()
+        +
+        7 *
+        24 *
+        60 *
+        60 *
+        1000;
 
 
     const remaining =
-        nextChange.getTime()
-        -
+        nextChange -
         Date.now();
 
 
-    if(remaining <= 0){
+    if(
+        remaining <= 0
+    ){
 
-        usernameStatus.textContent =
-            "✓ Puedes cambiar tu username ahora.";
-
-        username.style.borderColor =
-            "#555";
+        $("usernameInfo")
+            .textContent =
+            "✓ Puedes cambiar tu username.";
 
         return;
 
@@ -1351,34 +1315,55 @@ function updateUsernameStatus(){
         );
 
 
-    usernameStatus.textContent =
+    $("usernameInfo")
+        .textContent =
         `🔒 Username bloqueado. Podrás cambiarlo en ${days} día(s).`;
-
-    username.style.borderColor =
-        "#3a2020";
 
 }
 
 
-/* PREVIEW */
+/* =========================
+   PREVIEW
+========================= */
 
 function updatePreview(){
 
-    previewName.textContent =
-        displayName.value ||
-        "NØX";
+    const username =
+        $("username")
+            .value
+            .trim();
 
 
-    previewUsername.textContent =
+    const name =
+        $("displayName")
+            .value
+            .trim();
+
+
+    const bio =
+        $("bio")
+            .value
+            .trim();
+
+
+    $("previewUsername")
+        .textContent =
         "@" +
         (
-            username.value ||
+            username ||
             "nox"
         );
 
 
-    previewBio.textContent =
-        bio.value ||
+    $("previewName")
+        .textContent =
+        name ||
+        "NØX";
+
+
+    $("previewBio")
+        .textContent =
+        bio ||
         "This is my NØX profile.";
 
 
@@ -1386,163 +1371,136 @@ function updatePreview(){
         .style
         .setProperty(
             "--accent",
-            accentColor.value
+            $("accentColor").value
         );
 
 
-    colorValue.textContent =
-        accentColor.value
+    $("colorValue")
+        .textContent =
+        $("accentColor")
+            .value
             .toUpperCase();
 
 
-    /*
-    AVATAR
-    */
-
-    if(profile?.avatar_url){
-
-        previewAvatar.src =
-            profile.avatar_url;
-
-    }
+    const website =
+        $("website")
+            .value
+            .trim();
 
 
-    /*
-    BANNER
-    */
+    if(website){
 
-    if(profile?.banner_url){
+        $("previewWebsite")
+            .style
+            .display =
+            "inline";
 
-        previewBanner.style.backgroundImage =
-            `url("${profile.banner_url}")`;
+        $("previewWebsite")
+            .href =
+            website;
 
-    }
-
-
-    /*
-    BACKGROUND
-    */
-
-    if(profile?.background_url){
-
-        preview.style.backgroundImage =
-            `url("${profile.background_url}")`;
+        $("previewWebsite")
+            .textContent =
+            website;
 
     }
 
+    else{
 
-    /*
-    WEBSITE
-    */
-
-    if(
-        website.value &&
-        website.value.trim()
-    ){
-
-        previewWebsite.style.display =
-            "inline-block";
-
-        previewWebsite.href =
-            website.value.trim();
-
-        previewWebsite.textContent =
-            website.value.trim();
-
-    }else{
-
-        previewWebsite.style.display =
+        $("previewWebsite")
+            .style
+            .display =
             "none";
 
     }
 
 
-    /*
-    GLOW
-    */
-
-    preview.classList.toggle(
-        "glow",
-        glow.checked
-    );
+    $("preview")
+        .classList.toggle(
+            "floating",
+            $("profileEffect").value ===
+            "floating"
+        );
 
 
-    /*
-    FLOATING
-    */
+    createParticles();
 
-    preview.classList.toggle(
-        "floating",
-        profileEffect.value ===
-        "floating"
-    );
+}
 
 
-    /*
-    PARTICLES
-    */
+/* =========================
+   PARTICLES
+========================= */
 
-    particlesContainer.innerHTML =
-        "";
+function createParticles(){
+
+    $("particles")
+        .innerHTML = "";
 
 
     if(
-        particles.checked ||
-        profileEffect.value ===
+        $("profileEffect").value !==
         "particles"
+    )
+        return;
+
+
+    for(
+        let i = 0;
+        i < 35;
+        i++
     ){
 
-        for(
-            let i = 0;
-            i < 28;
-            i++
-        ){
-
-            const dot =
-                document.createElement(
-                    "div"
-                );
+        const dot =
+            document.createElement(
+                "div"
+            );
 
 
-            dot.className =
-                "dot";
+        dot.className =
+            "dot";
 
 
-            dot.style.left =
-                Math.random() * 100 +
-                "%";
+        dot.style.left =
+            Math.random() *
+            100 +
+            "%";
 
 
-            dot.style.top =
-                Math.random() * 100 +
-                "%";
+        dot.style.top =
+            Math.random() *
+            100 +
+            "%";
 
 
-            dot.style.animationDelay =
-                Math.random() * 6 +
-                "s";
+        dot.style.animationDelay =
+            Math.random() *
+            5 +
+            "s";
 
 
-            particlesContainer
-                .appendChild(dot);
-
-        }
+        $("particles")
+            .appendChild(dot);
 
     }
 
 }
 
 
-/* COMPRESS IMAGE */
+/* =========================
+   IMAGE COMPRESSION
+========================= */
 
-async function compressImage(
+function compressImage(
     file,
-    maxWidth,
-    quality = 0.78
+    maxWidth = 1600
 ){
 
     return new Promise(
-        (resolve,reject) => {
+        (
+            resolve,
+            reject
+        ) => {
 
             const reader =
                 new FileReader();
@@ -1561,7 +1519,6 @@ async function compressImage(
                     let width =
                         img.width;
 
-
                     let height =
                         img.height;
 
@@ -1575,13 +1532,11 @@ async function compressImage(
                             maxWidth /
                             width;
 
-
                         width =
                             Math.round(
                                 width *
                                 ratio
                             );
-
 
                         height =
                             Math.round(
@@ -1593,23 +1548,24 @@ async function compressImage(
 
 
                     const canvas =
-                        document.createElement(
-                            "canvas"
-                        );
+                        document
+                            .createElement(
+                                "canvas"
+                            );
 
 
                     canvas.width =
                         width;
-
 
                     canvas.height =
                         height;
 
 
                     const ctx =
-                        canvas.getContext(
-                            "2d"
-                        );
+                        canvas
+                            .getContext(
+                                "2d"
+                            );
 
 
                     ctx.drawImage(
@@ -1637,4 +1593,218 @@ async function compressImage(
                             }
 
 
-    
+                            resolve(blob);
+
+                        },
+                        "image/webp",
+                        .78
+                    );
+
+                };
+
+
+                img.onerror =
+                () =>
+                reject(
+                    new Error(
+                        "Imagen inválida."
+                    )
+                );
+
+
+                img.src =
+                    event.target.result;
+
+            };
+
+
+            reader.onerror =
+            () =>
+            reject(
+                new Error(
+                    "No se pudo leer la imagen."
+                )
+            );
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
+
+
+/* =========================
+   UPLOAD
+========================= */
+
+async function uploadImage(
+    file,
+    folder
+){
+
+    if(!file)
+        return null;
+
+
+    if(
+        file.size >
+        15 *
+        1024 *
+        1024
+    ){
+
+        throw new Error(
+            "La imagen supera los 15 MB."
+        );
+
+    }
+
+
+    let maxWidth =
+        1600;
+
+
+    if(
+        folder ===
+        "avatars"
+    ){
+
+        maxWidth =
+            700;
+
+    }
+
+
+    if(
+        folder ===
+        "banners"
+    ){
+
+        maxWidth =
+            1800;
+
+    }
+
+
+    if(
+        folder ===
+        "backgrounds"
+    ){
+
+        maxWidth =
+            1920;
+
+    }
+
+
+    const blob =
+        await compressImage(
+            file,
+            maxWidth
+        );
+
+
+    const path =
+        currentUser.id
+        +
+        "/"
+        +
+        folder
+        +
+        "/"
+        +
+        crypto.randomUUID()
+        +
+        ".webp";
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+        .storage
+        .from("profiles")
+        .upload(
+            path,
+            blob,
+            {
+
+                contentType:
+                    "image/webp",
+
+                cacheControl:
+                    "31536000",
+
+                upsert:false
+
+            }
+        );
+
+
+    if(error)
+        throw error;
+
+
+    const {
+        data
+    } =
+    supabaseClient
+        .storage
+        .from("profiles")
+        .getPublicUrl(
+            path
+        );
+
+
+    return data.publicUrl;
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+$("save")
+.addEventListener(
+    "click",
+    async () => {
+
+        const button =
+            $("save");
+
+
+        button.disabled =
+            true;
+
+
+        button.textContent =
+            "SAVING...";
+
+
+        $("message")
+            .textContent =
+            "";
+
+
+        try{
+
+            const newUsername =
+                $("username")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const oldUsername =
+                (
+                    profile.username ||
+                    ""
+                ).toLowerCase();
+
+
+            /*
+             * USERNAME
+             
