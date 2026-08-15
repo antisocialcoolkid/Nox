@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>NØX — Customize</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -18,48 +16,42 @@
 :root{
     --accent:#ffffff;
     --bg:#050505;
-    --panel:#0b0b0b;
+    --panel:#0c0c0c;
     --border:#252525;
-    --muted:#707070;
-}
-
-html{
-    background:#050505;
+    --muted:#777;
 }
 
 body{
     min-height:100vh;
     background:
         radial-gradient(
-            circle at 50% -15%,
-            rgba(255,255,255,.09),
-            transparent 38%
+            circle at 50% -10%,
+            rgba(255,255,255,.10),
+            transparent 35%
         ),
         #050505;
     color:#fff;
-    font-family:Inter,Arial,sans-serif;
-    padding:22px;
+    font-family:Arial,Helvetica,sans-serif;
+    padding:20px;
 }
 
 button,
 input,
 textarea,
 select{
-    font-family:inherit;
+    font:inherit;
 }
 
 .container{
-    width:min(1180px,100%);
+    width:min(1150px,100%);
     margin:auto;
 }
-
-/* TOP */
 
 .top{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:25px;
+    margin-bottom:22px;
 }
 
 .title{
@@ -75,7 +67,7 @@ select{
 }
 
 .back{
-    color:#666;
+    color:#777;
     text-decoration:none;
     font-size:11px;
 }
@@ -84,39 +76,42 @@ select{
     color:#fff;
 }
 
-/* LAYOUT */
-
-.grid{
+.layout{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 430px;
+    grid-template-columns:minmax(0,1fr) 410px;
     gap:20px;
 }
 
-.panel,
+.editor,
 .preview{
     border:1px solid var(--border);
     border-radius:22px;
     background:rgba(255,255,255,.025);
-    backdrop-filter:blur(25px);
+    backdrop-filter:blur(20px);
 }
 
-.panel{
+.editor{
     padding:25px;
 }
 
+.preview{
+    overflow:hidden;
+    position:sticky;
+    top:20px;
+    height:max-content;
+}
+
 .section{
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
 
 .section-title{
-    color:#777;
+    color:#666;
     font-size:10px;
     font-weight:800;
     letter-spacing:1.5px;
     margin-bottom:15px;
 }
-
-/* INPUTS */
 
 .field{
     margin-bottom:17px;
@@ -124,10 +119,10 @@ select{
 
 label{
     display:block;
-    margin-bottom:7px;
     color:#777;
     font-size:10px;
     font-weight:700;
+    margin-bottom:7px;
 }
 
 input,
@@ -136,9 +131,9 @@ select{
     width:100%;
     border:1px solid #252525;
     border-radius:11px;
-    outline:none;
     background:#070707;
     color:#fff;
+    outline:none;
     padding:12px;
     transition:.2s;
 }
@@ -148,7 +143,7 @@ input{
 }
 
 textarea{
-    min-height:90px;
+    min-height:95px;
     resize:vertical;
 }
 
@@ -165,30 +160,26 @@ select:focus{
     line-height:1.5;
 }
 
-/* FILE */
-
 .file{
     display:block;
-    padding:18px;
     border:1px dashed #303030;
     border-radius:12px;
+    padding:17px;
     text-align:center;
     color:#777;
     cursor:pointer;
-    transition:.25s;
+    transition:.2s;
 }
 
 .file:hover{
-    color:#fff;
     border-color:#666;
-    background:#0b0b0b;
+    color:#fff;
+    background:#0a0a0a;
 }
 
 .file input{
     display:none;
 }
-
-/* COLOR */
 
 .color-row{
     display:flex;
@@ -197,8 +188,7 @@ select:focus{
 }
 
 .color-row input{
-    width:58px;
-    height:42px;
+    width:60px;
     padding:3px;
 }
 
@@ -206,8 +196,6 @@ select:focus{
     color:#777;
     font-size:11px;
 }
-
-/* SAVE */
 
 .save{
     width:100%;
@@ -219,12 +207,12 @@ select:focus{
     font-size:12px;
     font-weight:800;
     cursor:pointer;
-    transition:.25s;
+    transition:.2s;
 }
 
 .save:hover{
     transform:translateY(-2px);
-    box-shadow:0 15px 45px rgba(255,255,255,.12);
+    box-shadow:0 15px 40px rgba(255,255,255,.10);
 }
 
 .save:disabled{
@@ -233,15 +221,11 @@ select:focus{
     transform:none;
 }
 
-/* MESSAGE */
-
 .message{
     min-height:22px;
-    margin-top:14px;
-    padding:0 4px;
     text-align:center;
+    margin-top:12px;
     font-size:11px;
-    line-height:1.5;
 }
 
 .success{
@@ -249,86 +233,73 @@ select:focus{
 }
 
 .error{
-    color:#ff6868;
+    color:#ff6666;
 }
 
-/* DIAGNOSTIC */
-
-.diagnostic{
-    margin-top:20px;
-    padding:15px;
-    border:1px solid #1f1f1f;
+.status{
+    margin-top:18px;
+    padding:14px;
+    border:1px solid #1e1e1e;
     border-radius:13px;
     background:#070707;
 }
 
-.diagnostic-title{
-    margin-bottom:10px;
-    color:#666;
+.status-title{
+    color:#555;
     font-size:9px;
     font-weight:800;
     letter-spacing:1.3px;
+    margin-bottom:10px;
 }
 
-.diag-row{
+.status-line{
     display:flex;
     align-items:center;
     gap:8px;
-    margin:7px 0;
-    color:#777;
+    color:#666;
     font-size:10px;
+    margin:7px 0;
 }
 
-.diag-dot{
+.dot{
     width:7px;
     height:7px;
-    flex:none;
     border-radius:50%;
     background:#333;
 }
 
-.diag-row.ok{
+.status-line.ok{
     color:#aaa;
 }
 
-.diag-row.ok .diag-dot{
+.status-line.ok .dot{
     background:#aaa;
 }
 
-.diag-row.bad{
-    color:#ff6868;
+.status-line.error{
+    color:#ff6666;
 }
 
-.diag-row.bad .diag-dot{
-    background:#ff6868;
+.status-line.error .dot{
+    background:#ff6666;
 }
 
 /* PREVIEW */
 
-.preview{
-    position:sticky;
-    top:20px;
-    overflow:hidden;
-    background-color:#080808;
-    background-size:cover;
-    background-position:center;
-    transition:.35s;
-}
-
 .banner{
-    position:relative;
     height:190px;
+    position:relative;
     background:
         linear-gradient(
             135deg,
-            #191919,
+            #181818,
             #050505
         );
     background-size:cover;
     background-position:center;
 }
 
-.banner::after{
+.banner:after{
     content:"";
     position:absolute;
     inset:0;
@@ -338,42 +309,10 @@ select:focus{
     );
 }
 
-.particles{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:3;
-}
-
-.dot{
-    position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:var(--accent);
-    opacity:.45;
-    animation:particle 6s ease-in-out infinite;
-}
-
-@keyframes particle{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.1;
-    }
-
-    50%{
-        transform:translateY(-35px);
-        opacity:.8;
-    }
-
-}
-
-.preview-content{
+.preview-body{
     position:relative;
-    z-index:4;
     margin-top:-58px;
+    z-index:2;
     padding:0 25px 30px;
     text-align:center;
 }
@@ -382,13 +321,13 @@ select:focus{
     width:110px;
     height:110px;
     object-fit:cover;
-    border:4px solid #080808;
     border-radius:50%;
+    border:4px solid #080808;
     background:#111;
 }
 
 .preview-name{
-    margin-top:14px;
+    margin-top:13px;
     font-size:23px;
     font-weight:800;
 }
@@ -400,24 +339,22 @@ select:focus{
 }
 
 .preview-bio{
-    max-width:340px;
-    margin:15px auto;
+    max-width:330px;
+    margin:14px auto;
     color:#aaa;
     font-size:12px;
     line-height:1.5;
 }
 
-.preview-website{
+.website{
     display:none;
     color:var(--accent);
-    text-decoration:none;
     font-size:11px;
+    text-decoration:none;
 }
 
-/* BADGES */
-
 .badges-title{
-    margin-top:22px;
+    margin-top:24px;
     margin-bottom:10px;
     color:#555;
     font-size:9px;
@@ -433,9 +370,8 @@ select:focus{
 }
 
 .badge{
-    position:relative;
-    width:34px;
-    height:34px;
+    width:35px;
+    height:35px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -444,45 +380,22 @@ select:focus{
     background:#101010;
     color:#555;
     font-size:13px;
+    opacity:.4;
 }
 
-.badge.locked{
-    opacity:.38;
-    filter:grayscale(1);
-}
-
-.badge::after{
-    content:"LOCKED";
-    position:absolute;
-    bottom:-16px;
-    font-size:6px;
-    color:#444;
-    letter-spacing:.5px;
-}
-
-.floating{
-    animation:floating 4s ease-in-out infinite;
-}
-
-@keyframes floating{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-5px);
-    }
-
+.badge.early{
+    color:#fff;
+    border-color:#444;
+    opacity:1;
 }
 
 @media(max-width:850px){
 
     body{
-        padding:14px;
+        padding:13px;
     }
 
-    .grid{
+    .layout{
         grid-template-columns:1fr;
     }
 
@@ -491,469 +404,403 @@ select:focus{
         top:0;
         order:-1;
     }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="top">
+    <div class="top">
+        <div>
+            <div class="title">Customize</div>
+            <div class="subtitle">
+                Customize your NØX identity.
+            </div>
+        </div>
 
-<div>
+        <a href="dashboard.html" class="back">
+            ← BACK
+        </a>
+    </div>
 
-<div class="title">
-Customize
-</div>
 
-<div class="subtitle">
-Customize your NØX identity.
-</div>
+    <div class="layout">
 
-</div>
+        <!-- EDITOR -->
 
-<a
-    href="dashboard.html"
-    class="back"
->
-← BACK
-</a>
+        <div class="editor">
 
-</div>
+            <div class="section">
 
+                <div class="section-title">
+                    IDENTITY
+                </div>
 
-<div class="grid">
+                <div class="field">
 
+                    <label>USERNAME</label>
 
-<!-- EDITOR -->
+                    <input
+                        id="username"
+                        type="text"
+                        maxlength="20"
+                        autocomplete="off"
+                    >
 
-<div class="panel">
+                    <div
+                        id="usernameInfo"
+                        class="username-info"
+                    >
+                        Cargando...
+                    </div>
 
+                </div>
 
-<div class="section">
 
-<div class="section-title">
-IDENTITY
-</div>
+                <div class="field">
 
+                    <label>DISPLAY NAME</label>
 
-<div class="field">
+                    <input
+                        id="displayName"
+                        type="text"
+                        maxlength="30"
+                        placeholder="NØX"
+                    >
 
-<label>
-USERNAME
-</label>
+                </div>
 
-<input
-    id="username"
-    type="text"
-    maxlength="20"
-    autocomplete="off"
->
 
-<div
-    id="usernameInfo"
-    class="username-info"
->
-Cargando username...
-</div>
+                <div class="field">
 
-</div>
+                    <label>BIO</label>
 
+                    <textarea
+                        id="bio"
+                        maxlength="160"
+                        placeholder="This is my NØX profile."
+                    ></textarea>
 
-<div class="field">
+                </div>
 
-<label>
-DISPLAY NAME</label>
+            </div>
 
-<input
-    id="displayName"
-    type="text"
-    maxlength="30"
-    placeholder="NØX"
->
 
-</div>
+            <div class="section">
 
+                <div class="section-title">
+                    MEDIA
+                </div>
 
-<div class="field">
 
-<label>
-BIO
-</label>
+                <div class="field">
 
-<textarea
-    id="bio"
-    maxlength="160"
-    placeholder="This is my NØX profile."
-></textarea>
+                    <label>PROFILE PICTURE</label>
 
-</div>
+                    <label class="file">
 
-</div>
+                        📷 CHOOSE PROFILE PHOTO
 
+                        <input
+                            id="avatarFile"
+                            type="file"
+                            accept="image/*"
+                        >
 
-<!-- MEDIA -->
+                    </label>
 
-<div class="section">
+                </div>
 
-<div class="section-title">
-MEDIA
-</div>
 
+                <div class="field">
 
-<div class="field">
+                    <label>BANNER</label>
 
-<label>
-PROFILE PICTURE
-</label>
+                    <label class="file">
 
-<label class="file">
+                        🖼️ CHOOSE BANNER
 
-📷 CHOOSE PROFILE PHOTO
+                        <input
+                            id="bannerFile"
+                            type="file"
+                            accept="image/*"
+                        >
 
-<input
-    id="avatarFile"
-    type="file"
-    accept="image/*"
->
+                    </label>
 
-</label>
+                </div>
 
-</div>
 
+                <div class="field">
 
-<div class="field">
+                    <label>PROFILE BACKGROUND</label>
 
-<label>
-PROFILE BANNER
-</label>
+                    <label class="file">
 
-<label class="file">
+                        🌌 CHOOSE BACKGROUND
 
-🖼️ CHOOSE BANNER
+                        <input
+                            id="backgroundFile"
+                            type="file"
+                            accept="image/*"
+                        >
 
-<input
-    id="bannerFile"
-    type="file"
-    accept="image/*"
->
+                    </label>
 
-</label>
+                </div>
 
-</div>
+            </div>
 
 
-<div class="field">
+            <div class="section">
 
-<label>
-PROFILE BACKGROUND
-</label>
+                <div class="section-title">
+                    STYLE
+                </div>
 
-<label class="file">
 
-🌌 CHOOSE BACKGROUND
+                <div class="field">
 
-<input
-    id="backgroundFile"
-    type="file"
-    accept="image/*"
->
+                    <label>ACCENT COLOR</label>
 
-</label>
+                    <div class="color-row">
 
-</div>
+                        <input
+                            id="accentColor"
+                            type="color"
+                            value="#ffffff"
+                        >
 
-</div>
+                        <span
+                            id="colorValue"
+                            class="color-value"
+                        >
+                            #FFFFFF
+                        </span>
 
+                    </div>
 
-<!-- STYLE -->
+                </div>
 
-<div class="section">
 
-<div class="section-title">
-STYLE
-</div>
+                <div class="field">
 
+                    <label>PROFILE EFFECT</label>
 
-<div class="field">
+                    <select id="profileEffect">
 
-<label>
-ACCENT COLOR
-</label>
+                        <option value="none">
+                            None
+                        </option>
 
-<div class="color-row">
+                        <option value="particles">
+                            Particles
+                        </option>
 
-<input
-    id="accentColor"
-    type="color"
-    value="#ffffff"
->
+                        <option value="floating">
+                            Floating
+                        </option>
 
-<span
-    id="colorValue"
-    class="color-value"
->
-#FFFFFF
-</span>
+                    </select>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
 
-<div class="field">
+            <div class="section">
 
-<label>
-PROFILE EFFECT
-</label>
+                <div class="section-title">
+                    SOCIAL
+                </div>
 
-<select id="profileEffect">
+                <div class="field">
 
-<option value="none">
-None
-</option>
+                    <label>WEBSITE</label>
 
-<option value="floating">
-Floating
-</option>
+                    <input
+                        id="website"
+                        type="url"
+                        placeholder="https://example.com"
+                    >
 
-<option value="particles">
-Particles
-</option>
+                </div>
 
-</select>
+            </div>
 
-</div>
 
-</div>
+            <button
+                id="save"
+                class="save"
+                type="button"
+            >
+                SAVE CHANGES
+            </button>
 
 
-<!-- SOCIAL -->
+            <div
+                id="message"
+                class="message"
+            ></div>
 
-<div class="section">
 
-<div class="section-title">
-SOCIAL
-</div>
+            <div class="status">
 
+                <div class="status-title">
+                    NØX SYSTEM STATUS
+                </div>
 
-<div class="field">
+                <div
+                    id="statusSupabase"
+                    class="status-line"
+                >
+                    <span class="dot"></span>
+                    Supabase
+                </div>
 
-<label>
-WEBSITE
-</label>
+                <div
+                    id="statusUser"
+                    class="status-line"
+                >
+                    <span class="dot"></span>
+                    Usuario
+                </div>
 
-<input
-    id="website"
-    type="url"
-    placeholder="https://example.com"
->
+                <div
+                    id="statusProfile"
+                    class="status-line"
+                >
+                    <span class="dot"></span>
+                    Profile
+                </div>
 
-</div>
+                <div
+                    id="statusDatabase"
+                    class="status-line"
+                >
+                    <span class="dot"></span>
+                    Database
+                </div>
 
-</div>
+                <div
+                    id="statusStorage"
+                    class="status-line"
+                >
+                    <span class="dot"></span>
+                    Storage
+                </div>
 
+            </div>
 
-<!-- SAVE -->
+        </div>
 
-<button
-    id="save"
-    class="save"
-    type="button"
->
-SAVE CHANGES
-</button>
 
+        <!-- PREVIEW -->
 
-<div
-    id="message"
-    class="message"
-></div>
+        <div
+            id="preview"
+            class="preview"
+        >
 
+            <div
+                id="banner"
+                class="banner"
+            ></div>
 
-<!-- DIAGNOSTIC -->
+            <div class="preview-body">
 
-<div class="diagnostic">
+                <img
+                    id="avatar"
+                    class="avatar"
+                    alt="Avatar"
+                >
 
-<div class="diagnostic-title">
-NØX SYSTEM DIAGNOSTIC
-</div>
+                <div
+                    id="previewName"
+                    class="preview-name"
+                >
+                    NØX
+                </div>
 
+                <div
+                    id="previewUsername"
+                    class="preview-username"
+                >
+                    @nox
+                </div>
 
-<div
-    id="diagSupabase"
-    class="diag-row"
->
-<span class="diag-dot"></span>
-Supabase
-</div>
+                <div
+                    id="previewBio"
+                    class="preview-bio"
+                >
+                    This is my NØX profile.
+                </div>
 
+                <a
+                    id="websitePreview"
+                    class="website"
+                    target="_blank"
+                    rel="noopener"
+                ></a>
 
-<div
-    id="diagAuth"
-    class="diag-row"
->
-<span class="diag-dot"></span>
-Usuario
-</div>
 
+                <div class="badges-title">
+                    BADGES
+                </div>
 
-<div
-    id="diagProfile"
-    class="diag-row"
->
-<span class="diag-dot"></span>
-Perfil
-</div>
+                <div class="badges">
 
+                    <div
+                        class="badge early"
+                        title="Early Access"
+                    >
+                        ◆
+                    </div>
 
-<div
-    id="diagUpdate"
-    class="diag-row"
->
-<span class="diag-dot"></span>
-Base de datos
-</div>
+                    <div
+                        class="badge"
+                        title="Verified"
+                    >
+                        ✓
+                    </div>
 
+                    <div
+                        class="badge"
+                        title="Developer"
+                    >
+                        ⚡
+                    </div>
 
-<div
-    id="diagStorage"
-    class="diag-row"
->
-<span class="diag-dot"></span>
-Storage
-</div>
+                    <div
+                        class="badge"
+                        title="OG"
+                    >
+                        ★
+                    </div>
 
-</div>
+                    <div
+                        class="badge"
+                        title="Supporter"
+                    >
+                        ◇
+                    </div>
 
+                    <div
+                        class="badge"
+                        title="Premium"
+                    >
+                        ◈
+                    </div>
 
-</div>
+                </div>
 
+            </div>
 
-<!-- PREVIEW -->
+        </div>
 
-<div
-    id="preview"
-    class="preview"
->
-
-
-<div
-    id="banner"
-    class="banner"
->
-
-<div
-    id="particles"
-    class="particles"
-></div>
-
-</div>
-
-
-<div class="preview-content">
-
-
-<img
-    id="avatar"
-    class="avatar"
-    alt="Avatar"
->
-
-
-<div
-    id="previewName"
-    class="preview-name"
->
-NØX
-</div>
-
-
-<div
-    id="previewUsername"
-    class="preview-username"
->
-@nox
-</div>
-
-
-<div
-    id="previewBio"
-    class="preview-bio"
->
-This is my NØX profile.
-</div>
-
-
-<a
-    id="previewWebsite"
-    class="preview-website"
-    target="_blank"
-    rel="noopener"
-></a>
-
-
-<div class="badges-title">
-BADGES
-</div>
-
-
-<div class="badges">
-
-<div
-    class="badge locked"
-    title="Verified"
->
-✓
-</div>
-
-<div
-    class="badge locked"
-    title="Early User"
->
-◆
-</div>
-
-<div
-    class="badge locked"
-    title="Developer"
->
-⚡
-</div>
-
-<div
-    class="badge locked"
-    title="OG"
->
-★
-</div>
-
-<div
-    class="badge locked"
-    title="Supporter"
->
-◇
-</div>
-
-<div
-    class="badge locked"
-    title="Premium"
->
-◈
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 
@@ -968,64 +815,59 @@ BADGES
 <script>
 
 /* =====================================================
-   NØX CUSTOMIZE SYSTEM
+   NØX
 ===================================================== */
 
 let currentUser = null;
 let profile = null;
 
-const $ =
-    id => document.getElementById(id);
+const $ = id =>
+    document.getElementById(id);
 
 
 /* =====================================================
-   DIAGNÓSTICO
+   STATUS
 ===================================================== */
 
-function diag(id,ok){
+function setStatus(id, ok){
 
-    const element =
-        $(id);
+    const el = $(id);
 
-    if(!element)
-        return;
+    if(!el) return;
 
-    element.classList.remove(
+    el.classList.remove(
         "ok",
-        "bad"
+        "error"
     );
 
-    element.classList.add(
-        ok ? "ok" : "bad"
+    el.classList.add(
+        ok ? "ok" : "error"
     );
-
 }
 
 
 /* =====================================================
-   MENSAJE
+   MESSAGE
 ===================================================== */
 
-function showMessage(
-    text,
-    type=""
-){
+function message(text, type=""){
 
-    $("message").textContent =
+    const el =
+        $("message");
+
+    el.textContent =
         text;
 
-    $("message").className =
-        "message " +
-        type;
-
+    el.className =
+        "message " + type;
 }
 
 
 /* =====================================================
-   INICIO
+   START
 ===================================================== */
 
-async function init(){
+async function start(){
 
     try{
 
@@ -1034,49 +876,43 @@ async function init(){
             "undefined"
         ){
 
-            diag(
-                "diagSupabase",
-                false
-            );
-
             throw new Error(
-                "supabaseClient no existe. Revisa supabase.js."
+                "No se encontró supabaseClient. Revisa supabase.js."
             );
 
         }
 
 
-        diag(
-            "diagSupabase",
+        setStatus(
+            "statusSupabase",
             true
         );
 
 
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .auth
-            .getUser();
+        const result =
+            await supabaseClient
+                .auth
+                .getUser();
 
 
-        if(error)
-            throw error;
+        if(result.error)
+            throw result.error;
 
 
         if(
-            !data ||
-            !data.user
+            !result.data ||
+            !result.data.user
         ){
 
-            diag(
-                "diagAuth",
+            setStatus(
+                "statusUser",
                 false
             );
 
-            window.location.href =
-                "login.html";
+            message(
+                "No hay una sesión iniciada.",
+                "error"
+            );
 
             return;
 
@@ -1084,11 +920,11 @@ async function init(){
 
 
         currentUser =
-            data.user;
+            result.data.user;
 
 
-        diag(
-            "diagAuth",
+        setStatus(
+            "statusUser",
             true
         );
 
@@ -1096,21 +932,15 @@ async function init(){
         await loadProfile();
 
     }
-
     catch(error){
 
         console.error(
-            "NØX INIT ERROR:",
+            "NØX START:",
             error
         );
 
-
-        showMessage(
-            "⚠️ " +
-            (
-                error.message ||
-                "No se pudo iniciar."
-            ),
+        message(
+            error.message,
             "error"
         );
 
@@ -1120,69 +950,64 @@ async function init(){
 
 
 /* =====================================================
-   CARGAR PERFIL
+   LOAD PROFILE
 ===================================================== */
 
 async function loadProfile(){
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-        .from("profiles")
-        .select("*")
-        .eq(
-            "id",
-            currentUser.id
-        )
-        .maybeSingle();
+    const result =
+        await supabaseClient
+            .from("profiles")
+            .select("*")
+            .eq(
+                "id",
+                currentUser.id
+            )
+            .maybeSingle();
 
 
-    if(error){
+    if(result.error){
 
-        diag(
-            "diagProfile",
+        setStatus(
+            "statusProfile",
             false
         );
 
-        throw error;
+        throw result.error;
 
     }
 
 
-    if(!data){
+    if(!result.data){
 
-        diag(
-            "diagProfile",
+        setStatus(
+            "statusProfile",
             false
         );
 
         throw new Error(
-            "No existe un registro en profiles para tu usuario."
+            "No existe tu perfil en la tabla profiles."
         );
 
     }
 
 
     profile =
-        data;
+        result.data;
 
 
-    diag(
-        "diagProfile",
+    setStatus(
+        "statusProfile",
         true
     );
 
 
     $("username").value =
-        profile.username ||
-        "nox";
+        profile.username || "";
 
 
     $("displayName").value =
-        profile.display_name ||
-        "NØX";
+        profile.display_name || "NØX";
 
 
     $("bio").value =
@@ -1191,8 +1016,7 @@ async function loadProfile(){
 
 
     $("website").value =
-        profile.website_url ||
-        "";
+        profile.website_url || "";
 
 
     $("accentColor").value =
@@ -1211,13 +1035,17 @@ async function loadProfile(){
             profile.avatar_url;
 
     }
+    else{
+
+        $("avatar").src =
+            createAvatar();
+
+    }
 
 
     if(profile.banner_url){
 
-        $("banner")
-            .style
-            .backgroundImage =
+        $("banner").style.backgroundImage =
             `url("${profile.banner_url}")`;
 
     }
@@ -1225,121 +1053,42 @@ async function loadProfile(){
 
     if(profile.background_url){
 
-        $("preview")
-            .style
-            .backgroundImage =
+        $("preview").style.backgroundImage =
             `url("${profile.background_url}")`;
 
     }
 
 
     updatePreview();
-    updateUsernameInfo();
+    usernameInfo();
 
 }
 
 
 /* =====================================================
-   USERNAME
+   DEFAULT AVATAR
 ===================================================== */
 
-function updateUsernameInfo(){
+function createAvatar(){
 
-    if(!profile)
-        return;
-
-
-    const oldUsername =
-        (
-            profile.username ||
-            ""
-        )
-        .toLowerCase();
-
-
-    const newUsername =
-        $("username")
-            .value
-            .trim()
-            .toLowerCase();
-
-
-    if(
-        oldUsername ===
-        newUsername
-    ){
-
-        $("usernameInfo")
-            .textContent =
-            "Username actual.";
-
-        return;
-
-    }
-
-
-    if(
-        !profile.username_changed_at
-    ){
-
-        $("usernameInfo")
-            .textContent =
-            "✓ Puedes cambiarlo. Después tendrás que esperar 7 días.";
-
-        return;
-
-    }
-
-
-    const changed =
-        new Date(
-            profile.username_changed_at
-        )
-        .getTime();
-
-
-    const next =
-        changed +
-        7 *
-        24 *
-        60 *
-        60 *
-        1000;
-
-
-    const remaining =
-        next -
-        Date.now();
-
-
-    if(
-        remaining <= 0
-    ){
-
-        $("usernameInfo")
-            .textContent =
-            "✓ Ya puedes cambiar tu username.";
-
-        return;
-
-    }
-
-
-    const days =
-        Math.ceil(
-            remaining /
-            (
-                24 *
-                60 *
-                60 *
-                1000
-            )
-        );
-
-
-    $("usernameInfo")
-        .textContent =
-        `🔒 Podrás cambiarlo en ${days} día(s).`;
+    return "data:image/svg+xml," +
+        encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="300"
+                 height="300">
+                <rect width="100%"
+                      height="100%"
+                      fill="#111"/>
+                <text x="50%"
+                      y="54%"
+                      text-anchor="middle"
+                      fill="#777"
+                      font-size="80"
+                      font-family="Arial">
+                    NØX
+                </text>
+            </svg>
+        `);
 
 }
 
@@ -1356,7 +1105,7 @@ function updatePreview(){
             .trim();
 
 
-    const displayName =
+    const name =
         $("displayName")
             .value
             .trim();
@@ -1371,16 +1120,12 @@ function updatePreview(){
     $("previewUsername")
         .textContent =
         "@" +
-        (
-            username ||
-            "nox"
-        );
+        (username || "nox");
 
 
     $("previewName")
         .textContent =
-        displayName ||
-        "NØX";
+        name || "NØX";
 
 
     $("previewBio")
@@ -1390,8 +1135,7 @@ function updatePreview(){
 
 
     const color =
-        $("accentColor")
-            .value;
+        $("accentColor").value;
 
 
     document.documentElement
@@ -1404,178 +1148,4 @@ function updatePreview(){
 
     $("colorValue")
         .textContent =
-        color.toUpperCase();
-
-
-    const website =
-        $("website")
-            .value
-            .trim();
-
-
-    if(website){
-
-        $("previewWebsite")
-            .style
-            .display =
-            "inline";
-
-        $("previewWebsite")
-            .href =
-            website;
-
-        $("previewWebsite")
-            .textContent =
-            website;
-
-    }
-
-    else{
-
-        $("previewWebsite")
-            .style
-            .display =
-            "none";
-
-    }
-
-
-    $("preview")
-        .classList.toggle(
-            "floating",
-            $("profileEffect")
-                .value ===
-            "floating"
-        );
-
-
-    createParticles();
-
-}
-
-
-/* =====================================================
-   PARTICLES
-===================================================== */
-
-function createParticles(){
-
-    const container =
-        $("particles");
-
-
-    container.innerHTML =
-        "";
-
-
-    if(
-        $("profileEffect")
-            .value !==
-        "particles"
-    )
-        return;
-
-
-    for(
-        let i=0;
-        i<35;
-        i++
-    ){
-
-        const dot =
-            document.createElement(
-                "div"
-            );
-
-
-        dot.className =
-            "dot";
-
-
-        dot.style.left =
-            Math.random() *
-            100 +
-            "%";
-
-
-        dot.style.top =
-            Math.random() *
-            100 +
-            "%";
-
-
-        dot.style.animationDelay =
-            Math.random() *
-            5 +
-            "s";
-
-
-        container
-            .appendChild(dot);
-
-    }
-
-}
-
-
-/* =====================================================
-   UPLOAD
-===================================================== */
-
-async function uploadImage(
-    file,
-    folder
-){
-
-    if(!file)
-        return null;
-
-
-    if(
-        file.size >
-        15 *
-        1024 *
-        1024
-    ){
-
-        throw new Error(
-            "La imagen supera los 15 MB."
-        );
-
-    }
-
-
-    const extension =
-        file.name
-            .split(".")
-            .pop()
-            .toLowerCase();
-
-
-    const path =
-        currentUser.id +
-        "/" +
-        folder +
-        "/" +
-        crypto.randomUUID() +
-        "." +
-        extension;
-
-
-    const {
-        error
-    } =
-    await supabaseClient
-        .storage
-        .from("profiles")
-        .upload(
-            path,
-            file,
-            {
-                upsert:false
-            }
-        );
-
-
-    if(error)
-        throw er
+        color.t
