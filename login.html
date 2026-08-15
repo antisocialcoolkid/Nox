@@ -10,6 +10,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="theme-color"
+        content="#030303"
+    >
+
     <title>NØX — Login</title>
 
     <link
@@ -24,7 +29,7 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
@@ -37,9 +42,15 @@
         }
 
         :root {
-            --bg: #050505;
-            --border: rgba(255,255,255,.09);
+            --bg: #030303;
+            --border: rgba(255,255,255,.08);
             --muted: #666;
+            --text: #fff;
+        }
+
+        html,
+        body {
+            min-height: 100%;
         }
 
         body {
@@ -47,19 +58,28 @@
             min-height: 100vh;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             padding: 25px;
 
-            background: #050505;
+            background: var(--bg);
 
-            color: white;
+            color: var(--text);
 
-            font-family: "Inter", sans-serif;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
+
+            overflow-x: hidden;
 
         }
 
+
+        /* BACKGROUND */
 
         body::before {
 
@@ -72,10 +92,12 @@
             pointer-events: none;
 
             background:
+
                 linear-gradient(
                     rgba(255,255,255,.018) 1px,
                     transparent 1px
                 ),
+
                 linear-gradient(
                     90deg,
                     rgba(255,255,255,.018) 1px,
@@ -99,36 +121,43 @@
             position: fixed;
 
             width: 500px;
+
             height: 500px;
 
-            border-radius: 50%;
-
-            background: white;
-
-            filter: blur(160px);
-
-            opacity: .05;
-
-            top: -300px;
+            top: -320px;
 
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            filter: blur(160px);
+
+            opacity: .055;
+
+            pointer-events: none;
 
         }
 
+
+        /* CARD */
 
         .login-card {
 
             position: relative;
 
-            width: min(430px, 100%);
+            width:
+                min(430px, 100%);
 
-            padding: 42px 35px;
+            padding:
+                42px 35px;
 
             border:
-                1px solid
-                var(--border);
+                1px solid var(--border);
 
             border-radius: 22px;
 
@@ -139,7 +168,11 @@
                     rgba(255,255,255,.012)
                 );
 
-            backdrop-filter: blur(25px);
+            backdrop-filter:
+                blur(25px);
+
+            -webkit-backdrop-filter:
+                blur(25px);
 
             box-shadow:
                 0 40px 100px
@@ -147,6 +180,31 @@
 
             animation:
                 appear .7s ease forwards;
+
+        }
+
+
+        .login-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 12%;
+
+            right: 12%;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.25),
+                    transparent
+                );
 
         }
 
@@ -176,15 +234,17 @@
         }
 
 
+        /* LOGO */
+
         .logo {
 
             text-align: center;
 
-            font-size: 29px;
+            font-size: 31px;
 
-            font-weight: 800;
+            font-weight: 900;
 
-            letter-spacing: -2px;
+            letter-spacing: -2.5px;
 
         }
 
@@ -197,14 +257,31 @@
 
             color: var(--muted);
 
-            font-size: 12px;
+            font-size: 11px;
 
         }
 
 
+        .line {
+
+            width: 45px;
+
+            height: 1px;
+
+            margin:
+                23px auto 0;
+
+            background:
+                rgba(255,255,255,.2);
+
+        }
+
+
+        /* FORM */
+
         form {
 
-            margin-top: 35px;
+            margin-top: 30px;
 
         }
 
@@ -224,9 +301,11 @@
 
             color: #777;
 
-            font-size: 10px;
+            font-size: 9px;
 
-            letter-spacing: 1px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
 
         }
 
@@ -235,9 +314,10 @@
 
             width: 100%;
 
-            height: 48px;
+            height: 49px;
 
-            padding: 0 14px;
+            padding:
+                0 14px;
 
             outline: none;
 
@@ -247,7 +327,7 @@
 
             border-radius: 10px;
 
-            background: #090909;
+            background: #080808;
 
             color: white;
 
@@ -260,10 +340,24 @@
         }
 
 
+        input:hover {
+
+            border-color:
+                rgba(255,255,255,.13);
+
+        }
+
+
         input:focus {
 
             border-color:
-                rgba(255,255,255,.25);
+                rgba(255,255,255,.28);
+
+            background: #0b0b0b;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255,255,255,.025);
 
         }
 
@@ -274,6 +368,8 @@
 
         }
 
+
+        /* BUTTON */
 
         button {
 
@@ -293,13 +389,18 @@
 
             font-family: inherit;
 
-            font-size: 12px;
+            font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
+
+            letter-spacing: .5px;
 
             cursor: pointer;
 
-            transition: .3s;
+            transition:
+                transform .25s,
+                box-shadow .25s,
+                opacity .25s;
 
         }
 
@@ -316,6 +417,14 @@
         }
 
 
+        button:active {
+
+            transform:
+                translateY(0);
+
+        }
+
+
         button:disabled {
 
             opacity: .5;
@@ -324,8 +433,12 @@
 
             transform: none;
 
+            box-shadow: none;
+
         }
 
+
+        /* MESSAGE */
 
         .message {
 
@@ -335,7 +448,7 @@
 
             text-align: center;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.5;
 
@@ -356,6 +469,8 @@
         }
 
 
+        /* REGISTER */
+
         .register {
 
             margin-top: 25px;
@@ -364,7 +479,7 @@
 
             color: #555;
 
-            font-size: 11px;
+            font-size: 10px;
 
         }
 
@@ -375,6 +490,8 @@
 
             text-decoration: none;
 
+            font-weight: 600;
+
         }
 
 
@@ -384,6 +501,8 @@
 
         }
 
+
+        /* BACK */
 
         .back {
 
@@ -399,6 +518,10 @@
 
             font-size: 11px;
 
+            font-weight: 600;
+
+            transition: .25s;
+
         }
 
 
@@ -406,8 +529,13 @@
 
             color: white;
 
+            transform:
+                translateX(-2px);
+
         }
 
+
+        /* BRAND */
 
         .brand {
 
@@ -417,14 +545,25 @@
 
             color: #2f2f2f;
 
-            font-size: 9px;
+            font-size: 8px;
+
+            font-weight: 700;
 
             letter-spacing: 3px;
 
         }
 
 
+        /* MOBILE */
+
         @media(max-width:500px) {
+
+            body {
+
+                padding:
+                    20px 15px;
+
+            }
 
             .login-card {
 
@@ -450,6 +589,7 @@
 
 <body>
 
+
     <div class="glow"></div>
 
 
@@ -474,12 +614,20 @@
         </div>
 
 
-        <form id="loginForm">
+        <div class="line"></div>
 
+
+        <form
+            id="loginForm"
+            novalidate
+        >
+
+
+            <!-- EMAIL -->
 
             <div class="field">
 
-                <label>
+                <label for="email">
                     EMAIL
                 </label>
 
@@ -494,9 +642,11 @@
             </div>
 
 
+            <!-- PASSWORD -->
+
             <div class="field">
 
-                <label>
+                <label for="password">
                     PASSWORD
                 </label>
 
@@ -511,6 +661,8 @@
             </div>
 
 
+            <!-- BUTTON -->
+
             <button
                 id="loginButton"
                 type="submit"
@@ -519,9 +671,12 @@
             </button>
 
 
+            <!-- MESSAGE -->
+
             <div
                 id="message"
                 class="message"
+                aria-live="polite"
             ></div>
 
 
@@ -549,10 +704,15 @@
 
     <!-- SUPABASE -->
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
 
     <script src="supabase.js"></script>
 
+
+    <!-- LOGIN -->
 
     <script>
 
@@ -586,11 +746,29 @@
         }
 
 
+        function resetButton() {
+
+            button.disabled =
+                false;
+
+            button.textContent =
+                "LOGIN";
+
+        }
+
+
         form.addEventListener(
             "submit",
-            async (event) => {
+            async function(event) {
+
+                /*
+                Evita que el navegador
+                recargue la página.
+                */
 
                 event.preventDefault();
+
+                event.stopPropagation();
 
 
                 const email =
@@ -610,6 +788,30 @@
                         .value;
 
 
+                if (!email) {
+
+                    showMessage(
+                        "Introduce tu email.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (!password) {
+
+                    showMessage(
+                        "Introduce tu contraseña.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
                 button.disabled =
                     true;
 
@@ -620,6 +822,27 @@
 
 
                 try {
+
+
+                    /*
+                    CHECK SUPABASE
+                    */
+
+                    if (
+                        typeof supabaseClient ===
+                        "undefined"
+                    ) {
+
+                        throw new Error(
+                            "Supabase no está cargando. Revisa supabase.js."
+                        );
+
+                    }
+
+
+                    /*
+                    LOGIN
+                    */
 
                     const {
                         data,
@@ -645,14 +868,21 @@
                     }
 
 
-                    if (!data.session) {
+                    if (
+                        !data ||
+                        !data.session
+                    ) {
 
                         throw new Error(
-                            "No se pudo iniciar la sesión."
+                            "No se pudo crear la sesión."
                         );
 
                     }
 
+
+                    /*
+                    LOGIN CORRECTO
+                    */
 
                     showMessage(
                         "Login correcto. Entrando...",
@@ -664,15 +894,23 @@
                         "WELCOME";
 
 
-                    setTimeout(() => {
+                    /*
+                    Guardar sesión de Supabase.
+                    */
 
-                        window.location.href =
-                            "dashboard.html";
+                    setTimeout(
+                        function() {
 
-                    }, 700);
+                            window.location.href =
+                                "dashboard.html";
+
+                        },
+                        800
+                    );
 
 
-                } catch (error) {
+                } catch(error) {
+
 
                     console.error(
                         "NØX Login Error:",
@@ -680,36 +918,76 @@
                     );
 
 
-                    let text =
+                    let errorMessage =
                         error.message ||
                         "No se pudo iniciar sesión.";
 
 
+                    const lower =
+                        errorMessage
+                            .toLowerCase();
+
+
+                    /*
+                    ERRORES AMIGABLES
+                    */
+
+
                     if (
-                        text
-                            .toLowerCase()
-                            .includes(
-                                "invalid login credentials"
-                            )
+                        lower.includes(
+                            "invalid login credentials"
+                        )
                     ) {
 
-                        text =
+                        errorMessage =
                             "Email o contraseña incorrectos.";
 
                     }
 
 
+                    else if (
+                        lower.includes(
+                            "email not confirmed"
+                        )
+                    ) {
+
+                        errorMessage =
+                            "Tu email todavía no está confirmado.";
+
+                    }
+
+
+                    else if (
+                        lower.includes(
+                            "too many requests"
+                        )
+                    ) {
+
+                        errorMessage =
+                            "Demasiados intentos. Espera un momento e inténtalo de nuevo.";
+
+                    }
+
+
+                    else if (
+                        lower.includes(
+                            "rate limit"
+                        )
+                    ) {
+
+                        errorMessage =
+                            "Demasiados intentos. Espera un momento antes de volver a intentar.";
+
+                    }
+
+
                     showMessage(
-                        text,
+                        errorMessage,
                         "error"
                     );
 
 
-                    button.disabled =
-                        false;
-
-                    button.textContent =
-                        "LOGIN";
+                    resetButton();
 
                 }
 
@@ -719,6 +997,7 @@
 
     </script>
 
+
 </body>
 
-</html>
+    </html>
