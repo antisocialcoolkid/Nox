@@ -10,6 +10,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
+
     <title>NØX — Create your identity</title>
 
     <link
@@ -19,12 +24,12 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.gstatic.com"
+        href="https://fonts.googleapis.com"
         crossorigin
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
@@ -36,57 +41,111 @@
             padding: 0;
         }
 
+
         :root {
-            --bg: #050505;
-            --card: rgba(15,15,15,.72);
-            --border: rgba(255,255,255,.09);
-            --text: #fff;
+
+            --bg: #030303;
+
+            --card: rgba(13, 13, 13, .76);
+
+            --border:
+                rgba(255, 255, 255, .08);
+
+            --border-hover:
+                rgba(255, 255, 255, .18);
+
+            --text: #ffffff;
+
             --muted: #666;
+
+            --muted-light: #888;
+
         }
+
 
         html,
         body {
+
             min-height: 100%;
+
         }
+
 
         body {
 
             min-height: 100vh;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            padding: 25px;
+            padding: 30px 20px;
 
             background: var(--bg);
 
             color: var(--text);
 
-            font-family: "Inter", sans-serif;
+            font-family:
+                "Inter",
+                Arial,
+                sans-serif;
 
             overflow-x: hidden;
 
         }
 
 
-        /* BACKGROUND */
+        /* ========================================
+           BACKGROUND
+        ======================================== */
 
-        body::before {
 
-            content: "";
+        .background {
 
             position: fixed;
 
             inset: 0;
 
-            pointer-events: none;
+            z-index: -5;
 
             background:
+
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,255,255,.065),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(255,255,255,.025),
+                    transparent 30%
+                ),
+
+                #030303;
+
+        }
+
+
+        .grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -4;
+
+            opacity: .45;
+
+            background-image:
+
                 linear-gradient(
                     rgba(255,255,255,.018) 1px,
                     transparent 1px
                 ),
+
                 linear-gradient(
                     90deg,
                     rgba(255,255,255,.018) 1px,
@@ -98,8 +157,8 @@
             mask-image:
                 linear-gradient(
                     to bottom,
-                    black,
-                    transparent 90%
+                    black 0%,
+                    transparent 85%
                 );
 
         }
@@ -110,39 +169,140 @@
             position: fixed;
 
             width: 500px;
+
             height: 500px;
+
+            top: -350px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
 
             border-radius: 50%;
 
-            background: white;
+            background: #fff;
 
-            filter: blur(160px);
+            filter: blur(170px);
 
-            opacity: .055;
+            opacity: .06;
 
             pointer-events: none;
 
-            top: -300px;
-            left: 50%;
-
-            transform: translateX(-50%);
+            z-index: -3;
 
         }
 
 
-        /* CARD */
+        /* ========================================
+           NOISE
+        ======================================== */
+
+
+        .noise {
+
+            position: fixed;
+
+            inset: -50%;
+
+            z-index: -2;
+
+            pointer-events: none;
+
+            opacity: .018;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+            animation: noise .2s infinite;
+
+        }
+
+
+        @keyframes noise {
+
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(2%, 1%);
+            }
+
+            50% {
+                transform: translate(-1%, 2%);
+            }
+
+            75% {
+                transform: translate(1%, -2%);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+
+        }
+
+
+        /* ========================================
+           BACK BUTTON
+        ======================================== */
+
+
+        .back {
+
+            position: fixed;
+
+            top: 25px;
+
+            left: 25px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #555;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            transition: .25s;
+
+        }
+
+
+        .back:hover {
+
+            color: #fff;
+
+            transform:
+                translateX(-2px);
+
+        }
+
+
+        /* ========================================
+           CARD
+        ======================================== */
+
 
         .register-card {
 
             position: relative;
 
-            width: min(430px, 100%);
+            width:
+                min(440px, 100%);
 
-            padding: 42px 35px;
+            padding:
+                42px 36px 34px;
 
             border:
-                1px solid
-                var(--border);
+                1px solid var(--border);
 
             border-radius: 22px;
 
@@ -153,14 +313,45 @@
                     rgba(255,255,255,.012)
                 );
 
-            backdrop-filter: blur(25px);
+            backdrop-filter:
+                blur(30px);
+
+            -webkit-backdrop-filter:
+                blur(30px);
 
             box-shadow:
-                0 40px 100px
-                rgba(0,0,0,.7);
+                0 45px 120px
+                rgba(0,0,0,.72);
 
             animation:
-                appear .7s ease forwards;
+                appear .7s ease both;
+
+        }
+
+
+        .register-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 12%;
+
+            right: 12%;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.25),
+                    transparent
+                );
+
+            opacity: .5;
 
         }
 
@@ -190,46 +381,71 @@
         }
 
 
-        /* LOGO */
+        /* ========================================
+           LOGO
+        ======================================== */
+
 
         .logo {
 
             text-align: center;
 
-            font-size: 29px;
+            font-size: 31px;
 
-            font-weight: 800;
+            line-height: 1;
 
-            letter-spacing: -2px;
+            font-weight: 900;
+
+            letter-spacing: -2.5px;
 
         }
 
 
         .subtitle {
 
+            margin-top: 9px;
+
             text-align: center;
 
             color: var(--muted);
 
-            font-size: 12px;
+            font-size: 11px;
 
-            margin-top: 8px;
+            line-height: 1.5;
 
         }
 
 
-        /* FORM */
+        .line {
+
+            width: 45px;
+
+            height: 1px;
+
+            margin:
+                23px auto 0;
+
+            background:
+                rgba(255,255,255,.2);
+
+        }
+
+
+        /* ========================================
+           FORM
+        ======================================== */
+
 
         form {
 
-            margin-top: 35px;
+            margin-top: 30px;
 
         }
 
 
         .field {
 
-            margin-bottom: 17px;
+            margin-bottom: 16px;
 
         }
 
@@ -238,13 +454,15 @@
 
             display: block;
 
+            margin-bottom: 8px;
+
             color: #777;
 
-            font-size: 10px;
+            font-size: 9px;
 
-            letter-spacing: 1px;
+            font-weight: 700;
 
-            margin-bottom: 8px;
+            letter-spacing: 1.5px;
 
         }
 
@@ -253,9 +471,10 @@
 
             width: 100%;
 
-            height: 48px;
+            height: 49px;
 
-            padding: 0 14px;
+            padding:
+                0 14px;
 
             outline: none;
 
@@ -265,15 +484,25 @@
 
             border-radius: 10px;
 
-            background: #090909;
+            background:
+                rgba(0,0,0,.35);
 
-            color: white;
+            color: #fff;
 
             font-family: inherit;
 
             font-size: 12px;
 
-            transition: .25s;
+            transition:
+                .25s;
+
+        }
+
+
+        input:hover {
+
+            border-color:
+                rgba(255,255,255,.13);
 
         }
 
@@ -281,21 +510,45 @@
         input:focus {
 
             border-color:
-                rgba(255,255,255,.25);
+                rgba(255,255,255,.28);
 
-            background: #0b0b0b;
+            background:
+                rgba(255,255,255,.025);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255,255,255,.025);
 
         }
 
 
         input::placeholder {
 
-            color: #3f3f3f;
+            color: #393939;
 
         }
 
 
-        /* BUTTON */
+        /* ========================================
+           USERNAME HINT
+        ======================================== */
+
+
+        .hint {
+
+            margin-top: 7px;
+
+            color: #3e3e3e;
+
+            font-size: 8px;
+
+        }
+
+
+        /* ========================================
+           BUTTON
+        ======================================== */
+
 
         button {
 
@@ -309,19 +562,24 @@
 
             border-radius: 10px;
 
-            background: white;
+            background: #fff;
 
-            color: black;
+            color: #000;
 
             font-family: inherit;
 
-            font-size: 12px;
+            font-size: 10px;
 
-            font-weight: 800;
+            font-weight: 900;
+
+            letter-spacing: .5px;
 
             cursor: pointer;
 
-            transition: .3s;
+            transition:
+                transform .25s,
+                box-shadow .25s,
+                opacity .25s;
 
         }
 
@@ -332,34 +590,47 @@
                 translateY(-2px);
 
             box-shadow:
-                0 15px 40px
-                rgba(255,255,255,.1);
+                0 18px 45px
+                rgba(255,255,255,.12);
+
+        }
+
+
+        button:active {
+
+            transform:
+                translateY(0);
 
         }
 
 
         button:disabled {
 
-            opacity: .5;
+            opacity: .45;
 
             cursor: wait;
 
             transform: none;
 
+            box-shadow: none;
+
         }
 
 
-        /* MESSAGE */
+        /* ========================================
+           MESSAGE
+        ======================================== */
+
 
         .message {
 
             min-height: 18px;
 
-            margin-top: 17px;
+            margin-top: 15px;
 
             text-align: center;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.5;
 
@@ -380,26 +651,31 @@
         }
 
 
-        /* LOGIN */
+        /* ========================================
+           LOGIN
+        ======================================== */
+
 
         .login {
 
-            margin-top: 25px;
+            margin-top: 23px;
 
             text-align: center;
 
-            color: #555;
+            color: #4d4d4d;
 
-            font-size: 11px;
+            font-size: 10px;
 
         }
 
 
         .login a {
 
-            color: white;
+            color: #fff;
 
             text-decoration: none;
+
+            font-weight: 600;
 
         }
 
@@ -411,60 +687,66 @@
         }
 
 
-        .back {
-
-            position: fixed;
-
-            top: 25px;
-
-            left: 25px;
-
-            color: #555;
-
-            text-decoration: none;
-
-            font-size: 11px;
-
-            transition: .3s;
-
-        }
-
-
-        .back:hover {
-
-            color: white;
-
-        }
+        /* ========================================
+           BRAND
+        ======================================== */
 
 
         .brand {
 
-            margin-top: 28px;
+            margin-top: 27px;
 
             text-align: center;
 
-            color: #2f2f2f;
+            color: #292929;
 
-            font-size: 9px;
+            font-size: 8px;
+
+            font-weight: 700;
 
             letter-spacing: 3px;
 
         }
 
 
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+
         @media(max-width:500px) {
+
+            body {
+
+                padding:
+                    20px 15px;
+
+            }
+
 
             .register-card {
 
                 padding:
-                    35px 22px;
+                    34px 22px 30px;
+
+                border-radius:
+                    18px;
 
             }
+
 
             .back {
 
                 top: 18px;
+
                 left: 18px;
+
+            }
+
+
+            .logo {
+
+                font-size: 29px;
 
             }
 
@@ -477,8 +759,17 @@
 
 <body>
 
+
+    <div class="background"></div>
+
+    <div class="grid"></div>
+
     <div class="glow"></div>
 
+    <div class="noise"></div>
+
+
+    <!-- BACK -->
 
     <a
         href="index.html"
@@ -487,6 +778,8 @@
         ← NØX
     </a>
 
+
+    <!-- REGISTER -->
 
     <main class="register-card">
 
@@ -501,12 +794,17 @@
         </div>
 
 
+        <div class="line"></div>
+
+
         <form id="registerForm">
 
 
+            <!-- USERNAME -->
+
             <div class="field">
 
-                <label>
+                <label for="username">
                     USERNAME
                 </label>
 
@@ -516,15 +814,23 @@
                     placeholder="yourname"
                     autocomplete="username"
                     maxlength="20"
+                    minlength="3"
+                    spellcheck="false"
                     required
                 >
+
+                <div class="hint">
+                    3–20 characters · letters, numbers and _
+                </div>
 
             </div>
 
 
+            <!-- DISPLAY NAME -->
+
             <div class="field">
 
-                <label>
+                <label for="displayName">
                     DISPLAY NAME
                 </label>
 
@@ -533,15 +839,18 @@
                     type="text"
                     placeholder="Your name"
                     maxlength="30"
+                    autocomplete="name"
                     required
                 >
 
             </div>
 
 
+            <!-- EMAIL -->
+
             <div class="field">
 
-                <label>
+                <label for="email">
                     EMAIL
                 </label>
 
@@ -556,9 +865,11 @@
             </div>
 
 
+            <!-- PASSWORD -->
+
             <div class="field">
 
-                <label>
+                <label for="password">
                     PASSWORD
                 </label>
 
@@ -574,6 +885,8 @@
             </div>
 
 
+            <!-- BUTTON -->
+
             <button
                 id="registerButton"
                 type="submit"
@@ -582,14 +895,19 @@
             </button>
 
 
+            <!-- MESSAGE -->
+
             <div
                 id="message"
                 class="message"
+                aria-live="polite"
             ></div>
 
 
         </form>
 
+
+        <!-- LOGIN -->
 
         <div class="login">
 
@@ -610,14 +928,20 @@
     </main>
 
 
-    <!-- SUPABASE -->
+    <!-- ========================================
+         SUPABASE
+    ========================================= -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script src="supabase.js"></script>
 
 
-    <!-- REGISTER -->
+    <!-- ========================================
+         REGISTER LOGIC
+    ========================================= -->
+
 
     <script>
 
@@ -626,15 +950,24 @@
                 "registerForm"
             );
 
+
         const button =
             document.getElementById(
                 "registerButton"
             );
 
+
         const message =
             document.getElementById(
                 "message"
             );
+
+
+        /*
+        ========================================
+        MESSAGE
+        ========================================
+        */
 
 
         function showMessage(
@@ -651,11 +984,43 @@
         }
 
 
+        /*
+        ========================================
+        BUTTON STATE
+        ========================================
+        */
+
+
+        function resetButton() {
+
+            button.disabled =
+                false;
+
+            button.textContent =
+                "CREATE ACCOUNT";
+
+        }
+
+
+        /*
+        ========================================
+        REGISTER
+        ========================================
+        */
+
+
         form.addEventListener(
             "submit",
             async (event) => {
 
                 event.preventDefault();
+
+
+                /*
+                ================================
+                GET VALUES
+                ================================
+                */
 
 
                 const username =
@@ -694,6 +1059,13 @@
                         .value;
 
 
+                /*
+                ================================
+                VALIDATION
+                ================================
+                */
+
+
                 if (
                     !/^[a-z0-9_]+$/.test(
                         username
@@ -710,7 +1082,57 @@
                 }
 
 
-                button.disabled = true;
+                if (
+                    username.length < 3
+                ) {
+
+                    showMessage(
+                        "El username debe tener al menos 3 caracteres.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    displayName.length < 1
+                ) {
+
+                    showMessage(
+                        "Escribe un display name.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (
+                    password.length < 6
+                ) {
+
+                    showMessage(
+                        "La contraseña debe tener al menos 6 caracteres.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                ================================
+                LOADING
+                ================================
+                */
+
+
+                button.disabled =
+                    true;
 
                 button.textContent =
                     "CREATING...";
@@ -722,183 +1144,23 @@
 
 
                     /*
-                    =========================
-                    CHECK USERNAME
-                    =========================
+                    ================================
+                    CHECK SUPABASE
+                    ================================
                     */
 
-                    const {
-                        data: existingUser,
-                        error: usernameError
-                    } =
-                        await supabaseClient
-                            .from("profiles")
-                            .select("username")
-                            .eq(
-                                "username",
-                                username
-                            )
-                            .maybeSingle();
 
-
-                    if (usernameError) {
-
-                        throw usernameError;
-
-                    }
-
-
-                    if (existingUser) {
-
-                        showMessage(
-                            "Ese username ya está ocupado.",
-                            "error"
-                        );
-
-                        button.disabled =
-                            false;
-
-                        button.textContent =
-                            "CREATE ACCOUNT";
-
-                        return;
-
-                    }
-
-
-                    /*
-                    =========================
-                    CREATE AUTH USER
-                    =========================
-                    */
-
-                    const {
-                        data,
-                        error
-                    } =
-                        await supabaseClient
-                            .auth
-                            .signUp({
-
-                                email:
-                                    email,
-
-                                password:
-                                    password
-
-                            });
-
-
-                    if (error) {
-
-                        throw error;
-
-                    }
-
-
-                    if (!data.user) {
+                    if (
+                        typeof supabaseClient ===
+                        "undefined"
+                    ) {
 
                         throw new Error(
-                            "No se pudo crear el usuario."
+                            "Supabase no está configurado correctamente."
                         );
 
                     }
 
 
                     /*
-                    =========================
-                    CREATE PROFILE
-                    =========================
-                    */
-
-                    const {
-                        error:
-                            profileError
-                    } =
-                        await supabaseClient
-                            .from("profiles")
-                            .insert({
-
-                                id:
-                                    data.user.id,
-
-                                username:
-                                    username,
-
-                                display_name:
-                                    displayName,
-
-                                bio:
-                                    "",
-
-                                avatar_url:
-                                    "",
-
-                                accent_color:
-                                    "#ffffff"
-
-                            });
-
-
-                    if (profileError) {
-
-                        throw profileError;
-
-                    }
-
-
-                    /*
-                    =========================
-                    SUCCESS
-                    =========================
-                    */
-
-                    showMessage(
-                        "Cuenta creada correctamente.",
-                        "success"
-                    );
-
-
-                    button.textContent =
-                        "ACCOUNT CREATED";
-
-
-                    setTimeout(() => {
-
-                        window.location.href =
-                            "login.html";
-
-                    }, 1200);
-
-
-                } catch (error) {
-
-                    console.error(
-                        "NØX Register Error:",
-                        error
-                    );
-
-
-                    showMessage(
-                        error.message ||
-                        "No se pudo crear la cuenta.",
-                        "error"
-                    );
-
-
-                    button.disabled =
-                        false;
-
-                    button.textContent =
-                        "CREATE ACCOUNT";
-
-                }
-
-            }
-        );
-
-    </script>
-
-</body>
-
-</html>
+                 
