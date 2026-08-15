@@ -36,15 +36,16 @@
 
         body {
             min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             overflow: hidden;
         }
 
+
+        /* =========================
+           PAGE
+        ========================= */
+
         .profile-page {
+
             width: 100%;
             min-height: 100vh;
 
@@ -53,9 +54,18 @@
             justify-content: center;
 
             padding: 30px;
+
+            position: relative;
+
         }
 
+
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
         .profile-main {
+
             position: relative;
 
             width: min(470px, 100%);
@@ -64,7 +74,8 @@
 
             text-align: center;
 
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid
+                rgba(255,255,255,0.1);
 
             border-radius: 25px;
 
@@ -72,35 +83,55 @@
                 linear-gradient(
                     145deg,
                     rgba(255,255,255,0.06),
-                    rgba(255,255,255,0.015)
+                    rgba(255,255,255,0.012)
                 );
 
             backdrop-filter: blur(30px);
 
             box-shadow:
-                0 40px 120px rgba(0,0,0,0.75),
-                inset 0 1px rgba(255,255,255,0.06);
+                0 40px 120px
+                rgba(0,0,0,0.75),
 
-            animation: profileAppear 1s ease forwards;
+                inset 0 1px
+                rgba(255,255,255,0.06);
+
+            animation:
+                profileAppear
+                0.9s
+                cubic-bezier(.2,.8,.2,1)
+                forwards;
+
         }
+
 
         @keyframes profileAppear {
 
             from {
+
                 opacity: 0;
+
                 transform:
-                    translateY(25px)
-                    scale(.97);
+                    translateY(30px)
+                    scale(.96);
+
             }
 
             to {
+
                 opacity: 1;
+
                 transform:
                     translateY(0)
                     scale(1);
+
             }
 
         }
+
+
+        /* =========================
+           AVATAR
+        ========================= */
 
         .profile-avatar {
 
@@ -114,28 +145,78 @@
 
             border-radius: 28px;
 
-            background: #101010;
+            background:
+                linear-gradient(
+                    145deg,
+                    #151515,
+                    #0b0b0b
+                );
 
-            border: 1px solid rgba(255,255,255,0.14);
+            border:
+                1px solid
+                rgba(255,255,255,0.14);
 
             font-size: 32px;
 
             font-weight: 800;
 
+            overflow: hidden;
+
             box-shadow:
-                0 0 60px rgba(255,255,255,0.05);
+                0 0 70px
+                rgba(255,255,255,0.05);
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+
         }
+
+
+        .profile-avatar:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.03);
+
+            box-shadow:
+                0 0 80px
+                rgba(255,255,255,0.09);
+
+        }
+
+
+        .profile-avatar img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =========================
+           NAME
+        ========================= */
 
         .profile-name {
 
             margin-top: 22px;
 
-            font-size: 27px;
+            font-size: 28px;
 
             font-weight: 800;
 
             letter-spacing: -1px;
+
+            transition:
+                text-shadow .4s ease;
+
         }
+
 
         .profile-username {
 
@@ -146,11 +227,17 @@
             color: #555;
 
             font-size: 12px;
+
         }
+
+
+        /* =========================
+           BIO
+        ========================= */
 
         .profile-description {
 
-            max-width: 330px;
+            max-width: 340px;
 
             margin: 22px auto 0;
 
@@ -159,7 +246,13 @@
             font-size: 13px;
 
             line-height: 1.8;
+
         }
+
+
+        /* =========================
+           SOCIAL LINKS
+        ========================= */
 
         .profile-socials {
 
@@ -170,11 +263,13 @@
             gap: 9px;
 
             margin-top: 30px;
+
         }
+
 
         .profile-social {
 
-            position: relative;
+            min-height: 48px;
 
             display: flex;
 
@@ -182,35 +277,49 @@
 
             justify-content: center;
 
-            min-height: 48px;
-
             color: #ddd;
 
             text-decoration: none;
 
             font-size: 12px;
 
-            border: 1px solid rgba(255,255,255,0.07);
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
 
             border-radius: 11px;
 
-            background: rgba(255,255,255,0.025);
+            background:
+                rgba(255,255,255,0.025);
 
             transition:
                 transform .3s ease,
                 background .3s ease,
-                border .3s ease;
+                border-color .3s ease,
+                color .3s ease;
+
         }
+
 
         .profile-social:hover {
 
-            transform: translateY(-3px);
+            transform:
+                translateY(-3px);
 
-            background: rgba(255,255,255,0.07);
+            background:
+                rgba(255,255,255,0.07);
 
             border-color:
-                rgba(255,255,255,0.16);
+                rgba(255,255,255,0.17);
+
+            color: white;
+
         }
+
+
+        /* =========================
+           STATUS
+        ========================= */
 
         .profile-status {
 
@@ -227,7 +336,9 @@
             color: #555;
 
             font-size: 10px;
+
         }
+
 
         .status-online {
 
@@ -239,8 +350,16 @@
             background: white;
 
             box-shadow:
-                0 0 10px white;
+                0 0 10px white,
+                0 0 20px
+                rgba(255,255,255,.4);
+
         }
+
+
+        /* =========================
+           VIEWS
+        ========================= */
 
         .profile-views {
 
@@ -251,7 +370,44 @@
             font-size: 9px;
 
             letter-spacing: 1px;
+
         }
+
+
+        /* =========================
+           TOP LEFT
+        ========================= */
+
+        .back-home {
+
+            position: fixed;
+
+            top: 25px;
+            left: 25px;
+
+            z-index: 10;
+
+            color: #555;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            transition: .3s;
+
+        }
+
+
+        .back-home:hover {
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           WATERMARK
+        ========================= */
 
         .nox-watermark {
 
@@ -261,7 +417,8 @@
 
             left: 50%;
 
-            transform: translateX(-50%);
+            transform:
+                translateX(-50%);
 
             color: #333;
 
@@ -270,26 +427,65 @@
             letter-spacing: 4px;
 
             font-weight: 700;
+
         }
 
-        .back-home {
 
-            position: fixed;
+        /* =========================
+           MOBILE
+        ========================= */
 
-            top: 25px;
-            left: 25px;
+        @media (max-width: 600px) {
 
-            color: #555;
+            body {
+                overflow-y: auto;
+            }
 
-            text-decoration: none;
+            .profile-page {
 
-            font-size: 11px;
+                min-height: 100svh;
 
-            transition: .3s;
-        }
+                padding: 70px 15px;
 
-        .back-home:hover {
-            color: white;
+            }
+
+            .profile-main {
+
+                padding:
+                    35px 22px;
+
+                border-radius: 22px;
+
+            }
+
+            .profile-avatar {
+
+                width: 85px;
+                height: 85px;
+
+                border-radius: 24px;
+
+            }
+
+            .profile-name {
+
+                font-size: 25px;
+
+            }
+
+            .back-home {
+
+                top: 18px;
+                left: 18px;
+
+            }
+
+            .nox-watermark {
+
+                display: none;
+
+            }
+
         }
 
     </style>
@@ -299,6 +495,11 @@
 
 <body>
 
+
+    <!-- =========================
+         BACKGROUND
+    ========================= -->
+
     <div class="noise"></div>
 
     <div class="orb orb-one"></div>
@@ -306,59 +507,102 @@
     <div class="orb orb-two"></div>
 
 
-    <a href="index.html" class="back-home">
+    <!-- =========================
+         BACK BUTTON
+    ========================= -->
+
+    <a
+        href="index.html"
+        class="back-home"
+    >
         ← NØX
     </a>
 
 
+    <!-- =========================
+         PROFILE
+    ========================= -->
+
     <main class="profile-page">
+
 
         <section class="profile-main">
 
-            <div class="profile-avatar">
+
+            <!-- AVATAR -->
+
+            <div
+                class="profile-avatar"
+                id="profileAvatar"
+            >
                 N
             </div>
 
 
-            <h1 class="profile-name">
+            <!-- NAME -->
+
+            <h1
+                class="profile-name"
+                id="profileName"
+            >
                 NØX
             </h1>
 
 
-            <span class="profile-username">
+            <!-- USERNAME -->
+
+            <span
+                class="profile-username"
+                id="profileUsername"
+            >
                 @nox
             </span>
 
 
-            <p class="profile-description">
+            <!-- BIO -->
+
+            <p
+                class="profile-description"
+                id="profileBio"
+            >
                 Welcome to my corner of the void.
                 Nothing here is accidental.
             </p>
 
 
+            <!-- LINKS -->
+
             <div class="profile-socials">
 
+
                 <a
+                    id="profileLink1"
                     href="https://discord.com/invite/w986WYqQuT"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="profile-social"
                 >
                     Discord
                 </a>
 
+
                 <a
+                    id="profileLink2"
                     href="#"
                     class="profile-social"
                 >
                     Instagram
                 </a>
 
+
                 <a
+                    id="profileLink3"
                     href="#"
                     class="profile-social"
                 >
                     YouTube
                 </a>
+
 
                 <a
                     href="#"
@@ -367,8 +611,11 @@
                     TikTok
                 </a>
 
+
             </div>
 
+
+            <!-- STATUS -->
 
             <div class="profile-status">
 
@@ -379,24 +626,319 @@
             </div>
 
 
+            <!-- VIEWS -->
+
             <div class="profile-views">
 
-                1,284 VIEWS
+                <span id="views">
+                    1,284
+                </span>
+
+                PROFILE VIEWS
 
             </div>
 
+
         </section>
+
 
     </main>
 
+
+    <!-- =========================
+         WATERMARK
+    ========================= -->
 
     <div class="nox-watermark">
         NØX
     </div>
 
 
+    <!-- =========================
+         SCRIPT
+    ========================= -->
+
     <script src="script.js"></script>
+
+
+    <script>
+
+        /*
+        ========================================
+        NØX PROFILE SYSTEM
+        ========================================
+        */
+
+        const saved =
+            localStorage.getItem(
+                "noxProfile"
+            );
+
+
+        /*
+        ----------------------------------------
+        DEFAULT PROFILE
+        ----------------------------------------
+        */
+
+        const defaultProfile = {
+
+            name: "NØX",
+
+            username: "@nox",
+
+            bio:
+                "Welcome to my corner of the void. Nothing here is accidental.",
+
+            avatar: "",
+
+            color: "#ffffff",
+
+            link1: "Discord",
+
+            link2: "Instagram",
+
+            link3: "YouTube"
+
+        };
+
+
+        let profile =
+            defaultProfile;
+
+
+        /*
+        ----------------------------------------
+        LOAD SAVED PROFILE
+        ----------------------------------------
+        */
+
+        if (saved) {
+
+            try {
+
+                profile =
+                    {
+                        ...defaultProfile,
+                        ...JSON.parse(saved)
+                    };
+
+            } catch (error) {
+
+                console.warn(
+                    "NØX: Could not load profile."
+                );
+
+                profile =
+                    defaultProfile;
+
+            }
+
+        }
+
+
+        /*
+        ----------------------------------------
+        ELEMENTS
+        ----------------------------------------
+        */
+
+        const nameElement =
+            document.getElementById(
+                "profileName"
+            );
+
+        const usernameElement =
+            document.getElementById(
+                "profileUsername"
+            );
+
+        const bioElement =
+            document.getElementById(
+                "profileBio"
+            );
+
+        const avatarElement =
+            document.getElementById(
+                "profileAvatar"
+            );
+
+        const link1Element =
+            document.getElementById(
+                "profileLink1"
+            );
+
+        const link2Element =
+            document.getElementById(
+                "profileLink2"
+            );
+
+        const link3Element =
+            document.getElementById(
+                "profileLink3"
+            );
+
+
+        /*
+        ----------------------------------------
+        NAME
+        ----------------------------------------
+        */
+
+        nameElement.textContent =
+            profile.name;
+
+
+        /*
+        ----------------------------------------
+        USERNAME
+        ----------------------------------------
+        */
+
+        usernameElement.textContent =
+            profile.username;
+
+
+        /*
+        ----------------------------------------
+        BIO
+        ----------------------------------------
+        */
+
+        bioElement.textContent =
+            profile.bio;
+
+
+        /*
+        ----------------------------------------
+        AVATAR
+        ----------------------------------------
+        */
+
+        if (profile.avatar) {
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+            image.src =
+                profile.avatar;
+
+            image.alt =
+                profile.name;
+
+            image.onerror =
+                function () {
+
+                    avatarElement.innerHTML =
+                        profile.name
+                            .charAt(0)
+                            .toUpperCase();
+
+                };
+
+
+            avatarElement.innerHTML = "";
+
+            avatarElement.appendChild(
+                image
+            );
+
+        } else {
+
+            avatarElement.textContent =
+                profile.name
+                    .charAt(0)
+                    .toUpperCase();
+
+        }
+
+
+        /*
+        ----------------------------------------
+        LINKS
+        ----------------------------------------
+        */
+
+        link1Element.textContent =
+            profile.link1;
+
+        link2Element.textContent =
+            profile.link2;
+
+        link3Element.textContent =
+            profile.link3;
+
+
+        /*
+        ----------------------------------------
+        DISCORD
+        ----------------------------------------
+        */
+
+        link1Element.href =
+            "https://discord.com/invite/w986WYqQuT";
+
+
+        /*
+        ----------------------------------------
+        ACCENT
+        ----------------------------------------
+        */
+
+        document.documentElement.style
+            .setProperty(
+                "--nox-accent",
+                profile.color
+            );
+
+
+        nameElement.style.textShadow =
+            `
+            0 0 30px
+            ${profile.color}22
+            `;
+
+
+        avatarElement.style.boxShadow =
+            `
+            0 0 70px
+            ${profile.color}12
+            `;
+
+
+        /*
+        ----------------------------------------
+        PAGE TITLE
+        ----------------------------------------
+        */
+
+        document.title =
+            `${profile.name} — NØX`;
+
+
+        /*
+        ----------------------------------------
+        CONSOLE
+        ----------------------------------------
+        */
+
+        console.log(
+            "%c NØX PROFILE ",
+            `
+            background:#fff;
+            color:#000;
+            font-size:16px;
+            font-weight:800;
+            padding:6px 12px;
+            border-radius:6px;
+            `
+        );
+
+    </script>
+
 
 </body>
 
-  </html>
+</html>
