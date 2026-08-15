@@ -12,7 +12,7 @@
 
     <meta
         name="theme-color"
-        content="#050505"
+        content="#030303"
     >
 
     <title>NØX — Create your identity</title>
@@ -24,7 +24,7 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.googleapis.com"
+        href="https://fonts.gstatic.com"
         crossorigin
     >
 
@@ -41,35 +41,17 @@
             padding: 0;
         }
 
-
         :root {
-
             --bg: #030303;
-
-            --card: rgba(13, 13, 13, .76);
-
-            --border:
-                rgba(255, 255, 255, .08);
-
-            --border-hover:
-                rgba(255, 255, 255, .18);
-
-            --text: #ffffff;
-
+            --border: rgba(255,255,255,.08);
+            --text: #fff;
             --muted: #666;
-
-            --muted-light: #888;
-
         }
-
 
         html,
         body {
-
             min-height: 100%;
-
         }
-
 
         body {
 
@@ -81,7 +63,7 @@
 
             justify-content: center;
 
-            padding: 30px 20px;
+            padding: 25px;
 
             background: var(--bg);
 
@@ -97,10 +79,7 @@
         }
 
 
-        /* ========================================
-           BACKGROUND
-        ======================================== */
-
+        /* BACKGROUND */
 
         .background {
 
@@ -113,15 +92,9 @@
             background:
 
                 radial-gradient(
-                    circle at 50% 0%,
+                    circle at 50% 10%,
                     rgba(255,255,255,.065),
                     transparent 32%
-                ),
-
-                radial-gradient(
-                    circle at 10% 90%,
-                    rgba(255,255,255,.025),
-                    transparent 30%
                 ),
 
                 #030303;
@@ -157,8 +130,8 @@
             mask-image:
                 linear-gradient(
                     to bottom,
-                    black 0%,
-                    transparent 85%
+                    black,
+                    transparent 90%
                 );
 
         }
@@ -185,69 +158,14 @@
 
             filter: blur(170px);
 
-            opacity: .06;
+            opacity: .055;
 
             pointer-events: none;
 
-            z-index: -3;
-
         }
 
 
-        /* ========================================
-           NOISE
-        ======================================== */
-
-
-        .noise {
-
-            position: fixed;
-
-            inset: -50%;
-
-            z-index: -2;
-
-            pointer-events: none;
-
-            opacity: .018;
-
-            background-image:
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-
-            animation: noise .2s infinite;
-
-        }
-
-
-        @keyframes noise {
-
-            0% {
-                transform: translate(0, 0);
-            }
-
-            25% {
-                transform: translate(2%, 1%);
-            }
-
-            50% {
-                transform: translate(-1%, 2%);
-            }
-
-            75% {
-                transform: translate(1%, -2%);
-            }
-
-            100% {
-                transform: translate(0, 0);
-            }
-
-        }
-
-
-        /* ========================================
-           BACK BUTTON
-        ======================================== */
-
+        /* BACK */
 
         .back {
 
@@ -256,12 +174,6 @@
             top: 25px;
 
             left: 25px;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 7px;
 
             color: #555;
 
@@ -275,31 +187,22 @@
 
         }
 
-
         .back:hover {
-
-            color: #fff;
-
-            transform:
-                translateX(-2px);
-
+            color: white;
         }
 
 
-        /* ========================================
-           CARD
-        ======================================== */
-
+        /* CARD */
 
         .register-card {
 
             position: relative;
 
             width:
-                min(440px, 100%);
+                min(430px, 100%);
 
             padding:
-                42px 36px 34px;
+                42px 35px;
 
             border:
                 1px solid var(--border);
@@ -314,44 +217,17 @@
                 );
 
             backdrop-filter:
-                blur(30px);
+                blur(25px);
 
             -webkit-backdrop-filter:
-                blur(30px);
+                blur(25px);
 
             box-shadow:
-                0 45px 120px
-                rgba(0,0,0,.72);
+                0 40px 100px
+                rgba(0,0,0,.7);
 
             animation:
-                appear .7s ease both;
-
-        }
-
-
-        .register-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-
-            left: 12%;
-
-            right: 12%;
-
-            height: 1px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,.25),
-                    transparent
-                );
-
-            opacity: .5;
+                appear .7s ease forwards;
 
         }
 
@@ -359,40 +235,29 @@
         @keyframes appear {
 
             from {
-
                 opacity: 0;
-
                 transform:
                     translateY(20px)
                     scale(.97);
-
             }
 
             to {
-
                 opacity: 1;
-
                 transform:
                     translateY(0)
                     scale(1);
-
             }
 
         }
 
 
-        /* ========================================
-           LOGO
-        ======================================== */
-
+        /* LOGO */
 
         .logo {
 
             text-align: center;
 
             font-size: 31px;
-
-            line-height: 1;
 
             font-weight: 900;
 
@@ -403,15 +268,13 @@
 
         .subtitle {
 
-            margin-top: 9px;
+            margin-top: 8px;
 
             text-align: center;
 
             color: var(--muted);
 
             font-size: 11px;
-
-            line-height: 1.5;
 
         }
 
@@ -431,22 +294,15 @@
         }
 
 
-        /* ========================================
-           FORM
-        ======================================== */
-
+        /* FORM */
 
         form {
-
             margin-top: 30px;
-
         }
 
 
         .field {
-
-            margin-bottom: 16px;
-
+            margin-bottom: 17px;
         }
 
 
@@ -484,25 +340,15 @@
 
             border-radius: 10px;
 
-            background:
-                rgba(0,0,0,.35);
+            background: #080808;
 
-            color: #fff;
+            color: white;
 
             font-family: inherit;
 
             font-size: 12px;
 
-            transition:
-                .25s;
-
-        }
-
-
-        input:hover {
-
-            border-color:
-                rgba(255,255,255,.13);
+            transition: .25s;
 
         }
 
@@ -510,10 +356,9 @@
         input:focus {
 
             border-color:
-                rgba(255,255,255,.28);
+                rgba(255,255,255,.27);
 
-            background:
-                rgba(255,255,255,.025);
+            background: #0b0b0b;
 
             box-shadow:
                 0 0 0 3px
@@ -523,32 +368,22 @@
 
 
         input::placeholder {
-
-            color: #393939;
-
+            color: #3d3d3d;
         }
-
-
-        /* ========================================
-           USERNAME HINT
-        ======================================== */
 
 
         .hint {
 
             margin-top: 7px;
 
-            color: #3e3e3e;
+            color: #3d3d3d;
 
             font-size: 8px;
 
         }
 
 
-        /* ========================================
-           BUTTON
-        ======================================== */
-
+        /* BUTTON */
 
         button {
 
@@ -562,9 +397,9 @@
 
             border-radius: 10px;
 
-            background: #fff;
+            background: white;
 
-            color: #000;
+            color: black;
 
             font-family: inherit;
 
@@ -576,10 +411,7 @@
 
             cursor: pointer;
 
-            transition:
-                transform .25s,
-                box-shadow .25s,
-                opacity .25s;
+            transition: .25s;
 
         }
 
@@ -590,43 +422,30 @@
                 translateY(-2px);
 
             box-shadow:
-                0 18px 45px
-                rgba(255,255,255,.12);
-
-        }
-
-
-        button:active {
-
-            transform:
-                translateY(0);
+                0 15px 40px
+                rgba(255,255,255,.1);
 
         }
 
 
         button:disabled {
 
-            opacity: .45;
+            opacity: .5;
 
             cursor: wait;
 
             transform: none;
 
-            box-shadow: none;
-
         }
 
 
-        /* ========================================
-           MESSAGE
-        ======================================== */
-
+        /* MESSAGE */
 
         .message {
 
             min-height: 18px;
 
-            margin-top: 15px;
+            margin-top: 16px;
 
             text-align: center;
 
@@ -638,31 +457,24 @@
 
 
         .message.error {
-
             color: #ff6b6b;
-
         }
 
 
         .message.success {
-
             color: #aaa;
-
         }
 
 
-        /* ========================================
-           LOGIN
-        ======================================== */
-
+        /* LOGIN */
 
         .login {
 
-            margin-top: 23px;
+            margin-top: 25px;
 
             text-align: center;
 
-            color: #4d4d4d;
+            color: #555;
 
             font-size: 10px;
 
@@ -671,7 +483,7 @@
 
         .login a {
 
-            color: #fff;
+            color: white;
 
             text-decoration: none;
 
@@ -681,24 +493,17 @@
 
 
         .login a:hover {
-
             text-decoration: underline;
-
         }
-
-
-        /* ========================================
-           BRAND
-        ======================================== */
 
 
         .brand {
 
-            margin-top: 27px;
+            margin-top: 28px;
 
             text-align: center;
 
-            color: #292929;
+            color: #2d2d2d;
 
             font-size: 8px;
 
@@ -709,45 +514,19 @@
         }
 
 
-        /* ========================================
-           MOBILE
-        ======================================== */
-
-
         @media(max-width:500px) {
 
             body {
-
-                padding:
-                    20px 15px;
-
+                padding: 20px 15px;
             }
-
 
             .register-card {
-
-                padding:
-                    34px 22px 30px;
-
-                border-radius:
-                    18px;
-
+                padding: 35px 22px;
             }
-
 
             .back {
-
                 top: 18px;
-
                 left: 18px;
-
-            }
-
-
-            .logo {
-
-                font-size: 29px;
-
             }
 
         }
@@ -766,10 +545,6 @@
 
     <div class="glow"></div>
 
-    <div class="noise"></div>
-
-
-    <!-- BACK -->
 
     <a
         href="index.html"
@@ -778,8 +553,6 @@
         ← NØX
     </a>
 
-
-    <!-- REGISTER -->
 
     <main class="register-card">
 
@@ -797,10 +570,11 @@
         <div class="line"></div>
 
 
-        <form id="registerForm">
+        <form
+            id="registerForm"
+            novalidate
+        >
 
-
-            <!-- USERNAME -->
 
             <div class="field">
 
@@ -826,8 +600,6 @@
             </div>
 
 
-            <!-- DISPLAY NAME -->
-
             <div class="field">
 
                 <label for="displayName">
@@ -846,8 +618,6 @@
             </div>
 
 
-            <!-- EMAIL -->
-
             <div class="field">
 
                 <label for="email">
@@ -864,8 +634,6 @@
 
             </div>
 
-
-            <!-- PASSWORD -->
 
             <div class="field">
 
@@ -885,8 +653,6 @@
             </div>
 
 
-            <!-- BUTTON -->
-
             <button
                 id="registerButton"
                 type="submit"
@@ -894,8 +660,6 @@
                 CREATE ACCOUNT
             </button>
 
-
-            <!-- MESSAGE -->
 
             <div
                 id="message"
@@ -906,8 +670,6 @@
 
         </form>
 
-
-        <!-- LOGIN -->
 
         <div class="login">
 
@@ -928,20 +690,19 @@
     </main>
 
 
-    <!-- ========================================
-         SUPABASE
-    ========================================= -->
+    <!-- SUPABASE LIBRARY -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- YOUR SUPABASE CONFIG -->
 
     <script src="supabase.js"></script>
 
 
-    <!-- ========================================
-         REGISTER LOGIC
-    ========================================= -->
-
+    <!-- REGISTER SCRIPT -->
 
     <script>
 
@@ -950,24 +711,15 @@
                 "registerForm"
             );
 
-
         const button =
             document.getElementById(
                 "registerButton"
             );
 
-
         const message =
             document.getElementById(
                 "message"
             );
-
-
-        /*
-        ========================================
-        MESSAGE
-        ========================================
-        */
 
 
         function showMessage(
@@ -984,13 +736,6 @@
         }
 
 
-        /*
-        ========================================
-        BUTTON STATE
-        ========================================
-        */
-
-
         function resetButton() {
 
             button.disabled =
@@ -1002,25 +747,18 @@
         }
 
 
-        /*
-        ========================================
-        REGISTER
-        ========================================
-        */
-
-
         form.addEventListener(
             "submit",
-            async (event) => {
+            async function(event) {
+
+                /*
+                IMPORTANT:
+                Prevent normal HTML form reload.
+                */
 
                 event.preventDefault();
 
-
-                /*
-                ================================
-                GET VALUES
-                ================================
-                */
+                event.stopPropagation();
 
 
                 const username =
@@ -1060,10 +798,22 @@
 
 
                 /*
-                ================================
                 VALIDATION
-                ================================
                 */
+
+                if (
+                    username.length < 3 ||
+                    username.length > 20
+                ) {
+
+                    showMessage(
+                        "El username debe tener entre 3 y 20 caracteres.",
+                        "error"
+                    );
+
+                    return;
+
+                }
 
 
                 if (
@@ -1073,7 +823,7 @@
                 ) {
 
                     showMessage(
-                        "El username solo puede contener letras, números y _.",
+                        "Usa solamente letras, números y _.",
                         "error"
                     );
 
@@ -1083,21 +833,7 @@
 
 
                 if (
-                    username.length < 3
-                ) {
-
-                    showMessage(
-                        "El username debe tener al menos 3 caracteres.",
-                        "error"
-                    );
-
-                    return;
-
-                }
-
-
-                if (
-                    displayName.length < 1
+                    !displayName
                 ) {
 
                     showMessage(
@@ -1124,13 +860,6 @@
                 }
 
 
-                /*
-                ================================
-                LOADING
-                ================================
-                */
-
-
                 button.disabled =
                     true;
 
@@ -1144,11 +873,8 @@
 
 
                     /*
-                    ================================
                     CHECK SUPABASE
-                    ================================
                     */
-
 
                     if (
                         typeof supabaseClient ===
@@ -1156,11 +882,217 @@
                     ) {
 
                         throw new Error(
-                            "Supabase no está configurado correctamente."
+                            "Supabase no está cargando. Revisa supabase.js."
                         );
 
                     }
 
 
                     /*
-                 
+                    CHECK USERNAME
+                    */
+
+                    const {
+                        data:
+                            existingProfile,
+                        error:
+                            usernameError
+                    } =
+                        await supabaseClient
+                            .from("profiles")
+                            .select("id")
+                            .eq(
+                                "username",
+                                username
+                            )
+                            .maybeSingle();
+
+
+                    if (
+                        usernameError
+                    ) {
+
+                        throw usernameError;
+
+                    }
+
+
+                    if (
+                        existingProfile
+                    ) {
+
+                        showMessage(
+                            "Ese username ya está ocupado.",
+                            "error"
+                        );
+
+                        resetButton();
+
+                        return;
+
+                    }
+
+
+                    /*
+                    CREATE AUTH USER
+                    */
+
+                    const {
+                        data,
+                        error
+                    } =
+                        await supabaseClient
+                            .auth
+                            .signUp({
+
+                                email:
+                                    email,
+
+                                password:
+                                    password,
+
+                                options: {
+
+                                    data: {
+
+                                        username:
+                                            username,
+
+                                        display_name:
+                                            displayName
+
+                                    }
+
+                                }
+
+                            });
+
+
+                    if (
+                        error
+                    ) {
+
+                        throw error;
+
+                    }
+
+
+                    if (
+                        !data ||
+                        !data.user
+                    ) {
+
+                        throw new Error(
+                            "Supabase no devolvió el usuario."
+                        );
+
+                    }
+
+
+                    /*
+                    THE DATABASE TRIGGER
+                    CREATES THE PROFILE.
+
+                    We DO NOT insert into
+                    profiles here.
+                    */
+
+
+                    if (
+                        data.session
+                    ) {
+
+                        showMessage(
+                            "Cuenta creada. Entrando...",
+                            "success"
+                        );
+
+                        button.textContent =
+                            "ACCOUNT CREATED";
+
+
+                        setTimeout(
+                            function() {
+
+                                window.location.href =
+                                    "dashboard.html";
+
+                            },
+                            1000
+                        );
+
+
+                    } else {
+
+                        showMessage(
+                            "Cuenta creada. Revisa tu correo para confirmar tu cuenta.",
+                            "success"
+                        );
+
+                        button.textContent =
+                            "CHECK YOUR EMAIL";
+
+                    }
+
+
+                } catch(error) {
+
+
+                    console.error(
+                        "NØX:",
+                        error
+                    );
+
+
+                    let text =
+                        error.message ||
+                        "No se pudo crear la cuenta.";
+
+
+                    if (
+                        text
+                            .toLowerCase()
+                            .includes(
+                                "user already registered"
+                            )
+                    ) {
+
+                        text =
+                            "Ese email ya está registrado.";
+
+                    }
+
+
+                    if (
+                        text
+                            .toLowerCase()
+                            .includes(
+                                "row-level security"
+                            )
+                    ) {
+
+                        text =
+                            "Supabase bloqueó el perfil. Revisa las policies de profiles.";
+
+                    }
+
+
+                    showMessage(
+                        text,
+                        "error"
+                    );
+
+
+                    resetButton();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+    </html>
