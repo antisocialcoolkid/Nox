@@ -540,12 +540,10 @@ rel="noopener"></a>
 </div>
 
 <div class="badges">
-
-<div class="badge early" title="Early Access">◆</div>
-<div class="badge" title="Verified">✓</div>
-<div class="badge" title="Developer">⚡</div>
-<div class="badge" title="OG">★</div>
-
+<div class="badge early">◆</div>
+<div class="badge">✓</div>
+<div class="badge">⚡</div>
+<div class="badge">★</div>
 </div>
 
 </div>
@@ -559,9 +557,9 @@ rel="noopener"></a>
 <script>
 "use strict";
 
-/* ================================
+/* =========================================
    SUPABASE
-================================ */
+========================================= */
 
 const SUPABASE_URL =
 "https://qvqhanioapefeyxtbzlp.supabase.co";
@@ -576,106 +574,353 @@ SUPABASE_KEY
 );
 
 
-/* ================================
+/* =========================================
    STATE
-================================ */
+========================================= */
 
 let currentUser = null;
 let currentProfile = {};
 
 
-/* ================================
+/* =========================================
    HELPER
-================================ */
+========================================= */
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+document.getElementById(id);
+
 
 function message(text,type=""){
-$("message").textContent=text;
-$("message").className="message "+type;
+$("message").textContent = text;
+$("message").className = "message " + type;
 }
+
 
 function normalizeUrl(value){
-if(!value)return "";
-if(value.startsWith("http://") || value.startsWith("https://")){
+
+if(!value) return "";
+
+value = String(value).trim();
+
+if(
+value.startsWith("http://") ||
+value.startsWith("https://")
+){
 return value;
 }
-return "https://"+value;
+
+return "https://" + value;
 }
 
 
-/* ================================
+/* =========================================
+   IMAGE COMPRESSION
+========================================= */
+
+function compressImage(
+file,
+type,
+maxWidth,
+maxHeight,
+quality
+){
+
+return new Promise((resolve,reject)=>{
+
+if(!file){
+reject(new Error("No se seleccionó ninguna imagen."));
+return;
+}
+
+if(!file.type.startsWith("image/")){
+reject(new Error("El archivo debe ser una imagen."));
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(){
+
+const image = new Image();
+
+image.onload = function(){
+
+let width = image.width;
+let height = image.height;
+
+const ratio = Math.min(
+maxWidth / width,
+maxHeight / height,
+1
+);
+
+width = Math.round(width * ratio);
+height = Math.round(height * ratio);
+
+const canvas =
+document.createElement("canvas");
+
+canvas.width = width;
+canvas.height = height;
+
+const ctx =
+canvas.getContext("2d");
+
+ctx.drawImage(
+image,
+0,
+0,
+width,
+height
+);
+
+canvas.toBlob(
+function(blob){
+
+if(!blob){
+
+reject(
+new Error(
+"No se pudo comprimir la imagen."
+)
+);
+
+return;
+}
+
+resolve(blob);
+
+},
+"image/webp",
+quality
+);
+
+};
+
+image.onerror = function(){
+
+reject(
+new Error(
+"No se pudo leer la imagen."
+)
+);
+
+};
+
+image.src = reader.result;
+
+};
+
+reader.onerror = function(){
+
+reject(
+new Error(
+"No se pudo leer el archivo."
+)
+);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+/* =========================================
+   DELETE OLD STORAGE FILE
+========================================= */
+
+async function deleteOldFile(url){
+
+if(!url){
+return;
+}
+
+try{
+
+const marker =
+"/storage/v1/object/public/profiles/";
+
+const index =
+url.indexOf(marker);
+
+if(index === -1){
+return;
+}
+
+let path =
+url.substring(
+index + marker.length
+);
+
+path =
+decodeURIComponent(path);
+
+const result =
+await supabaseClient
+.storage
+.from("profiles")
+.remove([path]);
+
+if(result.error){
+
+console.warn(
+"No se pudo eliminar la imagen anterior:",
+result.error
+);
+
+}
+
+}catch(error){
+
+console.warn(
+"Error eliminando imagen anterior:",
+error
+);
+
+}
+
+}
+
+
+/* =========================================
    PREVIEW
-================================ */
+========================================= */
 
 function updatePreview(){
 
-const username=$("username").value.trim();
-const name=$("displayName").value.trim();
-const bio=$("bio").value.trim();
-const website=$("website").value.trim();
-const color=$("accentColor").value;
+const username =
+$("username").value.trim();
 
-$("previewUsername").textContent="@"+(username||"nox");
-$("previewName").textContent=name||"NØX";
-$("previewBio").textContent=bio||"This is my NØX profile.";
+const name =
+$("displayName").value.trim();
 
-$("colorValue").textContent=color.toUpperCase();
+const bio =
+$("bio").value.trim();
+
+const website =
+$("website").value.trim();
+
+const color =
+$("accentColor").value;
+
+
+$("previewUsername").textContent =
+"@" + (username || "nox");
+
+
+$("previewName").textContent =
+name || "NØX";
+
+
+$("previewBio").textContent =
+bio || "This is my NØX profile.";
+
+
+$("colorValue").textContent =
+color.toUpperCase();
+
 
 document.documentElement.style.setProperty(
 "--accent",
 color
 );
 
+
 if(website){
 
-$("websitePreview").style.display="inline";
-$("websitePreview").href=normalizeUrl(website);
-$("websitePreview").textContent=website;
+$("websitePreview").style.display =
+"inline";
+
+$("websitePreview").href =
+normalizeUrl(website);
+
+$("websitePreview").textContent =
+website;
 
 }else{
 
-$("websitePreview").style.display="none";
-
-}
-
-updateSocial("discord","discordPreview");
-updateSocial("instagram","instagramPreview");
-updateSocial("tiktok","tiktokPreview");
-updateSocial("youtube","youtubePreview");
-updateSocial("github","githubPreview");
-updateSocial("twitter","twitterPreview");
+$("websitePreview").style.display =
+"none";
 
 }
 
 
-function updateSocial(inputId,outputId){
+updateSocial(
+"discord",
+"discordPreview"
+);
 
-const value=$(inputId).value.trim();
-const element=$(outputId);
+updateSocial(
+"instagram",
+"instagramPreview"
+);
+
+updateSocial(
+"tiktok",
+"tiktokPreview"
+);
+
+updateSocial(
+"youtube",
+"youtubePreview"
+);
+
+updateSocial(
+"github",
+"githubPreview"
+);
+
+updateSocial(
+"twitter",
+"twitterPreview"
+);
+
+}
+
+
+function updateSocial(
+inputId,
+outputId
+){
+
+const value =
+$(inputId).value.trim();
+
+const element =
+$(outputId);
+
 
 if(!value){
 
-element.style.display="none";
+element.style.display =
+"none";
+
 return;
 
 }
 
-element.style.display="inline-block";
-element.href=normalizeUrl(value);
+
+element.style.display =
+"inline-block";
+
+element.href =
+normalizeUrl(value);
 
 }
 
 
-/* ================================
+/* =========================================
    LOAD USER
-================================ */
+========================================= */
 
 async function loadUser(){
 
 try{
 
-const result=
+const result =
 await supabaseClient.auth.getUser();
 
 if(result.error){
@@ -690,16 +935,19 @@ message(
 );
 
 return;
-
 }
 
-currentUser=result.data.user;
+currentUser =
+result.data.user;
 
 await loadProfile();
 
 }catch(error){
 
-console.error(error);
+console.error(
+"NØX USER ERROR:",
+error
+);
 
 message(
 error.message ||
@@ -712,13 +960,13 @@ error.message ||
 }
 
 
-/* ================================
+/* =========================================
    LOAD PROFILE
-================================ */
+========================================= */
 
 async function loadProfile(){
 
-const result=
+const result =
 await supabaseClient
 .from("profiles")
 .select("*")
@@ -731,7 +979,7 @@ throw result.error;
 
 if(!result.data){
 
-currentProfile={};
+currentProfile = {};
 
 message(
 "No existe tu perfil.",
@@ -739,144 +987,197 @@ message(
 );
 
 return;
-
 }
 
-currentProfile=result.data;
+currentProfile =
+result.data;
 
-$("username").value=
-currentProfile.username||"";
 
-$("displayName").value=
-currentProfile.display_name||"NØX";
+$("username").value =
+currentProfile.username || "";
 
-$("bio").value=
-currentProfile.bio||"";
+$("displayName").value =
+currentProfile.display_name || "NØX";
 
-$("website").value=
-currentProfile.website_url||"";
+$("bio").value =
+currentProfile.bio || "";
 
-$("accentColor").value=
-currentProfile.accent_color||"#ffffff";
+$("website").value =
+currentProfile.website_url || "";
 
-$("profileEffect").value=
-currentProfile.profile_effect||"none";
+$("accentColor").value =
+currentProfile.accent_color || "#ffffff";
+
+$("profileEffect").value =
+currentProfile.profile_effect || "none";
 
 
 if(currentProfile.avatar_url){
 
-$("avatar").src=
+$("avatar").src =
 currentProfile.avatar_url;
 
 }
 
 if(currentProfile.banner_url){
 
-$("banner").style.backgroundImage=
-"url('"+
-currentProfile.banner_url+
-"')";
+$("banner").style.backgroundImage =
+"url(" +
+JSON.stringify(
+currentProfile.banner_url
+) +
+")";
 
 }
 
 if(currentProfile.background_url){
 
-$("preview").style.backgroundImage=
-"url('"+
-currentProfile.background_url+
-"')";
+$("preview").style.backgroundImage =
+"url(" +
+JSON.stringify(
+currentProfile.background_url
+) +
+")";
 
 }
 
 
-const socials=
-currentProfile.social_links||{};
+const socials =
+currentProfile.social_links || {};
 
-$("discord").value=socials.discord||"";
-$("instagram").value=socials.instagram||"";
-$("tiktok").value=socials.tiktok||"";
-$("youtube").value=socials.youtube||"";
-$("github").value=socials.github||"";
-$("twitter").value=socials.twitter||"";
+$("discord").value =
+socials.discord || "";
+
+$("instagram").value =
+socials.instagram || "";
+
+$("tiktok").value =
+socials.tiktok || "";
+
+$("youtube").value =
+socials.youtube || "";
+
+$("github").value =
+socials.github || "";
+
+$("twitter").value =
+socials.twitter || "";
+
 
 updatePreview();
 
 }
 
 
-/* ================================
-   UPLOAD
-================================ */
+/* =========================================
+   UPLOAD COMPRESSED IMAGE
+========================================= */
 
-async function uploadFile(file,folder){
+async function uploadCompressedImage(
+file,
+folder,
+oldUrl,
+settings
+){
 
 if(!file){
-return null;
+return oldUrl || null;
 }
 
-if(!file.type.startsWith("image/")){
-throw new Error(
-"El archivo debe ser una imagen."
+
+/*
+ * Comprime directamente en el navegador.
+ */
+
+message(
+settings.message
 );
-}
 
-if(file.size>10*1024*1024){
-throw new Error(
-"La imagen supera los 10 MB."
+
+const blob =
+await compressImage(
+file,
+settings.type,
+settings.maxWidth,
+settings.maxHeight,
+settings.quality
 );
-}
 
-const extension=
-file.name.split(".").pop().toLowerCase();
 
-const path=
-currentUser.id+
-"/"+
-folder+
-"/"+
-Date.now()+
-"-"+
-Math.random().toString(36).slice(2)+
-"."+
-extension;
+/*
+ * WebP siempre.
+ */
 
-const result=
+const path =
+currentUser.id +
+"/" +
+folder +
+"/" +
+crypto.randomUUID() +
+".webp";
+
+
+const upload =
 await supabaseClient
 .storage
 .from("profiles")
 .upload(
 path,
-file,
+blob,
 {
 upsert:false,
-contentType:file.type
+contentType:"image/webp",
+cacheControl:"31536000"
 }
 );
 
-if(result.error){
-throw result.error;
+
+if(upload.error){
+
+throw upload.error;
+
 }
 
-const publicResult=
+
+const publicResult =
 supabaseClient
 .storage
 .from("profiles")
 .getPublicUrl(path);
 
-return publicResult.data.publicUrl;
+
+const newUrl =
+publicResult.data.publicUrl;
+
+
+/*
+ * Elimina el anterior DESPUÉS
+ * de haber subido correctamente
+ * el nuevo.
+ */
+
+if(oldUrl){
+
+await deleteOldFile(oldUrl);
 
 }
 
 
-/* ================================
-   SAVE CHANGES
-================================ */
+return newUrl;
+
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
 
 $("save").addEventListener(
 "click",
 async function(){
 
-const button=$("save");
+const button =
+$("save");
 
 try{
 
@@ -888,91 +1189,136 @@ throw new Error(
 
 }
 
-button.disabled=true;
-button.textContent="SAVING...";
 
-message("Guardando cambios...");
-
-
-let avatarUrl=
-currentProfile.avatar_url||null;
-
-let bannerUrl=
-currentProfile.banner_url||null;
-
-let backgroundUrl=
-currentProfile.background_url||null;
+button.disabled = true;
+button.textContent = "SAVING...";
 
 
-/* AVATAR */
+message(
+"Guardando cambios..."
+);
 
-const avatarFile=
+
+let avatarUrl =
+currentProfile.avatar_url || null;
+
+let bannerUrl =
+currentProfile.banner_url || null;
+
+let backgroundUrl =
+currentProfile.background_url || null;
+
+
+/* =========================
+   AVATAR
+========================= */
+
+const avatarFile =
 $("avatarFile").files[0];
 
 if(avatarFile){
 
-message("Subiendo foto de perfil...");
-
-avatarUrl=
-await uploadFile(
+avatarUrl =
+await uploadCompressedImage(
 avatarFile,
-"avatars"
+"avatars",
+avatarUrl,
+{
+message:"Comprimiendo foto de perfil...",
+type:"avatar",
+maxWidth:800,
+maxHeight:800,
+quality:.82
+}
 );
 
 }
 
 
-/* BANNER */
+/* =========================
+   BANNER
+========================= */
 
-const bannerFile=
+const bannerFile =
 $("bannerFile").files[0];
 
 if(bannerFile){
 
-message("Subiendo banner...");
-
-bannerUrl=
-await uploadFile(
+bannerUrl =
+await uploadCompressedImage(
 bannerFile,
-"banners"
+"banners",
+bannerUrl,
+{
+message:"Comprimiendo banner...",
+type:"banner",
+maxWidth:1920,
+maxHeight:700,
+quality:.82
+}
 );
 
 }
 
 
-/* BACKGROUND */
+/* =========================
+   BACKGROUND
+========================= */
 
-const backgroundFile=
+const backgroundFile =
 $("backgroundFile").files[0];
 
 if(backgroundFile){
 
-message("Subiendo fondo...");
-
-backgroundUrl=
-await uploadFile(
+backgroundUrl =
+await uploadCompressedImage(
 backgroundFile,
-"backgrounds"
+"backgrounds",
+backgroundUrl,
+{
+message:"Comprimiendo fondo...",
+type:"background",
+maxWidth:1920,
+maxHeight:1080,
+quality:.78
+}
 );
 
 }
 
 
-/* SOCIALS */
+/* =========================
+   SOCIALS
+========================= */
 
-const socialLinks={
-discord:$("discord").value.trim(),
-instagram:$("instagram").value.trim(),
-tiktok:$("tiktok").value.trim(),
-youtube:$("youtube").value.trim(),
-github:$("github").value.trim(),
-twitter:$("twitter").value.trim()
+const socialLinks = {
+
+discord:
+$("discord").value.trim(),
+
+instagram:
+$("instagram").value.trim(),
+
+tiktok:
+$("tiktok").value.trim(),
+
+youtube:
+$("youtube").value.trim(),
+
+github:
+$("github").value.trim(),
+
+twitter:
+$("twitter").value.trim()
+
 };
 
 
-/* DATA */
+/* =========================
+   DATA
+========================= */
 
-const data={
+const data = {
 
 username:
 $("username").value.trim(),
@@ -1007,9 +1353,11 @@ $("profileEffect").value
 };
 
 
-/* UPDATE */
+/* =========================
+   DATABASE
+========================= */
 
-const result=
+const result =
 await supabaseClient
 .from("profiles")
 .update(data)
@@ -1017,55 +1365,87 @@ await supabaseClient
 .select()
 .single();
 
+
 if(result.error){
+
 throw result.error;
+
 }
 
-currentProfile=result.data;
+
+currentProfile =
+result.data;
 
 
-/* PREVIEW */
+/* =========================
+   UPDATE PREVIEW
+========================= */
 
 if(avatarUrl){
-$("avatar").src=avatarUrl;
+
+$("avatar").src =
+avatarUrl;
+
 }
 
 if(bannerUrl){
 
-$("banner").style.backgroundImage=
-"url('"+bannerUrl+"')";
+$("banner").style.backgroundImage =
+"url(" +
+JSON.stringify(
+bannerUrl
+) +
+")";
 
 }
 
 if(backgroundUrl){
 
-$("preview").style.backgroundImage=
-"url('"+backgroundUrl+"')";
+$("preview").style.backgroundImage =
+"url(" +
+JSON.stringify(
+backgroundUrl
+) +
+")";
 
 }
+
 
 updatePreview();
 
 
-/* RESET FILES */
+/* =========================
+   CLEAR INPUTS
+========================= */
 
-$("avatarFile").value="";
-$("bannerFile").value="";
-$("backgroundFile").value="";
+$("avatarFile").value = "";
+$("bannerFile").value = "";
+$("backgroundFile").value = "";
 
+
+/* =========================
+   SUCCESS
+========================= */
 
 message(
 "✓ Cambios guardados correctamente.",
 "success"
 );
 
-button.textContent="SAVE CHANGES";
-button.disabled=false;
+
+button.textContent =
+"SAVE CHANGES";
+
+button.disabled = false;
 
 
-/* CREATE LINK AFTER SAVE */
+/*
+ * Genera automáticamente
+ * el enlace del perfil.
+ */
 
 generateProfileLink(false);
+
 
 }catch(error){
 
@@ -1074,36 +1454,48 @@ console.error(
 error
 );
 
+
 message(
-"ERROR: "+
-(error.message||"No se pudieron guardar los cambios."),
+"ERROR: " +
+(
+error.message ||
+"No se pudieron guardar los cambios."
+),
 "error"
 );
 
-button.textContent="SAVE CHANGES";
-button.disabled=false;
+
+button.textContent =
+"SAVE CHANGES";
+
+button.disabled = false;
 
 }
 
 });
 
 
-/* ================================
+/* =========================================
    GENERATE PROFILE LINK
-================================ */
+========================================= */
 
-function generateProfileLink(showMessage=true){
+function generateProfileLink(
+showMessage=true
+){
 
-const username=
+const username =
 $("username").value.trim();
+
 
 if(!username){
 
 if(showMessage){
+
 message(
 "Primero escribe un username.",
 "error"
 );
+
 }
 
 return null;
@@ -1112,19 +1504,20 @@ return null;
 
 
 /*
-   profile.html debe existir
-   en la misma carpeta que customize.html
-*/
+ * Mantiene el sistema actual.
+ */
 
-const link=
-window.location.origin+
-"/profile.html?username="+
+const link =
+window.location.origin +
+"/profile.html?username=" +
 encodeURIComponent(username);
 
 
-$("profileLink").value=link;
+$("profileLink").value =
+link;
 
-$("profileLinkBox").style.display="block";
+$("profileLinkBox").style.display =
+"block";
 
 
 if(showMessage){
@@ -1136,236 +1529,12 @@ message(
 
 }
 
+
 return link;
 
 }
 
 
-/* ================================
+/* =========================================
    GENERATE BUTTON
-================================ */
-
-$("generateProfileLink")
-.addEventListener(
-"click",
-function(){
-
-generateProfileLink(true);
-
-});
-
-
-/* ================================
-   COPY LINK
-================================ */
-
-$("copyLink")
-.addEventListener(
-"click",
-async function(){
-
-const link=$("profileLink").value;
-
-if(!link){
-return;
-}
-
-try{
-
-await navigator.clipboard.writeText(link);
-
-this.textContent="COPIED ✓";
-
-setTimeout(
-()=>{
-this.textContent="COPY LINK";
-},
-1500
-);
-
-}catch(error){
-
-$("profileLink").select();
-
-document.execCommand("copy");
-
-this.textContent="COPIED ✓";
-
-setTimeout(
-()=>{
-this.textContent="COPY LINK";
-},
-1500
-);
-
-}
-
-});
-
-
-/* ================================
-   VIEW PROFILE
-================================ */
-
-$("viewProfile")
-.addEventListener(
-"click",
-function(){
-
-const username=
-$("username").value.trim();
-
-if(!username){
-
-message(
-"Primero escribe un username.",
-"error"
-);
-
-return;
-
-}
-
-const url=
-window.location.origin+
-"/profile.html?username="+
-encodeURIComponent(username);
-
-window.location.href=url;
-
-});
-
-
-/* ================================
-   LIVE PREVIEW
-================================ */
-
-[
-"username",
-"displayName",
-"bio",
-"website",
-"discord",
-"instagram",
-"tiktok",
-"youtube",
-"github",
-"twitter",
-"accentColor",
-"profileEffect"
-].forEach(id=>{
-
-$(id).addEventListener(
-"input",
-updatePreview
-);
-
-$(id).addEventListener(
-"change",
-updatePreview
-);
-
-});
-
-
-/* ================================
-   USERNAME
-================================ */
-
-$("username").addEventListener(
-"input",
-function(){
-
-this.value=
-this.value
-.toLowerCase()
-.replace(/[^a-z0-9_]/g,"");
-
-updatePreview();
-
-});
-
-
-/* ================================
-   AVATAR PREVIEW
-================================ */
-
-$("avatarFile").addEventListener(
-"change",
-function(){
-
-const file=this.files[0];
-
-if(!file){
-return;
-}
-
-$("avatar").src=
-URL.createObjectURL(file);
-
-});
-
-
-/* ================================
-   BANNER PREVIEW
-================================ */
-
-$("bannerFile").addEventListener(
-"change",
-function(){
-
-const file=this.files[0];
-
-if(!file){
-return;
-}
-
-const url=
-URL.createObjectURL(file);
-
-$("banner").style.backgroundImage=
-"url('"+url+"')";
-
-});
-
-
-/* ================================
-   BACKGROUND PREVIEW
-================================ */
-
-$("backgroundFile").addEventListener(
-"change",
-function(){
-
-const file=this.files[0];
-
-if(!file){
-return;
-}
-
-const url=
-URL.createObjectURL(file);
-
-$("preview").style.backgroundImage=
-"url('"+url+"')";
-
-});
-
-
-/* ================================
-   INITIALIZE
-================================ */
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-updatePreview();
-loadUser();
-
-});
-
-</script>
-
-</body>
-</html>
+=====================================
