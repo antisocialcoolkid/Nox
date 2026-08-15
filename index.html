@@ -1,345 +1,1070 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NØX — Your identity, your void.</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
-        content="NØX — Create a profile that feels like you."
+        content="NØX — Your identity. Your space."
     >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>NØX — Your identity.</title>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="style.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:#030303;
+
+    color:#fff;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    overflow-x:hidden;
+
+}
+
+
+/* =================================
+   BACKGROUND
+================================= */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-5;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,255,255,.055),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,255,255,.025),
+            transparent 30%
+        ),
+
+        #030303;
+
+}
+
+
+.grid{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-4;
+
+    opacity:.35;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        70px 70px;
+
+}
+
+
+.noise{
+
+    position:fixed;
+
+    inset:-50%;
+
+    z-index:-3;
+
+    opacity:.025;
+
+    pointer-events:none;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
+    animation:
+        noise .2s infinite;
+
+}
+
+
+@keyframes noise{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    25%{
+        transform:translate(2%,1%);
+    }
+
+    50%{
+        transform:translate(-1%,2%);
+    }
+
+    75%{
+        transform:translate(1%,-2%);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+
+}
+
+
+/* =================================
+   NAVBAR
+================================= */
+
+nav{
+
+    position:relative;
+
+    z-index:10;
+
+    width:
+        min(1200px, calc(100% - 40px));
+
+    height:80px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+.logo{
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:25px;
+
+    font-weight:900;
+
+    letter-spacing:-2px;
+
+}
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.nav-link{
+
+    color:#666;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    padding:
+        10px 13px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+
+.nav-link:hover{
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.04);
+
+}
+
+
+.nav-login{
+
+    color:#fff;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero{
+
+    min-height:
+        calc(100vh - 80px);
+
+    width:
+        min(1100px, calc(100% - 40px));
+
+    margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        70px 0 100px;
+
+}
+
+
+.status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#555;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    letter-spacing:2.5px;
+
+    text-transform:uppercase;
+
+    animation:
+        fadeUp .8s ease both;
+
+}
+
+
+.status-dot{
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.8);
+
+}
+
+
+.hero h1{
+
+    margin-top:25px;
+
+    font-size:
+        clamp(65px, 13vw, 155px);
+
+    line-height:.85;
+
+    letter-spacing:
+        -8px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff 0%,
+            #aaa 48%,
+            #444 100%
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        fadeUp .9s .08s ease both;
+
+}
+
+
+.hero-subtitle{
+
+    margin-top:30px;
+
+    max-width:550px;
+
+    color:#666;
+
+    font-size:
+        clamp(13px, 2vw, 16px);
+
+    line-height:1.7;
+
+    animation:
+        fadeUp .9s .16s ease both;
+
+}
+
+
+.hero-subtitle strong{
+
+    color:#aaa;
+
+    font-weight:600;
+
+}
+
+
+/* =================================
+   BUTTONS
+================================= */
+
+.buttons{
+
+    margin-top:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    animation:
+        fadeUp .9s .24s ease both;
+
+}
+
+
+.btn{
+
+    min-width:170px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.3px;
+
+    transition:
+        transform .25s,
+        background .25s,
+        border .25s,
+        box-shadow .25s;
+
+}
+
+
+.btn-primary{
+
+    background:#fff;
+
+    color:#000;
+
+    border:
+        1px solid #fff;
+
+}
+
+
+.btn-primary:hover{
+
+    transform:
+        translateY(-3px);
+
+    background:#ddd;
+
+    box-shadow:
+        0 15px 40px
+        rgba(255,255,255,.12);
+
+}
+
+
+.btn-secondary{
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:#aaa;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+}
+
+
+.btn-secondary:hover{
+
+    transform:
+        translateY(-3px);
+
+    color:#fff;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border-color:
+        rgba(255,255,255,.2);
+
+}
+
+
+/* =================================
+   DISCORD
+================================= */
+
+.discord{
+
+    margin-top:65px;
+
+    padding:
+        15px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.055);
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.018);
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    animation:
+        fadeUp .9s .35s ease both;
+
+}
+
+
+.discord:hover{
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(255,255,255,.13);
+
+    background:
+        rgba(255,255,255,.035);
+
+}
+
+
+.discord-icon{
+
+    width:28px;
+
+    height:28px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:8px;
+
+    background:#111;
+
+    color:#aaa;
+
+    font-size:13px;
+
+    font-weight:800;
+
+}
+
+
+.discord-text{
+
+    text-align:left;
+
+}
+
+
+.discord-title{
+
+    color:#aaa;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+
+.discord-subtitle{
+
+    margin-top:3px;
+
+    color:#444;
+
+    font-size:8px;
+
+}
+
+
+/* =================================
+   FEATURE CARDS
+================================= */
+
+.features{
+
+    width:
+        min(1050px, calc(100% - 40px));
+
+    margin:
+        0 auto 100px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:10px;
+
+}
+
+
+.feature{
+
+    min-height:190px;
+
+    padding:25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.008)
+        );
+
+    transition:.3s;
+
+}
+
+
+.feature:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.13);
+
+}
+
+
+.feature-number{
+
+    color:#333;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+}
+
+
+.feature h3{
+
+    margin-top:45px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+
+.feature p{
+
+    margin-top:10px;
+
+    color:#555;
+
+    font-size:10px;
+
+    line-height:1.7;
+
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer{
+
+    width:
+        min(1050px, calc(100% - 40px));
+
+    margin:auto;
+
+    padding:
+        25px 0 35px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.05);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#333;
+
+    font-size:8px;
+
+    letter-spacing:1px;
+
+}
+
+
+/* =================================
+   ANIMATION
+================================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media(max-width:700px){
+
+    nav{
+
+        width:
+            calc(100% - 25px);
+
+        height:70px;
+
+    }
+
+
+    .nav-link:not(.nav-login){
+
+        display:none;
+
+    }
+
+
+    .hero{
+
+        width:
+            calc(100% - 25px);
+
+        padding-top:45px;
+
+    }
+
+
+    .hero h1{
+
+        letter-spacing:
+            -5px;
+
+    }
+
+
+    .buttons{
+
+        width:100%;
+
+        flex-direction:column;
+
+    }
+
+
+    .btn{
+
+        width:
+            min(100%, 300px);
+
+    }
+
+
+    .features{
+
+        width:
+            calc(100% - 25px);
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    footer{
+
+        width:
+            calc(100% - 25px);
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <!-- Ambient background -->
-    <div class="noise"></div>
-    <div class="orb orb-one"></div>
-    <div class="orb orb-two"></div>
 
-    <!-- Navigation -->
-    <header class="navbar">
+<div class="background"></div>
 
-        <a href="#" class="logo">
-            NØX
-        </a>
+<div class="grid"></div>
 
-        <nav class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#preview">Preview</a>
-            <a href="#about">About</a>
-        </nav>
+<div class="noise"></div>
+
+
+<!-- NAV -->
+
+<nav>
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        NØX
+    </a>
+
+
+    <div class="nav-links">
 
         <a
-            class="discord-nav"
-            href="https://discord.com/invite/w986WYqQuT"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#features"
+            class="nav-link"
         >
-            <span class="discord-dot"></span>
-            Discord
+            FEATURES
         </a>
 
-    </header>
 
+        <a
+            href="login.html"
+            class="nav-link nav-login"
+        >
+            LOGIN
+        </a>
 
-    <!-- Hero -->
-    <main>
+    </div>
 
-        <section class="hero">
+</nav>
 
-            <div class="hero-content">
 
-                <div class="status">
-                    <span class="status-dot"></span>
-                    NØX IS EVOLVING
-                </div>
+<!-- HERO -->
 
-                <h1>
-                    YOUR IDENTITY.
-                    <span>YOUR VOID.</span>
-                </h1>
+<section class="hero">
 
-                <p>
-                    A new way to express yourself.
-                    Create a profile that doesn't look like everyone else's.
-                </p>
 
-                <div class="hero-buttons">
+    <div class="status">
 
-                    <a href="#" class="primary-btn">
-                        Create your profile
-                        <span>↗</span>
-                    </a>
+        <span class="status-dot"></span>
 
-                    <a
-                        href="https://discord.com/invite/w986WYqQuT"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="secondary-btn"
-                    >
-                        Join our Discord
-                    </a>
+        NØX IS ONLINE
 
-                </div>
+    </div>
 
-            </div>
 
+    <h1>
+        NØX
+    </h1>
 
-            <!-- Floating profile preview -->
-            <div class="hero-preview">
 
-                <div class="profile-glow"></div>
+    <p class="hero-subtitle">
 
-                <div class="profile-card">
+        Your identity.
+        <strong>Your space.</strong>
 
-                    <div class="profile-top">
+        <br>
 
-                        <div class="avatar">
-                            N
-                        </div>
+        Create a profile that feels
+        like you.
 
-                        <div class="online"></div>
+    </p>
 
-                    </div>
 
-                    <h3>nox</h3>
+    <div class="buttons">
 
-                    <div class="username">
-                        @youridentity
-                    </div>
 
-                    <p class="bio">
-                        somewhere between reality
-                        and the void.
-                    </p>
+        <!-- IMPORTANTE:
+             ESTE ES UN ENLACE,
+             NO UN FORMULARIO -->
 
-                    <div class="profile-links">
+        <a
+            href="register.html"
+            class="btn btn-primary"
+        >
+            CREATE YOUR PROFILE
+        </a>
 
-                        <div>Discord</div>
-                        <div>Instagram</div>
-                        <div>YouTube</div>
 
-                    </div>
+        <a
+            href="login.html"
+            class="btn btn-secondary"
+        >
+            LOGIN
+        </a>
 
-                    <div class="views">
-                        1,284 profile views
-                    </div>
 
-                </div>
+    </div>
 
-            </div>
 
-        </section>
+    <!-- DISCORD -->
 
+    <a
+        href="https://discord.gg/w986WYqQuT"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="discord"
+    >
 
-        <!-- Features -->
-        <section class="features" id="features">
-
-            <div class="section-heading">
-
-                <span>WHY NØX</span>
-
-                <h2>
-                    Built different.
-                </h2>
-
-                <p>
-                    Everything you need to create a profile
-                    that actually feels like yours.
-                </p>
-
-            </div>
-
-
-            <div class="feature-grid">
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        01
-                    </div>
-
-                    <h3>
-                        Total control
-                    </h3>
-
-                    <p>
-                        Customize your profile, colors, background,
-                        links and identity without limits.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        02
-                    </div>
-
-                    <h3>
-                        Your aesthetic
-                    </h3>
-
-                    <p>
-                        Build something unique with themes,
-                        effects, animations and custom backgrounds.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        03
-                    </div>
-
-                    <h3>
-                        Made for you
-                    </h3>
-
-                    <p>
-                        Your profile isn't just a collection of links.
-                        It's your digital identity.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- Preview -->
-        <section class="preview-section" id="preview">
-
-            <div class="preview-text">
-
-                <span>YOUR PROFILE</span>
-
-                <h2>
-                    More than a link.
-                </h2>
-
-                <p>
-                    Turn your online identity into something
-                    people actually remember.
-                </p>
-
-                <a
-                    href="https://discord.com/invite/w986WYqQuT"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="outline-btn"
-                >
-                    Get help on Discord →
-                </a>
-
-            </div>
-
-
-            <div class="large-profile">
-
-                <div class="large-avatar">
-                    N
-                </div>
-
-                <h3>
-                    NØX
-                </h3>
-
-                <span>
-                    @nox
-                </span>
-
-                <p>
-                    Welcome to my corner of the void.
-                </p>
-
-                <div class="social-row">
-                    <span>Discord</span>
-                    <span>Instagram</span>
-                    <span>TikTok</span>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Discord -->
-        <section class="discord-section" id="about">
-
-            <div class="discord-inner">
-
-                <div>
-
-                    <div class="discord-label">
-                        NØX COMMUNITY
-                    </div>
-
-                    <h2>
-                        Need help?
-                        <span>We're here.</span>
-                    </h2>
-
-                    <p>
-                        Join the official NØX Discord for support,
-                        updates, announcements and the community.
-                    </p>
-
-                </div>
-
-                <a
-                    href="https://discord.com/invite/w986WYqQuT"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="discord-big"
-                >
-                    Join Discord
-                    <span>↗</span>
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer>
-
-        <div class="footer-logo">
-            NØX
+        <div class="discord-icon">
+            D
         </div>
 
-        <div class="footer-right">
-            YOUR IDENTITY. YOUR VOID.
+
+        <div class="discord-text">
+
+            <div class="discord-title">
+                NØX SUPPORT
+            </div>
+
+            <div class="discord-subtitle">
+                Join our Discord community →
+            </div>
+
         </div>
 
-        <div class="footer-bottom">
-            © 2026 NØX. All rights reserved.
+    </a>
+
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section
+    id="features"
+    class="features"
+>
+
+
+    <div class="feature">
+
+        <div class="feature-number">
+            01 / IDENTITY
         </div>
 
-    </footer>
+        <h3>
+            Your profile.
+        </h3>
+
+        <p>
+            Create your own identity
+            with your name, avatar,
+            bio and personal links.
+        </p>
+
+    </div>
 
 
-    <script src="script.js"></script>
+    <div class="feature">
+
+        <div class="feature-number">
+            02 / CUSTOM
+        </div>
+
+        <h3>
+            Make it yours.
+        </h3>
+
+        <p>
+            Customize your profile
+            with colors, links and
+            your own aesthetic.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-number">
+            03 / CONNECT
+        </div>
+
+        <h3>
+            Share everything.
+        </h3>
+
+        <p>
+            One profile for all
+            the places where
+            people can find you.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <span>
+        NØX
+    </span>
+
+    <span>
+        YOUR IDENTITY. YOUR SPACE.
+    </span>
+
+    <span>
+        © 2026 NØX
+    </span>
+
+</footer>
+
 
 </body>
-  </html>
+
+    </html>
