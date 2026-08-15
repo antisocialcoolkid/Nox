@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>NØX — Customize</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
     --accent:#ffffff;
@@ -177,27 +171,40 @@ select:focus{
     font-size:11px;
 }
 
-.save{
+/* BUTTONS */
+
+.save,
+.generate{
     width:100%;
     height:52px;
-    border:0;
     border-radius:11px;
-    background:#fff;
-    color:#000;
     font-weight:900;
     cursor:pointer;
     transition:.2s;
 }
 
-.save:hover{
+.save{
+    border:0;
+    background:#fff;
+    color:#000;
+}
+
+.save:hover,
+.generate:hover{
     transform:translateY(-2px);
-    box-shadow:0 15px 40px rgba(255,255,255,.1);
 }
 
 .save:disabled{
     opacity:.5;
     cursor:wait;
     transform:none;
+}
+
+.generate{
+    margin-top:10px;
+    border:1px solid #292929;
+    background:#111;
+    color:#fff;
 }
 
 .message{
@@ -215,6 +222,43 @@ select:focus{
     color:#ff5555;
 }
 
+/* PROFILE LINK */
+
+.profile-link-box{
+    display:none;
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid #181818;
+}
+
+.profile-link-row{
+    display:flex;
+    gap:8px;
+}
+
+.profile-link-row input{
+    margin:0;
+}
+
+.copy{
+    width:110px;
+    border:1px solid #292929;
+    border-radius:10px;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+}
+
+.view-profile{
+    width:100%;
+    height:46px;
+    margin-top:10px;
+    border:1px solid #292929;
+    border-radius:10px;
+    background:#080808;
+    color:#fff;
+    cursor:pointer;
+}
 
 /* PREVIEW */
 
@@ -223,6 +267,8 @@ select:focus{
     position:sticky;
     top:20px;
     height:max-content;
+    background-size:cover;
+    background-position:center;
 }
 
 .banner{
@@ -286,6 +332,7 @@ select:focus{
 }
 
 .website{
+    display:none;
     color:var(--accent);
     font-size:11px;
     text-decoration:none;
@@ -348,7 +395,6 @@ select:focus{
         top:0;
         order:-1;
     }
-
 }
 
 @media(max-width:550px){
@@ -361,39 +407,34 @@ select:focus{
         font-size:29px;
     }
 
+    .profile-link-row{
+        flex-direction:column;
+    }
+
+    .copy{
+        width:100%;
+        height:45px;
+    }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
 <div class="container">
 
 <div class="header">
-
-<div class="title">
-Customize
+    <div class="title">Customize</div>
+    <div class="subtitle">
+        Customize your NØX identity.
+    </div>
 </div>
-
-<div class="subtitle">
-Customize your NØX identity.
-</div>
-
-</div>
-
 
 <div class="layout">
 
-
-<!-- =================================
-     EDITOR
-================================= -->
+<!-- EDITOR -->
 
 <div class="card">
-
 
 <!-- IDENTITY -->
 
@@ -403,10 +444,7 @@ Customize your NØX identity.
 IDENTITY
 </div>
 
-
-<label>
-USERNAME
-</label>
+<label>USERNAME</label>
 
 <input
     id="username"
@@ -420,10 +458,7 @@ Username actual. El cambio de username
 se controla por separado.
 </div>
 
-
-<label>
-DISPLAY NAME
-</label>
+<label>DISPLAY NAME</label>
 
 <input
     id="displayName"
@@ -431,20 +466,14 @@ DISPLAY NAME
     maxlength="30"
 >
 
-
-<label>
-BIO
-</label>
+<label>BIO</label>
 
 <textarea
     id="bio"
     maxlength="160"
 ></textarea>
 
-
-<label>
-WEBSITE
-</label>
+<label>WEBSITE</label>
 
 <input
     id="website"
@@ -463,13 +492,9 @@ WEBSITE
 MEDIA
 </div>
 
-
-<label>
-PROFILE PICTURE
-</label>
+<label>PROFILE PICTURE</label>
 
 <label class="file">
-
 📷 CHOOSE PROFILE PHOTO
 
 <input
@@ -480,13 +505,9 @@ PROFILE PICTURE
 
 </label>
 
-
-<label>
-BANNER
-</label>
+<label>BANNER</label>
 
 <label class="file">
-
 🖼️ CHOOSE BANNER
 
 <input
@@ -497,13 +518,9 @@ BANNER
 
 </label>
 
-
-<label>
-BACKGROUND
-</label>
+<label>BACKGROUND</label>
 
 <label class="file">
-
 🌌 CHOOSE BACKGROUND
 
 <input
@@ -527,35 +544,17 @@ SOCIAL LINKS
 
 <div class="social-grid">
 
-<input
-    id="discord"
-    placeholder="Discord"
->
+<input id="discord" placeholder="Discord">
 
-<input
-    id="instagram"
-    placeholder="Instagram"
->
+<input id="instagram" placeholder="Instagram">
 
-<input
-    id="tiktok"
-    placeholder="TikTok"
->
+<input id="tiktok" placeholder="TikTok">
 
-<input
-    id="youtube"
-    placeholder="YouTube"
->
+<input id="youtube" placeholder="YouTube">
 
-<input
-    id="github"
-    placeholder="GitHub"
->
+<input id="github" placeholder="GitHub">
 
-<input
-    id="twitter"
-    placeholder="X / Twitter"
->
+<input id="twitter" placeholder="X / Twitter">
 
 </div>
 
@@ -570,10 +569,7 @@ SOCIAL LINKS
 STYLE
 </div>
 
-
-<label>
-ACCENT COLOR
-</label>
+<label>ACCENT COLOR</label>
 
 <div class="color-row">
 
@@ -592,31 +588,19 @@ ACCENT COLOR
 
 </div>
 
-
 <br>
 
-
-<label>
-PROFILE EFFECT
-</label>
+<label>PROFILE EFFECT</label>
 
 <select id="profileEffect">
 
-<option value="none">
-None
-</option>
+<option value="none">None</option>
 
-<option value="floating">
-Floating
-</option>
+<option value="floating">Floating</option>
 
-<option value="glow">
-Glow
-</option>
+<option value="glow">Glow</option>
 
-<option value="pulse">
-Pulse
-</option>
+<option value="pulse">Pulse</option>
 
 </select>
 
@@ -634,40 +618,83 @@ SAVE CHANGES
 </button>
 
 
+<!-- GENERATE -->
+
+<button
+    id="generateProfileLink"
+    class="generate"
+    type="button"
+>
+🔗 GENERATE PROFILE LINK
+</button>
+
+
 <div
     id="message"
     class="message"
 ></div>
 
 
+<!-- PROFILE LINK -->
+
+<div
+    id="profileLinkBox"
+    class="profile-link-box"
+>
+
+<label>
+YOUR NØX PROFILE
+</label>
+
+<div class="profile-link-row">
+
+<input
+    id="profileLink"
+    readonly
+>
+
+<button
+    id="copyLink"
+    class="copy"
+    type="button"
+>
+COPY LINK
+</button>
+
+</div>
+
+<button
+    id="viewProfile"
+    class="view-profile"
+    type="button"
+>
+👁 VIEW PROFILE
+</button>
+
+</div>
+
 </div>
 
 
-<!-- =================================
-     PREVIEW
-================================= -->
+<!-- PREVIEW -->
 
 <div
     id="preview"
     class="preview"
 >
 
-
 <div
     id="banner"
     class="banner"
 ></div>
 
-
 <div class="profile">
-
 
 <img
     id="avatar"
     class="avatar"
     alt="Avatar"
 >
-
 
 <div
     id="previewName"
@@ -676,7 +703,6 @@ SAVE CHANGES
 NØX
 </div>
 
-
 <div
     id="previewUsername"
     class="username"
@@ -684,14 +710,12 @@ NØX
 @nox
 </div>
 
-
 <div
     id="previewBio"
     class="bio"
 >
 This is my NØX profile.
 </div>
-
 
 <a
     id="websitePreview"
@@ -760,6 +784,8 @@ X
 </div>
 
 
+<!-- BADGES -->
+
 <div class="badges">
 
 <div
@@ -792,7 +818,6 @@ X
 
 </div>
 
-
 </div>
 
 </div>
@@ -806,27 +831,49 @@ X
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="./supabase.js"></script>
-
-
 <script>
+
+/* =========================================
+   SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+    "https://qvqhanioapefeyxtbzlp.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_hJVj-2VGj2hEXUgc91QY1Q_zGjw9qp1";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================================
+   STATE
+========================================= */
 
 let currentUser = null;
 
-let currentProfile = null;
+let currentProfile = {};
 
 
-/* =================================
-   HELPERS
-================================= */
+/* =========================================
+   SHORTCUT
+========================================= */
 
 const $ = id =>
     document.getElementById(id);
 
 
-function message(
+/* =========================================
+   MESSAGE
+========================================= */
+
+function showMessage(
     text,
-    type=""
+    type = ""
 ){
 
     $("message").textContent =
@@ -834,38 +881,77 @@ function message(
 
     $("message").className =
         "message " + type;
-
 }
 
 
-/* =================================
+/* =========================================
+   URL
+========================================= */
+
+function normalizeUrl(
+    value
+){
+
+    if(!value)
+        return "";
+
+    if(
+        value.startsWith("http://") ||
+        value.startsWith("https://")
+    ){
+
+        return value;
+
+    }
+
+    return "https://" + value;
+}
+
+
+/* =========================================
    PREVIEW
-================================= */
+========================================= */
 
 function updatePreview(){
 
     const username =
-        $("username").value.trim();
+        $("username")
+            .value
+            .trim();
 
-    const name =
-        $("displayName").value.trim();
+    const displayName =
+        $("displayName")
+            .value
+            .trim();
 
     const bio =
-        $("bio").value.trim();
+        $("bio")
+            .value
+            .trim();
 
     const website =
-        $("website").value.trim();
+        $("website")
+            .value
+            .trim();
+
+    const color =
+        $("accentColor")
+            .value;
 
 
     $("previewUsername")
         .textContent =
         "@" +
-        (username || "nox");
+        (
+            username ||
+            "nox"
+        );
 
 
     $("previewName")
         .textContent =
-        name || "NØX";
+        displayName ||
+        "NØX";
 
 
     $("previewBio")
@@ -876,23 +962,22 @@ function updatePreview(){
 
     $("colorValue")
         .textContent =
-        $("accentColor")
-            .value
-            .toUpperCase();
+        color.toUpperCase();
 
 
     document.documentElement
         .style
         .setProperty(
             "--accent",
-            $("accentColor").value
+            color
         );
 
 
     if(website){
 
         $("websitePreview")
-            .style.display =
+            .style
+            .display =
             "inline";
 
         $("websitePreview")
@@ -905,11 +990,11 @@ function updatePreview(){
             .textContent =
             website;
 
-    }
-    else{
+    }else{
 
         $("websitePreview")
-            .style.display =
+            .style
+            .display =
             "none";
 
     }
@@ -944,26 +1029,25 @@ function updatePreview(){
         "twitter",
         "twitterPreview"
     );
-
 }
 
 
-/* =================================
-   SOCIAL PREVIEW
-================================= */
+/* =========================================
+   SOCIAL
+========================================= */
 
 function updateSocial(
-    input,
-    output
+    inputId,
+    outputId
 ){
 
     const value =
-        $(input)
+        $(inputId)
             .value
             .trim();
 
     const element =
-        $(output);
+        $(outputId);
 
 
     if(!value){
@@ -980,50 +1064,19 @@ function updateSocial(
         "inline-block";
 
     element.href =
-        normalizeUrl(value);
-
+        normalizeUrl(
+            value
+        );
 }
 
 
-function normalizeUrl(value){
-
-    if(
-        value.startsWith(
-            "http://"
-        ) ||
-        value.startsWith(
-            "https://"
-        )
-    ){
-
-        return value;
-
-    }
-
-    return "https://" + value;
-
-}
-
-
-/* =================================
+/* =========================================
    LOAD USER
-================================= */
+========================================= */
 
 async function loadUser(){
 
     try{
-
-        if(
-            typeof supabaseClient ===
-            "undefined"
-        ){
-
-            throw new Error(
-                "supabaseClient no está cargado."
-            );
-
-        }
-
 
         const result =
             await supabaseClient
@@ -1031,8 +1084,11 @@ async function loadUser(){
                 .getUser();
 
 
-        if(result.error)
+        if(result.error){
+
             throw result.error;
+
+        }
 
 
         currentUser =
@@ -1041,7 +1097,7 @@ async function loadUser(){
 
         if(!currentUser){
 
-            message(
+            showMessage(
                 "No hay una sesión iniciada.",
                 "error"
             );
@@ -1056,21 +1112,24 @@ async function loadUser(){
     }
     catch(error){
 
-        console.error(error);
+        console.error(
+            "NØX USER ERROR:",
+            error
+        );
 
-        message(
-            error.message,
+        showMessage(
+            error.message ||
+            "No se pudo cargar el usuario.",
             "error"
         );
 
     }
-
 }
 
 
-/* =================================
+/* =========================================
    LOAD PROFILE
-================================= */
+========================================= */
 
 async function loadProfile(){
 
@@ -1085,13 +1144,18 @@ async function loadProfile(){
             .maybeSingle();
 
 
-    if(result.error)
+    if(result.error){
+
         throw result.error;
+
+    }
 
 
     if(!result.data){
 
-        message(
+        currentProfile = {};
+
+        showMessage(
             "No existe tu perfil.",
             "error"
         );
@@ -1117,7 +1181,7 @@ async function loadProfile(){
 
     $("bio").value =
         currentProfile.bio ||
-        "This is my NØX profile.";
+        "";
 
 
     $("website").value =
@@ -1135,7 +1199,9 @@ async function loadProfile(){
         "none";
 
 
-    if(currentProfile.avatar_url){
+    if(
+        currentProfile.avatar_url
+    ){
 
         $("avatar").src =
             currentProfile.avatar_url;
@@ -1143,12 +1209,26 @@ async function loadProfile(){
     }
 
 
-    if(currentProfile.banner_url){
+    if(
+        currentProfile.banner_url
+    ){
 
         $("banner")
             .style
             .backgroundImage =
             `url("${currentProfile.banner_url}")`;
+
+    }
+
+
+    if(
+        currentProfile.background_url
+    ){
+
+        $("preview")
+            .style
+            .backgroundImage =
+            `url("${currentProfile.background_url}")`;
 
     }
 
@@ -1159,22 +1239,28 @@ async function loadProfile(){
 
 
     $("discord").value =
-        socials.discord || "";
+        socials.discord ||
+        "";
 
     $("instagram").value =
-        socials.instagram || "";
+        socials.instagram ||
+        "";
 
     $("tiktok").value =
-        socials.tiktok || "";
+        socials.tiktok ||
+        "";
 
     $("youtube").value =
-        socials.youtube || "";
+        socials.youtube ||
+        "";
 
     $("github").value =
-        socials.github || "";
+        socials.github ||
+        "";
 
     $("twitter").value =
-        socials.twitter || "";
+        socials.twitter ||
+        "";
 
 
     updatePreview();
@@ -1182,9 +1268,9 @@ async function loadProfile(){
 }
 
 
-/* =================================
-   FILE UPLOAD
-================================= */
+/* =========================================
+   UPLOAD
+========================================= */
 
 async function uploadFile(
     file,
@@ -1202,7 +1288,7 @@ async function uploadFile(
     ){
 
         throw new Error(
-            "Solo puedes subir imágenes."
+            "El archivo debe ser una imagen."
         );
 
     }
@@ -1243,15 +1329,21 @@ async function uploadFile(
             .from("profiles")
             .upload(
                 path,
-                file
+                file,
+                {
+                    upsert:false
+                }
             );
 
 
-    if(upload.error)
+    if(upload.error){
+
         throw upload.error;
 
+    }
 
-    const result =
+
+    const publicUrl =
         supabaseClient
             .storage
             .from("profiles")
@@ -1260,136 +1352,15 @@ async function uploadFile(
             );
 
 
-    return result
+    return publicUrl
         .data
         .publicUrl;
-
 }
 
 
-/* =================================
-   LIVE PREVIEW
-================================= */
-
-[
-    "username",
-    "displayName",
-    "bio",
-    "website",
-    "discord",
-    "instagram",
-    "tiktok",
-    "youtube",
-    "github",
-    "twitter",
-    "accentColor"
-]
-.forEach(id => {
-
-    $(id)
-        .addEventListener(
-            "input",
-            updatePreview
-        );
-
-});
-
-
-$("username")
-.addEventListener(
-    "input",
-    function(){
-
-        this.value =
-            this.value
-                .toLowerCase()
-                .replace(
-                    /[^a-z0-9_]/g,
-                    ""
-                );
-
-    }
-);
-
-
-/* =================================
-   AVATAR PREVIEW
-================================= */
-
-$("avatarFile")
-.addEventListener(
-    "change",
-    function(){
-
-        const file =
-            this.files[0];
-
-        if(!file)
-            return;
-
-
-        $("avatar").src =
-            URL.createObjectURL(
-                file
-            );
-
-    }
-);
-
-
-/* =================================
-   BANNER PREVIEW
-================================= */
-
-$("bannerFile")
-.addEventListener(
-    "change",
-    function(){
-
-        const file =
-            this.files[0];
-
-        if(!file)
-            return;
-
-
-        $("banner")
-            .style
-            .backgroundImage =
-            `url("${URL.createObjectURL(file)}")`;
-
-    }
-);
-
-
-/* =================================
-   BACKGROUND PREVIEW
-================================= */
-
-$("backgroundFile")
-.addEventListener(
-    "change",
-    function(){
-
-        const file =
-            this.files[0];
-
-        if(!file)
-            return;
-
-
-        $("preview")
-            .style
-            .backgroundImage =
-            `url("${URL.createObjectURL(file)}")`;
-
-    }
-);
-
-
-/* =================================
+/* =========================================
    SAVE
-================================= */
+========================================= */
 
 $("save")
 .addEventListener(
@@ -1418,7 +1389,7 @@ $("save")
                 "SAVING...";
 
 
-            message(
+            showMessage(
                 "Guardando cambios..."
             );
 
@@ -1455,7 +1426,7 @@ $("save")
 
             if(avatarFile){
 
-                message(
+                showMessage(
                     "Subiendo foto..."
                 );
 
@@ -1470,7 +1441,7 @@ $("save")
 
             if(bannerFile){
 
-                message(
+                showMessage(
                     "Subiendo banner..."
                 );
 
@@ -1485,35 +1456,6 @@ $("save")
 
             if(backgroundFile){
 
-                message(
+                showMessage(
                     "Subiendo fondo..."
-                );
-
-                backgroundUrl =
-                    await uploadFile(
-                        backgroundFile,
-                        "backgrounds"
-                    );
-
-            }
-
-
-            const socialLinks = {
-
-                discord:
-                    $("discord")
-                        .value
-                        .trim(),
-
-                instagram:
-                    $("instagram")
-                        .value
-                        .trim(),
-
-                tiktok:
-                    $("tiktok")
-                        .value
-                        .trim(),
-
-                youtube:
-        
+                
