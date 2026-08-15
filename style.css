@@ -1,0 +1,999 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #050505;
+    --bg-soft: #090909;
+    --card: rgba(15, 15, 15, 0.72);
+    --border: rgba(255, 255, 255, 0.09);
+    --text: #ffffff;
+    --muted: #8c8c8c;
+    --soft: #cfcfcf;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
+
+    z-index: -3;
+}
+
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    opacity: 0.035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    z-index: 20;
+}
+
+.orb {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    filter: blur(150px);
+
+    opacity: 0.08;
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+.orb-one {
+    background: white;
+    top: -350px;
+    left: -250px;
+}
+
+.orb-two {
+    background: #777;
+    right: -350px;
+    top: 500px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    transition: 0.3s;
+}
+
+.logo:hover {
+    opacity: 0.65;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #777;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.discord-nav {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.025);
+
+    padding: 11px 16px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+.discord-nav:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+.discord-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    width: min(1180px, calc(100% - 40px));
+
+    min-height: 760px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 100px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: #858585;
+
+    font-size: 10px;
+
+    letter-spacing: 1.8px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 18px rgba(255,255,255,0.4);
+}
+
+.hero h1 {
+    margin-top: 30px;
+
+    font-size: clamp(55px, 7vw, 100px);
+
+    line-height: 0.92;
+
+    letter-spacing: -6px;
+
+    font-weight: 800;
+}
+
+.hero h1 span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255,255,255,0.65);
+}
+
+.hero-content > p {
+    max-width: 520px;
+
+    margin-top: 30px;
+
+    color: #777;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+.primary-btn,
+.secondary-btn,
+.outline-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border 0.3s ease;
+}
+
+.primary-btn {
+    color: black;
+
+    background: white;
+
+    padding: 15px 20px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(255,255,255,0.12);
+}
+
+.secondary-btn {
+    color: white;
+
+    border: 1px solid var(--border);
+
+    padding: 15px 20px;
+}
+
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.07);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   PROFILE PREVIEW
+========================= */
+
+.hero-preview {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 500px;
+}
+
+.profile-glow {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    filter: blur(130px);
+
+    opacity: 0.09;
+}
+
+.profile-card {
+    position: relative;
+
+    width: 320px;
+
+    padding: 32px;
+
+    border: 1px solid rgba(255,255,255,0.11);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.07),
+            rgba(255,255,255,0.015)
+        );
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,0.7),
+        inset 0 1px rgba(255,255,255,0.06);
+
+    transform: rotate(3deg);
+
+    animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0) rotate(3deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+}
+
+.profile-top {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.avatar {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 17px;
+
+    background: #151515;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    font-weight: 800;
+
+    font-size: 22px;
+}
+
+.online {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 0 15px white;
+}
+
+.profile-card h3 {
+    margin-top: 25px;
+
+    font-size: 22px;
+}
+
+.username {
+    color: #666;
+
+    margin-top: 4px;
+
+    font-size: 12px;
+}
+
+.bio {
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-top: 20px;
+}
+
+.profile-links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-top: 25px;
+}
+
+.profile-links div {
+    padding: 11px;
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    border-radius: 9px;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    background: rgba(255,255,255,0.025);
+}
+
+.views {
+    margin-top: 25px;
+
+    color: #555;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 100px auto 0;
+}
+
+.section-heading span,
+.preview-text > span,
+.discord-label {
+    color: #666;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+}
+
+.section-heading h2 {
+    margin-top: 14px;
+
+    font-size: 45px;
+
+    letter-spacing: -2px;
+}
+
+.section-heading p {
+    margin-top: 15px;
+
+    max-width: 500px;
+
+    color: #666;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 50px;
+}
+
+.feature-card {
+    min-height: 250px;
+
+    padding: 28px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.018);
+
+    transition: 0.4s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(255,255,255,0.18);
+
+    background: rgba(255,255,255,0.035);
+}
+
+.feature-number {
+    color: #444;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+.feature-card h3 {
+    margin-top: 60px;
+
+    font-size: 19px;
+}
+
+.feature-card p {
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-top: 12px;
+}
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+.preview-section {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 180px auto;
+
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    align-items: center;
+
+    gap: 100px;
+}
+
+.preview-text h2 {
+    font-size: 50px;
+
+    letter-spacing: -3px;
+
+    margin-top: 15px;
+}
+
+.preview-text p {
+    color: #666;
+
+    max-width: 420px;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    margin-top: 18px;
+}
+
+.outline-btn {
+    margin-top: 30px;
+
+    color: white;
+
+    padding: 14px 18px;
+
+    border: 1px solid var(--border);
+}
+
+.outline-btn:hover {
+    background: white;
+
+    color: black;
+}
+
+.large-profile {
+    min-height: 400px;
+
+    padding: 50px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.07),
+            transparent 50%
+        ),
+        #080808;
+}
+
+.large-avatar {
+    width: 80px;
+    height: 80px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 23px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    background: #111;
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+.large-profile h3 {
+    margin-top: 20px;
+
+    font-size: 26px;
+}
+
+.large-profile > span {
+    color: #555;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+.large-profile p {
+    color: #777;
+
+    margin-top: 20px;
+
+    font-size: 13px;
+}
+
+.social-row {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 30px;
+}
+
+.social-row span {
+    padding: 9px 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    color: #777;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   DISCORD
+========================= */
+
+.discord-section {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto 150px;
+}
+
+.discord-inner {
+    padding: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.01)
+        );
+}
+
+.discord-inner h2 {
+    font-size: 40px;
+
+    letter-spacing: -2px;
+
+    margin-top: 12px;
+}
+
+.discord-inner h2 span {
+    color: #666;
+}
+
+.discord-inner p {
+    color: #666;
+
+    max-width: 500px;
+
+    line-height: 1.7;
+
+    font-size: 13px;
+
+    margin-top: 15px;
+}
+
+.discord-big {
+    white-space: nowrap;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    color: black;
+
+    background: white;
+
+    padding: 17px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.discord-big:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 20px 50px rgba(255,255,255,0.1);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 35px 0 30px;
+
+    border-top: 1px solid rgba(255,255,255,0.06);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.footer-logo {
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+.footer-right {
+    text-align: right;
+
+    color: #444;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+
+    color: #333;
+
+    font-size: 10px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        height: 75px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+
+        padding-top: 100px;
+
+        gap: 60px;
+    }
+
+    .hero h1 {
+        font-size: clamp(52px, 15vw, 82px);
+
+        letter-spacing: -4px;
+    }
+
+    .hero-preview {
+        min-height: 450px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-section {
+        grid-template-columns: 1fr;
+
+        margin: 130px auto;
+
+        gap: 50px;
+    }
+
+    .discord-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-right {
+        text-align: left;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .navbar,
+    .hero,
+    .features,
+    .preview-section,
+    .discord-section,
+    footer {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .discord-nav {
+        padding: 9px 12px;
+    }
+
+    .hero {
+        padding-top: 75px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+
+    .profile-card {
+        width: min(320px, 90vw);
+    }
+
+    .discord-inner {
+        padding: 30px;
+    }
+
+    .discord-inner h2 {
+        font-size: 32px;
+    }
+
+    .discord-big {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+  }
