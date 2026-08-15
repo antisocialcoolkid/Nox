@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -37,10 +38,8 @@
 }
 
 :root{
-
     --bg:#030303;
     --panel:#0b0b0b;
-    --panel2:#101010;
     --border:rgba(255,255,255,.09);
     --text:#fff;
     --muted:#666;
@@ -50,28 +49,28 @@ body{
 
     min-height:100vh;
 
+    padding:30px;
+
     background:
         radial-gradient(
             circle at top,
-            rgba(255,255,255,.045),
+            rgba(255,255,255,.05),
             transparent 35%
         ),
         var(--bg);
 
-    color:var(--text);
+    color:white;
 
     font-family:
         Inter,
         Arial,
         sans-serif;
 
-    padding:30px;
-
 }
 
 .container{
 
-    width:min(1100px,100%);
+    width:min(1050px,100%);
 
     margin:auto;
 
@@ -81,17 +80,17 @@ body{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
 
-    margin-bottom:30px;
+    align-items:center;
+
+    margin-bottom:25px;
 
 }
 
 .logo{
 
-    font-size:25px;
+    font-size:26px;
 
     font-weight:900;
 
@@ -106,8 +105,6 @@ body{
     text-decoration:none;
 
     font-size:11px;
-
-    transition:.2s;
 
 }
 
@@ -125,11 +122,13 @@ body{
         1fr
         360px;
 
-    gap:22px;
+    gap:20px;
 
 }
 
 .panel{
+
+    padding:25px;
 
     border:
         1px solid
@@ -144,10 +143,7 @@ body{
             rgba(255,255,255,.01)
         );
 
-    backdrop-filter:
-        blur(20px);
-
-    padding:25px;
+    backdrop-filter:blur(20px);
 
 }
 
@@ -175,7 +171,7 @@ body{
 
 }
 
-label{
+label.title-label{
 
     display:block;
 
@@ -187,7 +183,7 @@ label{
 
     font-weight:800;
 
-    letter-spacing:1.4px;
+    letter-spacing:1.3px;
 
 }
 
@@ -224,11 +220,11 @@ input{
 
 textarea{
 
-    min-height:110px;
-
-    resize:vertical;
+    min-height:100px;
 
     padding:13px;
+
+    resize:vertical;
 
 }
 
@@ -236,17 +232,25 @@ input:focus,
 textarea:focus{
 
     border-color:
-        rgba(255,255,255,.28);
+        rgba(255,255,255,.3);
 
 }
 
-.locked{
+.username-row{
 
-    opacity:.55;
+    display:flex;
+
+    gap:8px;
 
 }
 
-.username-note{
+.username-row input{
+
+    flex:1;
+
+}
+
+.username-info{
 
     margin-top:7px;
 
@@ -256,17 +260,23 @@ textarea:focus{
 
 }
 
+.username-info.ready{
+
+    color:#777;
+
+}
+
 .upload{
 
     display:flex;
 
-    gap:10px;
-
     align-items:center;
+
+    gap:10px;
 
 }
 
-.upload input{
+.file-input{
 
     display:none;
 
@@ -282,7 +292,7 @@ textarea:focus{
 
     height:42px;
 
-    padding:0 15px;
+    padding:0 14px;
 
     border:
         1px solid
@@ -290,17 +300,15 @@ textarea:focus{
 
     border-radius:9px;
 
-    background:#0d0d0d;
+    background:#0c0c0c;
 
     color:#aaa;
 
     font-size:10px;
 
-    font-weight:700;
+    font-weight:800;
 
     cursor:pointer;
-
-    transition:.2s;
 
 }
 
@@ -319,15 +327,11 @@ textarea:focus{
 
     height:42px;
 
-    border-radius:9px;
-
     object-fit:cover;
 
-    background:#151515;
+    border-radius:9px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.08);
+    background:#161616;
 
 }
 
@@ -342,8 +346,6 @@ textarea:focus{
 .color{
 
     width:55px;
-
-    height:47px;
 
     padding:4px;
 
@@ -373,17 +375,11 @@ textarea:focus{
 
     cursor:pointer;
 
-    transition:.25s;
-
 }
 
 .save:hover{
 
     transform:translateY(-2px);
-
-    box-shadow:
-        0 15px 40px
-        rgba(255,255,255,.1);
 
 }
 
@@ -393,15 +389,13 @@ textarea:focus{
 
     cursor:wait;
 
-    transform:none;
-
 }
 
 .message{
 
     min-height:18px;
 
-    margin-top:15px;
+    margin-top:14px;
 
     text-align:center;
 
@@ -426,46 +420,51 @@ textarea:focus{
 
 .preview{
 
-    position:sticky;
-
-    top:30px;
+    padding:0;
 
     overflow:hidden;
 
-    padding:0;
+    position:sticky;
+
+    top:30px;
 
 }
 
 .preview-banner{
 
-    height:120px;
+    height:125px;
 
     background:
         linear-gradient(
             135deg,
-            #151515,
+            #171717,
             #050505
         );
 
-    background-size:cover;
-
     background-position:center;
+
+    background-size:cover;
 
 }
 
 .preview-content{
 
-    padding:0 20px 25px;
+    padding:
+        0
+        20px
+        25px;
 
 }
 
 .preview-avatar{
 
-    width:80px;
+    width:78px;
 
-    height:80px;
+    height:78px;
 
-    margin-top:-40px;
+    margin-top:-39px;
+
+    object-fit:cover;
 
     border:
         4px solid
@@ -473,9 +472,7 @@ textarea:focus{
 
     border-radius:50%;
 
-    object-fit:cover;
-
-    background:#171717;
+    background:#151515;
 
 }
 
@@ -501,7 +498,7 @@ textarea:focus{
 
 .preview-bio{
 
-    margin-top:18px;
+    margin-top:17px;
 
     color:#aaa;
 
@@ -513,11 +510,11 @@ textarea:focus{
 
 }
 
-.preview-link{
+.preview-website{
 
-    display:block;
+    display:none;
 
-    margin-top:17px;
+    margin-top:15px;
 
     color:white;
 
@@ -539,32 +536,25 @@ textarea:focus{
 
     border-radius:10px;
 
-    color:#777;
+    color:#666;
 
     font-size:10px;
 
 }
 
-@media(max-width:850px){
+@media(max-width:800px){
 
     body{
-
         padding:18px;
-
     }
 
     .layout{
-
         grid-template-columns:1fr;
-
     }
 
     .preview{
-
         position:relative;
-
         top:0;
-
     }
 
 }
@@ -599,321 +589,338 @@ textarea:focus{
 <div class="layout">
 
 
-<!-- =========================
-     EDITOR
-========================= -->
+<!-- EDITOR -->
 
 <section class="panel">
 
-    <div class="title">
-        Edit profile
-    </div>
 
-    <div class="subtitle">
-        Customize your NØX identity.
-    </div>
+<div class="title">
+    Edit profile
+</div>
 
+<div class="subtitle">
+    Customize your NØX identity.
+</div>
 
-    <!-- USERNAME -->
 
-    <div class="field">
+<!-- USERNAME -->
 
-        <label>
-            USERNAME
-        </label>
+<div class="field">
 
-        <input
-            id="username"
-            class="locked"
-            type="text"
-            readonly
-        >
+<label
+    class="title-label"
+>
+    USERNAME
+</label>
 
-        <div class="username-note">
-            🔒 Your username cannot be changed.
-        </div>
+<div class="username-row">
 
-    </div>
+<input
+    id="username"
+    type="text"
+    maxlength="20"
+    autocomplete="off"
+>
 
+</div>
 
-    <!-- DISPLAY NAME -->
+<div
+    id="usernameInfo"
+    class="username-info"
+>
+    Checking...
+</div>
 
-    <div class="field">
+</div>
 
-        <label>
-            DISPLAY NAME
-        </label>
 
-        <input
-            id="displayName"
-            type="text"
-            maxlength="30"
-            placeholder="Your name"
-        >
+<!-- DISPLAY NAME -->
 
-    </div>
+<div class="field">
 
+<label
+    class="title-label"
+>
+    DISPLAY NAME
+</label>
 
-    <!-- BIO -->
+<input
+    id="displayName"
+    type="text"
+    maxlength="30"
+    placeholder="Your name"
+>
 
-    <div class="field">
+</div>
 
-        <label>
-            BIO
-        </label>
 
-        <textarea
-            id="bio"
-            maxlength="160"
-            placeholder="Tell people about yourself..."
-        ></textarea>
+<!-- BIO -->
 
-    </div>
+<div class="field">
 
+<label
+    class="title-label"
+>
+    BIO
+</label>
 
-    <!-- AVATAR -->
+<textarea
+    id="bio"
+    maxlength="160"
+    placeholder="Tell people about yourself..."
+></textarea>
 
-    <div class="field">
+</div>
 
-        <label>
-            AVATAR
-        </label>
 
-        <div class="upload">
+<!-- AVATAR -->
 
-            <img
-                id="avatarPreview"
-                class="preview-small"
-                alt=""
-            >
+<div class="field">
 
-            <label
-                for="avatar"
-                class="upload-button"
-            >
-                CHOOSE IMAGE
-            </label>
+<label
+    class="title-label"
+>
+    AVATAR
+</label>
 
-            <input
-                id="avatar"
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-            >
+<div class="upload">
 
-        </div>
+<img
+    id="avatarPreview"
+    class="preview-small"
+    alt=""
+>
 
-    </div>
+<label
+    for="avatar"
+    class="upload-button"
+>
+    CHOOSE IMAGE
+</label>
 
+<input
+    id="avatar"
+    class="file-input"
+    type="file"
+    accept="image/png,image/jpeg,image/webp"
+>
 
-    <!-- BANNER -->
+</div>
 
-    <div class="field">
+</div>
 
-        <label>
-            BANNER
-        </label>
 
-        <div class="upload">
+<!-- BANNER -->
 
-            <label
-                for="banner"
-                class="upload-button"
-            >
-                CHOOSE BANNER
-            </label>
+<div class="field">
 
-            <input
-                id="banner"
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-            >
+<label
+    class="title-label"
+>
+    BANNER
+</label>
 
-        </div>
+<div class="upload">
 
-    </div>
+<label
+    for="banner"
+    class="upload-button"
+>
+    CHOOSE BANNER
+</label>
 
+<input
+    id="banner"
+    class="file-input"
+    type="file"
+    accept="image/png,image/jpeg,image/webp"
+>
 
-    <!-- BACKGROUND -->
+</div>
 
-    <div class="field">
+</div>
 
-        <label>
-            PROFILE BACKGROUND
-        </label>
 
-        <div class="upload">
+<!-- BACKGROUND -->
 
-            <label
-                for="background"
-                class="upload-button"
-            >
-                CHOOSE BACKGROUND
-            </label>
+<div class="field">
 
-            <input
-                id="background"
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-            >
+<label
+    class="title-label"
+>
+    BACKGROUND
+</label>
 
-        </div>
+<div class="upload">
 
-    </div>
+<label
+    for="background"
+    class="upload-button"
+>
+    CHOOSE BACKGROUND
+</label>
 
+<input
+    id="background"
+    class="file-input"
+    type="file"
+    accept="image/png,image/jpeg,image/webp"
+>
 
-    <!-- COLOR -->
+</div>
 
-    <div class="field">
+</div>
 
-        <label>
-            ACCENT COLOR
-        </label>
 
-        <div class="color-row">
+<!-- COLOR -->
 
-            <input
-                id="accentColor"
-                class="color"
-                type="color"
-                value="#ffffff"
-            >
+<div class="field">
 
-            <input
-                id="website"
-                type="url"
-                placeholder="https://yourwebsite.com"
-            >
+<label
+    class="title-label"
+>
+    ACCENT COLOR
+</label>
 
-        </div>
+<div class="color-row">
 
-    </div>
+<input
+    id="accentColor"
+    class="color"
+    type="color"
+    value="#ffffff"
+>
 
+<input
+    id="website"
+    type="url"
+    placeholder="https://yourwebsite.com"
+>
 
-    <!-- DISCORD -->
+</div>
 
-    <div class="field">
+</div>
 
-        <label>
-            DISCORD
-        </label>
 
-        <button
-            type="button"
-            class="upload-button"
-            onclick="connectDiscord()"
-        >
-            CONNECT DISCORD
-        </button>
+<!-- DISCORD -->
 
-        <div
-            id="discordStatus"
-            class="username-note"
-        >
-            Not connected
-        </div>
+<div class="field">
 
-    </div>
+<label
+    class="title-label"
+>
+    DISCORD
+</label>
 
+<button
+    type="button"
+    class="upload-button"
+    onclick="connectDiscord()"
+>
+    CONNECT DISCORD
+</button>
 
-    <button
-        id="saveButton"
-        class="save"
-    >
-        SAVE CHANGES
-    </button>
+<div
+    id="discordStatus"
+    class="username-info"
+>
+    Not connected
+</div>
 
+</div>
 
-    <div
-        id="message"
-        class="message"
-    ></div>
+
+<button
+    id="saveButton"
+    class="save"
+>
+    SAVE CHANGES
+</button>
+
+
+<div
+    id="message"
+    class="message"
+></div>
 
 
 </section>
 
 
-<!-- =========================
-     PREVIEW
-========================= -->
+<!-- PREVIEW -->
 
 <section class="panel preview">
 
 
-    <div
-        id="previewBanner"
-        class="preview-banner"
-    ></div>
+<div
+    id="previewBanner"
+    class="preview-banner"
+></div>
 
 
-    <div class="preview-content">
+<div class="preview-content">
 
 
-        <img
-            id="previewAvatar"
-            class="preview-avatar"
-            alt=""
-        >
+<img
+    id="previewAvatar"
+    class="preview-avatar"
+    alt=""
+>
 
 
-        <div
-            id="previewName"
-            class="preview-name"
-        >
-            NØX
-        </div>
+<div
+    id="previewName"
+    class="preview-name"
+>
+    NØX
+</div>
 
 
-        <div
-            id="previewUsername"
-            class="preview-username"
-        >
-            @username
-        </div>
+<div
+    id="previewUsername"
+    class="preview-username"
+>
+    @username
+</div>
 
 
-        <div
-            id="previewBio"
-            class="preview-bio"
-        >
-            Your bio will appear here.
-        </div>
+<div
+    id="previewBio"
+    class="preview-bio"
+>
+    Your bio will appear here.
+</div>
 
 
-        <a
-            id="previewWebsite"
-            class="preview-link"
-            href="#"
-            target="_blank"
-            style="display:none"
-        >
-            Website ↗
-        </a>
+<a
+    id="previewWebsite"
+    class="preview-website"
+    target="_blank"
+>
+    Website ↗
+</a>
 
 
-        <div
-            id="previewDiscord"
-            class="discord"
-        >
-            Discord not connected
-        </div>
+<div
+    id="previewDiscord"
+    class="discord"
+>
+    Discord not connected
+</div>
 
 
-    </div>
-
+</div>
 
 </section>
 
 
 </div>
 
-
 </div>
 
 
-<!-- SUPABASE -->
-
 <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
 ></script>
 
 <script src="supabase.js"></script>
@@ -922,22 +929,21 @@ textarea:focus{
 <script>
 
 
-/* =========================
-   VARIABLES
-========================= */
-
 let currentUser = null;
 
 let profile = null;
 
 
-/* =========================
-   ELEMENTS
-========================= */
+/* ELEMENTS */
 
 const username =
     document.getElementById(
         "username"
+    );
+
+const usernameInfo =
+    document.getElementById(
+        "usernameInfo"
     );
 
 const displayName =
@@ -986,13 +992,11 @@ const message =
     );
 
 
-/* =========================
-   MESSAGE
-========================= */
+/* MESSAGE */
 
 function showMessage(
     text,
-    type = ""
+    type=""
 ){
 
     message.textContent =
@@ -1004,9 +1008,7 @@ function showMessage(
 }
 
 
-/* =========================
-   INIT
-========================= */
+/* INIT */
 
 async function init(){
 
@@ -1021,11 +1023,8 @@ async function init(){
                 .getUser();
 
 
-        if(error){
-
+        if(error)
             throw error;
-
-        }
 
 
         if(!data.user){
@@ -1059,9 +1058,7 @@ async function init(){
 }
 
 
-/* =========================
-   LOAD PROFILE
-========================= */
+/* LOAD */
 
 async function loadProfile(){
 
@@ -1079,11 +1076,8 @@ async function loadProfile(){
             .single();
 
 
-    if(error){
-
+    if(error)
         throw error;
-
-    }
 
 
     profile =
@@ -1111,20 +1105,15 @@ async function loadProfile(){
         "#ffffff";
 
 
+    updateUsernameInfo();
+
+
     if(profile.avatar_url){
 
-        document
-            .getElementById(
-                "avatarPreview"
-            )
-            .src =
+        avatarPreview.src =
             profile.avatar_url;
 
-        document
-            .getElementById(
-                "previewAvatar"
-            )
-            .src =
+        previewAvatar.src =
             profile.avatar_url;
 
     }
@@ -1132,56 +1121,33 @@ async function loadProfile(){
 
     if(profile.banner_url){
 
-        document
-            .getElementById(
-                "previewBanner"
-            )
-            .style
-            .backgroundImage =
+        previewBanner.style.backgroundImage =
             `url("${profile.banner_url}")`;
 
     }
 
 
-    document
-        .getElementById(
-            "previewName"
-        )
-        .textContent =
+    previewName.textContent =
         profile.display_name ||
         "NØX";
 
 
-    document
-        .getElementById(
-            "previewUsername"
-        )
-        .textContent =
+    previewUsername.textContent =
         "@" +
         (profile.username || "");
 
 
-    document
-        .getElementById(
-            "previewBio"
-        )
-        .textContent =
+    previewBio.textContent =
         profile.bio ||
         "Your bio will appear here.";
 
 
     if(profile.website_url){
 
-        const link =
-            document
-                .getElementById(
-                    "previewWebsite"
-                );
-
-        link.href =
+        previewWebsite.href =
             profile.website_url;
 
-        link.style.display =
+        previewWebsite.style.display =
             "block";
 
     }
@@ -1189,19 +1155,10 @@ async function loadProfile(){
 
     if(profile.discord_username){
 
-        document
-            .getElementById(
-                "discordStatus"
-            )
-            .textContent =
+        discordStatus.textContent =
             profile.discord_username;
 
-
-        document
-            .getElementById(
-                "previewDiscord"
-            )
-            .textContent =
+        previewDiscord.textContent =
             "Discord • " +
             profile.discord_username;
 
@@ -1210,41 +1167,118 @@ async function loadProfile(){
 }
 
 
-/* =========================
-   UPLOAD FILE
-========================= */
+/* USERNAME STATUS */
+
+function updateUsernameInfo(){
+
+    if(!profile)
+        return;
+
+
+    const current =
+        profile.username || "";
+
+
+    if(
+        username.value.trim().toLowerCase()
+        ===
+        current.toLowerCase()
+    ){
+
+        if(!profile.username_changed_at){
+
+            usernameInfo.textContent =
+                "Username disponible para cambiar.";
+
+            usernameInfo.className =
+                "username-info ready";
+
+            return;
+
+        }
+
+
+        const last =
+            new Date(
+                profile.username_changed_at
+            );
+
+        const next =
+            new Date(
+                last.getTime()
+                +
+                7 * 24 * 60 * 60 * 1000
+            );
+
+
+        if(
+            Date.now() >=
+            next.getTime()
+        ){
+
+            usernameInfo.textContent =
+                "Puedes cambiar tu username.";
+
+            usernameInfo.className =
+                "username-info ready";
+
+        }else{
+
+            const days =
+                Math.ceil(
+                    (
+                        next.getTime()
+                        -
+                        Date.now()
+                    )
+                    /
+                    (
+                        24 *
+                        60 *
+                        60 *
+                        1000
+                    )
+                );
+
+            usernameInfo.textContent =
+                `Podrás cambiarlo en ${days} día(s).`;
+
+        }
+
+    }
+
+}
+
+
+/* USERNAME INPUT */
+
+username.addEventListener(
+    "input",
+    updateUsernameInfo
+);
+
+
+/* UPLOAD */
 
 async function uploadFile(
     file,
     bucket
 ){
 
-    if(!file){
-
+    if(!file)
         return null;
-
-    }
-
-
-    const allowedTypes = [
-
-        "image/png",
-
-        "image/jpeg",
-
-        "image/webp"
-
-    ];
 
 
     if(
-        !allowedTypes.includes(
-            file.type
-        )
+        ![
+            "image/png",
+            "image/jpeg",
+            "image/webp"
+        ].includes(file.type)
     ){
 
         throw new Error(
-            "Solo se permiten PNG, JPG o WEBP."
+            "Solo PNG, JPG o WEBP."
         );
 
     }
@@ -1256,7 +1290,7 @@ async function uploadFile(
     ){
 
         throw new Error(
-            "La imagen no puede superar 8 MB."
+            "La imagen supera los 8 MB."
         );
 
     }
@@ -1269,12 +1303,8 @@ async function uploadFile(
             .toLowerCase();
 
 
-    const filePath =
-        currentUser.id +
-        "/" +
-        Date.now() +
-        "." +
-        extension;
+    const path =
+        `${currentUser.id}/${Date.now()}.${extension}`;
 
 
     const {
@@ -1284,7 +1314,7 @@ async function uploadFile(
             .storage
             .from(bucket)
             .upload(
-                filePath,
+                path,
                 file,
                 {
                     upsert:true
@@ -1292,11 +1322,8 @@ async function uploadFile(
             );
 
 
-    if(error){
-
+    if(error)
         throw error;
-
-    }
 
 
     const {
@@ -1305,9 +1332,7 @@ async function uploadFile(
         supabaseClient
             .storage
             .from(bucket)
-            .getPublicUrl(
-                filePath
-            );
+            .getPublicUrl(path);
 
 
     return data.publicUrl;
@@ -1315,9 +1340,7 @@ async function uploadFile(
 }
 
 
-/* =========================
-   SAVE
-========================= */
+/* SAVE */
 
 saveButton.addEventListener(
     "click",
@@ -1334,22 +1357,62 @@ saveButton.addEventListener(
 
         try{
 
-            let avatarUrl =
-                profile.avatar_url ||
-                "";
-
-            let bannerUrl =
-                profile.banner_url ||
-                "";
-
-            let backgroundUrl =
-                profile.background_url ||
-                "";
+            const newUsername =
+                username.value
+                    .trim()
+                    .toLowerCase();
 
 
             /*
-            AVATAR
+            USERNAME
             */
+
+            if(
+                newUsername !==
+                profile.username
+                    .toLowerCase()
+            ){
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .rpc(
+                            "change_username",
+                            {
+                                new_username:
+                                    newUsername
+                            }
+                        );
+
+
+                if(error)
+                    throw error;
+
+
+                profile.username =
+                    newUsername;
+
+
+                profile.username_changed_at =
+                    new Date().toISOString();
+
+            }
+
+
+            /*
+            FILES
+            */
+
+            let avatarUrl =
+                profile.avatar_url || "";
+
+            let bannerUrl =
+                profile.banner_url || "";
+
+            let backgroundUrl =
+                profile.background_url || "";
+
 
             if(avatar.files[0]){
 
@@ -1362,10 +1425,6 @@ saveButton.addEventListener(
             }
 
 
-            /*
-            BANNER
-            */
-
             if(banner.files[0]){
 
                 bannerUrl =
@@ -1376,10 +1435,6 @@ saveButton.addEventListener(
 
             }
 
-
-            /*
-            BACKGROUND
-            */
 
             if(background.files[0]){
 
@@ -1393,11 +1448,12 @@ saveButton.addEventListener(
 
 
             /*
-            UPDATE
+            PROFILE
             */
 
             const {
-                error
+                error:
+                    profileError
             } =
                 await supabaseClient
                     .from("profiles")
@@ -1438,20 +1494,15 @@ saveButton.addEventListener(
                     );
 
 
-            if(error){
-
-                throw error;
-
-            }
+            if(profileError)
+                throw profileError;
 
 
             profile.display_name =
-                displayName.value
-                    .trim();
+                displayName.value.trim();
 
             profile.bio =
-                bio.value
-                    .trim();
+                bio.value.trim();
 
             profile.avatar_url =
                 avatarUrl;
@@ -1466,8 +1517,7 @@ saveButton.addEventListener(
                 accentColor.value;
 
             profile.website_url =
-                website.value
-                    .trim();
+                website.value.trim();
 
 
             showMessage(
@@ -1478,18 +1528,48 @@ saveButton.addEventListener(
 
             updatePreview();
 
+            updateUsernameInfo();
+
 
         }catch(error){
 
             console.error(
-                "NØX Profile Error:",
+                "NØX ERROR:",
                 error
             );
 
 
-            showMessage(
+            let text =
                 error.message ||
-                "No se pudo guardar el perfil.",
+                "No se pudo guardar.";
+
+
+            if(
+                text.includes(
+                    "already occupied"
+                )
+            ){
+
+                text =
+                    "Ese username ya está ocupado.";
+
+            }
+
+
+            if(
+                text.includes(
+                    "once every 7 days"
+                )
+            ){
+
+                text =
+                    "Solo puedes cambiar tu username una vez cada 7 días.";
+
+            }
+
+
+            showMessage(
+                text,
                 "error"
             );
 
@@ -1508,8 +1588,8 @@ saveButton.addEventListener(
 );
 
 
-/* =========================
-   PREVIEW
-========================= */
+/* PREVIEW */
 
-function updateP
+function updatePreview(){
+
+    previewName.textC
