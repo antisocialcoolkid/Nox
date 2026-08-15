@@ -2,105 +2,196 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>NØX — Customize</title>
 
 <style>
+
 *{
     box-sizing:border-box;
+}
+
+:root{
+    --accent:#ffffff;
 }
 
 body{
     margin:0;
     min-height:100vh;
-    background:#050505;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(255,255,255,.10),
+            transparent 35%
+        ),
+        #050505;
     color:white;
     font-family:Arial,Helvetica,sans-serif;
 }
 
 .container{
-    width:min(1000px,92%);
-    margin:50px auto;
+    width:min(1050px,94%);
+    margin:35px auto 70px;
 }
 
-h1{
-    margin:0;
+.header{
+    margin-bottom:25px;
+}
+
+.title{
     font-size:34px;
+    font-weight:900;
+    letter-spacing:-1.5px;
 }
 
 .subtitle{
-    color:#777;
-    margin-top:6px;
-    margin-bottom:30px;
+    color:#666;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 400px;
+    gap:20px;
+}
+
+.card,
+.preview{
+    border:1px solid #252525;
+    background:rgba(12,12,12,.92);
+    border-radius:20px;
 }
 
 .card{
-    background:#0c0c0c;
-    border:1px solid #252525;
-    border-radius:20px;
-    padding:25px;
-    margin-bottom:20px;
+    padding:24px;
+}
+
+.section{
+    margin-bottom:28px;
+}
+
+.section-title{
+    color:#555;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:15px;
 }
 
 label{
     display:block;
     color:#777;
-    font-size:11px;
-    font-weight:bold;
-    margin-bottom:8px;
+    font-size:10px;
+    font-weight:800;
+    margin-bottom:7px;
 }
 
 input,
-textarea{
+textarea,
+select{
     width:100%;
-    padding:13px;
-    border-radius:10px;
-    border:1px solid #292929;
     background:#070707;
-    color:white;
+    border:1px solid #292929;
+    color:#fff;
+    border-radius:10px;
+    padding:12px;
     outline:none;
-    margin-bottom:18px;
+    margin-bottom:15px;
+}
+
+input{
+    height:45px;
 }
 
 textarea{
-    min-height:100px;
+    min-height:90px;
     resize:vertical;
 }
 
 input:focus,
-textarea:focus{
+textarea:focus,
+select:focus{
     border-color:#666;
 }
 
-.username-info{
-    color:#666;
-    font-size:11px;
-    margin-top:-10px;
-    margin-bottom:20px;
-}
-
-button{
-    width:100%;
-    padding:15px;
-    border:0;
-    border-radius:10px;
-    background:white;
-    color:black;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-#message{
+.file{
+    border:1px dashed #303030;
+    padding:17px;
+    border-radius:11px;
     text-align:center;
-    margin-top:15px;
+    color:#777;
+    cursor:pointer;
+    margin-bottom:15px;
+    transition:.2s;
+}
+
+.file:hover{
+    border-color:#666;
+    color:#fff;
+    background:#0a0a0a;
+}
+
+.file input{
+    display:none;
+}
+
+.social-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.social-grid input{
+    margin-bottom:0;
+}
+
+.color-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.color-row input{
+    width:60px;
+    padding:3px;
+    margin:0;
+}
+
+.color-value{
+    color:#777;
+    font-size:11px;
+}
+
+.save{
+    width:100%;
+    height:52px;
+    border:0;
+    border-radius:11px;
+    background:#fff;
+    color:#000;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.save:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 40px rgba(255,255,255,.10);
+}
+
+.save:disabled{
+    opacity:.5;
+    cursor:wait;
+    transform:none;
+}
+
+.message{
+    text-align:center;
     min-height:20px;
-    font-size:12px;
+    margin-top:12px;
+    font-size:11px;
 }
 
 .success{
@@ -111,51 +202,52 @@ button:disabled{
     color:#ff5555;
 }
 
-.status{
-    margin-top:20px;
-    padding:15px;
-    border-radius:12px;
-    background:#070707;
-    border:1px solid #1d1d1d;
-}
-
-.status-title{
-    color:#666;
+.username-info{
+    color:#555;
     font-size:10px;
-    font-weight:bold;
-    margin-bottom:10px;
+    margin-top:-7px;
+    margin-bottom:15px;
 }
 
-.status div{
-    font-size:11px;
-    color:#666;
-    margin:7px 0;
-}
 
-.status .ok{
-    color:#aaa;
-}
-
-.status .bad{
-    color:#ff5555;
-}
+/* PREVIEW */
 
 .preview{
     overflow:hidden;
-    border-radius:20px;
-    border:1px solid #252525;
-    background:#0b0b0b;
+    position:sticky;
+    top:20px;
+    height:max-content;
 }
 
 .banner{
-    height:180px;
-    background:#151515 center/cover no-repeat;
+    height:185px;
+    background:
+        linear-gradient(
+            135deg,
+            #181818,
+            #050505
+        );
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+
+.banner:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent,
+        #080808
+    );
 }
 
 .profile{
+    position:relative;
+    z-index:2;
     text-align:center;
-    padding:0 20px 30px;
-    margin-top:-55px;
+    padding:0 25px 30px;
+    margin-top:-60px;
 }
 
 .avatar{
@@ -163,41 +255,109 @@ button:disabled{
     height:110px;
     border-radius:50%;
     object-fit:cover;
-    background:#151515;
-    border:4px solid #0b0b0b;
+    background:#111;
+    border:4px solid #080808;
 }
 
 .name{
-    font-size:24px;
-    font-weight:bold;
     margin-top:12px;
+    font-size:24px;
+    font-weight:900;
 }
 
 .username{
     color:#666;
-    font-size:12px;
-    margin-top:5px;
+    font-size:11px;
+    margin-top:4px;
 }
 
 .bio{
     color:#999;
-    font-size:13px;
-    margin:15px auto;
-    max-width:450px;
+    font-size:12px;
     line-height:1.5;
+    margin:15px auto;
+    max-width:320px;
 }
 
-@media(max-width:700px){
+.website{
+    display:none;
+    color:var(--accent);
+    text-decoration:none;
+    font-size:11px;
+}
 
-    .container{
-        margin:25px auto;
+.socials{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:17px;
+}
+
+.social{
+    display:none;
+    padding:8px 10px;
+    border:1px solid #292929;
+    border-radius:8px;
+    color:#888;
+    font-size:10px;
+}
+
+.social:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+}
+
+.badges{
+    display:flex;
+    justify-content:center;
+    gap:7px;
+    margin-top:22px;
+}
+
+.badge{
+    width:34px;
+    height:34px;
+    border:1px solid #292929;
+    border-radius:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    font-size:13px;
+}
+
+.badge.early{
+    color:#fff;
+    border-color:#444;
+}
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:1fr;
     }
 
-    h1{
+    .preview{
+        position:relative;
+        top:0;
+        order:-1;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .social-grid{
+        grid-template-columns:1fr;
+    }
+
+    .title{
         font-size:28px;
     }
 
 }
+
 </style>
 </head>
 
@@ -205,153 +365,428 @@ button:disabled{
 
 <div class="container">
 
-    <h1>Customize</h1>
+<div class="header">
+
+    <div class="title">
+        Customize
+    </div>
 
     <div class="subtitle">
         Customize your NØX identity.
     </div>
 
-
-    <!-- PREVIEW -->
-
-    <div class="preview">
-
-        <div
-            id="banner"
-            class="banner"
-        ></div>
-
-        <div class="profile">
-
-            <img
-                id="avatar"
-                class="avatar"
-                alt="Avatar"
-            >
-
-            <div
-                id="previewName"
-                class="name"
-            >
-                NØX
-            </div>
-
-            <div
-                id="previewUsername"
-                class="username"
-            >
-                @nox
-            </div>
-
-            <div
-                id="previewBio"
-                class="bio"
-            >
-                This is my NØX profile.
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <!-- EDITOR -->
-
-    <div class="card">
-
-        <label>
-            USERNAME
-        </label>
-
-        <input
-            id="username"
-            type="text"
-            maxlength="20"
-        >
-
-        <div
-            id="usernameInfo"
-            class="username-info"
-        >
-            Username actual.
-        </div>
+<div class="layout">
 
 
-        <label>
-            DISPLAY NAME
-        </label>
+<!-- =========================
+     EDITOR
+========================= -->
 
-        <input
-            id="displayName"
-            type="text"
-            maxlength="30"
-        >
+<div class="card">
 
 
-        <label>
-            BIO
-        </label>
+<div class="section">
 
-        <textarea
-            id="bio"
-            maxlength="160"
-        ></textarea>
+<div class="section-title">
+IDENTITY
+</div>
 
 
-        <label>
-            WEBSITE
-        </label>
+<label>
+USERNAME
+</label>
 
-        <input
-            id="website"
-            type="url"
-            placeholder="https://example.com"
-        >
+<input
+    id="username"
+    maxlength="20"
+    autocomplete="off"
+>
 
-
-        <button
-            id="save"
-            type="button"
-        >
-            SAVE CHANGES
-        </button>
-
-
-        <div
-            id="message"
-        ></div>
+<div
+    id="usernameInfo"
+    class="username-info"
+>
+Username actual.
+</div>
 
 
-        <div class="status">
+<label>
+DISPLAY NAME
+</label>
 
-            <div class="status-title">
-                NØX SYSTEM STATUS
-            </div>
+<input
+    id="displayName"
+    maxlength="30"
+>
 
-            <div id="statusSupabase">
-                ⚪ Supabase
-            </div>
 
-            <div id="statusUser">
-                ⚪ Usuario
-            </div>
+<label>
+BIO
+</label>
 
-            <div id="statusProfile">
-                ⚪ Profile
-            </div>
+<textarea
+    id="bio"
+    maxlength="160"
+></textarea>
 
-            <div id="statusDatabase">
-                ⚪ Database
-            </div>
 
-        </div>
+<label>
+WEBSITE
+</label>
 
-    </div>
+<input
+    id="website"
+    type="url"
+    placeholder="https://example.com"
+>
 
 </div>
 
 
-<!-- SUPABASE -->
+<!-- MEDIA -->
+
+<div class="section">
+
+<div class="section-title">
+MEDIA
+</div>
+
+
+<label>
+PROFILE PICTURE
+</label>
+
+<label class="file">
+
+    📷 CHOOSE PROFILE PHOTO
+
+    <input
+        id="avatarFile"
+        type="file"
+        accept="image/*"
+    >
+
+</label>
+
+
+<label>
+BANNER
+</label>
+
+<label class="file">
+
+    🖼️ CHOOSE BANNER
+
+    <input
+        id="bannerFile"
+        type="file"
+        accept="image/*"
+    >
+
+</label>
+
+
+<label>
+BACKGROUND
+</label>
+
+<label class="file">
+
+    🌌 CHOOSE BACKGROUND
+
+    <input
+        id="backgroundFile"
+        type="file"
+        accept="image/*"
+    >
+
+</label>
+
+</div>
+
+
+<!-- SOCIAL -->
+
+<div class="section">
+
+<div class="section-title">
+SOCIAL LINKS
+</div>
+
+<div class="social-grid">
+
+<input
+    id="discord"
+    placeholder="Discord"
+>
+
+<input
+    id="instagram"
+    placeholder="Instagram"
+>
+
+<input
+    id="tiktok"
+    placeholder="TikTok"
+>
+
+<input
+    id="youtube"
+    placeholder="YouTube"
+>
+
+<input
+    id="github"
+    placeholder="GitHub"
+>
+
+<input
+    id="twitter"
+    placeholder="X / Twitter"
+>
+
+</div>
+
+</div>
+
+
+<!-- STYLE -->
+
+<div class="section">
+
+<div class="section-title">
+STYLE
+</div>
+
+
+<label>
+ACCENT COLOR
+</label>
+
+<div class="color-row">
+
+<input
+    id="accentColor"
+    type="color"
+    value="#ffffff"
+>
+
+<span
+    id="colorValue"
+    class="color-value"
+>
+#FFFFFF
+</span>
+
+</div>
+
+
+<br>
+
+
+<label>
+PROFILE EFFECT
+</label>
+
+<select id="profileEffect">
+
+<option value="none">
+None
+</option>
+
+<option value="floating">
+Floating
+</option>
+
+<option value="glow">
+Glow
+</option>
+
+</select>
+
+</div>
+
+
+<button
+    id="save"
+    class="save"
+    type="button"
+>
+SAVE CHANGES
+</button>
+
+
+<div
+    id="message"
+    class="message"
+></div>
+
+
+</div>
+
+
+<!-- =========================
+     PREVIEW
+========================= -->
+
+<div
+    id="preview"
+    class="preview"
+>
+
+<div
+    id="banner"
+    class="banner"
+></div>
+
+
+<div class="profile">
+
+<img
+    id="avatar"
+    class="avatar"
+    alt="Avatar"
+>
+
+
+<div
+    id="previewName"
+    class="name"
+>
+NØX
+</div>
+
+
+<div
+    id="previewUsername"
+    class="username"
+>
+@nox
+</div>
+
+
+<div
+    id="previewBio"
+    class="bio"
+>
+This is my NØX profile.
+</div>
+
+
+<a
+    id="websitePreview"
+    class="website"
+    target="_blank"
+    rel="noopener"
+></a>
+
+
+<div
+    id="socials"
+    class="socials"
+>
+
+<a
+    id="discordPreview"
+    class="social"
+    target="_blank"
+    rel="noopener"
+>
+Discord
+</a>
+
+<a
+    id="instagramPreview"
+    class="social"
+    target="_blank"
+    rel="noopener"
+>
+Instagram
+</a>
+
+<a
+    id="tiktokPreview"
+    class="social"
+    target="_blank"
+    rel="noopener"
+>
+TikTok
+</a>
+
+<a
+    id="youtubePreview"
+    class="social"
+    target="_blank"
+    rel="noopener"
+>
+YouTube
+</a>
+
+<a
+    id="githubPreview"
+    class="social"
+    target="_blank"
+    rel="noopener"
+>
+GitHub
+</a>
+
+<a
+    id="twitterPreview"
+    class="social"
+    target="_blank"
+    rel="noopener"
+>
+X
+</a>
+
+</div>
+
+
+<div class="badges">
+
+<div
+    class="badge early"
+    title="Early Access"
+>
+◆
+</div>
+
+<div
+    class="badge"
+    title="Verified"
+>
+✓
+</div>
+
+<div
+    class="badge"
+    title="Developer"
+>
+⚡
+</div>
+
+<div
+    class="badge"
+    title="OG"
+>
+★
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -361,37 +796,18 @@ button:disabled{
 <script>
 
 let currentUser = null;
-let currentProfile = null;
+let profile = null;
 
 
-const $ = (id) =>
+const $ = id =>
     document.getElementById(id);
 
 
-function setStatus(id, ok){
+/* ==========================================
+   MESSAGE
+========================================== */
 
-    const element = $(id);
-
-    if(!element) return;
-
-    element.classList.remove(
-        "ok",
-        "bad"
-    );
-
-    element.classList.add(
-        ok ? "ok" : "bad"
-    );
-
-    element.textContent =
-        (ok ? "🟢 " : "🔴 ") +
-        element.textContent
-            .replace(/^🟢 |^🔴 |^⚪ /,"");
-
-}
-
-
-function showMessage(text, type){
+function message(text,type=""){
 
     const element =
         $("message");
@@ -400,16 +816,16 @@ function showMessage(text, type){
         text;
 
     element.className =
-        type || "";
+        "message " + type;
 
 }
 
 
-/* =========================================
-   CARGAR USUARIO
-========================================= */
+/* ==========================================
+   LOAD USER
+========================================== */
 
-async function loadUser(){
+async function start(){
 
     try{
 
@@ -419,30 +835,13 @@ async function loadUser(){
                 .getUser();
 
 
-        if(result.error){
-
-            setStatus(
-                "statusUser",
-                false
-            );
-
+        if(result.error)
             throw result.error;
 
-        }
 
+        if(!result.data.user){
 
-        currentUser =
-            result.data.user;
-
-
-        if(!currentUser){
-
-            setStatus(
-                "statusUser",
-                false
-            );
-
-            showMessage(
+            message(
                 "No hay una sesión iniciada.",
                 "error"
             );
@@ -452,15 +851,8 @@ async function loadUser(){
         }
 
 
-        setStatus(
-            "statusSupabase",
-            true
-        );
-
-        setStatus(
-            "statusUser",
-            true
-        );
+        currentUser =
+            result.data.user;
 
 
         await loadProfile();
@@ -468,12 +860,9 @@ async function loadUser(){
     }
     catch(error){
 
-        console.error(
-            "LOAD USER:",
-            error
-        );
+        console.error(error);
 
-        showMessage(
+        message(
             error.message,
             "error"
         );
@@ -483,9 +872,9 @@ async function loadUser(){
 }
 
 
-/* =========================================
-   CARGAR PROFILE
-========================================= */
+/* ==========================================
+   LOAD PROFILE
+========================================== */
 
 async function loadProfile(){
 
@@ -500,27 +889,14 @@ async function loadProfile(){
             .maybeSingle();
 
 
-    if(result.error){
-
-        setStatus(
-            "statusProfile",
-            false
-        );
-
+    if(result.error)
         throw result.error;
-
-    }
 
 
     if(!result.data){
 
-        setStatus(
-            "statusProfile",
-            false
-        );
-
-        showMessage(
-            "No existe un perfil para este usuario.",
+        message(
+            "No existe tu perfil en profiles.",
             "error"
         );
 
@@ -529,31 +905,88 @@ async function loadProfile(){
     }
 
 
-    currentProfile =
+    profile =
         result.data;
 
 
-    setStatus(
-        "statusProfile",
-        true
-    );
-
-
     $("username").value =
-        currentProfile.username || "";
+        profile.username || "";
 
 
     $("displayName").value =
-        currentProfile.display_name || "NØX";
+        profile.display_name || "NØX";
 
 
     $("bio").value =
-        currentProfile.bio ||
+        profile.bio ||
         "This is my NØX profile.";
 
 
     $("website").value =
-        currentProfile.website_url || "";
+        profile.website_url || "";
+
+
+    $("accentColor").value =
+        profile.accent_color ||
+        "#ffffff";
+
+
+    $("profileEffect").value =
+        profile.profile_effect ||
+        "none";
+
+
+    if(profile.avatar_url){
+
+        $("avatar").src =
+            profile.avatar_url;
+
+    }
+    else{
+
+        $("avatar").src =
+            defaultAvatar();
+
+    }
+
+
+    if(profile.banner_url){
+
+        $("banner")
+            .style
+            .backgroundImage =
+            `url("${profile.banner_url}")`;
+
+    }
+
+
+    const socials =
+        profile.social_links ||
+        {};
+
+
+    $("discord").value =
+        socials.discord || "";
+
+
+    $("instagram").value =
+        socials.instagram || "";
+
+
+    $("tiktok").value =
+        socials.tiktok || "";
+
+
+    $("youtube").value =
+        socials.youtube || "";
+
+
+    $("github").value =
+        socials.github || "";
+
+
+    $("twitter").value =
+        socials.twitter || "";
 
 
     updatePreview();
@@ -561,32 +994,79 @@ async function loadProfile(){
 }
 
 
-/* =========================================
+/* ==========================================
+   DEFAULT AVATAR
+========================================== */
+
+function defaultAvatar(){
+
+    return "data:image/svg+xml," +
+        encodeURIComponent(`
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="300"
+            height="300"
+        >
+            <rect
+                width="100%"
+                height="100%"
+                fill="#111"
+            />
+
+            <text
+                x="50%"
+                y="55%"
+                text-anchor="middle"
+                fill="#777"
+                font-size="70"
+                font-family="Arial"
+            >
+                NØX
+            </text>
+
+        </svg>
+        `);
+
+}
+
+
+/* ==========================================
    PREVIEW
-========================================= */
+========================================== */
 
 function updatePreview(){
 
     const username =
-        $("username").value.trim();
+        $("username")
+            .value
+            .trim();
+
 
     const name =
-        $("displayName").value.trim();
+        $("displayName")
+            .value
+            .trim();
+
 
     const bio =
-        $("bio").value.trim();
+        $("bio")
+            .value
+            .trim();
 
 
     $("previewUsername")
         .textContent =
-        "@" + (
-            username || "nox"
+        "@" +
+        (
+            username ||
+            "nox"
         );
 
 
     $("previewName")
         .textContent =
-        name || "NØX";
+        name ||
+        "NØX";
 
 
     $("previewBio")
@@ -594,12 +1074,257 @@ function updatePreview(){
         bio ||
         "This is my NØX profile.";
 
+
+    const color =
+        $("accentColor").value;
+
+
+    document.documentElement
+        .style
+        .setProperty(
+            "--accent",
+            color
+        );
+
+
+    $("colorValue")
+        .textContent =
+        color.toUpperCase();
+
+
+    const website =
+        $("website")
+            .value
+            .trim();
+
+
+    if(website){
+
+        $("websitePreview")
+            .style.display =
+            "inline";
+
+        $("websitePreview")
+            .href =
+            website;
+
+        $("websitePreview")
+            .textContent =
+            website;
+
+    }
+    else{
+
+        $("websitePreview")
+            .style.display =
+            "none";
+
+    }
+
+
+    updateSocial(
+        "discord",
+        "discordPreview"
+    );
+
+    updateSocial(
+        "instagram",
+        "instagramPreview"
+    );
+
+    updateSocial(
+        "tiktok",
+        "tiktokPreview"
+    );
+
+    updateSocial(
+        "youtube",
+        "youtubePreview"
+    );
+
+    updateSocial(
+        "github",
+        "githubPreview"
+    );
+
+    updateSocial(
+        "twitter",
+        "twitterPreview"
+    );
+
 }
 
 
-/* =========================================
-   INPUTS
-========================================= */
+/* ==========================================
+   SOCIAL PREVIEW
+========================================== */
+
+function updateSocial(
+    inputId,
+    previewId
+){
+
+    const value =
+        $(inputId)
+            .value
+            .trim();
+
+
+    const element =
+        $(previewId);
+
+
+    if(!value){
+
+        element.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    element.style.display =
+        "inline-block";
+
+
+    element.href =
+        normalizeUrl(value);
+
+}
+
+
+/* ==========================================
+   URL
+========================================== */
+
+function normalizeUrl(value){
+
+    if(
+        value.startsWith("http://") ||
+        value.startsWith("https://")
+    ){
+
+        return value;
+
+    }
+
+    return "https://" + value;
+
+}
+
+
+/* ==========================================
+   FILE UPLOAD
+========================================== */
+
+async function uploadFile(
+    file,
+    folder
+){
+
+    if(!file)
+        return null;
+
+
+    if(
+        !file.type.startsWith("image/")
+    ){
+
+        throw new Error(
+            "El archivo debe ser una imagen."
+        );
+
+    }
+
+
+    if(
+        file.size >
+        10 * 1024 * 1024
+    ){
+
+        throw new Error(
+            "La imagen supera los 10 MB."
+        );
+
+    }
+
+
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
+
+
+    const path =
+        `${currentUser.id}/${folder}/${crypto.randomUUID()}.${extension}`;
+
+
+    const upload =
+        await supabaseClient
+            .storage
+            .from("profiles")
+            .upload(
+                path,
+                file,
+                {
+                    upsert:false
+                }
+            );
+
+
+    if(upload.error)
+        throw upload.error;
+
+
+    const publicUrl =
+        supabaseClient
+            .storage
+            .from("profiles")
+            .getPublicUrl(
+                path
+            );
+
+
+    return publicUrl
+        .data
+        .publicUrl;
+
+}
+
+
+/* ==========================================
+   LIVE INPUTS
+========================================== */
+
+[
+    "username",
+    "displayName",
+    "bio",
+    "website",
+    "discord",
+    "instagram",
+    "tiktok",
+    "youtube",
+    "github",
+    "twitter",
+    "accentColor"
+]
+.forEach(id => {
+
+    $(id)
+        .addEventListener(
+            "input",
+            updatePreview
+        );
+
+});
+
+
+/* ==========================================
+   USERNAME
+========================================== */
 
 $("username")
 .addEventListener(
@@ -614,29 +1339,88 @@ $("username")
                     ""
                 );
 
-        updatePreview();
+    }
+);
+
+
+/* ==========================================
+   AVATAR PREVIEW
+========================================== */
+
+$("avatarFile")
+.addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file)
+            return;
+
+
+        $("avatar").src =
+            URL.createObjectURL(
+                file
+            );
 
     }
 );
 
 
-$("displayName")
+/* ==========================================
+   BANNER PREVIEW
+========================================== */
+
+$("bannerFile")
 .addEventListener(
-    "input",
-    updatePreview
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file)
+            return;
+
+
+        $("banner")
+            .style
+            .backgroundImage =
+            `url("${URL.createObjectURL(file)}")`;
+
+    }
 );
 
 
-$("bio")
+/* ==========================================
+   BACKGROUND PREVIEW
+========================================== */
+
+$("backgroundFile")
 .addEventListener(
-    "input",
-    updatePreview
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file)
+            return;
+
+
+        $("preview")
+            .style
+            .backgroundImage =
+            `url("${URL.createObjectURL(file)}")`;
+
+    }
 );
 
 
-/* =========================================
+/* ==========================================
    SAVE
-========================================= */
+========================================== */
 
 $("save")
 .addEventListener(
@@ -649,49 +1433,10 @@ $("save")
 
         try{
 
-            console.log(
-                "NØX: SAVE CLICK"
-            );
-
-
             if(!currentUser){
 
                 throw new Error(
                     "No hay usuario autenticado."
-                );
-
-            }
-
-
-            const username =
-                $("username")
-                    .value
-                    .trim()
-                    .toLowerCase();
-
-
-            const displayName =
-                $("displayName")
-                    .value
-                    .trim();
-
-
-            const bio =
-                $("bio")
-                    .value
-                    .trim();
-
-
-            const website =
-                $("website")
-                    .value
-                    .trim();
-
-
-            if(!username){
-
-                throw new Error(
-                    "El username no puede estar vacío."
                 );
 
             }
@@ -704,118 +1449,61 @@ $("save")
                 "SAVING...";
 
 
-            showMessage(
-                "Guardando..."
+            message(
+                "Guardando cambios..."
             );
 
 
-            /*
-             * IMPORTANTE:
-             * No cambiamos el username mediante
-             * RPC aquí. Primero hacemos funcionar
-             * correctamente el UPDATE.
-             */
-
-            const updateData = {
-
-                display_name:
-                    displayName,
-
-                bio:
-                    bio,
-
-                website_url:
-                    website
-
-            };
+            let avatarUrl =
+                profile.avatar_url ||
+                null;
 
 
-            const result =
-                await supabaseClient
-                    .from("profiles")
-                    .update(updateData)
-                    .eq(
-                        "id",
-                        currentUser.id
-                    )
-                    .select()
-                    .single();
+            let bannerUrl =
+                profile.banner_url ||
+                null;
 
 
-            if(result.error){
+            let backgroundUrl =
+                profile.background_url ||
+                null;
 
-                setStatus(
-                    "statusDatabase",
-                    false
+
+            const avatarFile =
+                $("avatarFile")
+                    .files[0];
+
+
+            const bannerFile =
+                $("bannerFile")
+                    .files[0];
+
+
+            const backgroundFile =
+                $("backgroundFile")
+                    .files[0];
+
+
+            if(avatarFile){
+
+                message(
+                    "Subiendo foto..."
                 );
 
-                throw result.error;
+                avatarUrl =
+                    await uploadFile(
+                        avatarFile,
+                        "avatars"
+                    );
 
             }
 
 
-            currentProfile =
-                result.data;
+            if(bannerFile){
 
+                message(
+                    "Subiendo banner..."
+                );
 
-            setStatus(
-                "statusDatabase",
-                true
-            );
-
-
-            showMessage(
-                "✓ Cambios guardados correctamente.",
-                "success"
-            );
-
-
-            updatePreview();
-
-
-            console.log(
-                "NØX: PROFILE UPDATED",
-                result.data
-            );
-
-
-        }
-        catch(error){
-
-            console.error(
-                "NØX SAVE ERROR:",
-                error
-            );
-
-
-            showMessage(
-                "⚠️ " +
-                error.message,
-                "error"
-            );
-
-        }
-        finally{
-
-            button.disabled =
-                false;
-
-            button.textContent =
-                "SAVE CHANGES";
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   START
-========================================= */
-
-loadUser();
-
-</script>
-
-</body>
-</html>
+                bannerUrl =
+    
