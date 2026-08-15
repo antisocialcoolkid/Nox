@@ -3,429 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>NØX — Customize</title>
+<title>NØX Test</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
 body{
     margin:0;
     min-height:100vh;
     background:#050505;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.container{
-    width:min(700px,92%);
-    margin:50px auto;
-}
-
-.card{
-    background:#0b0b0b;
-    border:1px solid #252525;
+.box{
+    text-align:center;
+    padding:40px;
+    border:1px solid #292929;
     border-radius:20px;
-    padding:25px;
+    background:#0d0d0d;
 }
 
 h1{
-    margin:0;
-    font-size:32px;
+    font-size:40px;
+    margin:0 0 10px;
 }
 
-.subtitle{
-    color:#666;
-    font-size:12px;
-    margin:7px 0 30px;
-}
-
-label{
-    display:block;
+p{
     color:#777;
-    font-size:10px;
-    font-weight:bold;
-    margin-bottom:7px;
 }
-
-input,
-textarea{
-    width:100%;
-    background:#070707;
-    border:1px solid #292929;
-    border-radius:10px;
-    color:white;
-    padding:13px;
-    outline:none;
-    margin-bottom:18px;
-}
-
-input{
-    height:46px;
-}
-
-textarea{
-    min-height:100px;
-    resize:vertical;
-}
-
-input:focus,
-textarea:focus{
-    border-color:#777;
-}
-
-.save{
-    width:100%;
-    height:52px;
-    border:0;
-    border-radius:11px;
-    background:#fff;
-    color:#000;
-    font-weight:900;
-    cursor:pointer;
-}
-
-.save:disabled{
-    opacity:.5;
-}
-
-.status{
-    text-align:center;
-    min-height:20px;
-    margin-top:15px;
-    font-size:12px;
-}
-
-.error{
-    color:#ff5555;
-}
-
-.success{
-    color:#aaa;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<div class="card">
-
-<h1>Customize</h1>
-
-<div class="subtitle">
-Customize your NØX identity.
+<div class="box">
+    <h1>NØX</h1>
+    <p>CUSTOMIZE ESTÁ FUNCIONANDO ✓</p>
 </div>
-
-
-<label>
-USERNAME
-</label>
-
-<input
-    id="username"
-    type="text"
->
-
-
-<label>
-DISPLAY NAME
-</label>
-
-<input
-    id="displayName"
-    type="text"
->
-
-
-<label>
-BIO
-</label>
-
-<textarea
-    id="bio"
-></textarea>
-
-
-<label>
-WEBSITE
-</label>
-
-<input
-    id="website"
-    type="url"
-    placeholder="https://example.com"
->
-
-
-<button
-    id="save"
-    class="save"
-    type="button"
->
-SAVE CHANGES
-</button>
-
-
-<div
-    id="status"
-    class="status"
-></div>
-
-</div>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const SUPABASE_URL =
-"https://qvqhanioapefeyxtbzlp.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_hJVj-2VGj2hEXUgc91QY1Q_zGjw9qp1";
-
-const supabaseClient =
-window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-
-const username =
-document.getElementById("username");
-
-const displayName =
-document.getElementById("displayName");
-
-const bio =
-document.getElementById("bio");
-
-const website =
-document.getElementById("website");
-
-const save =
-document.getElementById("save");
-
-const status =
-document.getElementById("status");
-
-
-function message(
-    text,
-    type=""
-){
-
-    status.textContent =
-        text;
-
-    status.className =
-        "status " + type;
-
-}
-
-
-/* =========================
-   LOAD
-========================= */
-
-async function loadProfile(){
-
-    try{
-
-        const userResult =
-            await supabaseClient
-            .auth
-            .getUser();
-
-
-        if(userResult.error)
-            throw userResult.error;
-
-
-        if(!userResult.data.user){
-
-            message(
-                "No hay una sesión iniciada.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        const user =
-            userResult.data.user;
-
-
-        const result =
-            await supabaseClient
-            .from("profiles")
-            .select(
-                "username,display_name,bio,website_url"
-            )
-            .eq(
-                "id",
-                user.id
-            )
-            .maybeSingle();
-
-
-        if(result.error)
-            throw result.error;
-
-
-        if(!result.data){
-
-            message(
-                "No existe tu perfil.",
-                "error"
-            );
-
-            return;
-
-        }
-
-
-        username.value =
-            result.data.username || "";
-
-        displayName.value =
-            result.data.display_name || "";
-
-        bio.value =
-            result.data.bio || "";
-
-        website.value =
-            result.data.website_url || "";
-
-
-    }catch(error){
-
-        console.error(error);
-
-        message(
-            "⚠️ " + error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-/* =========================
-   SAVE
-========================= */
-
-save.addEventListener(
-    "click",
-    async function(){
-
-        try{
-
-            save.disabled =
-                true;
-
-            save.textContent =
-                "SAVING...";
-
-
-            message(
-                "Guardando..."
-            );
-
-
-            const userResult =
-                await supabaseClient
-                .auth
-                .getUser();
-
-
-            if(userResult.error)
-                throw userResult.error;
-
-
-            if(!userResult.data.user){
-
-                throw new Error(
-                    "No hay una sesión iniciada."
-                );
-
-            }
-
-
-            const user =
-                userResult.data.user;
-
-
-            const result =
-                await supabaseClient
-                .from("profiles")
-                .update({
-
-                    display_name:
-                        displayName.value.trim(),
-
-                    bio:
-                        bio.value.trim(),
-
-                    website_url:
-                        website.value.trim()
-
-                })
-                .eq(
-                    "id",
-                    user.id
-                );
-
-
-            if(result.error)
-                throw result.error;
-
-
-            message(
-                "✓ Cambios guardados correctamente.",
-                "success"
-            );
-
-
-        }catch(error){
-
-            console.error(error);
-
-            message(
-                "⚠️ " + error.message,
-                "error"
-            );
-
-        }finally{
-
-            save.disabled =
-                false;
-
-            save.textContent =
-                "SAVE CHANGES";
-
-        }
-
-    }
-);
-
-
-/* START */
-
-loadProfile();
-
-</script>
 
 </body>
 </html>
