@@ -24,7 +24,7 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.gstatic.com"
+        href="https://fonts.googleapis.com"
         crossorigin
     >
 
@@ -43,9 +43,10 @@
 
         :root {
             --bg: #030303;
-            --border: rgba(255,255,255,.08);
-            --muted: #666;
+            --card: rgba(15,15,15,.72);
+            --border: rgba(255,255,255,.09);
             --text: #fff;
+            --muted: #666;
         }
 
         html,
@@ -69,17 +70,16 @@
 
             color: var(--text);
 
-            font-family:
-                "Inter",
-                Arial,
-                sans-serif;
+            font-family: "Inter", sans-serif;
 
             overflow-x: hidden;
 
         }
 
 
-        /* BACKGROUND */
+        /* =========================
+           BACKGROUND
+        ========================= */
 
         body::before {
 
@@ -124,44 +124,46 @@
 
             height: 500px;
 
-            top: -320px;
+            border-radius: 50%;
+
+            background: white;
+
+            filter: blur(160px);
+
+            opacity: .055;
+
+            top: -300px;
 
             left: 50%;
 
             transform:
                 translateX(-50%);
 
-            border-radius: 50%;
-
-            background: #fff;
-
-            filter: blur(160px);
-
-            opacity: .055;
-
             pointer-events: none;
 
         }
 
 
-        /* CARD */
+        /* =========================
+           CARD
+        ========================= */
 
         .login-card {
 
             position: relative;
 
-            width:
-                min(430px, 100%);
+            width: min(430px, 100%);
 
-            padding:
-                42px 35px;
+            padding: 42px 35px;
 
             border:
-                1px solid var(--border);
+                1px solid
+                var(--border);
 
             border-radius: 22px;
 
             background:
+
                 linear-gradient(
                     145deg,
                     rgba(255,255,255,.055),
@@ -199,6 +201,7 @@
             height: 1px;
 
             background:
+
                 linear-gradient(
                     90deg,
                     transparent,
@@ -234,7 +237,9 @@
         }
 
 
-        /* LOGO */
+        /* =========================
+           LOGO
+        ========================= */
 
         .logo {
 
@@ -251,7 +256,7 @@
 
         .subtitle {
 
-            margin-top: 8px;
+            margin-top: 9px;
 
             text-align: center;
 
@@ -268,8 +273,7 @@
 
             height: 1px;
 
-            margin:
-                23px auto 0;
+            margin: 23px auto 0;
 
             background:
                 rgba(255,255,255,.2);
@@ -277,7 +281,9 @@
         }
 
 
-        /* FORM */
+        /* =========================
+           FORM
+        ========================= */
 
         form {
 
@@ -316,8 +322,7 @@
 
             height: 49px;
 
-            padding:
-                0 14px;
+            padding: 0 14px;
 
             outline: none;
 
@@ -369,15 +374,47 @@
         }
 
 
-        /* BUTTON */
+        /* =========================
+           FORGOT PASSWORD
+        ========================= */
+
+        .forgot {
+
+            display: block;
+
+            margin-top: -7px;
+
+            margin-bottom: 18px;
+
+            text-align: right;
+
+            color: #555;
+
+            font-size: 10px;
+
+            text-decoration: none;
+
+            transition: .2s;
+
+        }
+
+
+        .forgot:hover {
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
 
         button {
 
             width: 100%;
 
             height: 50px;
-
-            margin-top: 5px;
 
             border: 0;
 
@@ -397,10 +434,7 @@
 
             cursor: pointer;
 
-            transition:
-                transform .25s,
-                box-shadow .25s,
-                opacity .25s;
+            transition: .25s;
 
         }
 
@@ -438,7 +472,9 @@
         }
 
 
-        /* MESSAGE */
+        /* =========================
+           MESSAGE
+        ========================= */
 
         .message {
 
@@ -450,7 +486,7 @@
 
             font-size: 10px;
 
-            line-height: 1.5;
+            line-height: 1.6;
 
         }
 
@@ -469,7 +505,9 @@
         }
 
 
-        /* REGISTER */
+        /* =========================
+           REGISTER
+        ========================= */
 
         .register {
 
@@ -502,7 +540,9 @@
         }
 
 
-        /* BACK */
+        /* =========================
+           BACK
+        ========================= */
 
         .back {
 
@@ -535,7 +575,9 @@
         }
 
 
-        /* BRAND */
+        /* =========================
+           BRAND
+        ========================= */
 
         .brand {
 
@@ -554,16 +596,11 @@
         }
 
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media(max-width:500px) {
-
-            body {
-
-                padding:
-                    20px 15px;
-
-            }
 
             .login-card {
 
@@ -661,7 +698,17 @@
             </div>
 
 
-            <!-- BUTTON -->
+            <!-- FORGOT -->
+
+            <a
+                href="forgot-password.html"
+                class="forgot"
+            >
+                Forgot password?
+            </a>
+
+
+            <!-- LOGIN -->
 
             <button
                 id="loginButton"
@@ -683,6 +730,8 @@
         </form>
 
 
+        <!-- REGISTER -->
+
         <div class="register">
 
             Don't have an account?
@@ -702,7 +751,9 @@
     </main>
 
 
-    <!-- SUPABASE -->
+    <!-- =========================
+         SUPABASE
+    ========================= -->
 
     <script
         src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
@@ -712,7 +763,9 @@
     <script src="supabase.js"></script>
 
 
-    <!-- LOGIN -->
+    <!-- =========================
+         LOGIN
+    ========================= -->
 
     <script>
 
@@ -721,16 +774,24 @@
                 "loginForm"
             );
 
+
         const button =
             document.getElementById(
                 "loginButton"
             );
+
 
         const message =
             document.getElementById(
                 "message"
             );
 
+
+        /*
+        =========================
+        MESSAGE
+        =========================
+        */
 
         function showMessage(
             text,
@@ -746,16 +807,11 @@
         }
 
 
-        function resetButton() {
-
-            button.disabled =
-                false;
-
-            button.textContent =
-                "LOGIN";
-
-        }
-
+        /*
+        =========================
+        LOGIN
+        =========================
+        */
 
         form.addEventListener(
             "submit",
@@ -788,6 +844,10 @@
                         .value;
 
 
+                /*
+                VALIDACIÓN
+                */
+
                 if (!email) {
 
                     showMessage(
@@ -812,6 +872,29 @@
                 }
 
 
+                /*
+                COMPROBAR SUPABASE
+                */
+
+                if (
+                    typeof supabaseClient ===
+                    "undefined"
+                ) {
+
+                    showMessage(
+                        "Supabase no está cargando. Revisa supabase.js.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                ESTADO
+                */
+
                 button.disabled =
                     true;
 
@@ -825,23 +908,7 @@
 
 
                     /*
-                    CHECK SUPABASE
-                    */
-
-                    if (
-                        typeof supabaseClient ===
-                        "undefined"
-                    ) {
-
-                        throw new Error(
-                            "Supabase no está cargando. Revisa supabase.js."
-                        );
-
-                    }
-
-
-                    /*
-                    LOGIN
+                    SIGN IN
                     */
 
                     const {
@@ -861,6 +928,10 @@
                             });
 
 
+                    /*
+                    ERROR
+                    */
+
                     if (error) {
 
                         throw error;
@@ -868,9 +939,14 @@
                     }
 
 
+                    /*
+                    SESIÓN
+                    */
+
                     if (
                         !data ||
-                        !data.session
+                        !data.session ||
+                        !data.user
                     ) {
 
                         throw new Error(
@@ -895,7 +971,7 @@
 
 
                     /*
-                    Guardar sesión de Supabase.
+                    ESPERAR UN MOMENTO
                     */
 
                     setTimeout(
@@ -905,7 +981,7 @@
                                 "dashboard.html";
 
                         },
-                        800
+                        600
                     );
 
 
@@ -918,19 +994,17 @@
                     );
 
 
-                    let errorMessage =
+                    let text =
                         error.message ||
                         "No se pudo iniciar sesión.";
 
 
-                    const lower =
-                        errorMessage
-                            .toLowerCase();
-
-
                     /*
-                    ERRORES AMIGABLES
+                    MENSAJES MÁS LIMPIOS
                     */
+
+                    const lower =
+                        text.toLowerCase();
 
 
                     if (
@@ -939,7 +1013,7 @@
                         )
                     ) {
 
-                        errorMessage =
+                        text =
                             "Email o contraseña incorrectos.";
 
                     }
@@ -951,7 +1025,7 @@
                         )
                     ) {
 
-                        errorMessage =
+                        text =
                             "Tu email todavía no está confirmado.";
 
                     }
@@ -963,8 +1037,8 @@
                         )
                     ) {
 
-                        errorMessage =
-                            "Demasiados intentos. Espera un momento e inténtalo de nuevo.";
+                        text =
+                            "Demasiados intentos. Espera un momento.";
 
                     }
 
@@ -975,19 +1049,23 @@
                         )
                     ) {
 
-                        errorMessage =
-                            "Demasiados intentos. Espera un momento antes de volver a intentar.";
+                        text =
+                            "Demasiados intentos. Espera un momento.";
 
                     }
 
 
                     showMessage(
-                        errorMessage,
+                        text,
                         "error"
                     );
 
 
-                    resetButton();
+                    button.disabled =
+                        false;
+
+                    button.textContent =
+                        "LOGIN";
 
                 }
 
@@ -1000,4 +1078,4 @@
 
 </body>
 
-    </html>
+</html>
