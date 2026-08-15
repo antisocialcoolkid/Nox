@@ -8,9 +8,7 @@
 <style>
 *{box-sizing:border-box}
 
-:root{
-    --accent:#ffffff;
-}
+:root{--accent:#ffffff}
 
 html,body{
     margin:0;
@@ -20,18 +18,14 @@ html,body{
     font-family:Arial,Helvetica,sans-serif;
 }
 
-body{
-    min-height:100vh;
-}
+body{min-height:100vh}
 
 .container{
     width:min(1100px,94%);
     margin:35px auto 70px;
 }
 
-.header{
-    margin-bottom:25px;
-}
+.header{margin-bottom:25px}
 
 .title{
     font-size:36px;
@@ -51,16 +45,13 @@ body{
     gap:20px;
 }
 
-.card,
-.preview{
+.card,.preview{
     background:#0b0b0b;
     border:1px solid #252525;
     border-radius:20px;
 }
 
-.card{
-    padding:25px;
-}
+.card{padding:25px}
 
 .section{
     padding-bottom:25px;
@@ -68,9 +59,7 @@ body{
     border-bottom:1px solid #181818;
 }
 
-.section:last-child{
-    border-bottom:0;
-}
+.section:last-child{border-bottom:0}
 
 .section-title{
     color:#555;
@@ -88,8 +77,7 @@ label{
     margin-bottom:7px;
 }
 
-input,
-textarea{
+input,textarea,select{
     width:100%;
     background:#070707;
     color:#fff;
@@ -100,17 +88,14 @@ textarea{
     margin-bottom:16px;
 }
 
-input{
-    height:46px;
-}
+input{height:46px}
 
 textarea{
     min-height:100px;
     resize:vertical;
 }
 
-input:focus,
-textarea:focus{
+input:focus,textarea:focus,select:focus{
     border-color:#777;
 }
 
@@ -132,9 +117,7 @@ textarea:focus{
     background:#0e0e0e;
 }
 
-.file input{
-    display:none;
-}
+.file input{display:none}
 
 .social-grid{
     display:grid;
@@ -142,9 +125,7 @@ textarea:focus{
     gap:10px;
 }
 
-.social-grid input{
-    margin:0;
-}
+.social-grid input{margin:0}
 
 .color-row{
     display:flex;
@@ -187,15 +168,8 @@ textarea:focus{
     font-size:11px;
 }
 
-.success{
-    color:#aaa;
-}
-
-.error{
-    color:#ff5555;
-}
-
-/* PROFILE LINK */
+.success{color:#aaa}
+.error{color:#ff5555}
 
 .profile-tools{
     margin-top:18px;
@@ -205,7 +179,7 @@ textarea:focus{
 
 .link-button{
     width:100%;
-    height:48px;
+    min-height:48px;
     border:1px solid #292929;
     border-radius:10px;
     background:#080808;
@@ -352,11 +326,7 @@ textarea:focus{
 }
 
 @media(max-width:850px){
-
-    .layout{
-        grid-template-columns:1fr;
-    }
-
+    .layout{grid-template-columns:1fr}
     .preview{
         position:relative;
         top:0;
@@ -365,14 +335,8 @@ textarea:focus{
 }
 
 @media(max-width:550px){
-
-    .social-grid{
-        grid-template-columns:1fr;
-    }
-
-    .title{
-        font-size:30px;
-    }
+    .social-grid{grid-template-columns:1fr}
+    .title{font-size:30px}
 }
 </style>
 </head>
@@ -381,543 +345,380 @@ textarea:focus{
 
 <div class="container">
 
-    <div class="header">
-        <div class="title">Customize</div>
-
-        <div class="subtitle">
-            Customize your NØX identity.
-        </div>
+<div class="header">
+    <div class="title">Customize</div>
+    <div class="subtitle">
+        Customize your NØX identity.
     </div>
+</div>
 
+<div class="layout">
 
-    <div class="layout">
+<!-- EDITOR -->
 
+<div class="card">
 
-        <!-- EDITOR -->
+<div class="section">
 
-        <div class="card">
+<div class="section-title">IDENTITY</div>
 
+<label>USERNAME</label>
+<input id="username"
+       type="text"
+       maxlength="20"
+       autocomplete="off">
 
-            <!-- IDENTITY -->
+<label>DISPLAY NAME</label>
+<input id="displayName"
+       type="text"
+       maxlength="30">
 
-            <div class="section">
+<label>BIO</label>
+<textarea id="bio"
+          maxlength="160"></textarea>
 
-                <div class="section-title">
-                    IDENTITY
-                </div>
-
-
-                <label>USERNAME</label>
-
-                <input
-                    id="username"
-                    type="text"
-                    maxlength="20"
-                    autocomplete="off"
-                >
-
-
-                <label>DISPLAY NAME</label>
-
-                <input
-                    id="displayName"
-                    type="text"
-                    maxlength="30"
-                >
-
-
-                <label>BIO</label>
-
-                <textarea
-                    id="bio"
-                    maxlength="160"
-                ></textarea>
-
-
-                <label>WEBSITE</label>
-
-                <input
-                    id="website"
-                    type="url"
-                    placeholder="https://example.com"
-                >
-
-            </div>
-
-
-            <!-- MEDIA -->
-
-            <div class="section">
-
-                <div class="section-title">
-                    MEDIA
-                </div>
-
-
-                <label>PROFILE PICTURE</label>
-
-                <label class="file">
-
-                    📷 CHOOSE PROFILE PHOTO
-
-                    <input
-                        id="avatarFile"
-                        type="file"
-                        accept="image/*"
-                    >
-
-                </label>
-
-
-                <label>BANNER</label>
-
-                <label class="file">
-
-                    🖼️ CHOOSE BANNER
-
-                    <input
-                        id="bannerFile"
-                        type="file"
-                        accept="image/*"
-                    >
-
-                </label>
-
-
-                <label>BACKGROUND</label>
-
-                <label class="file">
-
-                    🌌 CHOOSE BACKGROUND
-
-                    <input
-                        id="backgroundFile"
-                        type="file"
-                        accept="image/*"
-                    >
-
-                </label>
-
-            </div>
-
-
-            <!-- SOCIALS -->
-
-            <div class="section">
-
-                <div class="section-title">
-                    SOCIAL LINKS
-                </div>
-
-
-                <div class="social-grid">
-
-                    <input
-                        id="discord"
-                        placeholder="Discord"
-                    >
-
-                    <input
-                        id="instagram"
-                        placeholder="Instagram"
-                    >
-
-                    <input
-                        id="tiktok"
-                        placeholder="TikTok"
-                    >
-
-                    <input
-                        id="youtube"
-                        placeholder="YouTube"
-                    >
-
-                    <input
-                        id="github"
-                        placeholder="GitHub"
-                    >
-
-                    <input
-                        id="twitter"
-                        placeholder="X / Twitter"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- STYLE -->
-
-            <div class="section">
-
-                <div class="section-title">
-                    STYLE
-                </div>
-
-
-                <label>ACCENT COLOR</label>
-
-                <div class="color-row">
-
-                    <input
-                        id="accentColor"
-                        type="color"
-                        value="#ffffff"
-                    >
-
-                    <span
-                        id="colorValue"
-                        class="color-value"
-                    >
-                        #FFFFFF
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- SAVE -->
-
-            <button
-                id="save"
-                class="save"
-                type="button"
-            >
-                SAVE CHANGES
-            </button>
-
-
-            <div
-                id="message"
-                class="message"
-            ></div>
-
-
-            <!-- PROFILE LINK -->
-
-            <div class="profile-tools">
-
-                <button
-                    id="generateProfileLink"
-                    class="link-button"
-                    type="button"
-                >
-                    🔗 GENERATE PROFILE LINK
-                </button>
-
-
-                <div
-                    id="profileLinkBox"
-                    class="link-box"
-                >
-
-                    <input
-                        id="profileLink"
-                        type="text"
-                        readonly
-                    >
-
-
-                    <button
-                        id="copyProfileLink"
-                        class="link-button"
-                        type="button"
-                    >
-                        📋 COPY LINK
-                    </button>
-
-
-                    <button
-                        id="viewProfile"
-                        class="link-button"
-                        type="button"
-                        style="margin-top:8px"
-                    >
-                        👁 VIEW PROFILE
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PREVIEW -->
-
-        <div
-            id="preview"
-            class="preview"
-        >
-
-            <div
-                id="banner"
-                class="banner"
-            ></div>
-
-
-            <div class="profile">
-
-                <img
-                    id="avatar"
-                    class="avatar"
-                    alt="Avatar"
-                >
-
-
-                <div
-                    id="previewName"
-                    class="name"
-                >
-                    NØX
-                </div>
-
-
-                <div
-                    id="previewUsername"
-                    class="username"
-                >
-                    @nox
-                </div>
-
-
-                <div
-                    id="previewBio"
-                    class="bio"
-                >
-                    This is my NØX profile.
-                </div>
-
-
-                <a
-                    id="websitePreview"
-                    class="website"
-                    target="_blank"
-                    rel="noopener"
-                ></a>
-
-
-                <div class="socials">
-
-                    <a
-                        id="discordPreview"
-                        class="social"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Discord
-                    </a>
-
-                    <a
-                        id="instagramPreview"
-                        class="social"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Instagram
-                    </a>
-
-                    <a
-                        id="tiktokPreview"
-                        class="social"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        TikTok
-                    </a>
-
-                    <a
-                        id="youtubePreview"
-                        class="social"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        YouTube
-                    </a>
-
-                    <a
-                        id="githubPreview"
-                        class="social"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        GitHub
-                    </a>
-
-                    <a
-                        id="twitterPreview"
-                        class="social"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        X
-                    </a>
-
-                </div>
-
-
-                <div class="badges">
-
-                    <div
-                        class="badge early"
-                        title="Early Access"
-                    >
-                        ◆
-                    </div>
-
-                    <div
-                        class="badge"
-                        title="Verified"
-                    >
-                        ✓
-                    </div>
-
-                    <div
-                        class="badge"
-                        title="Developer"
-                    >
-                        ⚡
-                    </div>
-
-                    <div
-                        class="badge"
-                        title="OG"
-                    >
-                        ★
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<label>WEBSITE</label>
+<input id="website"
+       type="url"
+       placeholder="https://example.com">
 
 </div>
 
 
-<!-- SUPABASE -->
+<div class="section">
+
+<div class="section-title">MEDIA</div>
+
+<label>PROFILE PICTURE</label>
+
+<label class="file">
+📷 CHOOSE PROFILE PHOTO
+<input id="avatarFile"
+       type="file"
+       accept="image/*">
+</label>
+
+<label>BANNER</label>
+
+<label class="file">
+🖼️ CHOOSE BANNER
+<input id="bannerFile"
+       type="file"
+       accept="image/*">
+</label>
+
+<label>BACKGROUND</label>
+
+<label class="file">
+🌌 CHOOSE BACKGROUND
+<input id="backgroundFile"
+       type="file"
+       accept="image/*">
+</label>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">SOCIAL LINKS</div>
+
+<div class="social-grid">
+
+<input id="discord"
+       placeholder="Discord">
+
+<input id="instagram"
+       placeholder="Instagram">
+
+<input id="tiktok"
+       placeholder="TikTok">
+
+<input id="youtube"
+       placeholder="YouTube">
+
+<input id="github"
+       placeholder="GitHub">
+
+<input id="twitter"
+       placeholder="X / Twitter">
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-title">STYLE</div>
+
+<label>ACCENT COLOR</label>
+
+<div class="color-row">
+
+<input id="accentColor"
+       type="color"
+       value="#ffffff">
+
+<span id="colorValue"
+      class="color-value">
+#FFFFFF
+</span>
+
+</div>
+
+</div>
+
+
+<button id="save"
+        class="save"
+        type="button">
+SAVE CHANGES
+</button>
+
+<div id="message"
+     class="message"></div>
+
+
+<!-- PROFILE LINK -->
+
+<div class="profile-tools">
+
+<button id="generateProfileLink"
+        class="link-button"
+        type="button">
+🔗 GENERATE PROFILE LINK
+</button>
+
+<div id="profileLinkBox"
+     class="link-box">
+
+<input id="profileLink"
+       type="text"
+       readonly>
+
+<button id="copyProfileLink"
+        class="link-button"
+        type="button">
+📋 COPY LINK
+</button>
+
+<button id="viewProfile"
+        class="link-button"
+        type="button"
+        style="margin-top:8px">
+👁 VIEW PROFILE
+</button>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- PREVIEW -->
+
+<div id="preview"
+     class="preview">
+
+<div id="banner"
+     class="banner">
+</div>
+
+<div class="profile">
+
+<img id="avatar"
+     class="avatar"
+     alt="Avatar">
+
+<div id="previewName"
+     class="name">
+NØX
+</div>
+
+<div id="previewUsername"
+     class="username">
+@nox
+</div>
+
+<div id="previewBio"
+     class="bio">
+This is my NØX profile.
+</div>
+
+<a id="websitePreview"
+   class="website"
+   target="_blank"
+   rel="noopener"></a>
+
+
+<div class="socials">
+
+<a id="discordPreview"
+   class="social"
+   target="_blank"
+   rel="noopener">
+Discord
+</a>
+
+<a id="instagramPreview"
+   class="social"
+   target="_blank"
+   rel="noopener">
+Instagram
+</a>
+
+<a id="tiktokPreview"
+   class="social"
+   target="_blank"
+   rel="noopener">
+TikTok
+</a>
+
+<a id="youtubePreview"
+   class="social"
+   target="_blank"
+   rel="noopener">
+YouTube
+</a>
+
+<a id="githubPreview"
+   class="social"
+   target="_blank"
+   rel="noopener">
+GitHub
+</a>
+
+<a id="twitterPreview"
+   class="social"
+   target="_blank"
+   rel="noopener">
+X
+</a>
+
+</div>
+
+
+<div class="badges">
+
+<div class="badge early"
+     title="Early Access">
+◆
+</div>
+
+<div class="badge"
+     title="Verified">
+✓
+</div>
+
+<div class="badge"
+     title="Developer">
+⚡
+</div>
+
+<div class="badge"
+     title="OG">
+★
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const SUPABASE_URL =
-    "https://qvqhanioapefeyxtbzlp.supabase.co";
+"https://qvqhanioapefeyxtbzlp.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_hJVj-2VGj2hEXUgc91QY1Q_zGjw9qp1";
-
+"sb_publishable_hJVj-2VGj2hEXUgc91QY1Q_zGjw9qp1";
 
 const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
-
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 let currentUser = null;
-
 let avatarUrl = null;
 let bannerUrl = null;
 let backgroundUrl = null;
 
 
 function $(id){
-
     return document.getElementById(id);
-
 }
 
 
-/* =========================
-   MESSAGE
-========================= */
+/* MESSAGE */
 
-function message(text,type){
+function message(text,type=""){
 
     $("message").textContent =
         text;
 
     $("message").className =
-        "message " + (type || "");
-
+        "message " + type;
 }
 
 
-/* =========================
-   URL
-========================= */
+/* URL */
 
 function normalizeUrl(value){
 
     value =
-        value.trim();
+        String(value || "").trim();
 
     if(!value){
         return "";
     }
 
     if(
-        value.startsWith("http://") ||
-        value.startsWith("https://")
+        value.startsWith("https://") ||
+        value.startsWith("http://")
     ){
-
         return value;
-
     }
 
     return "https://" + value;
-
 }
 
 
-/* =========================
-   PREVIEW
-========================= */
+/* PREVIEW */
 
 function updatePreview(){
 
     const username =
-        $("username")
-        .value
-        .trim();
+        $("username").value.trim();
 
-    const displayName =
-        $("displayName")
-        .value
-        .trim();
+    const name =
+        $("displayName").value.trim();
 
     const bio =
-        $("bio")
-        .value
-        .trim();
+        $("bio").value.trim();
 
     const website =
-        $("website")
-        .value
-        .trim();
+        $("website").value.trim();
 
     const color =
-        $("accentColor")
-        .value;
+        $("accentColor").value;
 
 
     $("previewUsername").textContent =
         "@" + (username || "nox");
 
-
     $("previewName").textContent =
-        displayName || "NØX";
-
+        name || "NØX";
 
     $("previewBio").textContent =
-        bio ||
-        "This is my NØX profile.";
-
+        bio || "This is my NØX profile.";
 
     $("colorValue").textContent =
         color.toUpperCase();
@@ -933,121 +734,94 @@ function updatePreview(){
 
     if(website){
 
-        $("websitePreview")
-            .style.display =
+        $("websitePreview").style.display =
             "inline";
 
-        $("websitePreview")
-            .href =
+        $("websitePreview").href =
             normalizeUrl(website);
 
-        $("websitePreview")
-            .textContent =
+        $("websitePreview").textContent =
             website;
 
     }else{
 
-        $("websitePreview")
-            .style.display =
+        $("websitePreview").style.display =
             "none";
 
+        $("websitePreview")
+            .removeAttribute("href");
     }
 
 
-    socialPreview(
+    updateSocial(
         "discord",
         "discordPreview"
     );
 
-    socialPreview(
+    updateSocial(
         "instagram",
         "instagramPreview"
     );
 
-    socialPreview(
+    updateSocial(
         "tiktok",
         "tiktokPreview"
     );
 
-    socialPreview(
+    updateSocial(
         "youtube",
         "youtubePreview"
     );
 
-    socialPreview(
+    updateSocial(
         "github",
         "githubPreview"
     );
 
-    socialPreview(
+    updateSocial(
         "twitter",
         "twitterPreview"
     );
-
 }
 
 
-/* =========================
-   SOCIAL PREVIEW
-========================= */
-
-function socialPreview(
-    inputId,
-    outputId
-){
+function updateSocial(inputId,outputId){
 
     const value =
-        $(inputId)
-        .value
-        .trim();
+        $(inputId).value.trim();
 
     const output =
         $(outputId);
-
 
     if(!value){
 
         output.style.display =
             "none";
 
-        output.removeAttribute(
-            "href"
-        );
+        output.removeAttribute("href");
 
         return;
-
     }
-
 
     output.style.display =
         "inline-block";
 
     output.href =
         normalizeUrl(value);
-
 }
 
 
-/* =========================
-   LOAD USER
-========================= */
+/* LOAD USER */
 
 async function loadUser(){
 
     try{
 
         const result =
-            await supabaseClient
-            .auth
-            .getUser();
+            await supabaseClient.auth.getUser();
 
-
-        if(result.error){
-
+        if(result.error)
             throw result.error;
-
-        }
-
 
         if(!result.data.user){
 
@@ -1057,37 +831,26 @@ async function loadUser(){
             );
 
             return;
-
         }
-
 
         currentUser =
             result.data.user;
 
-
         await loadProfile();
-
 
     }catch(error){
 
-        console.error(
-            "NØX:",
-            error
-        );
+        console.error(error);
 
         message(
-            error.message,
+            "Error: " + error.message,
             "error"
         );
-
     }
-
 }
 
 
-/* =========================
-   LOAD PROFILE
-========================= */
+/* LOAD PROFILE */
 
 async function loadProfile(){
 
@@ -1101,13 +864,8 @@ async function loadProfile(){
         )
         .maybeSingle();
 
-
-    if(result.error){
-
+    if(result.error)
         throw result.error;
-
-    }
-
 
     if(!result.data){
 
@@ -1117,7 +875,6 @@ async function loadProfile(){
         );
 
         return;
-
     }
 
 
@@ -1128,83 +885,399 @@ async function loadProfile(){
     $("username").value =
         profile.username || "";
 
-
     $("displayName").value =
         profile.display_name || "NØX";
-
 
     $("bio").value =
         profile.bio || "";
 
-
     $("website").value =
         profile.website_url || "";
 
-
     $("accentColor").value =
-        profile.accent_color ||
-        "#ffffff";
+        profile.accent_color || "#ffffff";
 
 
     avatarUrl =
-        profile.avatar_url ||
-        null;
-
+        profile.avatar_url || null;
 
     bannerUrl =
-        profile.banner_url ||
-        null;
-
+        profile.banner_url || null;
 
     backgroundUrl =
-        profile.background_url ||
-        null;
+        profile.background_url || null;
 
 
-    if(avatarUrl){
-
-        $("avatar").src =
-            avatarUrl;
-
-    }
+    if(avatarUrl)
+        $("avatar").src = avatarUrl;
 
 
     if(bannerUrl){
 
-        $("banner")
-            .style
-            .backgroundImage =
-            'url("' +
-            bannerUrl +
-            '")';
-
+        $("banner").style.backgroundImage =
+            'url("' + bannerUrl + '")';
     }
 
 
     if(backgroundUrl){
 
-        $("preview")
-            .style
-            .backgroundImage =
-            'url("' +
-            backgroundUrl +
-            '")';
-
+        $("preview").style.backgroundImage =
+            'url("' + backgroundUrl + '")';
     }
 
 
-    const socials =
-        profile.social_links ||
-        {};
+    let socials =
+        profile.social_links || {};
+
+
+    if(typeof socials === "string"){
+
+        try{
+            socials = JSON.parse(socials);
+        }catch{
+            socials = {};
+        }
+    }
 
 
     $("discord").value =
         socials.discord || "";
 
-
     $("instagram").value =
         socials.instagram || "";
 
-
     $("tiktok").value =
-        s
+        socials.tiktok || "";
+
+    $("youtube").value =
+        socials.youtube || "";
+
+    $("github").value =
+        socials.github || "";
+
+    $("twitter").value =
+        socials.twitter || "";
+
+
+    updatePreview();
+}
+
+
+/* UPLOAD */
+
+async function uploadImage(file,folder){
+
+    if(!file)
+        return null;
+
+    if(!file.type.startsWith("image/")){
+
+        throw new Error(
+            "Solo puedes subir imágenes."
+        );
+    }
+
+
+    if(file.size > 10 * 1024 * 1024){
+
+        throw new Error(
+            "La imagen supera los 10 MB."
+        );
+    }
+
+
+    const extension =
+        (
+            file.name.split(".").pop() ||
+            "jpg"
+        ).toLowerCase();
+
+
+    const path =
+        currentUser.id +
+        "/" +
+        folder +
+        "/" +
+        crypto.randomUUID() +
+        "." +
+        extension;
+
+
+    const upload =
+        await supabaseClient
+        .storage
+        .from("profiles")
+        .upload(
+            path,
+            file,
+            {
+                cacheControl:"3600",
+                upsert:false
+            }
+        );
+
+
+    if(upload.error)
+        throw upload.error;
+
+
+    const result =
+        supabaseClient
+        .storage
+        .from("profiles")
+        .getPublicUrl(path);
+
+
+    return result.data.publicUrl;
+}
+
+
+/* FILE PREVIEWS */
+
+$("avatarFile").addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file)
+            return;
+
+        $("avatar").src =
+            URL.createObjectURL(file);
+    }
+);
+
+
+$("bannerFile").addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file)
+            return;
+
+        $("banner").style.backgroundImage =
+            'url("' +
+            URL.createObjectURL(file) +
+            '")';
+    }
+);
+
+
+$("backgroundFile").addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files[0];
+
+        if(!file)
+            return;
+
+        $("preview").style.backgroundImage =
+            'url("' +
+            URL.createObjectURL(file) +
+            '")';
+    }
+);
+
+
+/* SAVE */
+
+$("save").addEventListener(
+    "click",
+    async function(){
+
+        const button =
+            this;
+
+        try{
+
+            if(!currentUser){
+
+                message(
+                    "No hay una sesión iniciada.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            button.disabled = true;
+            button.textContent = "SAVING...";
+
+            message("Guardando cambios...");
+
+
+            let username =
+                $("username")
+                .value
+                .trim()
+                .toLowerCase()
+                .replace(
+                    /[^a-z0-9_]/g,
+                    ""
+                );
+
+
+            if(!username){
+
+                throw new Error(
+                    "El username no puede estar vacío."
+                );
+            }
+
+
+            const displayName =
+                $("displayName").value.trim();
+
+            const bio =
+                $("bio").value.trim();
+
+            const website =
+                $("website").value.trim();
+
+            const accentColor =
+                $("accentColor").value;
+
+
+            const social_links = {
+
+                discord:
+                    $("discord").value.trim(),
+
+                instagram:
+                    $("instagram").value.trim(),
+
+                tiktok:
+                    $("tiktok").value.trim(),
+
+                youtube:
+                    $("youtube").value.trim(),
+
+                github:
+                    $("github").value.trim(),
+
+                twitter:
+                    $("twitter").value.trim()
+            };
+
+
+            const avatarFile =
+                $("avatarFile").files[0];
+
+            if(avatarFile){
+
+                avatarUrl =
+                    await uploadImage(
+                        avatarFile,
+                        "avatar"
+                    );
+            }
+
+
+            const bannerFile =
+                $("bannerFile").files[0];
+
+            if(bannerFile){
+
+                bannerUrl =
+                    await uploadImage(
+                        bannerFile,
+                        "banner"
+                    );
+            }
+
+
+            const backgroundFile =
+                $("backgroundFile").files[0];
+
+            if(backgroundFile){
+
+                backgroundUrl =
+                    await uploadImage(
+                        backgroundFile,
+                        "background"
+                    );
+            }
+
+
+            const data = {
+
+                id:
+                    currentUser.id,
+
+                username:
+                    username,
+
+                display_name:
+                    displayName,
+
+                bio:
+                    bio,
+
+                website_url:
+                    website,
+
+                accent_color:
+                    accentColor,
+
+                social_links:
+                    social_links,
+
+                avatar_url:
+                    avatarUrl,
+
+                banner_url:
+                    bannerUrl,
+
+                background_url:
+                    backgroundUrl
+            };
+
+
+            const result =
+                await supabaseClient
+                .from("profiles")
+                .upsert(
+                    data,
+                    {
+                        onConflict:"id"
+                    }
+                );
+
+
+            if(result.error)
+                throw result.error;
+
+
+            $("username").value =
+                username;
+
+
+            updatePreview();
+
+
+            message(
+                "✓ Cambios guardados correctamente.",
+                "success"
+            );
+
+
+            button.textContent =
+                "SAVED ✓";
+
+
+            setTimeout(
+                function(){
+
+                    button.textContent =
+                        "SAVE CHANGES";
+
+                },
+      
