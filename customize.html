@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>NØX — Customize</title>
 
@@ -19,7 +23,7 @@
     --accent:#ffffff;
     --bg:#050505;
     --panel:#0b0b0b;
-    --border:#242424;
+    --border:#252525;
     --muted:#777;
 }
 
@@ -28,13 +32,20 @@ body{
     background:
         radial-gradient(
             circle at 50% -10%,
-            rgba(255,255,255,.08),
-            transparent 35%
+            rgba(255,255,255,.09),
+            transparent 38%
         ),
         #050505;
-    color:white;
+    color:#fff;
     font-family:Inter,Arial,sans-serif;
-    padding:25px;
+    padding:24px;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
 }
 
 .container{
@@ -46,7 +57,7 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:25px;
+    margin-bottom:24px;
 }
 
 .title{
@@ -56,9 +67,9 @@ body{
 }
 
 .subtitle{
-    margin-top:5px;
     color:#666;
     font-size:12px;
+    margin-top:5px;
 }
 
 .back{
@@ -68,7 +79,7 @@ body{
 }
 
 .back:hover{
-    color:white;
+    color:#fff;
 }
 
 .grid{
@@ -77,16 +88,20 @@ body{
     gap:20px;
 }
 
-.card{
+.panel,
+.preview{
     border:1px solid var(--border);
-    border-radius:20px;
     background:rgba(255,255,255,.025);
     backdrop-filter:blur(20px);
+    border-radius:20px;
+}
+
+.panel{
     padding:25px;
 }
 
 .section{
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
 .section-title{
@@ -113,12 +128,11 @@ input,
 textarea,
 select{
     width:100%;
-    border:1px solid #252525;
+    border:1px solid #242424;
     border-radius:10px;
     background:#070707;
     color:white;
     outline:none;
-    font-family:inherit;
     padding:12px;
 }
 
@@ -148,7 +162,7 @@ select:focus{
     display:block;
     border:1px dashed #303030;
     border-radius:12px;
-    padding:17px;
+    padding:18px;
     text-align:center;
     color:#777;
     cursor:pointer;
@@ -157,7 +171,7 @@ select:focus{
 
 .file:hover{
     border-color:#666;
-    color:white;
+    color:#fff;
     background:#0c0c0c;
 }
 
@@ -165,30 +179,31 @@ select:focus{
     display:none;
 }
 
-.color{
+.color-row{
     display:flex;
     align-items:center;
     gap:12px;
 }
 
-.color input{
-    width:55px;
-    height:40px;
+.color-row input{
+    width:58px;
+    height:42px;
     padding:3px;
 }
 
-.color span{
+.color-value{
     color:#777;
     font-size:11px;
 }
 
 .save{
     width:100%;
-    height:50px;
+    height:52px;
     border:0;
     border-radius:11px;
-    background:white;
-    color:black;
+    background:#fff;
+    color:#000;
+    font-size:12px;
     font-weight:800;
     cursor:pointer;
     transition:.25s;
@@ -196,7 +211,9 @@ select:focus{
 
 .save:hover{
     transform:translateY(-2px);
-    box-shadow:0 15px 40px rgba(255,255,255,.12);
+    box-shadow:
+        0 15px 40px
+        rgba(255,255,255,.12);
 }
 
 .save:disabled{
@@ -208,8 +225,10 @@ select:focus{
 .message{
     min-height:20px;
     margin-top:14px;
+    padding:0 4px;
     text-align:center;
     font-size:11px;
+    line-height:1.5;
 }
 
 .success{
@@ -217,24 +236,27 @@ select:focus{
 }
 
 .error{
-    color:#ff6565;
+    color:#ff6868;
 }
 
 
-/* PREVIEW */
+/* =========================
+   PREVIEW
+========================= */
 
 .preview{
     position:sticky;
     top:20px;
     overflow:hidden;
-    border:1px solid var(--border);
-    border-radius:22px;
-    background:#080808;
+    background-color:#080808;
+    background-size:cover;
+    background-position:center;
+    transition:.35s;
 }
 
 .banner{
-    height:190px;
     position:relative;
+    height:190px;
     background:
         linear-gradient(
             135deg,
@@ -245,22 +267,60 @@ select:focus{
     background-position:center;
 }
 
-.banner:after{
+.banner::after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(
-        transparent,
-        #080808
-    );
+    background:
+        linear-gradient(
+            transparent,
+            #080808
+        );
 }
 
-.content{
+.particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:3;
+}
+
+.dot{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:var(--accent);
+    opacity:.4;
+    animation:
+        particle
+        6s
+        ease-in-out
+        infinite;
+}
+
+@keyframes particle{
+
+    0%,
+    100%{
+        transform:translateY(0);
+        opacity:.1;
+    }
+
+    50%{
+        transform:translateY(-35px);
+        opacity:.8;
+    }
+
+}
+
+.preview-content{
     position:relative;
+    z-index:4;
     margin-top:-58px;
     padding:0 25px 30px;
     text-align:center;
-    z-index:2;
 }
 
 .avatar{
@@ -272,19 +332,19 @@ select:focus{
     background:#111;
 }
 
-.name{
+.preview-name{
     margin-top:14px;
     font-size:23px;
     font-weight:800;
 }
 
-.username{
+.preview-username{
     margin-top:4px;
     color:#666;
     font-size:11px;
 }
 
-.bio{
+.preview-bio{
     max-width:340px;
     margin:15px auto;
     color:#aaa;
@@ -292,7 +352,7 @@ select:focus{
     line-height:1.5;
 }
 
-.website{
+.preview-website{
     display:none;
     color:var(--accent);
     text-decoration:none;
@@ -323,44 +383,18 @@ select:focus{
     border-color:var(--accent);
 }
 
-.particles{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-}
-
-.dot{
-    position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:var(--accent);
-    opacity:.4;
-    animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0);
-        opacity:.1;
-    }
-
-    50%{
-        transform:translateY(-35px);
-        opacity:.8;
-    }
-
-}
-
 .floating{
-    animation:cardFloat 4s ease-in-out infinite;
+    animation:
+        floating
+        4s
+        ease-in-out
+        infinite;
 }
 
-@keyframes cardFloat{
+@keyframes floating{
 
-    0%,100%{
+    0%,
+    100%{
         transform:translateY(0);
     }
 
@@ -389,27 +423,36 @@ select:focus{
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="container">
+
 
 <div class="top">
 
 <div>
-    <div class="title">Customize</div>
-    <div class="subtitle">
-        Customize your NØX identity.
-    </div>
+
+<div class="title">
+Customize
 </div>
+
+<div class="subtitle">
+Customize your NØX identity.
+</div>
+
+</div>
+
 
 <a
     href="dashboard.html"
     class="back"
 >
-    ← BACK
+← BACK
 </a>
 
 </div>
@@ -418,9 +461,11 @@ select:focus{
 <div class="grid">
 
 
-<!-- EDITOR -->
+<!-- =========================
+     EDITOR
+========================= -->
 
-<div class="card">
+<div class="panel">
 
 
 <div class="section">
@@ -432,10 +477,13 @@ IDENTITY
 
 <div class="field">
 
-<label>USERNAME</label>
+<label>
+USERNAME
+</label>
 
 <input
     id="username"
+    type="text"
     maxlength="20"
     autocomplete="off"
 >
@@ -452,10 +500,13 @@ Cargando...
 
 <div class="field">
 
-<label>DISPLAY NAME</label>
+<label>
+DISPLAY NAME
+</label>
 
 <input
     id="displayName"
+    type="text"
     maxlength="30"
     placeholder="NØX"
 >
@@ -465,7 +516,9 @@ Cargando...
 
 <div class="field">
 
-<label>BIO</label>
+<label>
+BIO
+</label>
 
 <textarea
     id="bio"
@@ -487,7 +540,9 @@ MEDIA
 
 <div class="field">
 
-<label>PROFILE PICTURE</label>
+<label>
+PROFILE PICTURE
+</label>
 
 <label class="file">
 
@@ -506,7 +561,9 @@ MEDIA
 
 <div class="field">
 
-<label>BANNER</label>
+<label>
+BANNER
+</label>
 
 <label class="file">
 
@@ -525,7 +582,9 @@ MEDIA
 
 <div class="field">
 
-<label>BACKGROUND</label>
+<label>
+BACKGROUND
+</label>
 
 <label class="file">
 
@@ -553,9 +612,11 @@ STYLE
 
 <div class="field">
 
-<label>ACCENT COLOR</label>
+<label>
+ACCENT COLOR
+</label>
 
-<div class="color">
+<div class="color-row">
 
 <input
     id="accentColor"
@@ -563,7 +624,10 @@ STYLE
     value="#ffffff"
 >
 
-<span id="colorText">
+<span
+    id="colorValue"
+    class="color-value"
+>
 #FFFFFF
 </span>
 
@@ -574,9 +638,11 @@ STYLE
 
 <div class="field">
 
-<label>PROFILE EFFECT</label>
+<label>
+PROFILE EFFECT
+</label>
 
-<select id="effect">
+<select id="profileEffect">
 
 <option value="none">
 None
@@ -606,7 +672,9 @@ SOCIAL
 
 <div class="field">
 
-<label>WEBSITE</label>
+<label>
+WEBSITE
+</label>
 
 <input
     id="website"
@@ -619,9 +687,15 @@ SOCIAL
 </div>
 
 
+<!-- IMPORTANTE:
+     type="button"
+     evita recargar la página
+-->
+
 <button
     id="save"
     class="save"
+    type="button"
 >
 SAVE CHANGES
 </button>
@@ -636,7 +710,9 @@ SAVE CHANGES
 </div>
 
 
-<!-- PREVIEW -->
+<!-- =========================
+     PREVIEW
+========================= -->
 
 <div
     id="preview"
@@ -657,7 +733,7 @@ SAVE CHANGES
 </div>
 
 
-<div class="content">
+<div class="preview-content">
 
 
 <img
@@ -669,7 +745,7 @@ SAVE CHANGES
 
 <div
     id="previewName"
-    class="name"
+    class="preview-name"
 >
 NØX
 </div>
@@ -677,7 +753,7 @@ NØX
 
 <div
     id="previewUsername"
-    class="username"
+    class="preview-username"
 >
 @nox
 </div>
@@ -685,7 +761,7 @@ NØX
 
 <div
     id="previewBio"
-    class="bio"
+    class="preview-bio"
 >
 This is my NØX profile.
 </div>
@@ -693,7 +769,7 @@ This is my NØX profile.
 
 <a
     id="previewWebsite"
-    class="website"
+    class="preview-website"
     target="_blank"
     rel="noopener"
 ></a>
@@ -701,21 +777,34 @@ This is my NØX profile.
 
 <div class="badges">
 
-<div class="badge">✓</div>
-<div class="badge">◆</div>
-<div class="badge">⚡</div>
+<div class="badge">
+✓
+</div>
+
+<div class="badge">
+◆
+</div>
+
+<div class="badge">
+⚡
+</div>
 
 </div>
 
 
 </div>
 
-</div>
 
 </div>
 
+
 </div>
 
+
+</div>
+
+
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -724,36 +813,75 @@ This is my NØX profile.
 
 <script>
 
-let user = null;
+
+/* =====================================================
+   NØX CUSTOMIZE
+===================================================== */
+
+
+let currentUser = null;
 let profile = null;
 
 
-const $ = id =>
+const $ =
+    id =>
     document.getElementById(id);
 
 
-/* =========================
-AUTH
-========================= */
+/* =====================================================
+   MENSAJES
+===================================================== */
 
-async function start(){
+function message(
+    text,
+    type = ""
+){
+
+    const box =
+        $("message");
+
+
+    box.textContent =
+        text;
+
+
+    box.className =
+        "message " +
+        type;
+
+}
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+async function init(){
 
     try{
+
+        message(
+            "Cargando perfil..."
+        );
+
 
         const {
             data,
             error
         } =
         await supabaseClient
-        .auth
-        .getUser();
+            .auth
+            .getUser();
 
 
         if(error)
             throw error;
 
 
-        if(!data.user){
+        if(
+            !data ||
+            !data.user
+        ){
 
             window.location.href =
                 "login.html";
@@ -763,20 +891,32 @@ async function start(){
         }
 
 
-        user =
+        currentUser =
             data.user;
 
 
         await loadProfile();
 
+
+        message("");
+
     }
 
     catch(error){
 
-        console.error(error);
+        console.error(
+            "NØX INIT:",
+            error
+        );
 
-        showError(
-            "No se pudo cargar tu sesión."
+
+        message(
+            "Error: " +
+            (
+                error.message ||
+                "No se pudo cargar el perfil."
+            ),
+            "error"
         );
 
     }
@@ -784,9 +924,9 @@ async function start(){
 }
 
 
-/* =========================
-LOAD
-========================= */
+/* =====================================================
+   CARGAR PROFILE
+===================================================== */
 
 async function loadProfile(){
 
@@ -795,14 +935,26 @@ async function loadProfile(){
         error
     } =
     await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",user.id)
-    .single();
+        .from("profiles")
+        .select("*")
+        .eq(
+            "id",
+            currentUser.id
+        )
+        .maybeSingle();
 
 
     if(error)
         throw error;
+
+
+    if(!data){
+
+        throw new Error(
+            "No existe un perfil para este usuario."
+        );
+
+    }
 
 
     profile =
@@ -810,11 +962,13 @@ async function loadProfile(){
 
 
     $("username").value =
-        profile.username || "nox";
+        profile.username ||
+        "nox";
 
 
     $("displayName").value =
-        profile.display_name || "NØX";
+        profile.display_name ||
+        "NØX";
 
 
     $("bio").value =
@@ -823,7 +977,8 @@ async function loadProfile(){
 
 
     $("website").value =
-        profile.website_url || "";
+        profile.website_url ||
+        "";
 
 
     $("accentColor").value =
@@ -831,10 +986,12 @@ async function loadProfile(){
         "#ffffff";
 
 
-    $("effect").value =
+    $("profileEffect").value =
         profile.profile_effect ||
         "none";
 
+
+    /* AVATAR */
 
     if(profile.avatar_url){
 
@@ -844,92 +1001,119 @@ async function loadProfile(){
     }
 
 
+    /* BANNER */
+
     if(profile.banner_url){
 
         $("banner")
-        .style
-        .backgroundImage =
-        `url("${profile.banner_url}")`;
+            .style
+            .backgroundImage =
+            `url("${profile.banner_url}")`;
 
     }
 
 
+    /* BACKGROUND */
+
     if(profile.background_url){
 
         $("preview")
-        .style
-        .backgroundImage =
-        `url("${profile.background_url}")`;
+            .style
+            .backgroundImage =
+            `url("${profile.background_url}")`;
 
     }
 
 
     updatePreview();
 
-    usernameStatus();
+    updateUsernameInfo();
 
 }
 
 
-/* =========================
-USERNAME
-========================= */
+/* =====================================================
+   USERNAME
+===================================================== */
 
-function usernameStatus(){
+function updateUsernameInfo(){
 
-    const old =
+    if(!profile)
+        return;
+
+
+    const original =
         (
             profile.username ||
             ""
-        ).toLowerCase();
+        )
+        .toLowerCase();
 
 
     const current =
         $("username")
-        .value
-        .trim()
-        .toLowerCase();
+            .value
+            .trim()
+            .toLowerCase();
 
 
-    if(old === current){
+    if(
+        current ===
+        original
+    ){
 
         $("usernameInfo")
-        .textContent =
-        "Username actual.";
+            .textContent =
+            "Username actual.";
 
         return;
 
     }
 
 
-    if(!profile.username_changed_at){
+    if(
+        !profile.username_changed_at
+    ){
 
         $("usernameInfo")
-        .textContent =
-        "✓ Puedes cambiarlo ahora. Después tendrás que esperar 7 días.";
+            .textContent =
+            "✓ Disponible. Después del cambio tendrás que esperar 7 días.";
 
         return;
 
     }
+
+
+    const changed =
+        new Date(
+            profile.username_changed_at
+        )
+        .getTime();
 
 
     const next =
-        new Date(
-            profile.username_changed_at
-        ).getTime()
-        +
-        7*24*60*60*1000;
+        changed +
+        (
+            7 *
+            24 *
+            60 *
+            60 *
+            1000
+        );
 
 
-    const left =
-        next - Date.now();
+    const remaining =
+        next -
+        Date.now();
 
 
-    if(left <= 0){
+    if(
+        remaining <= 0
+    ){
 
         $("usernameInfo")
-        .textContent =
-        "✓ Puedes cambiar tu username.";
+            .textContent =
+            "✓ Ya puedes cambiar tu username.";
 
         return;
 
@@ -938,138 +1122,169 @@ function usernameStatus(){
 
     const days =
         Math.ceil(
-            left /
-            (24*60*60*1000)
+            remaining /
+            (
+                24 *
+                60 *
+                60 *
+                1000
+            )
         );
 
 
     $("usernameInfo")
-    .textContent =
-    `🔒 Podrás cambiarlo nuevamente en ${days} día(s).`;
+        .textContent =
+        `🔒 Podrás cambiarlo nuevamente en ${days} día(s).`;
 
 }
 
 
-/* =========================
-PREVIEW
-========================= */
+/* =====================================================
+   PREVIEW
+===================================================== */
 
 function updatePreview(){
 
     const username =
         $("username")
-        .value
-        .trim();
+            .value
+            .trim();
 
 
-    const name =
+    const displayName =
         $("displayName")
-        .value
-        .trim();
+            .value
+            .trim();
 
 
     const bio =
         $("bio")
-        .value
-        .trim();
+            .value
+            .trim();
 
 
     $("previewUsername")
-    .textContent =
-    "@" +
-    (username || "nox");
+        .textContent =
+        "@" +
+        (
+            username ||
+            "nox"
+        );
 
 
     $("previewName")
-    .textContent =
-    name || "NØX";
+        .textContent =
+        displayName ||
+        "NØX";
 
 
     $("previewBio")
-    .textContent =
-    bio ||
-    "This is my NØX profile.";
+        .textContent =
+        bio ||
+        "This is my NØX profile.";
 
+
+    /* COLOR */
 
     const color =
-        $("accentColor").value;
+        $("accentColor")
+            .value;
 
 
     document.documentElement
-    .style
-    .setProperty(
-        "--accent",
-        color
-    );
+        .style
+        .setProperty(
+            "--accent",
+            color
+        );
 
 
-    $("colorText")
-    .textContent =
-    color.toUpperCase();
+    $("colorValue")
+        .textContent =
+        color.toUpperCase();
 
+
+    /* WEBSITE */
 
     const website =
         $("website")
-        .value
-        .trim();
+            .value
+            .trim();
 
 
     if(website){
 
         $("previewWebsite")
-        .style.display =
-        "inline";
+            .style
+            .display =
+            "inline";
+
 
         $("previewWebsite")
-        .href =
-        website;
+            .href =
+            website;
+
 
         $("previewWebsite")
-        .textContent =
-        website;
+            .textContent =
+            website;
 
-    }else{
+    }
+
+    else{
 
         $("previewWebsite")
-        .style.display =
-        "none";
+            .style
+            .display =
+            "none";
 
     }
 
 
+    /* EFFECT */
+
     $("preview")
-    .classList.toggle(
-        "floating",
-        $("effect").value ===
-        "floating"
-    );
+        .classList.toggle(
+            "floating",
+            $("profileEffect")
+                .value ===
+            "floating"
+        );
 
 
-    makeParticles();
+    createParticles();
 
 }
 
 
-/* =========================
-PARTICLES
-========================= */
+/* =====================================================
+   PARTICLES
+===================================================== */
 
-function makeParticles(){
+function createParticles(){
 
-    $("particles")
-    .innerHTML = "";
+    const container =
+        $("particles");
+
+
+    container.innerHTML =
+        "";
 
 
     if(
-        $("effect").value !==
+        $("profileEffect")
+            .value !==
         "particles"
-    )
+    ){
+
         return;
+
+    }
 
 
     for(
-        let i=0;
-        i<30;
+        let i = 0;
+        i < 35;
         i++
     ){
 
@@ -1084,30 +1299,39 @@ function makeParticles(){
 
 
         dot.style.left =
-            Math.random()*100+"%";
+            Math.random() *
+            100 +
+            "%";
 
 
         dot.style.top =
-            Math.random()*100+"%";
+            Math.random() *
+            100 +
+            "%";
 
 
         dot.style.animationDelay =
-            Math.random()*5+"s";
+            Math.random() *
+            5 +
+            "s";
 
 
-        $("particles")
-        .appendChild(dot);
+        container
+            .appendChild(dot);
 
     }
 
 }
 
 
-/* =========================
-IMAGE UPLOAD
-========================= */
+/* =====================================================
+   SUBIR IMAGEN
+===================================================== */
 
-async function upload(file,type){
+async function uploadImage(
+    file,
+    folder
+){
 
     if(!file)
         return null;
@@ -1115,7 +1339,9 @@ async function upload(file,type){
 
     if(
         file.size >
-        15*1024*1024
+        15 *
+        1024 *
+        1024
     ){
 
         throw new Error(
@@ -1127,27 +1353,35 @@ async function upload(file,type){
 
     const extension =
         file.name
-        .split(".")
-        .pop();
+            .split(".")
+            .pop()
+            .toLowerCase();
 
 
     const path =
-        `${user.id}/${type}/${crypto.randomUUID()}.${extension}`;
+        currentUser.id +
+        "/" +
+        folder +
+        "/" +
+        crypto.randomUUID() +
+        "." +
+        extension;
 
 
     const {
         error
     } =
     await supabaseClient
-    .storage
-    .from("profiles")
-    .upload(
-        path,
-        file,
-        {
-            upsert:false
-        }
-    );
+        .storage
+        .from("profiles")
+        .upload(
+            path,
+            file,
+            {
+                upsert:false,
+                cacheControl:"3600"
+            }
+        );
 
 
     if(error)
@@ -1158,9 +1392,11 @@ async function upload(file,type){
         data
     } =
     supabaseClient
-    .storage
-    .from("profiles")
-    .getPublicUrl(path);
+        .storage
+        .from("profiles")
+        .getPublicUrl(
+            path
+        );
 
 
     return data.publicUrl;
@@ -1168,63 +1404,83 @@ async function upload(file,type){
 }
 
 
-/* =========================
-SAVE
-========================= */
+/* =====================================================
+   GUARDAR
+===================================================== */
 
 $("save")
 .addEventListener(
     "click",
-    async () => {
+    async function(){
 
         const button =
             $("save");
 
 
-        button.disabled =
-            true;
-
-        button.textContent =
-            "SAVING...";
-
-
-        clearMessage();
-
-
         try{
+
+            button.disabled =
+                true;
+
+
+            button.textContent =
+                "SAVING...";
+
+
+            message(
+                "Guardando cambios..."
+            );
+
+
+            /* USERNAME */
 
             const newUsername =
                 $("username")
-                .value
-                .trim()
-                .toLowerCase();
+                    .value
+                    .trim()
+                    .toLowerCase();
 
 
             const oldUsername =
                 (
                     profile.username ||
                     ""
-                ).toLowerCase();
+                )
+                .toLowerCase();
 
 
-            /* USERNAME */
+            if(
+                !newUsername
+            ){
+
+                throw new Error(
+                    "El username no puede estar vacío."
+                );
+
+            }
+
 
             if(
                 newUsername !==
                 oldUsername
             ){
 
+                message(
+                    "Comprobando username..."
+                );
+
+
                 const {
                     error
                 } =
                 await supabaseClient
-                .rpc(
-                    "change_username",
-                    {
-                        new_username:
-                            newUsername
-                    }
-                );
+                    .rpc(
+                        "change_username",
+                        {
+                            new_username:
+                                newUsername
+                        }
+                    );
 
 
                 if(error)
@@ -1233,280 +1489,47 @@ $("save")
             }
 
 
-            /* IMAGES */
+            /* URLs actuales */
 
-            let avatar =
+            let avatarUrl =
                 profile.avatar_url ||
                 null;
 
 
-            let banner =
+            let bannerUrl =
                 profile.banner_url ||
                 null;
 
 
-            let background =
+            let backgroundUrl =
                 profile.background_url ||
                 null;
 
 
+            /* ARCHIVOS */
+
             const avatarFile =
                 $("avatarFile")
-                .files[0];
+                    .files[0];
 
 
             const bannerFile =
                 $("bannerFile")
-                .files[0];
+                    .files[0];
 
 
             const backgroundFile =
                 $("backgroundFile")
-                .files[0];
+                    .files[0];
 
+
+            /* AVATAR */
 
             if(avatarFile){
 
-                avatar =
-                    await upload(
-                        avatarFile,
-                        "avatars"
-                    );
+                message(
+                    "Subiendo foto de perfil..."
+                );
 
-            }
 
-
-            if(bannerFile){
-
-                banner =
-                    await upload(
-                        bannerFile,
-                        "banners"
-                    );
-
-            }
-
-
-            if(backgroundFile){
-
-                background =
-                    await upload(
-                        backgroundFile,
-                        "backgrounds"
-                    );
-
-            }
-
-
-            /* PROFILE */
-
-            const {
-                data,
-                error
-            } =
-            await supabaseClient
-            .from("profiles")
-            .update({
-
-                display_name:
-                    $("displayName")
-                    .value
-                    .trim(),
-
-                bio:
-                    $("bio")
-                    .value
-                    .trim(),
-
-                website_url:
-                    $("website")
-                    .value
-                    .trim(),
-
-                avatar_url:
-                    avatar,
-
-                banner_url:
-                    banner,
-
-                background_url:
-                    background,
-
-                accent_color:
-                    $("accentColor")
-                    .value,
-
-                profile_effect:
-                    $("effect")
-                    .value,
-
-                updated_at:
-                    new Date()
-                    .toISOString()
-
-            })
-            .eq(
-                "id",
-                user.id
-            )
-            .select()
-            .single();
-
-
-            if(error)
-                throw error;
-
-
-            profile =
-                data;
-
-
-            showSuccess(
-                "✓ Cambios guardados correctamente."
-            );
-
-
-            updatePreview();
-
-            usernameStatus();
-
-
-            $("avatarFile").value =
-                "";
-
-            $("bannerFile").value =
-                "";
-
-            $("backgroundFile").value =
-                "";
-
-
-        }
-
-        catch(error){
-
-            console.error(
-                "NØX ERROR:",
-                error
-            );
-
-
-            showError(
-                error.message ||
-                "No se pudieron guardar los cambios."
-            );
-
-        }
-
-
-        button.disabled =
-            false;
-
-        button.textContent =
-            "SAVE CHANGES";
-
-    }
-);
-
-
-/* =========================
-LIVE
-========================= */
-
-[
-    "username",
-    "displayName",
-    "bio",
-    "website",
-    "accentColor",
-    "effect"
-]
-.forEach(
-    id => {
-
-        $(id)
-        .addEventListener(
-            "input",
-            updatePreview
-        );
-
-        $(id)
-        .addEventListener(
-            "change",
-            updatePreview
-        );
-
-    }
-);
-
-
-$("username")
-.addEventListener(
-    "input",
-    () => {
-
-        $("username").value =
-            $("username")
-            .value
-            .toLowerCase()
-            .replace(
-                /[^a-z0-9_]/g,
-                ""
-            );
-
-
-        usernameStatus();
-
-    }
-);
-
-
-/* =========================
-AVATAR PREVIEW
-========================= */
-
-$("avatarFile")
-.addEventListener(
-    "change",
-    event => {
-
-        const file =
-            event.target.files[0];
-
-
-        if(!file)
-            return;
-
-
-        $("avatar").src =
-            URL.createObjectURL(
-                file
-            );
-
-    }
-);
-
-
-/* =========================
-BANNER PREVIEW
-========================= */
-
-$("bannerFile")
-.addEventListener(
-    "change",
-    event => {
-
-        const file =
-            event.target.files[0];
-
-
-        if(!file)
-            return;
-
-
-        $("banner")
-        .style
-        .backgroundImage =
-        `url("${URL.createObjectURL(file)}")`;
-
-    }
+  
