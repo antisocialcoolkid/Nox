@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NØX — Customize</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .customize-page {
+            width: min(1400px, calc(100% - 40px));
+            margin: auto;
+            padding: 30px 0 70px;
+        }
+
+        .customize-nav {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+
+        .customize-logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .customize-back {
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            transition: .3s;
+        }
+
+        .customize-back:hover {
+            color: white;
+        }
+
+        .customize-title {
+            margin: 55px 0 30px;
+        }
+
+        .customize-title span {
+            color: #555;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .customize-title h1 {
+            margin-top: 12px;
+            font-size: clamp(40px, 6vw, 65px);
+            letter-spacing: -4px;
+        }
+
+        .customize-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .editor {
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .editor-section {
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .editor-section:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .editor-section-title {
+            color: #777;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 7px;
+            color: #777;
+            font-size: 11px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,.08);
+            outline: none;
+            border-radius: 9px;
+            background: #090909;
+            color: white;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 12px;
+            transition: .25s;
+        }
+
+        .field textarea {
+            min-height: 85px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: rgba(255,255,255,.25);
+        }
+
+        .color-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .color-row input[type="color"] {
+            width: 45px;
+            height: 38px;
+            padding: 3px;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 8px;
+            background: #090909;
+            cursor: pointer;
+        }
+
+        .save-button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: white;
+            color: black;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255,255,255,.1);
+        }
+
+        .preview-container {
+            min-height: 720px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 20px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 18px;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,255,255,.045),
+                    transparent 50%
+                ),
+                #050505;
+        }
+
+        .preview-label {
+            position: absolute;
+            top: 20px;
+            left: 22px;
+            color: #444;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .preview-profile {
+            width: min(390px, calc(100% - 40px));
+            padding: 38px 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 22px;
+            background: rgba(12,12,12,.8);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 40px 100px rgba(0,0,0,.7);
+            transition: .35s;
+        }
+
+        .preview-avatar {
+            width: 85px;
+            height: 85px;
+            margin: auto;
+            display: grid;
+            place-items: center;
+            border-radius: 25px;
+            background: #111;
+            border: 1px solid rgba(255,255,255,.12);
+            font-size: 28px;
+            font-weight: 800;
+            overflow: hidden;
+        }
+
+        .preview-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-name {
+            margin-top: 20px;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .preview-username {
+            display: block;
+            margin-top: 5px;
+            color: #555;
+            font-size: 11px;
+        }
+
+        .preview-bio {
+            margin: 18px auto 0;
+            max-width: 300px;
+            color: #777;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .preview-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .preview-link {
+            min-height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 9px;
+            color: #aaa;
+            font-size: 11px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .preview-footer {
+            margin-top: 22px;
+            color: #333;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 900px) {
+
+            .customize-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-container {
+                position: relative;
+                min-height: 650px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .customize-page {
+                width: calc(100% - 25px);
+            }
+
+            .customize-title {
+                margin-top: 40px;
+            }
+
+            .editor {
+                padding: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="noise"></div>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+
+    <div class="customize-page">
+
+        <header class="customize-nav">
+
+            <a href="index.html" class="customize-logo">
+                NØX
+            </a>
+
+            <a href="index.html" class="customize-back">
+                ← Back to NØX
+            </a>
+
+        </header>
+
+
+        <section class="customize-title">
+
+            <span>PROFILE EDITOR</span>
+
+            <h1>
+                Customize.
+            </h1>
+
+        </section>
+
+
+        <div class="customize-layout">
+
+
+            <!-- EDITOR -->
+
+            <aside class="editor">
+
+
+                <div class="editor-section">
+
+                    <div class="editor-section-title">
+                        IDENTITY
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Display name
+                        </label>
+
+                        <input
+                            id="nameInput"
+                            type="text"
+                            value="NØX"
+                            maxlength="30"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Username
+                        </label>
+
+                        <input
+                            id="usernameInput"
+                            type="text"
+                            value="@nox"
+                            maxlength="25"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Bio
+                        </label>
+
+                        <textarea
+                            id="bioInput"
+                            maxlength="140"
+                        >Welcome to my corner of the void.</textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="editor-section">
+
+                    <div class="editor-section-title">
+                        APPEARANCE
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Avatar URL
+                        </label>
+
+                        <input
+                            id="avatarInput"
+                            type="text"
+                            placeholder="https://..."
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Accent
+                        </label>
+
+                        <div class="color-row">
+
+                            <input
+                                id="colorInput"
+                                type="color"
+                                value="#ffffff"
+                            >
+
+                            <span
+                                id="colorText"
+                                style="color:#666;font-size:11px;"
+                            >
+                                #ffffff
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="editor-section">
+
+                    <div class="editor-section-title">
+                        LINKS
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Link 01
+                        </label>
+
+                        <input
+                            id="link1Input"
+                            type="text"
+                            value="Discord"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Link 02
+                        </label>
+
+                        <input
+                            id="link2Input"
+                            type="text"
+                            value="Instagram"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Link 03
+                        </label>
+
+                        <input
+                            id="link3Input"
+                            type="text"
+                            value="YouTube"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="saveButton"
+                    class="save-button"
+                >
+                    Save changes
+                </button>
+
+
+            </aside>
+
+
+            <!-- PREVIEW -->
+
+            <section class="preview-container">
+
+                <div class="preview-label">
+                    LIVE PREVIEW
+                </div>
+
+
+                <div
+                    id="previewProfile"
+                    class="preview-profile"
+                >
+
+                    <div
+                        id="previewAvatar"
+                        class="preview-avatar"
+                    >
+                        N
+                    </div>
+
+
+                    <h2
+                        id="previewName"
+                        class="preview-name"
+                    >
+                        NØX
+                    </h2>
+
+
+                    <span
+                        id="previewUsername"
+                        class="preview-username"
+                    >
+                        @nox
+                    </span>
+
+
+                    <p
+                        id="previewBio"
+                        class="preview-bio"
+                    >
+                        Welcome to my corner of the void.
+                    </p>
+
+
+                    <div class="preview-links">
+
+                        <div
+                            id="previewLink1"
+                            class="preview-link"
+                        >
+                            Discord
+                        </div>
+
+                        <div
+                            id="previewLink2"
+                            class="preview-link"
+                        >
+                            Instagram
+                        </div>
+
+                        <div
+                            id="previewLink3"
+                            class="preview-link"
+                        >
+                            YouTube
+                        </div>
+
+                    </div>
+
+
+                    <div class="preview-footer">
+                        POWERED BY NØX
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const nameInput =
+            document.getElementById("nameInput");
+
+        const usernameInput =
+            document.getElementById("usernameInput");
+
+        const bioInput =
+            document.getElementById("bioInput");
+
+        const avatarInput =
+            document.getElementById("avatarInput");
+
+        const colorInput =
+            document.getElementById("colorInput");
+
+        const colorText =
+            document.getElementById("colorText");
+
+        const link1Input =
+            document.getElementById("link1Input");
+
+        const link2Input =
+            document.getElementById("link2Input");
+
+        const link3Input =
+            document.getElementById("link3Input");
+
+
+        const previewName =
+            document.getElementById("previewName");
+
+        const previewUsername =
+            document.getElementById("previewUsername");
+
+        const previewBio =
+            document.getElementById("previewBio");
+
+        const previewAvatar =
+            document.getElementById("previewAvatar");
+
+        const previewLink1 =
+            document.getElementById("previewLink1");
+
+        const previewLink2 =
+            document.getElementById("previewLink2");
+
+        const previewLink3 =
+            document.getElementById("previewLink3");
+
+        const previewProfile =
+            document.getElementById("previewProfile");
+
+
+        function updatePreview() {
+
+            previewName.textContent =
+                nameInput.value || "NØX";
+
+            previewUsername.textContent =
+                usernameInput.value || "@username";
+
+            previewBio.textContent =
+                bioInput.value || "Your bio.";
+
+            previewLink1.textContent =
+                link1Input.value || "Link";
+
+            previewLink2.textContent =
+                link2Input.value || "Link";
+
+            previewLink3.textContent =
+                link3Input.value || "Link";
+
+
+            const color =
+                colorInput.value;
+
+            colorText.textContent =
+                color;
+
+
+            previewName.style.textShadow =
+                `0 0 30px ${color}22`;
+
+            previewProfile.style.boxShadow =
+                `0 30px 100px ${color}12`;
+
+
+            const avatar =
+                avatarInput.value.trim();
+
+
+            if (avatar) {
+
+                previewAvatar.innerHTML = "";
+
+                const image =
+                    document.createElement("img");
+
+                image.src = avatar;
+
+                image.onerror = () => {
+
+                    previewAvatar.innerHTML = "N";
+
+                };
+
+                previewAvatar.appendChild(image);
+
+            } else {
+
+                previewAvatar.innerHTML =
+                    nameInput.value
+                        ? nameInput.value.charAt(0).toUpperCase()
+                        : "N";
+
+            }
+
+        }
+
+
+        document
+            .querySelectorAll(
+                "#nameInput, #usernameInput, #bioInput, #avatarInput, #colorInput, #link1Input, #link2Input, #link3Input"
+            )
+            .forEach((input) => {
+
+                input.addEventListener(
+                    "input",
+                    updatePreview
+                );
+
+            });
+
+
+        document
+            .getElementById("saveButton")
+            .addEventListener("click", () => {
+
+                localStorage.setItem(
+                    "noxProfile",
+                    JSON.stringify({
+
+                        name: nameInput.value,
+
+                        username:
+                            usernameInput.value,
+
+                        bio:
+                            bioInput.value,
+
+                        avatar:
+                            avatarInput.value,
+
+                        color:
+                            colorInput.value,
+
+                        link1:
+                            link1Input.value,
+
+                        link2:
+                            link2Input.value,
+
+                        link3:
+                            link3Input.value
+
+                    })
+                );
+
+
+                const button =
+                    document.getElementById(
+                        "saveButton"
+                    );
+
+                button.textContent =
+                    "✓ Changes saved";
+
+                setTimeout(() => {
+
+                    button.textContent =
+                        "Save changes";
+
+                }, 1800);
+
+            });
+
+
+        function loadProfile() {
+
+            const saved =
+                localStorage.getItem(
+                    "noxProfile"
+                );
+
+            if (!saved) return;
+
+            const data =
+                JSON.parse(saved);
+
+
+            nameInput.value =
+                data.name || "NØX";
+
+            usernameInput.value =
+                data.username || "@nox";
+
+            bioInput.value =
+                data.bio ||
+                "Welcome to my corner of the void.";
+
+            avatarInput.value =
+                data.avatar || "";
+
+            colorInput.value =
+                data.color || "#ffffff";
+
+            link1Input.value =
+                data.link1 || "Discord";
+
+            link2Input.value =
+                data.link2 || "Instagram";
+
+            link3Input.value =
+                data.link3 || "YouTube";
+
+
+            updatePreview();
+
+        }
+
+
+        loadProfile();
+
+    </script>
+
+</body>
+</html>
