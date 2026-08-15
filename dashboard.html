@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NØX — Dashboard</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #050505;
+            --panel: #0b0b0b;
+            --border: rgba(255,255,255,.08);
+            --muted: #666;
+            --text: #fff;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            font-family: "Inter", sans-serif;
+
+        }
+
+
+        /* =====================
+           BACKGROUND
+        ===================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,.015) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.015) 1px,
+                    transparent 1px
+                );
+
+            background-size: 70px 70px;
+
+        }
+
+
+        /* =====================
+           NAVBAR
+        ===================== */
+
+        nav {
+
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 35px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.06);
+
+            position: relative;
+
+            z-index: 5;
+
+        }
+
+
+        .logo {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+        }
+
+
+        .username-nav {
+
+            color: #666;
+
+            font-size: 11px;
+
+        }
+
+
+        .logout {
+
+            border: 1px solid
+                rgba(255,255,255,.08);
+
+            background: transparent;
+
+            color: #777;
+
+            padding:
+                9px 13px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            transition: .3s;
+
+        }
+
+
+        .logout:hover {
+
+            color: white;
+
+            border-color:
+                rgba(255,255,255,.2);
+
+        }
+
+
+        /* =====================
+           MAIN
+        ===================== */
+
+        main {
+
+            width:
+                min(1150px, calc(100% - 40px));
+
+            margin: auto;
+
+            padding:
+                60px 0 100px;
+
+        }
+
+
+        .eyebrow {
+
+            color: #444;
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .welcome {
+
+            margin-top: 13px;
+
+            font-size:
+                clamp(35px, 6vw, 65px);
+
+            letter-spacing: -4px;
+
+            font-weight: 800;
+
+        }
+
+
+        .welcome span {
+
+            color: #555;
+
+        }
+
+
+        /* =====================
+           GRID
+        ===================== */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr;
+
+            gap: 18px;
+
+            margin-top: 45px;
+
+        }
+
+
+        .card {
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.045),
+                    rgba(255,255,255,.012)
+                );
+
+            padding: 25px;
+
+            transition: .3s;
+
+        }
+
+
+        .card:hover {
+
+            border-color:
+                rgba(255,255,255,.14);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .card-title {
+
+            color: #555;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =====================
+           PROFILE
+        ===================== */
+
+        .profile-preview {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+        }
+
+
+        .avatar {
+
+            width: 68px;
+            height: 68px;
+
+            display: grid;
+
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 20px;
+
+            background: #111;
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            overflow: hidden;
+
+        }
+
+
+        .avatar img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .profile-name {
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+        }
+
+
+        .profile-username {
+
+            margin-top: 5px;
+
+            color: #555;
+
+            font-size: 11px;
+
+        }
+
+
+        .profile-bio {
+
+            margin-top: 20px;
+
+            color: #666;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================
+           BUTTONS
+        ===================== */
+
+        .actions {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 9px;
+
+            margin-top: 22px;
+
+        }
+
+
+        .action {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            height: 43px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 9px;
+
+            color: #aaa;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            background:
+                rgba(255,255,255,.02);
+
+            transition: .3s;
+
+        }
+
+
+        .action:hover {
+
+            color: white;
+
+            background:
+                rgba(255,255,255,.06);
+
+        }
+
+
+        .action.primary {
+
+            background: white;
+
+            color: black;
+
+            border-color: white;
+
+            font-weight: 700;
+
+        }
+
+
+        .action.primary:hover {
+
+            background: #ddd;
+
+        }
+
+
+        /* =====================
+           STATS
+        ===================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+        }
+
+
+        .stat {
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.018);
+
+        }
+
+
+        .stat-number {
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+        }
+
+
+        .stat-label {
+
+            margin-top: 5px;
+
+            color: #555;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        /* =====================
+           STATUS
+        ===================== */
+
+        .online-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                15px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.05);
+
+        }
+
+
+        .online-row:last-child {
+
+            border-bottom: 0;
+
+        }
+
+
+        .online-label {
+
+            color: #777;
+
+            font-size: 11px;
+
+        }
+
+
+        .online-value {
+
+            color: #aaa;
+
+            font-size: 10px;
+
+        }
+
+
+        .dot {
+
+            display: inline-block;
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            margin-right: 7px;
+
+            box-shadow:
+                0 0 10px white;
+
+        }
+
+
+        /* =====================
+           LINK
+        ===================== */
+
+        .profile-url {
+
+            margin-top: 18px;
+
+            padding: 13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+
+            border-radius: 9px;
+
+            color: #777;
+
+            font-size: 10px;
+
+            word-break: break-all;
+
+            background: #080808;
+
+        }
+
+
+        /* =====================
+           MOBILE
+        ===================== */
+
+        @media(max-width:800px) {
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media(max-width:500px) {
+
+            nav {
+
+                padding:
+                    0 18px;
+
+            }
+
+            .username-nav {
+
+                display: none;
+
+            }
+
+            main {
+
+                width:
+                    calc(100% - 25px);
+
+                padding-top: 40px;
+
+            }
+
+            .welcome {
+
+                letter-spacing:
+                    -2.5px;
+
+            }
+
+            .card {
+
+                padding: 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            NØX
+        </a>
+
+
+        <div class="nav-right">
+
+            <span
+                id="navUsername"
+                class="username-nav"
+            >
+                @nox
+            </span>
+
+
+            <button
+                id="logoutButton"
+                class="logout"
+            >
+                LOGOUT
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <main>
+
+
+        <div class="eyebrow">
+            CONTROL CENTER
+        </div>
+
+
+        <h1 class="welcome">
+
+            Welcome back,
+            <span id="welcomeName">
+                NØX
+            </span>
+
+        </h1>
+
+
+        <div class="dashboard-grid">
+
+
+            <!-- PROFILE CARD -->
+
+            <section class="card">
+
+                <div class="card-title">
+                    YOUR PROFILE
+                </div>
+
+
+                <div class="profile-preview">
+
+
+                    <div
+                        id="avatar"
+                        class="avatar"
+                    >
+                        N
+                    </div>
+
+
+                    <div>
+
+                        <div
+                            id="profileName"
+                            class="profile-name"
+                        >
+                            NØX
+                        </div>
+
+
+                        <div
+                            id="profileUsername"
+                            class="profile-username"
+                        >
+                            @nox
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    id="profileBio"
+                    class="profile-bio"
+                >
+                    Welcome to NØX.
+                </p>
+
+
+                <div class="actions">
+
+                    <a
+                        href="customize.html"
+                        class="action primary"
+                    >
+                        CUSTOMIZE
+                    </a>
+
+
+                    <a
+                        id="viewProfile"
+                        href="#"
+                        class="action"
+                    >
+                        VIEW PROFILE
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="profileUrl"
+                    class="profile-url"
+                >
+                    Loading profile...
+
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="card">
+
+                <div class="card-title">
+                    ANALYTICS
+                </div>
+
+
+                <div class="stats">
+
+
+                    <div class="stat">
+
+                        <div
+                            id="views"
+                            class="stat-number"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            PROFILE VIEWS
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div
+                            id="linksCount"
+                            class="stat-number"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            LINKS
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div
+                    class="online-row"
+                    style="margin-top:20px"
+                >
+
+                    <span class="online-label">
+                        Status
+                    </span>
+
+
+                    <span class="online-value">
+
+                        <span class="dot"></span>
+
+                        Online
+
+                    </span>
+
+                </div>
+
+
+                <div class="online-row">
+
+                    <span class="online-label">
+                        Platform
+                    </span>
+
+                    <span class="online-value">
+                        NØX
+                    </span>
+
+                </div>
+
+
+                <div class="online-row">
+
+                    <span class="online-label">
+                        Account
+                    </span>
+
+                    <span
+                        id="accountStatus"
+                        class="online-value"
+                    >
+                        Active
+                    </span>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+
+    <script>
+
+        let currentUser = null;
+
+        let currentProfile = null;
+
+
+        /*
+        =========================
+        LOAD DASHBOARD
+        =========================
+        */
+
+        async function loadDashboard() {
+
+            try {
+
+                /*
+                GET SESSION
+                */
+
+                const {
+                    data: sessionData,
+                    error: sessionError
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                if (sessionError) {
+
+                    throw sessionError;
+
+                }
+
+
+                const session =
+                    sessionData.session;
+
+
+                /*
+                NOT LOGGED IN
+                */
+
+                if (!session) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                currentUser =
+                    session.user;
+
+
+                /*
+                GET PROFILE
+                */
+
+                const {
+                    data: profile,
+                    error: profileError
+                } =
+                    await supabaseClient
+                        .from("profiles")
+                        .select("*")
+                        .eq(
+                            "id",
+                            currentUser.id
+                        )
+                        .single();
+
+
+                if (profileError) {
+
+                    throw profileError;
+
+                }
+
+
+                currentProfile =
+                    profile;
+
+
+                /*
+                DISPLAY DATA
+                */
+
+                document
+                    .getElementById(
+                        "welcomeName"
+                    )
+                    .textContent =
+                    profile.display_name;
+
+
+                document
+                    .getElementById(
+                        "profileName"
+                    )
+                    .textContent =
+                    profile.display_name;
+
+
+                document
+                    .getElementById(
+                        "profileUsername"
+                    )
+                    .textContent =
+                    "@" +
+                    profile.username;
+
+
+                document
+                    .getElementById(
+                        "navUsername"
+                    )
+                    .textContent =
+                    "@" +
+                    profile.username;
+
+
+                document
+                    .getElementById(
+                        "profileBio"
+                    )
+                    .textContent =
+                    profile.bio ||
+                    "No bio yet.";
+
+
+                /*
+                AVATAR
+                */
+
+                const avatar =
+                    document.getElementById(
+                        "avatar"
+                    );
+
+
+                if (profile.avatar_url) {
+
+                    avatar.innerHTML = "";
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+                    img.src =
+                        profile.avatar_url;
+
+                    img.alt =
+                        profile.display_name;
+
+                    avatar.appendChild(img);
+
+                } else {
+
+                    avatar.textContent =
+                        profile.display_name
+                            .charAt(0)
+                            .toUpperCase();
+
+                }
+
+
+                /*
+                PROFILE URL
+                */
+
+                const profileUrl =
+                    window.location.origin +
+                    "/profile.html?u=" +
+                    encodeURIComponent(
+                        profile.username
+                    );
+
+
+                document
+                    .getElementById(
+                        "profileUrl"
+                    )
+                    .textContent =
+                    profileUrl;
+
+
+                document
+                    .getElementById(
+                        "viewProfile"
+                    )
+                    .href =
+                    "profile.html?u=" +
+                    encodeURIComponent(
+                        profile.username
+                    );
+
+
+                /*
+                GET LINKS
+                */
+
+                const {
+                    data: links,
+                    error: linksError
+                } =
+                    await supabaseClient
+                        .from("profile_links")
+                        .select("*")
+                        .eq(
+                            "profile_id",
+                            currentUser.id
+                        )
+                        .order(
+                            "position",
+                            {
+                                ascending: true
+                            }
+                        );
+
+
+                if (!linksError && links) {
+
+                    document
+                        .getElementById(
+                            "linksCount"
+                        )
+                        .textContent =
+                        links.length;
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "NØX Dashboard Error:",
+                    error
+                );
+
+                document
+                    .getElementById(
+                
