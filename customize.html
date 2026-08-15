@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>NØX — Customize</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,165 +21,292 @@
 }
 
 body{
+
     min-height:100vh;
+
     background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
+
+    color:#fff;
+
+    font-family:
+        Arial,
+        sans-serif;
+
     padding:30px;
+
 }
 
 .container{
+
     width:min(700px,100%);
+
     margin:auto;
+
+}
+
+.back{
+
+    display:inline-block;
+
+    margin-bottom:25px;
+
+    color:#666;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+}
+
+.back:hover{
+
+    color:white;
+
 }
 
 h1{
+
     font-size:28px;
+
     margin-bottom:5px;
+
 }
 
 .subtitle{
+
     color:#666;
+
     font-size:13px;
+
     margin-bottom:30px;
+
 }
 
 .card{
+
     background:#0d0d0d;
+
     border:1px solid #222;
+
     border-radius:18px;
+
     padding:25px;
+
 }
 
 .field{
+
     margin-bottom:20px;
+
 }
 
 label{
+
     display:block;
+
     color:#888;
+
     font-size:10px;
+
     font-weight:bold;
+
     letter-spacing:1px;
+
     margin-bottom:8px;
+
 }
 
 input,
 textarea{
+
     width:100%;
+
     background:#080808;
+
     border:1px solid #252525;
-    color:white;
+
     border-radius:10px;
+
+    color:white;
+
     padding:13px;
+
     outline:none;
+
     font-family:inherit;
+
+}
+
+input{
+
+    height:48px;
+
+}
+
+textarea{
+
+    min-height:100px;
+
+    resize:vertical;
+
 }
 
 input:focus,
 textarea:focus{
+
     border-color:#555;
-}
 
-textarea{
-    min-height:100px;
-    resize:vertical;
-}
-
-button{
-    width:100%;
-    height:48px;
-    border:0;
-    border-radius:10px;
-    background:white;
-    color:black;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:disabled{
-    opacity:.5;
-    cursor:wait;
-}
-
-#message{
-    text-align:center;
-    margin-top:15px;
-    font-size:12px;
-    min-height:18px;
-}
-
-.success{
-    color:#aaa;
-}
-
-.error{
-    color:#ff6b6b;
 }
 
 .username-info{
+
     margin-top:7px;
+
     color:#555;
+
     font-size:10px;
+
+}
+
+button{
+
+    width:100%;
+
+    height:50px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:white;
+
+    color:black;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+button:disabled{
+
+    opacity:.5;
+
+    cursor:wait;
+
+}
+
+.message{
+
+    min-height:20px;
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-size:11px;
+
+}
+
+.success{
+
+    color:#aaa;
+
+}
+
+.error{
+
+    color:#ff6464;
+
 }
 
 .preview{
-    margin-top:25px;
-    padding:20px;
+
+    margin-top:20px;
+
+    padding:22px;
+
     border:1px solid #222;
+
     border-radius:15px;
+
 }
 
 .preview-name{
+
     font-size:20px;
-    font-weight:bold;
+
+    font-weight:800;
+
 }
 
 .preview-username{
-    color:#555;
-    font-size:11px;
+
     margin-top:4px;
+
+    color:#555;
+
+    font-size:11px;
+
 }
 
 .preview-bio{
-    color:#aaa;
+
     margin-top:15px;
+
+    color:#aaa;
+
     font-size:12px;
+
+    line-height:1.6;
+
     white-space:pre-wrap;
+
 }
 
-.back{
-    display:inline-block;
-    color:#666;
-    text-decoration:none;
-    margin-bottom:25px;
-    font-size:12px;
-}
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<a href="dashboard.html" class="back">
-← Back
+
+<a
+    href="dashboard.html"
+    class="back"
+>
+    ← BACK
 </a>
 
-<h1>Customize</h1>
+
+<h1>
+    Customize
+</h1>
+
 
 <div class="subtitle">
-Customize your NØX identity.
+    Customize your NØX identity.
 </div>
+
 
 <div class="card">
 
+
+<!-- USERNAME -->
+
 <div class="field">
 
-<label>USERNAME</label>
+<label>
+    USERNAME
+</label>
 
 <input
     id="username"
+    type="text"
     maxlength="20"
     autocomplete="off"
 >
@@ -181,51 +315,71 @@ Customize your NØX identity.
     id="usernameInfo"
     class="username-info"
 >
+    Loading...
 </div>
 
 </div>
 
+
+<!-- DISPLAY NAME -->
 
 <div class="field">
 
-<label>DISPLAY NAME</label>
+<label>
+    DISPLAY NAME
+</label>
 
 <input
     id="displayName"
+    type="text"
     maxlength="30"
+    placeholder="Your name"
 >
 
 </div>
 
 
+<!-- BIO -->
+
 <div class="field">
 
-<label>BIO</label>
+<label>
+    BIO
+</label>
 
 <textarea
     id="bio"
     maxlength="160"
+    placeholder="Tell people about yourself..."
 ></textarea>
 
 </div>
 
 
+<!-- WEBSITE -->
+
 <div class="field">
 
-<label>WEBSITE</label>
+<label>
+    WEBSITE
+</label>
 
 <input
     id="website"
     type="url"
-    placeholder="https://..."
+    placeholder="https://example.com"
 >
 
 </div>
 
 
+<!-- COLOR -->
+
 <div class="field">
 
-<label>ACCENT COLOR</label>
+<label>
+    ACCENT COLOR
+</label>
 
 <input
     id="accentColor"
@@ -236,14 +390,24 @@ Customize your NØX identity.
 </div>
 
 
-<button id="saveButton">
-SAVE CHANGES
+<button
+    id="saveButton"
+    type="button"
+>
+    SAVE CHANGES
 </button>
 
-<div id="message"></div>
+
+<div
+    id="message"
+    class="message"
+></div>
+
 
 </div>
 
+
+<!-- PREVIEW -->
 
 <div class="preview">
 
@@ -270,8 +434,11 @@ Your bio will appear here.
 
 </div>
 
+
 </div>
 
+
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -280,82 +447,129 @@ Your bio will appear here.
 
 <script>
 
-let user = null;
+
+let currentUser = null;
+
 let profile = null;
 
 
 /* ELEMENTOS */
 
 const username =
-    document.getElementById("username");
+    document.getElementById(
+        "username"
+    );
 
 const displayName =
-    document.getElementById("displayName");
+    document.getElementById(
+        "displayName"
+    );
 
 const bio =
-    document.getElementById("bio");
+    document.getElementById(
+        "bio"
+    );
 
 const website =
-    document.getElementById("website");
+    document.getElementById(
+        "website"
+    );
 
 const accentColor =
-    document.getElementById("accentColor");
+    document.getElementById(
+        "accentColor"
+    );
 
 const saveButton =
-    document.getElementById("saveButton");
+    document.getElementById(
+        "saveButton"
+    );
 
 const message =
-    document.getElementById("message");
+    document.getElementById(
+        "message"
+    );
 
 const usernameInfo =
-    document.getElementById("usernameInfo");
+    document.getElementById(
+        "usernameInfo"
+    );
 
 
 /* MENSAJE */
 
-function showMessage(text,type=""){
+function showMessage(
+    text,
+    type=""
+){
 
-    message.textContent = text;
+    message.textContent =
+        text;
 
-    message.className = type;
+    message.className =
+        "message " + type;
 
 }
 
 
-/* ==========================================
-   1. COMPROBAR USUARIO
-========================================== */
+/* =================================
+   LOGIN CHECK
+================================= */
 
-async function loadUser(){
+async function start(){
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient.auth.getUser();
+    try{
 
-    if(error)
-        throw error;
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .auth
+            .getUser();
 
-    if(!data.user){
 
-        window.location.href =
-            "login.html";
+        if(error)
+            throw error;
 
-        return;
+
+        if(!data.user){
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            data.user;
+
+
+        await loadProfile();
+
+
+    }catch(error){
+
+        console.error(
+            "NØX:",
+            error
+        );
+
+        showMessage(
+            error.message,
+            "error"
+        );
 
     }
 
-    user = data.user;
-
-    await loadProfile();
-
 }
 
 
-/* ==========================================
-   2. CARGAR PROFILE
-========================================== */
+/* =================================
+   LOAD PROFILE
+================================= */
 
 async function loadProfile(){
 
@@ -366,28 +580,103 @@ async function loadProfile(){
     await supabaseClient
         .from("profiles")
         .select("*")
-        .eq("id",user.id)
-        .single();
+        .eq(
+            "id",
+            currentUser.id
+        )
+        .maybeSingle();
 
 
     if(error)
         throw error;
 
 
-    profile = data;
+    /*
+    SI NO EXISTE EL PERFIL
+    */
 
+    if(!data){
+
+        const {
+            data:newProfile,
+            error:createError
+        } =
+        await supabaseClient
+            .from("profiles")
+            .insert({
+
+                id:
+                    currentUser.id,
+
+                username:
+                    currentUser.email
+                        .split("@")[0]
+                        .toLowerCase()
+                        .replace(
+                            /[^a-z0-9_]/g,
+                            ""
+                        ),
+
+                display_name:
+                    currentUser.email
+                        .split("@")[0],
+
+                bio:"",
+
+                website_url:"",
+
+                accent_color:
+                    "#ffffff",
+
+                updated_at:
+                    new Date().toISOString()
+
+            })
+            .select()
+            .single();
+
+
+        if(createError)
+            throw createError;
+
+
+        profile =
+            newProfile;
+
+    }else{
+
+        profile =
+            data;
+
+    }
+
+
+    fillForm();
+
+}
+
+
+/* =================================
+   FILL FORM
+================================= */
+
+function fillForm(){
 
     username.value =
         profile.username || "";
 
+
     displayName.value =
         profile.display_name || "";
+
 
     bio.value =
         profile.bio || "";
 
+
     website.value =
         profile.website_url || "";
+
 
     accentColor.value =
         profile.accent_color ||
@@ -401,9 +690,9 @@ async function loadProfile(){
 }
 
 
-/* ==========================================
-   3. USERNAME
-========================================== */
+/* =================================
+   USERNAME STATUS
+================================= */
 
 function updateUsernameInfo(){
 
@@ -411,11 +700,18 @@ function updateUsernameInfo(){
         return;
 
 
-    if(
-        username.value.trim().toLowerCase()
-        ===
-        (profile.username || "").toLowerCase()
-    ){
+    const current =
+        (profile.username || "")
+            .toLowerCase();
+
+
+    const typed =
+        username.value
+            .trim()
+            .toLowerCase();
+
+
+    if(typed === current){
 
         usernameInfo.textContent =
             "Username actual.";
@@ -439,6 +735,7 @@ function updateUsernameInfo(){
         new Date(
             profile.username_changed_at
         );
+
 
     const next =
         new Date(
@@ -474,23 +771,27 @@ function updateUsernameInfo(){
 }
 
 
-/* ==========================================
-   4. PREVIEW
-========================================== */
+/* =================================
+   PREVIEW
+================================= */
 
 function updatePreview(){
 
     document.getElementById(
         "previewName"
     ).textContent =
-        displayName.value || "NØX";
+        displayName.value ||
+        "NØX";
 
 
     document.getElementById(
         "previewUsername"
     ).textContent =
         "@" +
-        (username.value || "username");
+        (
+            username.value ||
+            "username"
+        );
 
 
     document.getElementById(
@@ -502,9 +803,9 @@ function updatePreview(){
 }
 
 
-/* ==========================================
-   5. GUARDAR
-========================================== */
+/* =================================
+   SAVE
+================================= */
 
 saveButton.addEventListener(
     "click",
@@ -514,7 +815,8 @@ saveButton.addEventListener(
 
 async function saveProfile(){
 
-    saveButton.disabled = true;
+    saveButton.disabled =
+        true;
 
     saveButton.textContent =
         "SAVING...";
@@ -530,47 +832,36 @@ async function saveProfile(){
                 .toLowerCase();
 
 
-        /*
-        ===============================
-        USERNAME
-        ===============================
-        */
+        /* USERNAME */
 
         if(
             newUsername !==
-            (profile.username || "").toLowerCase()
+            (
+                profile.username ||
+                ""
+            ).toLowerCase()
         ){
 
             const {
                 error
             } =
-            await supabaseClient.rpc(
-                "change_username",
-                {
-                    new_username:
-                        newUsername
-                }
-            );
+            await supabaseClient
+                .rpc(
+                    "change_username",
+                    {
+                        new_username:
+                            newUsername
+                    }
+                );
 
 
             if(error)
                 throw error;
 
-
-            profile.username =
-                newUsername;
-
-            profile.username_changed_at =
-                new Date().toISOString();
-
         }
 
 
-        /*
-        ===============================
-        RESTO DEL PERFIL
-        ===============================
-        */
+        /* PROFILE */
 
         const {
             data,
@@ -581,24 +872,28 @@ async function saveProfile(){
             .update({
 
                 display_name:
-                    displayName.value.trim(),
+                    displayName.value
+                        .trim(),
 
                 bio:
-                    bio.value.trim(),
+                    bio.value
+                        .trim(),
 
                 website_url:
-                    website.value.trim(),
+                    website.value
+                        .trim(),
 
                 accent_color:
                     accentColor.value,
 
                 updated_at:
-                    new Date().toISOString()
+                    new Date()
+                        .toISOString()
 
             })
             .eq(
                 "id",
-                user.id
+                currentUser.id
             )
             .select()
             .single();
@@ -608,7 +903,8 @@ async function saveProfile(){
             throw error;
 
 
-        profile = data;
+        profile =
+            data;
 
 
         updatePreview();
@@ -617,7 +913,7 @@ async function saveProfile(){
 
 
         showMessage(
-            "✓ Cambios guardados.",
+            "✓ Changes saved.",
             "success"
         );
 
@@ -625,7 +921,7 @@ async function saveProfile(){
     }catch(error){
 
         console.error(
-            "NØX Customize:",
+            "NØX SAVE ERROR:",
             error
         );
 
@@ -639,7 +935,8 @@ async function saveProfile(){
 
     }finally{
 
-        saveButton.disabled = false;
+        saveButton.disabled =
+            false;
 
         saveButton.textContent =
             "SAVE CHANGES";
@@ -649,15 +946,16 @@ async function saveProfile(){
 }
 
 
-/* ==========================================
-   6. ACTUALIZACIÓN EN VIVO
-========================================== */
+/* =================================
+   LIVE PREVIEW
+================================= */
 
 username.addEventListener(
     "input",
     () => {
 
         updatePreview();
+
         updateUsernameInfo();
 
     }
@@ -676,23 +974,13 @@ bio.addEventListener(
 );
 
 
-/* ==========================================
-   START
-========================================== */
+/* START */
 
-loadUser().catch(error => {
-
-    console.error(error);
-
-    showMessage(
-        error.message ||
-        "No se pudo cargar tu perfil.",
-        "error"
-    );
-
-});
+start();
 
 </script>
 
+
 </body>
+
 </html>
