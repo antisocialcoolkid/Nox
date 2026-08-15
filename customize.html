@@ -3,418 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>NØX — Customize</title>
 
 <style>
 *{box-sizing:border-box}
 
-:root{
-    --accent:#ffffff;
-}
+:root{--accent:#fff}
 
 body{
-    margin:0;
-    min-height:100vh;
-    background:#050505;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
+margin:0;
+min-height:100vh;
+background:#050505;
+color:#fff;
+font-family:Arial,Helvetica,sans-serif
 }
 
 .container{
-    width:min(1050px,94%);
-    margin:35px auto 70px;
+width:min(1050px,94%);
+margin:35px auto 70px
 }
 
-.header{
-    margin-bottom:25px;
-}
+.header{margin-bottom:25px}
 
 .title{
-    font-size:35px;
-    font-weight:900;
-    letter-spacing:-1.5px;
+font-size:35px;
+font-weight:900;
+letter-spacing:-1.5px
 }
 
 .subtitle{
-    color:#666;
-    font-size:12px;
-    margin-top:6px;
+color:#666;
+font-size:12px;
+margin-top:6px
 }
 
 .layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 400px;
-    gap:20px;
+display:grid;
+grid-template-columns:minmax(0,1fr) 400px;
+gap:20px
 }
 
-.card,
-.preview{
-    background:#0b0b0b;
-    border:1px solid #252525;
-    border-radius:20px;
+.card,.preview{
+background:#0b0b0b;
+border:1px solid #252525;
+border-radius:20px
 }
 
-.card{
-    padding:25px;
-}
+.card{padding:25px}
 
 .section{
-    padding-bottom:25px;
-    margin-bottom:25px;
-    border-bottom:1px solid #181818;
+padding-bottom:25px;
+margin-bottom:25px;
+border-bottom:1px solid #181818
 }
 
-.section:last-of-type{
-    border-bottom:0;
+.section:last-child{
+border-bottom:0;
+margin-bottom:0
 }
 
 .section-title{
-    color:#555;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:1.5px;
-    margin-bottom:16px;
+color:#555;
+font-size:10px;
+font-weight:900;
+letter-spacing:1.5px;
+margin-bottom:16px
 }
 
 label{
-    display:block;
-    color:#777;
-    font-size:10px;
-    font-weight:800;
-    margin-bottom:7px;
+display:block;
+color:#777;
+font-size:10px;
+font-weight:800;
+margin-bottom:7px
 }
 
-input,
-textarea,
-select{
-    width:100%;
-    background:#070707;
-    color:#fff;
-    border:1px solid #292929;
-    border-radius:10px;
-    outline:none;
-    padding:12px;
-    margin-bottom:16px;
+input,textarea,select{
+width:100%;
+background:#070707;
+color:#fff;
+border:1px solid #292929;
+border-radius:10px;
+outline:none;
+padding:12px;
+margin-bottom:16px
 }
 
-input{
-    height:45px;
-}
+input{height:45px}
 
 textarea{
-    min-height:95px;
-    resize:vertical;
+min-height:95px;
+resize:vertical
 }
 
 input:focus,
 textarea:focus,
 select:focus{
-    border-color:#666;
+border-color:#666
 }
 
 .username-info{
-    color:#555;
-    font-size:10px;
-    margin-top:-9px;
-    margin-bottom:17px;
+color:#555;
+font-size:10px;
+margin-top:-9px;
+margin-bottom:17px
 }
 
 .file{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:48px;
-    padding:12px;
-    border:1px dashed #303030;
-    border-radius:10px;
-    color:#777;
-    cursor:pointer;
-    margin-bottom:15px;
-    transition:.2s;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:48px;
+padding:12px;
+border:1px dashed #303030;
+border-radius:10px;
+color:#777;
+cursor:pointer;
+margin-bottom:15px;
+transition:.2s
 }
 
 .file:hover{
-    border-color:#777;
-    color:#fff;
-    background:#0d0d0d;
+border-color:#777;
+color:#fff;
+background:#0d0d0d
 }
 
-.file input{
-    display:none;
-}
+.file input{display:none}
 
 .social-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
 }
 
-.social-grid input{
-    margin:0;
-}
+.social-grid input{margin:0}
 
 .color-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
+display:flex;
+align-items:center;
+gap:12px
 }
 
 .color-row input{
-    width:60px;
-    padding:3px;
-    margin:0;
+width:60px;
+padding:3px;
+margin:0
 }
 
 .color-value{
-    color:#777;
-    font-size:11px;
+color:#777;
+font-size:11px
 }
 
-/* BUTTONS */
-
-.save,
-.generate{
-    width:100%;
-    height:52px;
-    border-radius:11px;
-    font-weight:900;
-    cursor:pointer;
-    transition:.2s;
+.save,.generate{
+width:100%;
+height:52px;
+border-radius:11px;
+font-weight:900;
+cursor:pointer;
+transition:.2s
 }
 
 .save{
-    border:0;
-    background:#fff;
-    color:#000;
-}
-
-.save:hover,
-.generate:hover{
-    transform:translateY(-2px);
-}
-
-.save:disabled{
-    opacity:.5;
-    cursor:wait;
-    transform:none;
+border:0;
+background:#fff;
+color:#000
 }
 
 .generate{
-    margin-top:10px;
-    border:1px solid #292929;
-    background:#111;
-    color:#fff;
+margin-top:10px;
+border:1px solid #292929;
+background:#111;
+color:#fff
+}
+
+.save:hover,.generate:hover{
+transform:translateY(-2px)
+}
+
+.save:disabled{
+opacity:.5;
+cursor:wait;
+transform:none
 }
 
 .message{
-    min-height:20px;
-    text-align:center;
-    margin-top:13px;
-    font-size:11px;
+min-height:20px;
+text-align:center;
+margin-top:13px;
+font-size:11px
 }
 
-.success{
-    color:#aaa;
-}
-
-.error{
-    color:#ff5555;
-}
-
-/* PROFILE LINK */
+.success{color:#aaa}
+.error{color:#ff5555}
 
 .profile-link-box{
-    display:none;
-    margin-top:18px;
-    padding-top:18px;
-    border-top:1px solid #181818;
+display:none;
+margin-top:18px;
+padding-top:18px;
+border-top:1px solid #181818
 }
 
 .profile-link-row{
-    display:flex;
-    gap:8px;
+display:flex;
+gap:8px
 }
 
-.profile-link-row input{
-    margin:0;
-}
+.profile-link-row input{margin:0}
 
 .copy{
-    width:110px;
-    border:1px solid #292929;
-    border-radius:10px;
-    background:#111;
-    color:#fff;
-    cursor:pointer;
+width:110px;
+border:1px solid #292929;
+border-radius:10px;
+background:#111;
+color:#fff;
+cursor:pointer
 }
 
 .view-profile{
-    width:100%;
-    height:46px;
-    margin-top:10px;
-    border:1px solid #292929;
-    border-radius:10px;
-    background:#080808;
-    color:#fff;
-    cursor:pointer;
+width:100%;
+height:46px;
+margin-top:10px;
+border:1px solid #292929;
+border-radius:10px;
+background:#080808;
+color:#fff;
+cursor:pointer
 }
 
-/* PREVIEW */
-
 .preview{
-    overflow:hidden;
-    position:sticky;
-    top:20px;
-    height:max-content;
-    background-size:cover;
-    background-position:center;
+overflow:hidden;
+position:sticky;
+top:20px;
+height:max-content;
+background-size:cover;
+background-position:center
 }
 
 .banner{
-    height:185px;
-    position:relative;
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #252525,
-            #070707 65%
-        );
-    background-size:cover;
-    background-position:center;
+height:185px;
+position:relative;
+background:radial-gradient(
+circle at 50% 0%,
+#252525,
+#070707 65%
+);
+background-size:cover;
+background-position:center
 }
 
 .banner:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent 35%,
-        #0b0b0b
-    );
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+transparent 35%,
+#0b0b0b
+)
 }
 
 .profile{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    padding:0 25px 30px;
-    margin-top:-60px;
+position:relative;
+z-index:2;
+text-align:center;
+padding:0 25px 30px;
+margin-top:-60px
 }
 
 .avatar{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    object-fit:cover;
-    background:#111;
-    border:4px solid #0b0b0b;
+width:110px;
+height:110px;
+border-radius:50%;
+object-fit:cover;
+background:#111;
+border:4px solid #0b0b0b
 }
 
 .name{
-    margin-top:12px;
-    font-size:24px;
-    font-weight:900;
+margin-top:12px;
+font-size:24px;
+font-weight:900
 }
 
 .username{
-    color:#666;
-    font-size:11px;
-    margin-top:5px;
+color:#666;
+font-size:11px;
+margin-top:5px
 }
 
 .bio{
-    color:#999;
-    font-size:12px;
-    line-height:1.5;
-    margin:15px auto;
-    max-width:330px;
+color:#999;
+font-size:12px;
+line-height:1.5;
+margin:15px auto;
+max-width:330px
 }
 
 .website{
-    display:none;
-    color:var(--accent);
-    font-size:11px;
-    text-decoration:none;
+display:none;
+color:var(--accent);
+font-size:11px;
+text-decoration:none
 }
 
 .socials{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:16px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:7px;
+margin-top:16px
 }
 
 .social{
-    display:none;
-    padding:8px 10px;
-    border:1px solid #292929;
-    border-radius:8px;
-    color:#888;
-    text-decoration:none;
-    font-size:10px;
+display:none;
+padding:8px 10px;
+border:1px solid #292929;
+border-radius:8px;
+color:#888;
+text-decoration:none;
+font-size:10px
 }
 
 .social:hover{
-    color:var(--accent);
-    border-color:var(--accent);
+color:var(--accent);
+border-color:var(--accent)
 }
 
 .badges{
-    display:flex;
-    justify-content:center;
-    gap:7px;
-    margin-top:20px;
+display:flex;
+justify-content:center;
+gap:7px;
+margin-top:20px
 }
 
 .badge{
-    width:34px;
-    height:34px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid #292929;
-    border-radius:9px;
-    color:#777;
+width:34px;
+height:34px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid #292929;
+border-radius:9px;
+color:#777
 }
 
 .badge.early{
-    color:#fff;
-    border-color:#555;
+color:#fff;
+border-color:#555
 }
 
 @media(max-width:850px){
-
-    .layout{
-        grid-template-columns:1fr;
-    }
-
-    .preview{
-        position:relative;
-        top:0;
-        order:-1;
-    }
+.layout{grid-template-columns:1fr}
+.preview{
+position:relative;
+top:0;
+order:-1
+}
 }
 
 @media(max-width:550px){
-
-    .social-grid{
-        grid-template-columns:1fr;
-    }
-
-    .title{
-        font-size:29px;
-    }
-
-    .profile-link-row{
-        flex-direction:column;
-    }
-
-    .copy{
-        width:100%;
-        height:45px;
-    }
+.social-grid{grid-template-columns:1fr}
+.title{font-size:29px}
+.profile-link-row{flex-direction:column}
+.copy{
+width:100%;
+height:45px
+}
 }
 </style>
 </head>
@@ -424,168 +379,87 @@ select:focus{
 <div class="container">
 
 <div class="header">
-    <div class="title">Customize</div>
-    <div class="subtitle">
-        Customize your NØX identity.
-    </div>
+<div class="title">Customize</div>
+<div class="subtitle">Customize your NØX identity.</div>
 </div>
 
 <div class="layout">
 
-<!-- EDITOR -->
-
 <div class="card">
-
-<!-- IDENTITY -->
 
 <div class="section">
 
-<div class="section-title">
-IDENTITY
-</div>
+<div class="section-title">IDENTITY</div>
 
 <label>USERNAME</label>
-
-<input
-    id="username"
-    type="text"
-    maxlength="20"
-    autocomplete="off"
->
+<input id="username" type="text" maxlength="20" autocomplete="off">
 
 <div class="username-info">
-Username actual. El cambio de username
-se controla por separado.
+Username actual. El cambio de username se controla por separado.
 </div>
 
 <label>DISPLAY NAME</label>
-
-<input
-    id="displayName"
-    type="text"
-    maxlength="30"
->
+<input id="displayName" type="text" maxlength="30">
 
 <label>BIO</label>
-
-<textarea
-    id="bio"
-    maxlength="160"
-></textarea>
+<textarea id="bio" maxlength="160"></textarea>
 
 <label>WEBSITE</label>
-
-<input
-    id="website"
-    type="url"
-    placeholder="https://example.com"
->
+<input id="website" type="url" placeholder="https://example.com">
 
 </div>
-
-
-<!-- MEDIA -->
 
 <div class="section">
 
-<div class="section-title">
-MEDIA
-</div>
+<div class="section-title">MEDIA</div>
 
 <label>PROFILE PICTURE</label>
 
 <label class="file">
 📷 CHOOSE PROFILE PHOTO
-
-<input
-    id="avatarFile"
-    type="file"
-    accept="image/*"
->
-
+<input id="avatarFile" type="file" accept="image/*">
 </label>
 
 <label>BANNER</label>
 
 <label class="file">
 🖼️ CHOOSE BANNER
-
-<input
-    id="bannerFile"
-    type="file"
-    accept="image/*"
->
-
+<input id="bannerFile" type="file" accept="image/*">
 </label>
 
 <label>BACKGROUND</label>
 
 <label class="file">
 🌌 CHOOSE BACKGROUND
-
-<input
-    id="backgroundFile"
-    type="file"
-    accept="image/*"
->
-
+<input id="backgroundFile" type="file" accept="image/*">
 </label>
 
 </div>
 
-
-<!-- SOCIALS -->
-
 <div class="section">
 
-<div class="section-title">
-SOCIAL LINKS
-</div>
+<div class="section-title">SOCIAL LINKS</div>
 
 <div class="social-grid">
-
 <input id="discord" placeholder="Discord">
-
 <input id="instagram" placeholder="Instagram">
-
 <input id="tiktok" placeholder="TikTok">
-
 <input id="youtube" placeholder="YouTube">
-
 <input id="github" placeholder="GitHub">
-
 <input id="twitter" placeholder="X / Twitter">
-
 </div>
 
 </div>
-
-
-<!-- STYLE -->
 
 <div class="section">
 
-<div class="section-title">
-STYLE
-</div>
+<div class="section-title">STYLE</div>
 
 <label>ACCENT COLOR</label>
 
 <div class="color-row">
-
-<input
-    id="accentColor"
-    type="color"
-    value="#ffffff"
->
-
-<span
-    id="colorValue"
-    class="color-value"
->
-#FFFFFF
-</span>
-
+<input id="accentColor" type="color" value="#ffffff">
+<span id="colorValue" class="color-value">#FFFFFF</span>
 </div>
 
 <br>
@@ -593,81 +467,39 @@ STYLE
 <label>PROFILE EFFECT</label>
 
 <select id="profileEffect">
-
 <option value="none">None</option>
-
 <option value="floating">Floating</option>
-
 <option value="glow">Glow</option>
-
 <option value="pulse">Pulse</option>
-
 </select>
 
 </div>
 
-
-<!-- SAVE -->
-
-<button
-    id="save"
-    class="save"
-    type="button"
->
+<button id="save" class="save" type="button">
 SAVE CHANGES
 </button>
 
-
-<!-- GENERATE -->
-
-<button
-    id="generateProfileLink"
-    class="generate"
-    type="button"
->
+<button id="generateProfileLink" class="generate" type="button">
 🔗 GENERATE PROFILE LINK
 </button>
 
+<div id="message" class="message"></div>
 
-<div
-    id="message"
-    class="message"
-></div>
+<div id="profileLinkBox" class="profile-link-box">
 
-
-<!-- PROFILE LINK -->
-
-<div
-    id="profileLinkBox"
-    class="profile-link-box"
->
-
-<label>
-YOUR NØX PROFILE
-</label>
+<label>YOUR NØX PROFILE</label>
 
 <div class="profile-link-row">
 
-<input
-    id="profileLink"
-    readonly
->
+<input id="profileLink" readonly>
 
-<button
-    id="copyLink"
-    class="copy"
-    type="button"
->
+<button id="copyLink" class="copy" type="button">
 COPY LINK
 </button>
 
 </div>
 
-<button
-    id="viewProfile"
-    class="view-profile"
-    type="button"
->
+<button id="viewProfile" class="view-profile" type="button">
 👁 VIEW PROFILE
 </button>
 
@@ -675,787 +507,865 @@ COPY LINK
 
 </div>
 
+<div id="preview" class="preview">
 
-<!-- PREVIEW -->
-
-<div
-    id="preview"
-    class="preview"
->
-
-<div
-    id="banner"
-    class="banner"
-></div>
+<div id="banner" class="banner"></div>
 
 <div class="profile">
 
-<img
-    id="avatar"
-    class="avatar"
-    alt="Avatar"
->
+<img id="avatar" class="avatar" alt="Avatar">
 
-<div
-    id="previewName"
-    class="name"
->
-NØX
-</div>
+<div id="previewName" class="name">NØX</div>
 
-<div
-    id="previewUsername"
-    class="username"
->
-@nox
-</div>
+<div id="previewUsername" class="username">@nox</div>
 
-<div
-    id="previewBio"
-    class="bio"
->
+<div id="previewBio" class="bio">
 This is my NØX profile.
 </div>
 
-<a
-    id="websitePreview"
-    class="website"
-    target="_blank"
-    rel="noopener"
-></a>
-
+<a id="websitePreview"
+class="website"
+target="_blank"
+rel="noopener"></a>
 
 <div class="socials">
 
-<a
-    id="discordPreview"
-    class="social"
-    target="_blank"
-    rel="noopener"
->
-Discord
-</a>
-
-<a
-    id="instagramPreview"
-    class="social"
-    target="_blank"
-    rel="noopener"
->
-Instagram
-</a>
-
-<a
-    id="tiktokPreview"
-    class="social"
-    target="_blank"
-    rel="noopener"
->
-TikTok
-</a>
-
-<a
-    id="youtubePreview"
-    class="social"
-    target="_blank"
-    rel="noopener"
->
-YouTube
-</a>
-
-<a
-    id="githubPreview"
-    class="social"
-    target="_blank"
-    rel="noopener"
->
-GitHub
-</a>
-
-<a
-    id="twitterPreview"
-    class="social"
-    target="_blank"
-    rel="noopener"
->
-X
-</a>
+<a id="discordPreview" class="social" target="_blank" rel="noopener">Discord</a>
+<a id="instagramPreview" class="social" target="_blank" rel="noopener">Instagram</a>
+<a id="tiktokPreview" class="social" target="_blank" rel="noopener">TikTok</a>
+<a id="youtubePreview" class="social" target="_blank" rel="noopener">YouTube</a>
+<a id="githubPreview" class="social" target="_blank" rel="noopener">GitHub</a>
+<a id="twitterPreview" class="social" target="_blank" rel="noopener">X</a>
 
 </div>
-
-
-<!-- BADGES -->
 
 <div class="badges">
 
-<div
-    class="badge early"
-    title="Early Access"
->
-◆
-</div>
-
-<div
-    class="badge"
-    title="Verified"
->
-✓
-</div>
-
-<div
-    class="badge"
-    title="Developer"
->
-⚡
-</div>
-
-<div
-    class="badge"
-    title="OG"
->
-★
-</div>
+<div class="badge early" title="Early Access">◆</div>
+<div class="badge" title="Verified">✓</div>
+<div class="badge" title="Developer">⚡</div>
+<div class="badge" title="OG">★</div>
 
 </div>
 
 </div>
-
 </div>
 
 </div>
-
 </div>
-
-
-<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+"use strict";
 
-/* =========================================
+/* ================================
    SUPABASE
-========================================= */
+================================ */
 
 const SUPABASE_URL =
-    "https://qvqhanioapefeyxtbzlp.supabase.co";
+"https://qvqhanioapefeyxtbzlp.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_hJVj-2VGj2hEXUgc91QY1Q_zGjw9qp1";
+"sb_publishable_hJVj-2VGj2hEXUgc91QY1Q_zGjw9qp1";
 
 const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
 
 
-/* =========================================
+/* ================================
    STATE
-========================================= */
+================================ */
 
 let currentUser = null;
-
 let currentProfile = {};
 
 
-/* =========================================
-   SHORTCUT
-========================================= */
+/* ================================
+   HELPER
+================================ */
 
-const $ = id =>
-    document.getElementById(id);
+const $ = id => document.getElementById(id);
 
+function message(text,type=""){
+$("message").textContent=text;
+$("message").className="message "+type;
+}
 
-/* =========================================
-   MESSAGE
-========================================= */
-
-function showMessage(
-    text,
-    type = ""
-){
-
-    $("message").textContent =
-        text;
-
-    $("message").className =
-        "message " + type;
+function normalizeUrl(value){
+if(!value)return "";
+if(value.startsWith("http://") || value.startsWith("https://")){
+return value;
+}
+return "https://"+value;
 }
 
 
-/* =========================================
-   URL
-========================================= */
-
-function normalizeUrl(
-    value
-){
-
-    if(!value)
-        return "";
-
-    if(
-        value.startsWith("http://") ||
-        value.startsWith("https://")
-    ){
-
-        return value;
-
-    }
-
-    return "https://" + value;
-}
-
-
-/* =========================================
+/* ================================
    PREVIEW
-========================================= */
+================================ */
 
 function updatePreview(){
 
-    const username =
-        $("username")
-            .value
-            .trim();
+const username=$("username").value.trim();
+const name=$("displayName").value.trim();
+const bio=$("bio").value.trim();
+const website=$("website").value.trim();
+const color=$("accentColor").value;
 
-    const displayName =
-        $("displayName")
-            .value
-            .trim();
+$("previewUsername").textContent="@"+(username||"nox");
+$("previewName").textContent=name||"NØX";
+$("previewBio").textContent=bio||"This is my NØX profile.";
 
-    const bio =
-        $("bio")
-            .value
-            .trim();
+$("colorValue").textContent=color.toUpperCase();
 
-    const website =
-        $("website")
-            .value
-            .trim();
+document.documentElement.style.setProperty(
+"--accent",
+color
+);
 
-    const color =
-        $("accentColor")
-            .value;
+if(website){
 
+$("websitePreview").style.display="inline";
+$("websitePreview").href=normalizeUrl(website);
+$("websitePreview").textContent=website;
 
-    $("previewUsername")
-        .textContent =
-        "@" +
-        (
-            username ||
-            "nox"
-        );
+}else{
 
+$("websitePreview").style.display="none";
 
-    $("previewName")
-        .textContent =
-        displayName ||
-        "NØX";
+}
 
+updateSocial("discord","discordPreview");
+updateSocial("instagram","instagramPreview");
+updateSocial("tiktok","tiktokPreview");
+updateSocial("youtube","youtubePreview");
+updateSocial("github","githubPreview");
+updateSocial("twitter","twitterPreview");
 
-    $("previewBio")
-        .textContent =
-        bio ||
-        "This is my NØX profile.";
-
-
-    $("colorValue")
-        .textContent =
-        color.toUpperCase();
-
-
-    document.documentElement
-        .style
-        .setProperty(
-            "--accent",
-            color
-        );
-
-
-    if(website){
-
-        $("websitePreview")
-            .style
-            .display =
-            "inline";
-
-        $("websitePreview")
-            .href =
-            normalizeUrl(
-                website
-            );
-
-        $("websitePreview")
-            .textContent =
-            website;
-
-    }else{
-
-        $("websitePreview")
-            .style
-            .display =
-            "none";
-
-    }
-
-
-    updateSocial(
-        "discord",
-        "discordPreview"
-    );
-
-    updateSocial(
-        "instagram",
-        "instagramPreview"
-    );
-
-    updateSocial(
-        "tiktok",
-        "tiktokPreview"
-    );
-
-    updateSocial(
-        "youtube",
-        "youtubePreview"
-    );
-
-    updateSocial(
-        "github",
-        "githubPreview"
-    );
-
-    updateSocial(
-        "twitter",
-        "twitterPreview"
-    );
 }
 
 
-/* =========================================
-   SOCIAL
-========================================= */
+function updateSocial(inputId,outputId){
 
-function updateSocial(
-    inputId,
-    outputId
-){
+const value=$(inputId).value.trim();
+const element=$(outputId);
 
-    const value =
-        $(inputId)
-            .value
-            .trim();
+if(!value){
 
-    const element =
-        $(outputId);
+element.style.display="none";
+return;
 
+}
 
-    if(!value){
+element.style.display="inline-block";
+element.href=normalizeUrl(value);
 
-        element.style.display =
-            "none";
-
-        return;
-
-    }
-
-
-    element.style.display =
-        "inline-block";
-
-    element.href =
-        normalizeUrl(
-            value
-        );
 }
 
 
-/* =========================================
+/* ================================
    LOAD USER
-========================================= */
+================================ */
 
 async function loadUser(){
 
-    try{
+try{
 
-        const result =
-            await supabaseClient
-                .auth
-                .getUser();
+const result=
+await supabaseClient.auth.getUser();
 
+if(result.error){
+throw result.error;
+}
 
-        if(result.error){
+if(!result.data.user){
 
-            throw result.error;
+message(
+"No hay una sesión iniciada.",
+"error"
+);
 
-        }
+return;
 
+}
 
-        currentUser =
-            result.data.user;
+currentUser=result.data.user;
 
+await loadProfile();
 
-        if(!currentUser){
+}catch(error){
 
-            showMessage(
-                "No hay una sesión iniciada.",
-                "error"
-            );
+console.error(error);
 
-            return;
+message(
+error.message ||
+"No se pudo cargar el usuario.",
+"error"
+);
 
-        }
+}
 
-
-        await loadProfile();
-
-    }
-    catch(error){
-
-        console.error(
-            "NØX USER ERROR:",
-            error
-        );
-
-        showMessage(
-            error.message ||
-            "No se pudo cargar el usuario.",
-            "error"
-        );
-
-    }
 }
 
 
-/* =========================================
+/* ================================
    LOAD PROFILE
-========================================= */
+================================ */
 
 async function loadProfile(){
 
-    const result =
-        await supabaseClient
-            .from("profiles")
-            .select("*")
-            .eq(
-                "id",
-                currentUser.id
-            )
-            .maybeSingle();
+const result=
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",currentUser.id)
+.maybeSingle();
+
+if(result.error){
+throw result.error;
+}
+
+if(!result.data){
+
+currentProfile={};
+
+message(
+"No existe tu perfil.",
+"error"
+);
+
+return;
+
+}
+
+currentProfile=result.data;
+
+$("username").value=
+currentProfile.username||"";
+
+$("displayName").value=
+currentProfile.display_name||"NØX";
+
+$("bio").value=
+currentProfile.bio||"";
+
+$("website").value=
+currentProfile.website_url||"";
+
+$("accentColor").value=
+currentProfile.accent_color||"#ffffff";
+
+$("profileEffect").value=
+currentProfile.profile_effect||"none";
 
 
-    if(result.error){
+if(currentProfile.avatar_url){
 
-        throw result.error;
+$("avatar").src=
+currentProfile.avatar_url;
 
-    }
+}
 
+if(currentProfile.banner_url){
 
-    if(!result.data){
+$("banner").style.backgroundImage=
+"url('"+
+currentProfile.banner_url+
+"')";
 
-        currentProfile = {};
+}
 
-        showMessage(
-            "No existe tu perfil.",
-            "error"
-        );
+if(currentProfile.background_url){
 
-        return;
-
-    }
-
-
-    currentProfile =
-        result.data;
-
-
-    $("username").value =
-        currentProfile.username ||
-        "";
-
-
-    $("displayName").value =
-        currentProfile.display_name ||
-        "NØX";
-
-
-    $("bio").value =
-        currentProfile.bio ||
-        "";
-
-
-    $("website").value =
-        currentProfile.website_url ||
-        "";
-
-
-    $("accentColor").value =
-        currentProfile.accent_color ||
-        "#ffffff";
-
-
-    $("profileEffect").value =
-        currentProfile.profile_effect ||
-        "none";
-
-
-    if(
-        currentProfile.avatar_url
-    ){
-
-        $("avatar").src =
-            currentProfile.avatar_url;
-
-    }
-
-
-    if(
-        currentProfile.banner_url
-    ){
-
-        $("banner")
-            .style
-            .backgroundImage =
-            `url("${currentProfile.banner_url}")`;
-
-    }
-
-
-    if(
-        currentProfile.background_url
-    ){
-
-        $("preview")
-            .style
-            .backgroundImage =
-            `url("${currentProfile.background_url}")`;
-
-    }
-
-
-    const socials =
-        currentProfile.social_links ||
-        {};
-
-
-    $("discord").value =
-        socials.discord ||
-        "";
-
-    $("instagram").value =
-        socials.instagram ||
-        "";
-
-    $("tiktok").value =
-        socials.tiktok ||
-        "";
-
-    $("youtube").value =
-        socials.youtube ||
-        "";
-
-    $("github").value =
-        socials.github ||
-        "";
-
-    $("twitter").value =
-        socials.twitter ||
-        "";
-
-
-    updatePreview();
+$("preview").style.backgroundImage=
+"url('"+
+currentProfile.background_url+
+"')";
 
 }
 
 
-/* =========================================
+const socials=
+currentProfile.social_links||{};
+
+$("discord").value=socials.discord||"";
+$("instagram").value=socials.instagram||"";
+$("tiktok").value=socials.tiktok||"";
+$("youtube").value=socials.youtube||"";
+$("github").value=socials.github||"";
+$("twitter").value=socials.twitter||"";
+
+updatePreview();
+
+}
+
+
+/* ================================
    UPLOAD
-========================================= */
+================================ */
 
-async function uploadFile(
-    file,
-    folder
-){
+async function uploadFile(file,folder){
 
-    if(!file)
-        return null;
+if(!file){
+return null;
+}
 
+if(!file.type.startsWith("image/")){
+throw new Error(
+"El archivo debe ser una imagen."
+);
+}
 
-    if(
-        !file.type.startsWith(
-            "image/"
-        )
-    ){
+if(file.size>10*1024*1024){
+throw new Error(
+"La imagen supera los 10 MB."
+);
+}
 
-        throw new Error(
-            "El archivo debe ser una imagen."
-        );
+const extension=
+file.name.split(".").pop().toLowerCase();
 
-    }
+const path=
+currentUser.id+
+"/"+
+folder+
+"/"+
+Date.now()+
+"-"+
+Math.random().toString(36).slice(2)+
+"."+
+extension;
 
+const result=
+await supabaseClient
+.storage
+.from("profiles")
+.upload(
+path,
+file,
+{
+upsert:false,
+contentType:file.type
+}
+);
 
-    if(
-        file.size >
-        10 * 1024 * 1024
-    ){
+if(result.error){
+throw result.error;
+}
 
-        throw new Error(
-            "La imagen supera los 10 MB."
-        );
+const publicResult=
+supabaseClient
+.storage
+.from("profiles")
+.getPublicUrl(path);
 
-    }
+return publicResult.data.publicUrl;
 
-
-    const extension =
-        file.name
-            .split(".")
-            .pop()
-            .toLowerCase();
-
-
-    const path =
-        currentUser.id +
-        "/" +
-        folder +
-        "/" +
-        crypto.randomUUID() +
-        "." +
-        extension;
-
-
-    const upload =
-        await supabaseClient
-            .storage
-            .from("profiles")
-            .upload(
-                path,
-                file,
-                {
-                    upsert:false
-                }
-            );
-
-
-    if(upload.error){
-
-        throw upload.error;
-
-    }
-
-
-    const publicUrl =
-        supabaseClient
-            .storage
-            .from("profiles")
-            .getPublicUrl(
-                path
-            );
-
-
-    return publicUrl
-        .data
-        .publicUrl;
 }
 
 
-/* =========================================
-   SAVE
-========================================= */
+/* ================================
+   SAVE CHANGES
+================================ */
 
-$("save")
+$("save").addEventListener(
+"click",
+async function(){
+
+const button=$("save");
+
+try{
+
+if(!currentUser){
+
+throw new Error(
+"No hay una sesión iniciada."
+);
+
+}
+
+button.disabled=true;
+button.textContent="SAVING...";
+
+message("Guardando cambios...");
+
+
+let avatarUrl=
+currentProfile.avatar_url||null;
+
+let bannerUrl=
+currentProfile.banner_url||null;
+
+let backgroundUrl=
+currentProfile.background_url||null;
+
+
+/* AVATAR */
+
+const avatarFile=
+$("avatarFile").files[0];
+
+if(avatarFile){
+
+message("Subiendo foto de perfil...");
+
+avatarUrl=
+await uploadFile(
+avatarFile,
+"avatars"
+);
+
+}
+
+
+/* BANNER */
+
+const bannerFile=
+$("bannerFile").files[0];
+
+if(bannerFile){
+
+message("Subiendo banner...");
+
+bannerUrl=
+await uploadFile(
+bannerFile,
+"banners"
+);
+
+}
+
+
+/* BACKGROUND */
+
+const backgroundFile=
+$("backgroundFile").files[0];
+
+if(backgroundFile){
+
+message("Subiendo fondo...");
+
+backgroundUrl=
+await uploadFile(
+backgroundFile,
+"backgrounds"
+);
+
+}
+
+
+/* SOCIALS */
+
+const socialLinks={
+discord:$("discord").value.trim(),
+instagram:$("instagram").value.trim(),
+tiktok:$("tiktok").value.trim(),
+youtube:$("youtube").value.trim(),
+github:$("github").value.trim(),
+twitter:$("twitter").value.trim()
+};
+
+
+/* DATA */
+
+const data={
+
+username:
+$("username").value.trim(),
+
+display_name:
+$("displayName").value.trim(),
+
+bio:
+$("bio").value.trim(),
+
+website_url:
+$("website").value.trim(),
+
+avatar_url:
+avatarUrl,
+
+banner_url:
+bannerUrl,
+
+background_url:
+backgroundUrl,
+
+social_links:
+socialLinks,
+
+accent_color:
+$("accentColor").value,
+
+profile_effect:
+$("profileEffect").value
+
+};
+
+
+/* UPDATE */
+
+const result=
+await supabaseClient
+.from("profiles")
+.update(data)
+.eq("id",currentUser.id)
+.select()
+.single();
+
+if(result.error){
+throw result.error;
+}
+
+currentProfile=result.data;
+
+
+/* PREVIEW */
+
+if(avatarUrl){
+$("avatar").src=avatarUrl;
+}
+
+if(bannerUrl){
+
+$("banner").style.backgroundImage=
+"url('"+bannerUrl+"')";
+
+}
+
+if(backgroundUrl){
+
+$("preview").style.backgroundImage=
+"url('"+backgroundUrl+"')";
+
+}
+
+updatePreview();
+
+
+/* RESET FILES */
+
+$("avatarFile").value="";
+$("bannerFile").value="";
+$("backgroundFile").value="";
+
+
+message(
+"✓ Cambios guardados correctamente.",
+"success"
+);
+
+button.textContent="SAVE CHANGES";
+button.disabled=false;
+
+
+/* CREATE LINK AFTER SAVE */
+
+generateProfileLink(false);
+
+}catch(error){
+
+console.error(
+"NØX SAVE ERROR:",
+error
+);
+
+message(
+"ERROR: "+
+(error.message||"No se pudieron guardar los cambios."),
+"error"
+);
+
+button.textContent="SAVE CHANGES";
+button.disabled=false;
+
+}
+
+});
+
+
+/* ================================
+   GENERATE PROFILE LINK
+================================ */
+
+function generateProfileLink(showMessage=true){
+
+const username=
+$("username").value.trim();
+
+if(!username){
+
+if(showMessage){
+message(
+"Primero escribe un username.",
+"error"
+);
+}
+
+return null;
+
+}
+
+
+/*
+   profile.html debe existir
+   en la misma carpeta que customize.html
+*/
+
+const link=
+window.location.origin+
+"/profile.html?username="+
+encodeURIComponent(username);
+
+
+$("profileLink").value=link;
+
+$("profileLinkBox").style.display="block";
+
+
+if(showMessage){
+
+message(
+"✓ Profile link generado.",
+"success"
+);
+
+}
+
+return link;
+
+}
+
+
+/* ================================
+   GENERATE BUTTON
+================================ */
+
+$("generateProfileLink")
 .addEventListener(
-    "click",
-    async function(){
+"click",
+function(){
 
-        const button =
-            $("save");
+generateProfileLink(true);
 
-
-        try{
-
-            if(!currentUser){
-
-                throw new Error(
-                    "No hay una sesión iniciada."
-                );
-
-            }
+});
 
 
-            button.disabled =
-                true;
+/* ================================
+   COPY LINK
+================================ */
 
-            button.textContent =
-                "SAVING...";
+$("copyLink")
+.addEventListener(
+"click",
+async function(){
 
+const link=$("profileLink").value;
 
-            showMessage(
-                "Guardando cambios..."
-            );
+if(!link){
+return;
+}
 
+try{
 
-            let avatarUrl =
-                currentProfile.avatar_url ||
-                null;
+await navigator.clipboard.writeText(link);
 
+this.textContent="COPIED ✓";
 
-            let bannerUrl =
-                currentProfile.banner_url ||
-                null;
+setTimeout(
+()=>{
+this.textContent="COPY LINK";
+},
+1500
+);
 
+}catch(error){
 
-            let backgroundUrl =
-                currentProfile.background_url ||
-                null;
+$("profileLink").select();
 
+document.execCommand("copy");
 
-            const avatarFile =
-                $("avatarFile")
-                    .files[0];
+this.textContent="COPIED ✓";
 
+setTimeout(
+()=>{
+this.textContent="COPY LINK";
+},
+1500
+);
 
-            const bannerFile =
-                $("bannerFile")
-                    .files[0];
+}
 
-
-            const backgroundFile =
-                $("backgroundFile")
-                    .files[0];
-
-
-            if(avatarFile){
-
-                showMessage(
-                    "Subiendo foto..."
-                );
-
-                avatarUrl =
-                    await uploadFile(
-                        avatarFile,
-                        "avatars"
-                    );
-
-            }
+});
 
 
-            if(bannerFile){
+/* ================================
+   VIEW PROFILE
+================================ */
 
-                showMessage(
-                    "Subiendo banner..."
-                );
+$("viewProfile")
+.addEventListener(
+"click",
+function(){
 
-                bannerUrl =
-                    await uploadFile(
-                        bannerFile,
-                        "banners"
-                    );
+const username=
+$("username").value.trim();
 
-            }
+if(!username){
+
+message(
+"Primero escribe un username.",
+"error"
+);
+
+return;
+
+}
+
+const url=
+window.location.origin+
+"/profile.html?username="+
+encodeURIComponent(username);
+
+window.location.href=url;
+
+});
 
 
-            if(backgroundFile){
+/* ================================
+   LIVE PREVIEW
+================================ */
 
-                showMessage(
-                    "Subiendo fondo..."
-                
+[
+"username",
+"displayName",
+"bio",
+"website",
+"discord",
+"instagram",
+"tiktok",
+"youtube",
+"github",
+"twitter",
+"accentColor",
+"profileEffect"
+].forEach(id=>{
+
+$(id).addEventListener(
+"input",
+updatePreview
+);
+
+$(id).addEventListener(
+"change",
+updatePreview
+);
+
+});
+
+
+/* ================================
+   USERNAME
+================================ */
+
+$("username").addEventListener(
+"input",
+function(){
+
+this.value=
+this.value
+.toLowerCase()
+.replace(/[^a-z0-9_]/g,"");
+
+updatePreview();
+
+});
+
+
+/* ================================
+   AVATAR PREVIEW
+================================ */
+
+$("avatarFile").addEventListener(
+"change",
+function(){
+
+const file=this.files[0];
+
+if(!file){
+return;
+}
+
+$("avatar").src=
+URL.createObjectURL(file);
+
+});
+
+
+/* ================================
+   BANNER PREVIEW
+================================ */
+
+$("bannerFile").addEventListener(
+"change",
+function(){
+
+const file=this.files[0];
+
+if(!file){
+return;
+}
+
+const url=
+URL.createObjectURL(file);
+
+$("banner").style.backgroundImage=
+"url('"+url+"')";
+
+});
+
+
+/* ================================
+   BACKGROUND PREVIEW
+================================ */
+
+$("backgroundFile").addEventListener(
+"change",
+function(){
+
+const file=this.files[0];
+
+if(!file){
+return;
+}
+
+const url=
+URL.createObjectURL(file);
+
+$("preview").style.backgroundImage=
+"url('"+url+"')";
+
+});
+
+
+/* ================================
+   INITIALIZE
+================================ */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+updatePreview();
+loadUser();
+
+});
+
+</script>
+
+</body>
+</html>
