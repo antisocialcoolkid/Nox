@@ -17,8 +17,7 @@
     --accent:#ffffff;
 }
 
-html,
-body{
+html,body{
     min-height:100%;
 }
 
@@ -33,15 +32,10 @@ body{
     overflow-x:hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
 #background{
     position:fixed;
     inset:0;
     z-index:-2;
-
     background:
         radial-gradient(
             circle at 50% 0%,
@@ -49,7 +43,6 @@ body{
             #090909 45%,
             #030303 100%
         );
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -59,7 +52,6 @@ body{
     position:fixed;
     inset:0;
     z-index:-1;
-
     background:
         radial-gradient(
             circle at 50% 20%,
@@ -67,55 +59,33 @@ body{
             rgba(0,0,0,.35) 55%,
             rgba(0,0,0,.8) 100%
         );
-
     pointer-events:none;
 }
-
-/* =========================
-   PROFILE
-========================= */
 
 .profile{
     width:min(650px,100%);
     text-align:center;
 }
 
-/* =========================
-   MAIN CARD
-========================= */
-
 .profile-card{
     overflow:hidden;
-
     background:rgba(10,10,10,.94);
-
     border:1px solid #242424;
-
     border-radius:22px;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.55);
-
+    box-shadow:0 25px 70px rgba(0,0,0,.55);
     backdrop-filter:blur(15px);
 }
-
-/* =========================
-   BANNER
-========================= */
 
 .banner{
     width:100%;
     height:210px;
-
     position:relative;
-
     background:
         radial-gradient(
             circle at 50% 0%,
             #292929,
             #070707 70%
         );
-
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -123,10 +93,8 @@ body{
 
 .banner::after{
     content:"";
-
     position:absolute;
     inset:0;
-
     background:
         linear-gradient(
             to bottom,
@@ -136,89 +104,48 @@ body{
         );
 }
 
-/* =========================
-   CONTENT
-========================= */
-
 .profile-content{
     position:relative;
-
     margin-top:-60px;
-
     padding:0 25px 30px;
 }
-
-/* =========================
-   AVATAR
-========================= */
 
 .avatar{
     width:115px;
     height:115px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     background:#111;
-
     border:4px solid #0a0a0a;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.5);
+    box-shadow:0 10px 35px rgba(0,0,0,.5);
 }
-
-/* =========================
-   NAME
-========================= */
 
 .name{
     margin-top:14px;
-
     font-size:27px;
-
     font-weight:900;
-
     letter-spacing:-.7px;
 }
 
 .username{
     margin-top:6px;
-
     color:#666;
-
     font-size:12px;
 }
-
-/* =========================
-   BIO
-========================= */
 
 .bio{
     margin:17px auto;
-
     max-width:470px;
-
     color:#999;
-
     font-size:13px;
-
     line-height:1.6;
 }
 
-/* =========================
-   WEBSITE
-========================= */
-
 .website{
     display:none;
-
     color:var(--accent);
-
     text-decoration:none;
-
     font-size:12px;
-
     margin-top:5px;
 }
 
@@ -226,83 +153,50 @@ body{
     text-decoration:underline;
 }
 
-/* =========================
-   SOCIALS
-========================= */
-
 .socials{
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     flex-wrap:wrap;
-
     gap:8px;
-
     margin-top:18px;
 }
 
 .social{
     display:none;
-
     padding:8px 11px;
-
     background:#0d0d0d;
-
     border:1px solid #292929;
-
     border-radius:9px;
-
     color:#888;
-
     text-decoration:none;
-
     font-size:10px;
-
     transition:.2s;
 }
 
 .social:hover{
     color:var(--accent);
-
     border-color:var(--accent);
-
     transform:translateY(-2px);
 }
 
-/* =========================
-   BADGES
-========================= */
-
 .badges{
     display:flex;
-
     justify-content:center;
-
     gap:8px;
-
     margin-top:21px;
 }
 
 .badge{
     width:35px;
     height:35px;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     background:#0d0d0d;
-
     border:1px solid #292929;
-
     border-radius:9px;
-
     color:#777;
-
     font-size:14px;
 }
 
@@ -311,17 +205,10 @@ body{
     border-color:#555;
 }
 
-/* =========================
-   STATUS
-========================= */
-
 .status{
     margin-top:20px;
-
     color:#444;
-
     font-size:9px;
-
     letter-spacing:1.5px;
 }
 
@@ -329,44 +216,25 @@ body{
     color:#777;
 }
 
-/* =========================
-   ERROR
-========================= */
-
 .error{
     margin-top:25px;
-
     color:#ff6464;
-
     font-size:12px;
 }
 
-/* =========================
-   LOADING
-========================= */
-
 .loading{
     padding:80px 20px;
-
     color:#555;
-
     font-size:11px;
-
     letter-spacing:1px;
 }
-
-/* =========================
-   EFFECTS
-========================= */
 
 .effect-floating .avatar{
     animation:floating 4s ease-in-out infinite;
 }
 
 @keyframes floating{
-
-    0%,
-    100%{
+    0%,100%{
         transform:translateY(0);
     }
 
@@ -386,22 +254,14 @@ body{
 }
 
 @keyframes pulse{
-
-    0%,
-    100%{
-        box-shadow:
-            0 0 0 transparent;
+    0%,100%{
+        box-shadow:0 0 0 transparent;
     }
 
     50%{
-        box-shadow:
-            0 0 25px var(--accent);
+        box-shadow:0 0 25px var(--accent);
     }
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:600px){
 
@@ -437,27 +297,14 @@ body{
 
 <body>
 
-<!-- BACKGROUND -->
-
 <div id="background"></div>
-
 <div class="background-overlay"></div>
-
 
 <div class="profile">
 
-
-    <!-- LOADING -->
-
-    <div
-        id="loading"
-        class="profile-card loading"
-    >
+    <div id="loading" class="profile-card loading">
         LOADING PROFILE...
     </div>
-
-
-    <!-- PROFILE -->
 
     <div
         id="profileCard"
@@ -465,21 +312,9 @@ body{
         style="display:none;"
     >
 
-
-        <!-- BANNER -->
-
-        <div
-            id="banner"
-            class="banner"
-        ></div>
-
-
-        <!-- CONTENT -->
+        <div id="banner" class="banner"></div>
 
         <div class="profile-content">
-
-
-            <!-- AVATAR -->
 
             <img
                 id="avatar"
@@ -488,36 +323,15 @@ body{
                 alt="Avatar"
             >
 
-
-            <!-- NAME -->
-
-            <div
-                id="name"
-                class="name"
-            >
+            <div id="name" class="name">
                 NØX
             </div>
 
-
-            <!-- USERNAME -->
-
-            <div
-                id="username"
-                class="username"
-            >
+            <div id="username" class="username">
                 @nox
             </div>
 
-
-            <!-- BIO -->
-
-            <div
-                id="bio"
-                class="bio"
-            ></div>
-
-
-            <!-- WEBSITE -->
+            <div id="bio" class="bio"></div>
 
             <a
                 id="website"
@@ -526,111 +340,65 @@ body{
                 rel="noopener noreferrer"
             ></a>
 
-
-            <!-- SOCIALS -->
-
             <div class="socials">
 
-
-                <a
-                    id="discord"
-                    class="social"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a id="discord" class="social"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Discord
                 </a>
 
-
-                <a
-                    id="instagram"
-                    class="social"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a id="instagram" class="social"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Instagram
                 </a>
 
-
-                <a
-                    id="tiktok"
-                    class="social"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a id="tiktok" class="social"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     TikTok
                 </a>
 
-
-                <a
-                    id="youtube"
-                    class="social"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a id="youtube" class="social"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     YouTube
                 </a>
 
-
-                <a
-                    id="github"
-                    class="social"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a id="github" class="social"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     GitHub
                 </a>
 
-
-                <a
-                    id="twitter"
-                    class="social"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a id="twitter" class="social"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     X
                 </a>
 
             </div>
 
-
-            <!-- BADGES -->
-
             <div class="badges">
 
-                <div
-                    class="badge early"
-                    title="Early Access"
-                >
+                <div class="badge early" title="Early Access">
                     ◆
                 </div>
 
-
-                <div
-                    class="badge"
-                    title="Verified"
-                >
+                <div class="badge" title="Verified">
                     ✓
                 </div>
 
-
-                <div
-                    class="badge"
-                    title="Developer"
-                >
+                <div class="badge" title="Developer">
                     ⚡
                 </div>
 
-
-                <div
-                    class="badge"
-                    title="OG"
-                >
+                <div class="badge" title="OG">
                     ★
                 </div>
 
             </div>
-
 
             <div class="status">
                 NØX PROFILE <span>•</span> ONLINE
@@ -640,23 +408,12 @@ body{
 
     </div>
 
-
-    <!-- ERROR -->
-
-    <div
-        id="error"
-        class="error"
-    ></div>
+    <div id="error" class="error"></div>
 
 </div>
 
-
-<!-- SUPABASE -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="supabase.js"></script>
-
 
 <script>
 
@@ -664,58 +421,106 @@ body{
    ELEMENTS
 ========================================= */
 
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
-
-
-const usernameParam =
-    params.get("username");
-
-
 const avatar =
     document.getElementById("avatar");
-
 
 const banner =
     document.getElementById("banner");
 
-
 const background =
     document.getElementById("background");
 
-
-const name =
+const nameElement =
     document.getElementById("name");
 
-
-const username =
+const usernameElement =
     document.getElementById("username");
-
 
 const bio =
     document.getElementById("bio");
 
-
 const website =
     document.getElementById("website");
-
 
 const errorElement =
     document.getElementById("error");
 
-
 const loading =
     document.getElementById("loading");
-
 
 const profileCard =
     document.getElementById("profileCard");
 
 
 /* =========================================
-   URL HELPER
+   GET USERNAME
+========================================= */
+
+function getUsername(){
+
+    /*
+     * Primero intenta:
+     *
+     * /profile.html?username=nox
+     */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    let username =
+        params.get("username");
+
+
+    /*
+     * Si no existe, intenta:
+     *
+     * /nox
+     */
+
+    if(!username){
+
+        const path =
+            window.location.pathname
+                .split("/")
+                .filter(Boolean);
+
+
+        if(path.length){
+
+            username =
+                path[path.length - 1];
+
+        }
+
+    }
+
+
+    /*
+     * Limpieza
+     */
+
+    if(!username){
+        return null;
+    }
+
+
+    return decodeURIComponent(
+        username
+    )
+    .trim()
+    .toLowerCase();
+
+}
+
+
+const usernameParam =
+    getUsername();
+
+
+/* =========================================
+   URL
 ========================================= */
 
 function normalizeUrl(value){
@@ -731,15 +536,18 @@ function normalizeUrl(value){
         value.startsWith("http://") ||
         value.startsWith("https://")
     ){
+
         return value;
+
     }
 
     return "https://" + value;
+
 }
 
 
 /* =========================================
-   SOCIAL HELPER
+   SOCIAL
 ========================================= */
 
 function setSocial(
@@ -762,15 +570,16 @@ function setSocial(
             "none";
 
         return;
+
     }
 
 
     element.href =
         normalizeUrl(value);
 
-
     element.style.display =
         "inline-block";
+
 }
 
 
@@ -791,18 +600,27 @@ async function loadProfile(){
         }
 
 
-        /*
-         * IMPORTANTE:
-         *
-         * Se busca el username directamente
-         * en la tabla profiles.
-         */
+        if(
+            typeof supabaseClient ===
+            "undefined"
+        ){
+
+            throw new Error(
+                "No se encontró supabase.js."
+            );
+
+        }
+
+
+        console.log(
+            "NØX USERNAME:",
+            usernameParam
+        );
+
 
         const result =
             await supabaseClient
-
                 .from("profiles")
-
                 .select(`
                     username,
                     display_name,
@@ -815,14 +633,10 @@ async function loadProfile(){
                     accent_color,
                     profile_effect
                 `)
-
                 .eq(
                     "username",
                     usernameParam
-                        .trim()
-                        .toLowerCase()
                 )
-
                 .maybeSingle();
 
 
@@ -834,6 +648,7 @@ async function loadProfile(){
             );
 
             throw new Error(
+                result.error.message ||
                 "No se pudo cargar el perfil."
             );
 
@@ -854,7 +669,7 @@ async function loadProfile(){
 
 
         console.log(
-            "NØX PROFILE:",
+            "NØX PROFILE DATA:",
             data
         );
 
@@ -863,13 +678,13 @@ async function loadProfile(){
            BASIC
         ========================= */
 
-        name.textContent =
+        nameElement.textContent =
             data.display_name ||
             data.username ||
             "NØX";
 
 
-        username.textContent =
+        usernameElement.textContent =
             "@" +
             (
                 data.username ||
@@ -878,22 +693,13 @@ async function loadProfile(){
 
 
         bio.textContent =
-            data.bio ||
-            "";
+            data.bio || "";
 
 
-        if(!data.bio){
-
-            bio.style.display =
-                "none";
-
-        }
-        else{
-
-            bio.style.display =
-                "block";
-
-        }
+        bio.style.display =
+            data.bio
+            ? "block"
+            : "none";
 
 
         /* =========================
@@ -926,9 +732,7 @@ async function loadProfile(){
             );
 
         }
-
-
-        if(
+        else if(
             data.profile_effect ===
             "glow"
         ){
@@ -938,9 +742,7 @@ async function loadProfile(){
             );
 
         }
-
-
-        if(
+        else if(
             data.profile_effect ===
             "pulse"
         ){
@@ -961,15 +763,6 @@ async function loadProfile(){
             avatar.src =
                 data.avatar_url;
 
-            avatar.style.display =
-                "inline-block";
-
-        }
-        else{
-
-            avatar.style.display =
-                "inline-block";
-
         }
 
 
@@ -980,7 +773,11 @@ async function loadProfile(){
         if(data.banner_url){
 
             banner.style.backgroundImage =
-                `url("${data.banner_url}")`;
+                "url(" +
+                JSON.stringify(
+                    data.banner_url
+                ) +
+                ")";
 
         }
 
@@ -992,13 +789,11 @@ async function loadProfile(){
         if(data.background_url){
 
             background.style.backgroundImage =
-                `url("${data.background_url}")`;
-
-            background.style.backgroundSize =
-                "cover";
-
-            background.style.backgroundPosition =
-                "center";
+                "url(" +
+                JSON.stringify(
+                    data.background_url
+                ) +
+                ")";
 
         }
 
@@ -1024,7 +819,7 @@ async function loadProfile(){
 
 
         /* =========================
-           SOCIAL LINKS
+           SOCIALS
         ========================= */
 
         const socials =
@@ -1036,30 +831,25 @@ async function loadProfile(){
             socials.discord
         );
 
-
         setSocial(
             "instagram",
             socials.instagram
         );
-
 
         setSocial(
             "tiktok",
             socials.tiktok
         );
 
-
         setSocial(
             "youtube",
             socials.youtube
         );
 
-
         setSocial(
             "github",
             socials.github
         );
-
 
         setSocial(
             "twitter",
@@ -1081,12 +871,11 @@ async function loadProfile(){
 
 
         /* =========================
-           SHOW PROFILE
+           SHOW
         ========================= */
 
         loading.style.display =
             "none";
-
 
         profileCard.style.display =
             "block";
@@ -1104,10 +893,8 @@ async function loadProfile(){
         loading.style.display =
             "none";
 
-
         profileCard.style.display =
             "none";
-
 
         errorElement.textContent =
             error.message ||
@@ -1122,23 +909,7 @@ async function loadProfile(){
    START
 ========================================= */
 
-if(
-    typeof supabaseClient ===
-    "undefined"
-){
-
-    loading.style.display =
-        "none";
-
-    errorElement.textContent =
-        "No se encontró supabase.js.";
-
-}
-else{
-
-    loadProfile();
-
-}
+loadProfile();
 
 </script>
 
