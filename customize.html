@@ -2,230 +2,105 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NØX — Customize</title>
 
 <style>
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-:root{
-    --accent:#ffffff;
-    --bg:#050505;
-    --panel:#0c0c0c;
-    --border:#252525;
-    --muted:#777;
 }
 
 body{
+    margin:0;
     min-height:100vh;
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(255,255,255,.10),
-            transparent 35%
-        ),
-        #050505;
-    color:#fff;
+    background:#050505;
+    color:white;
     font-family:Arial,Helvetica,sans-serif;
-    padding:20px;
-}
-
-button,
-input,
-textarea,
-select{
-    font:inherit;
 }
 
 .container{
-    width:min(1150px,100%);
-    margin:auto;
+    width:min(1000px,92%);
+    margin:50px auto;
 }
 
-.top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:22px;
-}
-
-.title{
-    font-size:30px;
-    font-weight:800;
-    letter-spacing:-1.5px;
+h1{
+    margin:0;
+    font-size:34px;
 }
 
 .subtitle{
-    margin-top:5px;
-    color:#666;
-    font-size:12px;
-}
-
-.back{
     color:#777;
-    text-decoration:none;
-    font-size:11px;
+    margin-top:6px;
+    margin-bottom:30px;
 }
 
-.back:hover{
-    color:#fff;
-}
-
-.layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 410px;
-    gap:20px;
-}
-
-.editor,
-.preview{
-    border:1px solid var(--border);
-    border-radius:22px;
-    background:rgba(255,255,255,.025);
-    backdrop-filter:blur(20px);
-}
-
-.editor{
+.card{
+    background:#0c0c0c;
+    border:1px solid #252525;
+    border-radius:20px;
     padding:25px;
-}
-
-.preview{
-    overflow:hidden;
-    position:sticky;
-    top:20px;
-    height:max-content;
-}
-
-.section{
-    margin-bottom:28px;
-}
-
-.section-title{
-    color:#666;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:1.5px;
-    margin-bottom:15px;
-}
-
-.field{
-    margin-bottom:17px;
+    margin-bottom:20px;
 }
 
 label{
     display:block;
     color:#777;
-    font-size:10px;
-    font-weight:700;
-    margin-bottom:7px;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
 input,
-textarea,
-select{
+textarea{
     width:100%;
-    border:1px solid #252525;
-    border-radius:11px;
+    padding:13px;
+    border-radius:10px;
+    border:1px solid #292929;
     background:#070707;
-    color:#fff;
+    color:white;
     outline:none;
-    padding:12px;
-    transition:.2s;
-}
-
-input{
-    height:46px;
+    margin-bottom:18px;
 }
 
 textarea{
-    min-height:95px;
+    min-height:100px;
     resize:vertical;
 }
 
 input:focus,
-textarea:focus,
-select:focus{
-    border-color:#555;
+textarea:focus{
+    border-color:#666;
 }
 
 .username-info{
-    margin-top:7px;
-    color:#555;
-    font-size:10px;
-    line-height:1.5;
-}
-
-.file{
-    display:block;
-    border:1px dashed #303030;
-    border-radius:12px;
-    padding:17px;
-    text-align:center;
-    color:#777;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.file:hover{
-    border-color:#666;
-    color:#fff;
-    background:#0a0a0a;
-}
-
-.file input{
-    display:none;
-}
-
-.color-row{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.color-row input{
-    width:60px;
-    padding:3px;
-}
-
-.color-value{
-    color:#777;
+    color:#666;
     font-size:11px;
+    margin-top:-10px;
+    margin-bottom:20px;
 }
 
-.save{
+button{
     width:100%;
-    height:52px;
+    padding:15px;
     border:0;
-    border-radius:11px;
-    background:#fff;
-    color:#000;
-    font-size:12px;
-    font-weight:800;
+    border-radius:10px;
+    background:white;
+    color:black;
+    font-weight:bold;
     cursor:pointer;
-    transition:.2s;
 }
 
-.save:hover{
-    transform:translateY(-2px);
-    box-shadow:0 15px 40px rgba(255,255,255,.10);
-}
-
-.save:disabled{
+button:disabled{
     opacity:.5;
-    cursor:wait;
-    transform:none;
+    cursor:not-allowed;
 }
 
-.message{
-    min-height:22px;
+#message{
     text-align:center;
-    margin-top:12px;
-    font-size:11px;
+    margin-top:15px;
+    min-height:20px;
+    font-size:12px;
 }
 
 .success{
@@ -233,177 +108,95 @@ select:focus{
 }
 
 .error{
-    color:#ff6666;
+    color:#ff5555;
 }
 
 .status{
-    margin-top:18px;
-    padding:14px;
-    border:1px solid #1e1e1e;
-    border-radius:13px;
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
     background:#070707;
+    border:1px solid #1d1d1d;
 }
 
 .status-title{
-    color:#555;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1.3px;
+    color:#666;
+    font-size:10px;
+    font-weight:bold;
     margin-bottom:10px;
 }
 
-.status-line{
-    display:flex;
-    align-items:center;
-    gap:8px;
+.status div{
+    font-size:11px;
     color:#666;
-    font-size:10px;
     margin:7px 0;
 }
 
-.dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#333;
-}
-
-.status-line.ok{
+.status .ok{
     color:#aaa;
 }
 
-.status-line.ok .dot{
-    background:#aaa;
+.status .bad{
+    color:#ff5555;
 }
 
-.status-line.error{
-    color:#ff6666;
+.preview{
+    overflow:hidden;
+    border-radius:20px;
+    border:1px solid #252525;
+    background:#0b0b0b;
 }
-
-.status-line.error .dot{
-    background:#ff6666;
-}
-
-/* PREVIEW */
 
 .banner{
-    height:190px;
-    position:relative;
-    background:
-        linear-gradient(
-            135deg,
-            #181818,
-            #050505
-        );
-    background-size:cover;
-    background-position:center;
+    height:180px;
+    background:#151515 center/cover no-repeat;
 }
 
-.banner:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent,
-        #080808
-    );
-}
-
-.preview-body{
-    position:relative;
-    margin-top:-58px;
-    z-index:2;
-    padding:0 25px 30px;
+.profile{
     text-align:center;
+    padding:0 20px 30px;
+    margin-top:-55px;
 }
 
 .avatar{
     width:110px;
     height:110px;
-    object-fit:cover;
     border-radius:50%;
-    border:4px solid #080808;
-    background:#111;
+    object-fit:cover;
+    background:#151515;
+    border:4px solid #0b0b0b;
 }
 
-.preview-name{
-    margin-top:13px;
-    font-size:23px;
-    font-weight:800;
+.name{
+    font-size:24px;
+    font-weight:bold;
+    margin-top:12px;
 }
 
-.preview-username{
-    margin-top:4px;
+.username{
     color:#666;
-    font-size:11px;
+    font-size:12px;
+    margin-top:5px;
 }
 
-.preview-bio{
-    max-width:330px;
-    margin:14px auto;
-    color:#aaa;
-    font-size:12px;
+.bio{
+    color:#999;
+    font-size:13px;
+    margin:15px auto;
+    max-width:450px;
     line-height:1.5;
 }
 
-.website{
-    display:none;
-    color:var(--accent);
-    font-size:11px;
-    text-decoration:none;
-}
+@media(max-width:700px){
 
-.badges-title{
-    margin-top:24px;
-    margin-bottom:10px;
-    color:#555;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1.4px;
-}
-
-.badges{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:8px;
-}
-
-.badge{
-    width:35px;
-    height:35px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid #292929;
-    border-radius:9px;
-    background:#101010;
-    color:#555;
-    font-size:13px;
-    opacity:.4;
-}
-
-.badge.early{
-    color:#fff;
-    border-color:#444;
-    opacity:1;
-}
-
-@media(max-width:850px){
-
-    body{
-        padding:13px;
+    .container{
+        margin:25px auto;
     }
 
-    .layout{
-        grid-template-columns:1fr;
+    h1{
+        font-size:28px;
     }
 
-    .preview{
-        position:relative;
-        top:0;
-        order:-1;
-    }
 }
 </style>
 </head>
@@ -412,390 +205,143 @@ select:focus{
 
 <div class="container">
 
-    <div class="top">
-        <div>
-            <div class="title">Customize</div>
-            <div class="subtitle">
-                Customize your NØX identity.
-            </div>
-        </div>
+    <h1>Customize</h1>
 
-        <a href="dashboard.html" class="back">
-            ← BACK
-        </a>
+    <div class="subtitle">
+        Customize your NØX identity.
     </div>
 
 
-    <div class="layout">
+    <!-- PREVIEW -->
 
-        <!-- EDITOR -->
+    <div class="preview">
 
-        <div class="editor">
+        <div
+            id="banner"
+            class="banner"
+        ></div>
 
-            <div class="section">
+        <div class="profile">
 
-                <div class="section-title">
-                    IDENTITY
-                </div>
-
-                <div class="field">
-
-                    <label>USERNAME</label>
-
-                    <input
-                        id="username"
-                        type="text"
-                        maxlength="20"
-                        autocomplete="off"
-                    >
-
-                    <div
-                        id="usernameInfo"
-                        class="username-info"
-                    >
-                        Cargando...
-                    </div>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>DISPLAY NAME</label>
-
-                    <input
-                        id="displayName"
-                        type="text"
-                        maxlength="30"
-                        placeholder="NØX"
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>BIO</label>
-
-                    <textarea
-                        id="bio"
-                        maxlength="160"
-                        placeholder="This is my NØX profile."
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="section">
-
-                <div class="section-title">
-                    MEDIA
-                </div>
-
-
-                <div class="field">
-
-                    <label>PROFILE PICTURE</label>
-
-                    <label class="file">
-
-                        📷 CHOOSE PROFILE PHOTO
-
-                        <input
-                            id="avatarFile"
-                            type="file"
-                            accept="image/*"
-                        >
-
-                    </label>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>BANNER</label>
-
-                    <label class="file">
-
-                        🖼️ CHOOSE BANNER
-
-                        <input
-                            id="bannerFile"
-                            type="file"
-                            accept="image/*"
-                        >
-
-                    </label>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>PROFILE BACKGROUND</label>
-
-                    <label class="file">
-
-                        🌌 CHOOSE BACKGROUND
-
-                        <input
-                            id="backgroundFile"
-                            type="file"
-                            accept="image/*"
-                        >
-
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <div class="section">
-
-                <div class="section-title">
-                    STYLE
-                </div>
-
-
-                <div class="field">
-
-                    <label>ACCENT COLOR</label>
-
-                    <div class="color-row">
-
-                        <input
-                            id="accentColor"
-                            type="color"
-                            value="#ffffff"
-                        >
-
-                        <span
-                            id="colorValue"
-                            class="color-value"
-                        >
-                            #FFFFFF
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>PROFILE EFFECT</label>
-
-                    <select id="profileEffect">
-
-                        <option value="none">
-                            None
-                        </option>
-
-                        <option value="particles">
-                            Particles
-                        </option>
-
-                        <option value="floating">
-                            Floating
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="section">
-
-                <div class="section-title">
-                    SOCIAL
-                </div>
-
-                <div class="field">
-
-                    <label>WEBSITE</label>
-
-                    <input
-                        id="website"
-                        type="url"
-                        placeholder="https://example.com"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <button
-                id="save"
-                class="save"
-                type="button"
+            <img
+                id="avatar"
+                class="avatar"
+                alt="Avatar"
             >
-                SAVE CHANGES
-            </button>
-
 
             <div
-                id="message"
-                class="message"
-            ></div>
+                id="previewName"
+                class="name"
+            >
+                NØX
+            </div>
 
+            <div
+                id="previewUsername"
+                class="username"
+            >
+                @nox
+            </div>
 
-            <div class="status">
-
-                <div class="status-title">
-                    NØX SYSTEM STATUS
-                </div>
-
-                <div
-                    id="statusSupabase"
-                    class="status-line"
-                >
-                    <span class="dot"></span>
-                    Supabase
-                </div>
-
-                <div
-                    id="statusUser"
-                    class="status-line"
-                >
-                    <span class="dot"></span>
-                    Usuario
-                </div>
-
-                <div
-                    id="statusProfile"
-                    class="status-line"
-                >
-                    <span class="dot"></span>
-                    Profile
-                </div>
-
-                <div
-                    id="statusDatabase"
-                    class="status-line"
-                >
-                    <span class="dot"></span>
-                    Database
-                </div>
-
-                <div
-                    id="statusStorage"
-                    class="status-line"
-                >
-                    <span class="dot"></span>
-                    Storage
-                </div>
-
+            <div
+                id="previewBio"
+                class="bio"
+            >
+                This is my NØX profile.
             </div>
 
         </div>
 
+    </div>
 
-        <!-- PREVIEW -->
 
-        <div
-            id="preview"
-            class="preview"
+    <!-- EDITOR -->
+
+    <div class="card">
+
+        <label>
+            USERNAME
+        </label>
+
+        <input
+            id="username"
+            type="text"
+            maxlength="20"
         >
 
-            <div
-                id="banner"
-                class="banner"
-            ></div>
-
-            <div class="preview-body">
-
-                <img
-                    id="avatar"
-                    class="avatar"
-                    alt="Avatar"
-                >
-
-                <div
-                    id="previewName"
-                    class="preview-name"
-                >
-                    NØX
-                </div>
-
-                <div
-                    id="previewUsername"
-                    class="preview-username"
-                >
-                    @nox
-                </div>
-
-                <div
-                    id="previewBio"
-                    class="preview-bio"
-                >
-                    This is my NØX profile.
-                </div>
-
-                <a
-                    id="websitePreview"
-                    class="website"
-                    target="_blank"
-                    rel="noopener"
-                ></a>
+        <div
+            id="usernameInfo"
+            class="username-info"
+        >
+            Username actual.
+        </div>
 
 
-                <div class="badges-title">
-                    BADGES
-                </div>
+        <label>
+            DISPLAY NAME
+        </label>
 
-                <div class="badges">
+        <input
+            id="displayName"
+            type="text"
+            maxlength="30"
+        >
 
-                    <div
-                        class="badge early"
-                        title="Early Access"
-                    >
-                        ◆
-                    </div>
 
-                    <div
-                        class="badge"
-                        title="Verified"
-                    >
-                        ✓
-                    </div>
+        <label>
+            BIO
+        </label>
 
-                    <div
-                        class="badge"
-                        title="Developer"
-                    >
-                        ⚡
-                    </div>
+        <textarea
+            id="bio"
+            maxlength="160"
+        ></textarea>
 
-                    <div
-                        class="badge"
-                        title="OG"
-                    >
-                        ★
-                    </div>
 
-                    <div
-                        class="badge"
-                        title="Supporter"
-                    >
-                        ◇
-                    </div>
+        <label>
+            WEBSITE
+        </label>
 
-                    <div
-                        class="badge"
-                        title="Premium"
-                    >
-                        ◈
-                    </div>
+        <input
+            id="website"
+            type="url"
+            placeholder="https://example.com"
+        >
 
-                </div>
 
+        <button
+            id="save"
+            type="button"
+        >
+            SAVE CHANGES
+        </button>
+
+
+        <div
+            id="message"
+        ></div>
+
+
+        <div class="status">
+
+            <div class="status-title">
+                NØX SYSTEM STATUS
+            </div>
+
+            <div id="statusSupabase">
+                ⚪ Supabase
+            </div>
+
+            <div id="statusUser">
+                ⚪ Usuario
+            </div>
+
+            <div id="statusProfile">
+                ⚪ Profile
+            </div>
+
+            <div id="statusDatabase">
+                ⚪ Database
             </div>
 
         </div>
@@ -809,85 +355,63 @@ select:focus{
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="supabase.js"></script>
+<script src="./supabase.js"></script>
 
 
 <script>
 
-/* =====================================================
-   NØX
-===================================================== */
-
 let currentUser = null;
-let profile = null;
+let currentProfile = null;
 
-const $ = id =>
+
+const $ = (id) =>
     document.getElementById(id);
 
 
-/* =====================================================
-   STATUS
-===================================================== */
-
 function setStatus(id, ok){
 
-    const el = $(id);
+    const element = $(id);
 
-    if(!el) return;
+    if(!element) return;
 
-    el.classList.remove(
+    element.classList.remove(
         "ok",
-        "error"
+        "bad"
     );
 
-    el.classList.add(
-        ok ? "ok" : "error"
+    element.classList.add(
+        ok ? "ok" : "bad"
     );
+
+    element.textContent =
+        (ok ? "🟢 " : "🔴 ") +
+        element.textContent
+            .replace(/^🟢 |^🔴 |^⚪ /,"");
+
 }
 
 
-/* =====================================================
-   MESSAGE
-===================================================== */
+function showMessage(text, type){
 
-function message(text, type=""){
-
-    const el =
+    const element =
         $("message");
 
-    el.textContent =
+    element.textContent =
         text;
 
-    el.className =
-        "message " + type;
+    element.className =
+        type || "";
+
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================================
+   CARGAR USUARIO
+========================================= */
 
-async function start(){
+async function loadUser(){
 
     try{
-
-        if(
-            typeof supabaseClient ===
-            "undefined"
-        ){
-
-            throw new Error(
-                "No se encontró supabaseClient. Revisa supabase.js."
-            );
-
-        }
-
-
-        setStatus(
-            "statusSupabase",
-            true
-        );
-
 
         const result =
             await supabaseClient
@@ -895,21 +419,30 @@ async function start(){
                 .getUser();
 
 
-        if(result.error)
-            throw result.error;
-
-
-        if(
-            !result.data ||
-            !result.data.user
-        ){
+        if(result.error){
 
             setStatus(
                 "statusUser",
                 false
             );
 
-            message(
+            throw result.error;
+
+        }
+
+
+        currentUser =
+            result.data.user;
+
+
+        if(!currentUser){
+
+            setStatus(
+                "statusUser",
+                false
+            );
+
+            showMessage(
                 "No hay una sesión iniciada.",
                 "error"
             );
@@ -919,9 +452,10 @@ async function start(){
         }
 
 
-        currentUser =
-            result.data.user;
-
+        setStatus(
+            "statusSupabase",
+            true
+        );
 
         setStatus(
             "statusUser",
@@ -935,11 +469,11 @@ async function start(){
     catch(error){
 
         console.error(
-            "NØX START:",
+            "LOAD USER:",
             error
         );
 
-        message(
+        showMessage(
             error.message,
             "error"
         );
@@ -949,9 +483,9 @@ async function start(){
 }
 
 
-/* =====================================================
-   LOAD PROFILE
-===================================================== */
+/* =========================================
+   CARGAR PROFILE
+========================================= */
 
 async function loadProfile(){
 
@@ -985,14 +519,17 @@ async function loadProfile(){
             false
         );
 
-        throw new Error(
-            "No existe tu perfil en la tabla profiles."
+        showMessage(
+            "No existe un perfil para este usuario.",
+            "error"
         );
+
+        return;
 
     }
 
 
-    profile =
+    currentProfile =
         result.data;
 
 
@@ -1003,124 +540,48 @@ async function loadProfile(){
 
 
     $("username").value =
-        profile.username || "";
+        currentProfile.username || "";
 
 
     $("displayName").value =
-        profile.display_name || "NØX";
+        currentProfile.display_name || "NØX";
 
 
     $("bio").value =
-        profile.bio ||
+        currentProfile.bio ||
         "This is my NØX profile.";
 
 
     $("website").value =
-        profile.website_url || "";
-
-
-    $("accentColor").value =
-        profile.accent_color ||
-        "#ffffff";
-
-
-    $("profileEffect").value =
-        profile.profile_effect ||
-        "none";
-
-
-    if(profile.avatar_url){
-
-        $("avatar").src =
-            profile.avatar_url;
-
-    }
-    else{
-
-        $("avatar").src =
-            createAvatar();
-
-    }
-
-
-    if(profile.banner_url){
-
-        $("banner").style.backgroundImage =
-            `url("${profile.banner_url}")`;
-
-    }
-
-
-    if(profile.background_url){
-
-        $("preview").style.backgroundImage =
-            `url("${profile.background_url}")`;
-
-    }
+        currentProfile.website_url || "";
 
 
     updatePreview();
-    usernameInfo();
 
 }
 
 
-/* =====================================================
-   DEFAULT AVATAR
-===================================================== */
-
-function createAvatar(){
-
-    return "data:image/svg+xml," +
-        encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="300"
-                 height="300">
-                <rect width="100%"
-                      height="100%"
-                      fill="#111"/>
-                <text x="50%"
-                      y="54%"
-                      text-anchor="middle"
-                      fill="#777"
-                      font-size="80"
-                      font-family="Arial">
-                    NØX
-                </text>
-            </svg>
-        `);
-
-}
-
-
-/* =====================================================
+/* =========================================
    PREVIEW
-===================================================== */
+========================================= */
 
 function updatePreview(){
 
     const username =
-        $("username")
-            .value
-            .trim();
-
+        $("username").value.trim();
 
     const name =
-        $("displayName")
-            .value
-            .trim();
-
+        $("displayName").value.trim();
 
     const bio =
-        $("bio")
-            .value
-            .trim();
+        $("bio").value.trim();
 
 
     $("previewUsername")
         .textContent =
-        "@" +
-        (username || "nox");
+        "@" + (
+            username || "nox"
+        );
 
 
     $("previewName")
@@ -1133,19 +594,228 @@ function updatePreview(){
         bio ||
         "This is my NØX profile.";
 
-
-    const color =
-        $("accentColor").value;
+}
 
 
-    document.documentElement
-        .style
-        .setProperty(
-            "--accent",
-            color
-        );
+/* =========================================
+   INPUTS
+========================================= */
+
+$("username")
+.addEventListener(
+    "input",
+    function(){
+
+        this.value =
+            this.value
+                .toLowerCase()
+                .replace(
+                    /[^a-z0-9_]/g,
+                    ""
+                );
+
+        updatePreview();
+
+    }
+);
 
 
-    $("colorValue")
-        .textContent =
-        color.t
+$("displayName")
+.addEventListener(
+    "input",
+    updatePreview
+);
+
+
+$("bio")
+.addEventListener(
+    "input",
+    updatePreview
+);
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+$("save")
+.addEventListener(
+    "click",
+    async function(){
+
+        const button =
+            $("save");
+
+
+        try{
+
+            console.log(
+                "NØX: SAVE CLICK"
+            );
+
+
+            if(!currentUser){
+
+                throw new Error(
+                    "No hay usuario autenticado."
+                );
+
+            }
+
+
+            const username =
+                $("username")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const displayName =
+                $("displayName")
+                    .value
+                    .trim();
+
+
+            const bio =
+                $("bio")
+                    .value
+                    .trim();
+
+
+            const website =
+                $("website")
+                    .value
+                    .trim();
+
+
+            if(!username){
+
+                throw new Error(
+                    "El username no puede estar vacío."
+                );
+
+            }
+
+
+            button.disabled =
+                true;
+
+            button.textContent =
+                "SAVING...";
+
+
+            showMessage(
+                "Guardando..."
+            );
+
+
+            /*
+             * IMPORTANTE:
+             * No cambiamos el username mediante
+             * RPC aquí. Primero hacemos funcionar
+             * correctamente el UPDATE.
+             */
+
+            const updateData = {
+
+                display_name:
+                    displayName,
+
+                bio:
+                    bio,
+
+                website_url:
+                    website
+
+            };
+
+
+            const result =
+                await supabaseClient
+                    .from("profiles")
+                    .update(updateData)
+                    .eq(
+                        "id",
+                        currentUser.id
+                    )
+                    .select()
+                    .single();
+
+
+            if(result.error){
+
+                setStatus(
+                    "statusDatabase",
+                    false
+                );
+
+                throw result.error;
+
+            }
+
+
+            currentProfile =
+                result.data;
+
+
+            setStatus(
+                "statusDatabase",
+                true
+            );
+
+
+            showMessage(
+                "✓ Cambios guardados correctamente.",
+                "success"
+            );
+
+
+            updatePreview();
+
+
+            console.log(
+                "NØX: PROFILE UPDATED",
+                result.data
+            );
+
+
+        }
+        catch(error){
+
+            console.error(
+                "NØX SAVE ERROR:",
+                error
+            );
+
+
+            showMessage(
+                "⚠️ " +
+                error.message,
+                "error"
+            );
+
+        }
+        finally{
+
+            button.disabled =
+                false;
+
+            button.textContent =
+                "SAVE CHANGES";
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+loadUser();
+
+</script>
+
+</body>
+</html>
